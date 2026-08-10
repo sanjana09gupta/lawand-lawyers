@@ -1,4 +1,4 @@
-import { Box, Container, Typography, Button, Stack, Chip } from "@mui/material";
+import { Box, Container, Typography, Button, Chip } from "@mui/material";
 import { LocationOn, WorkOutlined, ArrowForward } from "@mui/icons-material";
 import PageHeader from "../components/PageHeader";
 import { careers } from "../data/content";
@@ -19,7 +19,7 @@ export default function CareersPage() {
             Current openings
           </Typography>
 
-          <Stack spacing={2}>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
             {careers.map((job) => (
               <Box
                 key={job.title}
@@ -38,16 +38,16 @@ export default function CareersPage() {
               >
                 <Box>
                   <Typography sx={{ fontFamily: "Fraunces, serif", fontSize: 19 }}>{job.title}</Typography>
-                  <Stack direction="row" spacing={2} sx={{ mt: 1 }}>
-                    <Stack direction="row" spacing={0.5} alignItems="center">
+                  <Box sx={{ display: "flex", flexDirection: "row", gap: 2, mt: 1 }}>
+                    <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: 0.5 }}>
                       <LocationOn sx={{ fontSize: 15, color: "text.secondary" }} />
                       <Typography sx={{ fontSize: 13, color: "text.secondary" }}>{job.location}</Typography>
-                    </Stack>
-                    <Stack direction="row" spacing={0.5} alignItems="center">
+                    </Box>
+                    <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: 0.5 }}>
                       <WorkOutlined sx={{ fontSize: 15, color: "text.secondary" }} />
                       <Typography sx={{ fontSize: 13, color: "text.secondary" }}>{job.type}</Typography>
-                    </Stack>
-                  </Stack>
+                    </Box>
+                  </Box>
                 </Box>
                 <Button
                   variant="outlined"
@@ -59,7 +59,7 @@ export default function CareersPage() {
                 </Button>
               </Box>
             ))}
-          </Stack>
+          </Box>
 
           <Box sx={{ mt: 6, p: 4, borderRadius: 3, bgcolor: "#f3f6fa", textAlign: "center" }}>
             <Typography sx={{ fontFamily: "Fraunces, serif", fontSize: 20 }}>

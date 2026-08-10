@@ -22,7 +22,7 @@ export default function PageHeader({
           separator="/"
           sx={{ mb: 3, "& .MuiBreadcrumbs-separator": { color: "rgba(255,255,255,0.3)" } }}
         >
-          {crumbs.map((c, i) =>
+          {crumbs.map((c) =>
             c.to ? (
               <MuiLink
                 key={c.label}
