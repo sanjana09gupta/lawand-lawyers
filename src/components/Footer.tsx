@@ -22,8 +22,9 @@ export default function Footer() {
       <div className="container-px">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <Link to="/">
-              <img src="/images/logo.svg" alt="Law and Lawyers" className="h-9 w-auto" />
+            <Link to="/" className="flex items-center gap-2.5">
+              <img src="/images/logo-icon.png" alt="Law and Lawyers" className="h-9 w-auto" />
+              <span className="font-serif text-lg text-white">Law &amp; Lawyers</span>
             </Link>
             <p className="mt-5 max-w-xs text-[14px] leading-relaxed">
               SRA-regulated solicitors managing your legal matters with care

@@ -31,7 +31,12 @@ export default function MobileNav({ open, onClose }: { open: boolean; onClose: (
       }}
     >
       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", px: 3, py: 2.5 }}>
-        <Box component="img" src="/images/logo.svg" alt="Law and Lawyers" sx={{ height: 32 }} />
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1.25 }}>
+          <Box component="img" src="/images/logo-icon.png" alt="Law and Lawyers" sx={{ height: 32 }} />
+          <Box component="span" sx={{ fontFamily: "Fraunces, serif", fontSize: 17, color: "#fff" }}>
+            Law &amp; Lawyers
+          </Box>
+        </Box>
         <IconButton onClick={onClose} sx={{ color: "#fff" }} aria-label="Close menu">
           <Close />
         </IconButton>

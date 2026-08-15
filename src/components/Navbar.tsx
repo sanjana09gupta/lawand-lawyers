@@ -58,7 +58,7 @@ export default function Navbar() {
         }`}
       >
         <RouterLink to="/" className="flex shrink-0 items-center gap-2.5 pl-1">
-          <img src="/images/logo.svg" alt="Law and Lawyers" className="h-8 w-auto" />
+          <img src="/images/logo-icon.png" alt="Law and Lawyers" className="h-8 w-auto" />
           <span className="hidden font-serif text-base tracking-tight text-brand-900 sm:block">
             Law &amp; Lawyers
           </span>
