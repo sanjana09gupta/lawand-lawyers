@@ -11,7 +11,7 @@ import Contact from "../components/Contact";
 
 export default function Home() {
   return (
-    <>
+    <div className="editorial-home">
       <Hero />
       <TrustBar />
       <Recognition />
@@ -22,6 +22,6 @@ export default function Home() {
       <Testimonials />
       <News />
       <Contact />
-    </>
+    </div>
   );
 }

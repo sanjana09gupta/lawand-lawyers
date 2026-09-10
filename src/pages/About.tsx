@@ -1,11 +1,7 @@
 import { Box, Container, Grid, Typography, Chip, Avatar } from "@mui/material";
-import { VerifiedUser, Groups, Handshake, Balance } from "@mui/icons-material";
+import { VerifiedUser, Groups, Handshake, Balance, PersonRounded } from "@mui/icons-material";
 import PageHeader from "../components/PageHeader";
 import { team, offices } from "../data/content";
-
-function initials(name: string) {
-  return name.split(" ").map((w) => w[0]).slice(0, 2).join("");
-}
 
 const values = [
   { icon: VerifiedUser, title: "Regulated", text: "Authorised and regulated by the Solicitors Regulation Authority (SRA ID: 613159)." },
@@ -73,9 +69,10 @@ export default function About() {
                 <Box sx={{ textAlign: "center" }}>
                   <Avatar
                     src={m.photo ?? undefined}
+                    alt={m.name}
                     sx={{ width: 88, height: 88, mx: "auto", bgcolor: "#22458a", fontFamily: "Fraunces, serif" }}
                   >
-                    {!m.photo && initials(m.name)}
+                    <PersonRounded />
                   </Avatar>
                   <Typography sx={{ fontSize: 14, fontWeight: 500, mt: 1.5 }}>{m.name}</Typography>
                   <Typography sx={{ fontSize: 12.5, color: "text.secondary" }}>{m.role}</Typography>
