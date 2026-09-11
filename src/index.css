@@ -1,5 +1,26 @@
 @import "tailwindcss";
 
+.dancing-word { display:inline-block; white-space:nowrap; }
+.dancing-letter { display:inline-block; transform-origin:50% 85%; }
+.dancing-word-outlined { color:transparent; -webkit-text-stroke:1.6px #22458a; }
+@media(hover:hover) and (pointer:fine) {
+  .dancing-word-outlined:hover .dancing-letter { text-shadow:2px 3px 0 #22458a; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .dancing-letter { transform:none!important; }
+  .dancing-word-outlined:hover .dancing-letter { text-shadow:none; }
+}
+
+.consultation-line-section { position:relative; overflow:hidden; background:#0a1122; color:#7fbde5; padding:56px 0 0; }
+.consultation-copy { padding-inline:clamp(24px,5vw,72px); }
+.consultation-copy h2 { margin:20px 0 24px; font:600 clamp(30px,4vw,52px)/1.1 "Fraunces",Georgia,serif; color:#fcfdfe; letter-spacing:-.035em; }
+.consultation-copy h2 em { color:#7fbde5; font-weight:400; }
+.consultation-copy>a { display:inline-flex; gap:24px; align-items:center; padding-bottom:8px; border-bottom:1px solid currentColor; color:#b8dcf0; text-decoration:none; font-size:14px; }
+.consultation-copy>a:hover { color:white; }
+.consultation-art { display:block; width:100%; height:auto; margin-top:-32px; }
+@media(min-width:850px) { .consultation-copy { position:absolute; top:40px; left:0; z-index:1; } .consultation-copy h2 { font-size:clamp(26px,3vw,40px); } .consultation-art { margin-top:120px; } }
+@media(max-width:540px) { .consultation-line-section { padding-top:36px; } .consultation-art { margin:24px 0 16px; } }
+
 /* Editorial grid inspired by the supplied Wondermake reference. */
 .editorial-home > section:not(.reference-hero):not(.expertise-section):not(.team-directory) { max-width:1440px; margin-inline:auto; border:1px solid #22458a30; }
 .editorial-home h2.font-serif { font-family:Arial,sans-serif; font-weight:800; letter-spacing:-.045em; }

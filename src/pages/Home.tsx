@@ -8,6 +8,7 @@ import Team from "../components/Team";
 import Testimonials from "../components/Testimonials";
 import News from "../components/News";
 import Contact from "../components/Contact";
+import ConsultationLine from "../components/ConsultationLine";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Services />
       <CTABanner />
       <WhyUs />
+      <ConsultationLine />
       <Team />
       <Testimonials />
       <News />
