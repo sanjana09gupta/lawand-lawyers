@@ -4,6 +4,8 @@ import { ConfigProvider } from "antd";
 import { muiTheme, antdTheme } from "./theme";
 import ScrollToTop from "./components/ScrollToTop";
 import ScrollProgress from "./components/ScrollProgress";
+import OpeningIntro from "./components/OpeningIntro";
+import CustomCursor from "./components/CustomCursor";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -22,6 +24,8 @@ export default function App() {
         <CssBaseline />
         <BrowserRouter>
           <ScrollToTop />
+          <OpeningIntro />
+          <CustomCursor />
           <div className="min-h-screen bg-paper">
             <ScrollProgress />
             <Navbar />
