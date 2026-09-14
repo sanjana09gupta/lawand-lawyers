@@ -119,6 +119,51 @@
 @media(max-width:1488px) { .reference-nav,.reference-hero,.expertise-section,.team-directory { margin-inline:24px; } }
 @media(max-width:850px) { .reference-nav nav { display:none; } .nav-brand { flex:1; } .expertise-section { grid-template-columns:1fr; gap:40px; } .team-portraits { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(max-width:540px) { .reference-nav,.reference-hero,.expertise-section,.team-directory { margin-inline:12px; } .reference-nav { margin-top:12px; min-height:64px; } .nav-menu { width:48px; flex-shrink:0; } .nav-brand { padding:12px; font-size:16px; gap:8px; letter-spacing:-.5px; } .nav-brand img { width:28px; height:28px; } .nav-contact { padding:12px; font-size:0; gap:0; } .hero-intro { padding:52px 16px 40px; } .hero-intro h1 { font-size:clamp(32px,8.7vw,46px); } .hero-kicker { gap:12px; font-size:10px; letter-spacing:1px; } .hero-actions { flex-direction:column; } .square-link { padding:18px; } .film-caption { position:static; background:#1d3468; padding:12px; font-size:10px; } .expertise-section,.team-directory { padding:54px 20px; } .team-portraits { gap:24px 14px; } .team-portraits h3 { font-size:15px; } }
+
+/* Small-screen layout: preserve reading order, comfortable tap areas and no horizontal overflow. */
+@media(max-width:640px) {
+  html, body, #root { max-width:100%; overflow-x:hidden; }
+  .reference-nav { min-height:58px; }
+  .nav-brand { min-width:0; padding-inline:10px; }
+  .nav-brand span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .nav-contact { width:54px; justify-content:center; flex-shrink:0; }
+  .nav-contact svg { width:20px; height:20px; }
+  .hero-intro { padding:44px 18px 32px; background-size:50% 100%; }
+  .hero-kicker { font-size:9px; line-height:1.5; text-align:center; }
+  .hero-intro h1 { font-size:clamp(32px,10.5vw,44px); line-height:1; }
+  .hero-description { font-size:16px; line-height:1.5; }
+  .hero-actions { margin-top:28px; gap:10px; }
+  .square-link { width:100%; min-height:52px; padding:15px 18px; }
+  .film-caption { align-items:flex-start; min-height:54px; font-size:10px; }
+  .film-caption button { min-height:40px; padding:9px 12px; }
+  .expertise-section { padding:48px 20px 54px; gap:32px; }
+  .expertise-heading h2 { font-size:clamp(34px,10vw,46px); }
+  .service-rows a { grid-template-columns:22px minmax(0,1fr) 20px; gap:10px; min-height:66px; padding:17px 7px; font-size:19px; }
+  .service-rows a svg { width:19px; height:19px; }
+  .team-directory { padding:48px 16px 56px; }
+  .team-heading { margin-bottom:24px; }
+  .team-heading>p { font-size:13px; }
+  .team-portraits { gap:12px; }
+  .team-file-index { padding:8px; font-size:8px; }
+  .team-nameplate { min-height:66px; padding:9px; font-size:12px; }
+  .team-reveal-icon { width:21px; height:21px; }
+  .team-card-details { bottom:66px; padding:10px 9px; }
+  .team-card-details p { font-size:13px; }
+  .consultation-copy { padding-inline:20px; }
+  .consultation-copy h2 { font-size:32px; }
+  .consultation-copy>a { min-height:44px; }
+  .scroll-section { scroll-margin-top:12px; }
+  #contact { margin-bottom:28px; padding-block:40px; }
+  #contact .container-px { padding-inline:20px; }
+  #contact input, #contact select, #contact textarea { font-size:16px; }
+  #contact button[type="submit"] { min-height:48px; }
+  footer { padding-top:52px!important; }
+}
+@media(max-width:374px) {
+  .nav-brand span { display:none; }
+  .team-portraits { grid-template-columns:1fr; }
+  .team-portrait { aspect-ratio:5/4; }
+}
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; } }
 
 @theme {
