@@ -222,25 +222,29 @@ export const news: NewsPost[] = [
 
 export const offices = [
   {
-    name: "East London",
+    name: "Liverpool Street",
     tag: "Head Office",
-    address: "352 High Street North, London E12 6PH",
-    phone: "+44 (0)20 8586 5657",
-    email: "info@lawandlawyers.co.uk",
+    address: "Second Floor, 31–41 Worship Street, London EC2A 2DX",
+    phone: "+44 20 8586 5657",
+    mobile: "07767 610001",
+    email: "Sales@lawandlawyers.co.uk",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Second+Floor%2C+31-41+Worship+Street%2C+London+EC2A+2DX",
   },
   {
     name: "Canary Wharf",
     tag: "London",
-    address: "Level 18, 40 Bank Street, Canary Wharf, London E14 5NR",
-    phone: "+44 (0)20 7062 6666",
-    email: "canarywharf@lawandlawyers.co.uk",
+    address: "3 Pepper Street, Crossharbour, London E14 9RB",
+    phone: "+44 20 8586 5657",
+    mobile: "07767 610001",
+    email: "Sales@lawandlawyers.co.uk",
   },
   {
-    name: "Manchester",
-    tag: "Manchester",
-    address: "106 Irlam Road, Manchester M41 6JT",
-    phone: "+44 (0)161 748 3335",
-    email: "manchester@lawandlawyers.co.uk",
+    name: "Leeds",
+    tag: "Branch",
+    address: "Address not available",
+    phone: "+44 20 8586 5657",
+    mobile: "07767 610001",
+    email: "Sales@lawandlawyers.co.uk",
   },
 ];
 

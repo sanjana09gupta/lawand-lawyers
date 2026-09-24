@@ -13,6 +13,7 @@ export default function CustomCursor() {
     let x = 0;
     let y = 0;
     let tracking = false;
+    let frame = 0;
     const hide = () => {
       tracking = false;
       root.classList.remove("custom-cursor-active");
@@ -32,7 +33,7 @@ export default function CustomCursor() {
         hide();
         return;
       }
-      const clickable = Boolean(target.closest("a[href], button, [role='button'], [role='radio'], label, summary")) || getComputedStyle(target).cursor === "pointer";
+      const clickable = Boolean(target.closest("a[href], button, [role='button'], [role='radio'], label, summary"));
       element.dataset.kind = clickable ? "click" : "default";
       element.style.transform = `translate3d(${x}px, ${y}px, 0)`;
       element.hidden = false;
@@ -43,9 +44,21 @@ export default function CustomCursor() {
       x = event.clientX;
       y = event.clientY;
       tracking = true;
-      update();
+      if (!frame) {
+        frame = window.requestAnimationFrame(() => {
+          frame = 0;
+          update();
+        });
+      }
     };
-    const scroll = () => { if (tracking) update(); };
+    const scroll = () => {
+      if (tracking && !frame) {
+        frame = window.requestAnimationFrame(() => {
+          frame = 0;
+          update();
+        });
+      }
+    };
     const leave = (event: PointerEvent) => { if (!event.relatedTarget) hide(); };
     window.addEventListener("pointermove", move, { passive: true });
     window.addEventListener("pointerout", leave);
@@ -56,6 +69,7 @@ export default function CustomCursor() {
     return () => {
       disposed = true;
       hide();
+      if (frame) window.cancelAnimationFrame(frame);
       window.removeEventListener("pointermove", move);
       window.removeEventListener("pointerout", leave);
       window.removeEventListener("blur", hide);

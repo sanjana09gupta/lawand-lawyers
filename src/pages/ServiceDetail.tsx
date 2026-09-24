@@ -41,13 +41,18 @@ export default function ServiceDetail() {
 
               <Button
                 component={Link}
-                to="/contact"
+                to={service.slug === "residential-conveyancing" ? "/book-a-consultation" : "/contact"}
                 variant="contained"
                 endIcon={<ArrowForward />}
                 sx={{ mt: 3, background: "linear-gradient(115deg,#1d3468,#22458a,#2f74bd,#4a97d6)" }}
               >
-                Get a Quote
+                {service.slug === "residential-conveyancing" ? "Book a Consultation" : "Get a Quote"}
               </Button>
+              {service.slug === "residential-conveyancing" && (
+                <Button component={Link} to="/services/residential-conveyancing/fees" variant="text" sx={{ mt: 1.5, display: "block", px: 0 }}>
+                  View conveyancing fees
+                </Button>
+              )}
             </Grid>
 
             <Grid size={{ xs: 12, md: 5 }}>

@@ -49,9 +49,14 @@ export default function ContactPage() {
                         <Typography sx={{ fontSize: 13.5, color: "text.secondary", mt: 0.5 }}>
                           {o.address}
                         </Typography>
+                        {o.mapUrl && <Typography component="a" href={o.mapUrl} target="_blank" rel="noreferrer" sx={{ display: "inline-block", mt: 1, fontSize: 12, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "#2657a3", textDecoration: "none" }}>View on map ↗</Typography>}
                         <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 1.5 }}>
                           <Phone sx={{ fontSize: 14, color: "text.secondary" }} />
                           <Typography sx={{ fontSize: 13.5 }}>{o.phone}</Typography>
+                        </Box>
+                        <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 0.5 }}>
+                          <Phone sx={{ fontSize: 14, color: "text.secondary" }} />
+                          <Typography sx={{ fontSize: 13.5 }}>{o.mobile}</Typography>
                         </Box>
                         <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 0.5 }}>
                           <Mail sx={{ fontSize: 14, color: "text.secondary" }} />

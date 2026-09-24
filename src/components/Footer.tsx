@@ -15,6 +15,8 @@ const company = [
   { label: "Contact", to: "/contact" },
   { label: "News and Insights", to: "/news" },
   { label: "Careers", to: "/careers" },
+  { label: "Corporate Social Responsibility", to: "/corporate-social-responsibility" },
+  { label: "Book a Consultation", to: "/book-a-consultation" },
 ];
 
 function FooterAccordion({ title, children }: { title: string; children: React.ReactNode }) {
@@ -45,7 +47,7 @@ export default function Footer() {
             <FooterAccordion title="Company"><ul className="space-y-3">{company.map((l) => <li key={l.label}><Link to={l.to} className="hover:text-brand-300">{l.label}</Link></li>)}<li><a href="https://lawandlawyers.perfectportal.co.uk/" target="_blank" rel="noreferrer" className="hover:text-brand-300">Client Login</a></li></ul></FooterAccordion>
             <FooterAccordion title="For Individuals"><ul className="space-y-3">{individualServices.map((s) => <li key={s.slug}><Link to={`/services/${s.slug}`} className="hover:text-brand-300">{s.title}</Link></li>)}</ul></FooterAccordion>
             <FooterAccordion title="For Businesses"><ul className="space-y-3">{businessServices.map((s) => <li key={s.slug}><Link to={`/services/${s.slug}`} className="hover:text-brand-300">{s.title}</Link></li>)}</ul></FooterAccordion>
-            <FooterAccordion title="Our offices"><div className="space-y-5">{offices.map((o) => <div key={o.name}><p className="text-[13px] font-semibold uppercase tracking-wide text-white/80">{o.name}</p><a href={`tel:${o.phone.replace(/[^\d+]/g, "")}`} className="mt-1 block">{o.phone}</a><a href={`mailto:${o.email}`} className="block break-all">{o.email}</a></div>)}</div></FooterAccordion>
+            <FooterAccordion title="Our offices"><div className="space-y-5">{offices.map((o) => <div key={o.name}><p className="text-[13px] font-semibold uppercase tracking-wide text-white/80">{o.name}</p><p className="mt-1 text-white/50">{o.address}</p>{o.mapUrl && <a href={o.mapUrl} target="_blank" rel="noreferrer" className="mt-2 block text-brand-300">View on map ↗</a>}<a href={`tel:${o.phone.replace(/[^\d+]/g, "")}`} className="mt-2 block">{o.phone}</a><a href={`tel:${o.mobile.replace(/[^\d+]/g, "")}`} className="block">{o.mobile}</a><a href={`mailto:${o.email}`} className="block break-all">{o.email}</a></div>)}</div></FooterAccordion>
           </div>
         </div>
 
@@ -136,6 +138,7 @@ export default function Footer() {
                 {o.name}
               </p>
               <p className="mt-1 text-[13.5px]">{o.phone}</p>
+              <p className="text-[13.5px]">{o.mobile}</p>
               <p className="text-[13.5px]">{o.email}</p>
             </div>
           ))}

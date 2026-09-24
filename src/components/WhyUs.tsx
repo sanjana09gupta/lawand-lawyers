@@ -42,7 +42,7 @@ export default function WhyUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.08 }}
-            className="mt-3 font-serif text-4xl leading-[1.05] text-white sm:text-5xl"
+            className="mt-3 font-serif text-4xl leading-[1.05] text-brand-950 sm:text-5xl"
           >
             Care and efficiency, from the first call to completion.
           </motion.h2>

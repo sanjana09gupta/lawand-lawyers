@@ -58,11 +58,18 @@ export default function Contact() {
                       </span>
                     </div>
                     <p className="mt-1.5 text-[13.5px] text-white/45">{o.address}</p>
+                    {o.mapUrl && <a href={o.mapUrl} target="_blank" rel="noreferrer" className="mt-2 inline-flex text-[12px] font-semibold uppercase tracking-wide text-brand-300 hover:text-white">View on map ↗</a>}
                     <a
                       href={`tel:${o.phone.replace(/[^\d+]/g, "")}`}
                       className="mt-2 flex items-center gap-2 text-[14px] text-white/65 hover:text-brand-300"
                     >
                       <Phone size={13} /> {o.phone}
+                    </a>
+                    <a
+                      href={`tel:${o.mobile.replace(/[^\d+]/g, "")}`}
+                      className="mt-1 flex items-center gap-2 text-[14px] text-white/65 hover:text-brand-300"
+                    >
+                      <Phone size={13} /> {o.mobile}
                     </a>
                     <a
                       href={`mailto:${o.email}`}
