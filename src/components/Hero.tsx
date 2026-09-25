@@ -58,7 +58,7 @@ export default function Hero() {
           <p className="hero-kicker">Conveyancing Specialist Solicitors</p>
           <h1 aria-label="Legal matters. Personal attention.">
             <motion.span initial={reduced ? false : { opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65 }}><DancingWord text="Legal" />{" "}<DancingWord text="matters." /></motion.span>
-            <motion.span initial={reduced ? false : { opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65, delay: .12 }}><DancingWord text="Personal" outlined />{" "}<DancingWord text="attention." /></motion.span>
+            <motion.span initial={reduced ? false : { opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65, delay: .12 }}><DancingWord text="Personal" />{" "}<DancingWord text="attention." /></motion.span>
           </h1>
           <p className="hero-description">From your first home to your next chapter. Solicitors supporting individuals and businesses across London and Manchester.</p>
           <div className="hero-actions"><Link to="/contact" className="square-link filled">Talk to our team <ArrowOutward /></Link><a href="#services" className="square-link">Explore services <ArrowOutward /></a></div>
