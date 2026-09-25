@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AddRounded, PersonRounded } from "@mui/icons-material";
 import { motion, useReducedMotion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { team } from "../data/content";
 import ScrollSection from "./ScrollSection";
 
@@ -34,7 +35,9 @@ function TeamPortrait({ member, index }: { member: typeof team[number]; index: n
       <p>{member.role}</p>
       {!member.photo && <small>Portrait not available</small>}
     </motion.div>
-  </article></motion.div>;
+    </article>
+    {member.photo && <Link to={`/team/${member.slug}`} className="team-profile-link">View profile</Link>}
+  </motion.div>;
 }
 
 export default function Team() {

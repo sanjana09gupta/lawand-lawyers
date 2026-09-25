@@ -49,9 +49,14 @@ export default function ServiceDetail() {
                 {service.slug === "residential-conveyancing" ? "Book a Consultation" : "Get a Quote"}
               </Button>
               {service.slug === "residential-conveyancing" && (
-                <Button component={Link} to="/services/residential-conveyancing/fees" variant="text" sx={{ mt: 1.5, display: "block", px: 0 }}>
-                  View conveyancing fees
-                </Button>
+                <>
+                  <Button component={Link} to="/services/residential-conveyancing/new-purchase-quote" variant="text" sx={{ mt: 1.5, display: "block", px: 0 }}>
+                    New purchase quote form
+                  </Button>
+                  <Button component={Link} to="/services/residential-conveyancing/fees" variant="text" sx={{ mt: 0.5, display: "block", px: 0 }}>
+                    View conveyancing fees
+                  </Button>
+                </>
               )}
             </Grid>
 

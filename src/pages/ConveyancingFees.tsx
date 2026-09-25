@@ -42,11 +42,11 @@ export default function ConveyancingFees() {
                 <Typography sx={{ mt: 2, color: "rgba(255,255,255,0.66)", lineHeight: 1.7 }}>
                   Tell us a little about the property and your timeline. We will guide you to the right next step.
                 </Typography>
-                <Button component={Link} to="/book-a-consultation" variant="contained" endIcon={<ArrowForward />} sx={{ mt: 4, bgcolor: "#4a97d6", "&:hover": { bgcolor: "#7fbde5", color: "#0a1122" } }}>
-                  Book a consultation
+                <Button component={Link} to="/services/residential-conveyancing/new-purchase-quote" variant="contained" endIcon={<ArrowForward />} sx={{ mt: 4, bgcolor: "#4a97d6", "&:hover": { bgcolor: "#7fbde5", color: "#0a1122" } }}>
+                  Start a quote request
                 </Button>
-                <Button component={Link} to="/contact" variant="text" sx={{ mt: 2, display: "block", px: 0, color: "#b8dcf0", "&:hover": { color: "#fff" } }}>
-                  Or send an enquiry
+                <Button component={Link} to="/book-a-consultation" variant="text" sx={{ mt: 2, display: "block", px: 0, color: "#b8dcf0", "&:hover": { color: "#fff" } }}>
+                  Or book a consultation
                 </Button>
               </Box>
             </Grid>

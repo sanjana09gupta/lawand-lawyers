@@ -3,31 +3,37 @@ export const team = [
     name: "Francis Mathew",
     role: "Senior Director",
     photo: "/images/francis.webp",
+    slug: "francis-mathew",
   },
   {
     name: "Sarath Nair",
     role: "Director",
     photo: "/images/sarath.webp",
+    slug: "sarath-nair",
   },
   {
     name: "Raju Radhakrishnan",
     role: "Director",
     photo: "/images/raju.jpg",
+    slug: "raju-radhakrishnan",
   },
   {
     name: "Bhavini Bhudia",
     role: "Director",
     photo: "/images/bhavini.webp",
+    slug: "bhavini-bhudia",
   },
   {
     name: "Majo Jose",
     role: "Director",
     photo: null,
+    slug: "majo-jose",
   },
   {
     name: "Juneeta Valariyil John",
     role: "Director",
     photo: null,
+    slug: "juneeta-valariyil-john",
   },
 ];
 
@@ -229,22 +235,6 @@ export const offices = [
     mobile: "07767 610001",
     email: "Sales@lawandlawyers.co.uk",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Second+Floor%2C+31-41+Worship+Street%2C+London+EC2A+2DX",
-  },
-  {
-    name: "Canary Wharf",
-    tag: "London",
-    address: "3 Pepper Street, Crossharbour, London E14 9RB",
-    phone: "+44 20 8586 5657",
-    mobile: "07767 610001",
-    email: "Sales@lawandlawyers.co.uk",
-  },
-  {
-    name: "Leeds",
-    tag: "Branch",
-    address: "Address not available",
-    phone: "+44 20 8586 5657",
-    mobile: "07767 610001",
-    email: "Sales@lawandlawyers.co.uk",
   },
 ];
 

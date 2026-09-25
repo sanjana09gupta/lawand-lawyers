@@ -49,19 +49,20 @@ export default function Hero() {
   }
   return (
     <section id="top" className="reference-hero">
-      <div className="hero-intro">
-        <p className="hero-kicker">Conveyancing Specialist Solicitors</p>
-        <h1 aria-label="Legal matters. Personal attention.">
-          <motion.span initial={reduced ? false : { opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65 }}><DancingWord text="Legal" />{" "}<DancingWord text="matters." /></motion.span>
-          <motion.span initial={reduced ? false : { opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65, delay: .12 }}><DancingWord text="Personal" outlined />{" "}<DancingWord text="attention." /></motion.span>
-        </h1>
-        <p className="hero-description">From your first home to your next chapter. Solicitors supporting individuals and businesses across London and Manchester.</p>
-        <div className="hero-actions"><Link to="/contact" className="square-link filled">Talk to our team <ArrowOutward /></Link><a href="#services" className="square-link">Explore services <ArrowOutward /></a></div>
-      </div>
-      <div className="hero-film">
-        <video ref={video} autoPlay={videoReady && !reduced} muted loop playsInline preload="none" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} aria-label="Law and Lawyers introduction video">
+      <div className="hero-intro hero-intro-video">
+        <video ref={video} className="hero-background-video" autoPlay={videoReady && !reduced} muted loop playsInline preload="none" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} aria-label="Law and Lawyers introduction video">
           {videoReady && <source src="/videos/banner-video.mp4" type="video/mp4" />}
         </video>
+        <div className="hero-video-overlay" />
+        <div className="hero-intro-content">
+          <p className="hero-kicker">Conveyancing Specialist Solicitors</p>
+          <h1 aria-label="Legal matters. Personal attention.">
+            <motion.span initial={reduced ? false : { opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65 }}><DancingWord text="Legal" />{" "}<DancingWord text="matters." /></motion.span>
+            <motion.span initial={reduced ? false : { opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65, delay: .12 }}><DancingWord text="Personal" outlined />{" "}<DancingWord text="attention." /></motion.span>
+          </h1>
+          <p className="hero-description">From your first home to your next chapter. Solicitors supporting individuals and businesses across London and Manchester.</p>
+          <div className="hero-actions"><Link to="/contact" className="square-link filled">Talk to our team <ArrowOutward /></Link><a href="#services" className="square-link">Explore services <ArrowOutward /></a></div>
+        </div>
         <div className="film-caption"><span>Law &amp; Lawyers / London &amp; Manchester</span><button type="button" onClick={toggleVideo} aria-label={playing ? "Pause background video" : "Play background video"}>{playing ? <Pause /> : <PlayArrow />}<span>{playing ? "Pause" : "Play"}</span></button></div>
       </div>
     </section>

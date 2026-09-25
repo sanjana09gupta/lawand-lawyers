@@ -19,7 +19,9 @@ const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const Booking = lazy(() => import("./pages/Booking"));
 const ConveyancingFees = lazy(() => import("./pages/ConveyancingFees"));
+const NewPurchaseQuote = lazy(() => import("./pages/NewPurchaseQuote"));
 const CorporateSocialResponsibility = lazy(() => import("./pages/CorporateSocialResponsibility"));
+const TeamProfile = lazy(() => import("./pages/TeamProfile"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 export default function App() {
@@ -46,7 +48,9 @@ export default function App() {
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/book-a-consultation" element={<Booking />} />
                   <Route path="/services/residential-conveyancing/fees" element={<ConveyancingFees />} />
+                  <Route path="/services/residential-conveyancing/new-purchase-quote" element={<NewPurchaseQuote />} />
                   <Route path="/corporate-social-responsibility" element={<CorporateSocialResponsibility />} />
+                  <Route path="/team/:slug" element={<TeamProfile />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>

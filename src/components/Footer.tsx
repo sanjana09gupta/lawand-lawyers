@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
+import CalendarMonth from "@mui/icons-material/CalendarMonth";
+import Phone from "@mui/icons-material/Phone";
 import { LinkedInIcon, InstagramIcon, FacebookIcon, XIcon } from "./SocialIcons";
 import { individualServices, businessServices, offices } from "../data/content";
 
@@ -19,6 +21,8 @@ const company = [
   { label: "Book a Consultation", to: "/book-a-consultation" },
 ];
 
+const directPhone = "+44 7380 866528";
+
 function FooterAccordion({ title, children }: { title: string; children: React.ReactNode }) {
   return <details className="group border-b border-white/10">
     <summary className="flex min-h-13 cursor-pointer list-none items-center justify-between py-4 text-[12px] font-semibold uppercase tracking-wide text-white/70">
@@ -32,6 +36,21 @@ export default function Footer() {
   return (
     <footer className="bg-brand-950 border-t border-white/10 pt-20 pb-10 text-white/60">
       <div className="container-px">
+        <div className="mb-14 flex flex-col gap-6 rounded-2xl bg-brand-900/70 p-6 sm:p-8 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-xl">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-brand-300">Get in touch</p>
+            <h2 className="mt-2 font-serif text-2xl text-white sm:text-3xl">Book a consultation or call us directly.</h2>
+            <p className="mt-2 text-sm leading-relaxed text-white/60">Speak to an adviser now, or choose a convenient time through our Zoom scheduler.</p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Link to="/book-a-consultation" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-400 px-5 text-sm font-semibold text-brand-950 transition-colors hover:bg-brand-300">
+              <CalendarMonth fontSize="small" /> Book via Zoom
+            </Link>
+            <a href="tel:+447380866528" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/25 px-5 text-sm font-semibold text-white transition-colors hover:border-brand-300 hover:text-brand-300" aria-label={`Call ${directPhone}`}>
+              <Phone fontSize="small" /> {directPhone}
+            </a>
+          </div>
+        </div>
         <div className="lg:hidden">
           <Link to="/" className="flex items-center gap-2.5">
             <img src="/images/logo-icon.png" alt="Law and Lawyers" className="h-9 w-auto" />
