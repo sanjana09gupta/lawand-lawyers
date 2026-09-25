@@ -71,7 +71,8 @@
 .nav-contact { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-right:8px; padding:13px 19px; border:0; border-radius:999px; background:#22458a; color:#fff!important; text-transform:uppercase; font-size:12px; font-weight:700; letter-spacing:1px; }
 .nav-menu:hover { background:#e3f1fa; transform:translateY(-1px); }
 .nav-contact:hover { background:#1d3468!important; }
-.reference-hero { width:100%; max-width:none; margin:0; color:#1d3468; }
+.editorial-home { overflow-x:clip; }
+.reference-hero { width:100vw; max-width:100vw; margin-inline:calc(50% - 50vw); color:#1d3468; }
 .hero-intro { padding:56px 0 72px; }
 .hero-intro-video { position:relative; overflow:hidden; border-radius:0; background:#0a1122; color:#1d3468; }
 .hero-intro-content { position:absolute; z-index:2; bottom:clamp(24px,4vw,56px); left:clamp(24px,5vw,72px); width:min(620px,calc(100% - 48px)); padding:clamp(28px,4vw,52px); background:#fcfdfe; box-shadow:0 24px 56px rgba(10,17,34,.22); }
@@ -99,15 +100,24 @@
 .hero-film video { display:block; width:100%; height:auto; aspect-ratio:1902/936; object-fit:contain; }
 .film-caption { position:absolute; right:18px; bottom:18px; display:flex; align-items:center; justify-content:flex-end; }
 .film-caption button { display:flex; align-items:center; gap:8px; background:#fcfdfe; color:#22458a; padding:8px 12px; border:0; cursor:pointer; font-weight:700; }
-.expertise-section { display:grid; grid-template-columns:1fr 1.3fr; gap:72px; padding:96px clamp(24px,5vw,72px); max-width:1440px; margin:auto; }
-.section-index { font-size:12px; text-transform:uppercase; letter-spacing:1.5px; }
-.expertise-heading h2 { font:800 clamp(36px,4vw,60px)/1.02 Arial,sans-serif; letter-spacing:-.05em; color:#1d3468; margin:30px 0; }
-.expertise-heading h2 em { font-style:normal; color:#2f74bd; }
-.expertise-heading>p:not(.section-index) { max-width:360px; color:#4a5468; line-height:1.7; margin-bottom:28px; }
-.service-rows { border-top:1px solid #22458a; }
-.service-rows a { display:grid; grid-template-columns:28px 1fr 24px; align-items:center; gap:16px; padding:28px 12px; border-bottom:1px solid #22458a; text-decoration:none; color:#1d3468; font-size:clamp(18px,2vw,26px); font-weight:600; transition:background .2s; }
-.service-rows a:hover { background:#e3f1fa; }
-.service-number { font:12px monospace; color:#4a5468; }
+.expertise-section { display:grid; grid-template-columns:minmax(280px,.76fr) minmax(0,1.24fr); gap:clamp(36px,6vw,96px); padding:clamp(56px,7vw,104px) clamp(24px,5vw,72px); max-width:1440px; margin:auto; background:#e3f1fa; }
+.expertise-media { min-height:620px; overflow:hidden; background:#17366f; border-radius:18px 18px 72px 18px; }
+.expertise-media img { display:block; width:100%; height:100%; object-fit:cover; object-position:center; }
+.expertise-content { display:flex; flex-direction:column; justify-content:space-between; min-width:0; }
+.section-index { margin:0; font-size:11px; font-weight:750; text-transform:uppercase; letter-spacing:1.7px; color:#2f74bd; }
+.expertise-heading h2 { max-width:660px; font:800 clamp(38px,4.3vw,66px)/.98 Arial,sans-serif; letter-spacing:-.06em; color:#1d3468; margin:20px 0; }
+.expertise-heading>p:not(.section-index) { max-width:470px; color:#4a5468; line-height:1.65; margin:0 0 26px; }
+.expertise-heading .ant-segmented { padding:4px; border-radius:999px; background:#fcfdfe; box-shadow:none; }
+.expertise-heading .ant-segmented-item { min-height:34px; padding-inline:16px; color:#1d3468; font-weight:650; }
+.expertise-heading .ant-segmented-item-selected { box-shadow:none; }
+.service-rows { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; margin-top:clamp(36px,5vw,72px); background:#92b8d2; border:1px solid #92b8d2; }
+.service-rows>div:last-child:nth-child(odd) { grid-column:1 / -1; }
+.service-rows a { display:grid; grid-template-columns:26px minmax(0,1fr) 22px; align-items:start; gap:12px; min-height:132px; padding:24px 20px; background:#fcfdfe; text-decoration:none; color:#1d3468; font-size:clamp(17px,1.7vw,23px); font-weight:700; line-height:1.15; transition:background .25s,color .25s,transform .25s; }
+.service-rows a:hover { position:relative; z-index:1; background:#1d3468; color:#fcfdfe; transform:translate(-4px,-4px); }
+.service-rows a svg { transition:transform .25s ease; }
+.service-rows a:hover svg { transform:translate(3px,-3px); }
+.service-number { padding-top:2px; font:11px monospace; color:#58708f; }
+.service-rows a:hover .service-number { color:#9ecde9; }
 .team-directory { max-width:1440px; margin:auto; padding:64px clamp(24px,5vw,72px) 72px; background:#e3f1fa; }
 .team-heading { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin:20px 0 32px; }
 .team-directory h2 { font:800 clamp(32px,3.5vw,48px)/1.05 Arial,sans-serif; letter-spacing:-.05em; color:#1d3468; margin:0; }
@@ -136,7 +146,7 @@
 @media(max-width:850px) { .team-heading { align-items:flex-start; flex-direction:column; gap:16px; } .team-portrait { aspect-ratio:1; } }
 :is(a,button):focus-visible { outline:3px solid #2f74bd; outline-offset:4px; }
 @media(max-width:1488px) { .reference-nav { margin-inline:24px; } .expertise-section,.team-directory { margin-inline:24px; } }
-@media(max-width:850px) { .nav-menu { display:grid; } .reference-nav nav { display:none; } .nav-brand { flex:1; } .expertise-section { grid-template-columns:1fr; gap:40px; } .team-portraits { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:850px) { .nav-menu { display:grid; } .reference-nav nav { display:none; } .nav-brand { flex:1; } .expertise-section { grid-template-columns:1fr; gap:32px; } .expertise-media { min-height:460px; max-height:580px; } .team-portraits { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(max-width:850px) { .hero-intro-content { position:relative; bottom:auto; left:auto; width:auto; padding:52px clamp(24px,7vw,64px) 36px; box-shadow:none; } .hero-video-stage { min-height:420px; } }
 @media(max-width:540px) { .reference-nav,.expertise-section,.team-directory { margin-inline:12px; } .reference-nav { margin-top:12px; min-height:58px; } .nav-menu { width:48px; flex-shrink:0; } .nav-brand { padding:12px 8px; font-size:16px; gap:8px; letter-spacing:-.5px; } .nav-brand img { width:28px; height:28px; } .nav-contact { margin-right:6px; padding:11px; font-size:0; gap:0; } .hero-intro { padding:36px 0 32px; } .hero-intro-video { min-height:0; border-radius:0; } .hero-intro-content { padding:46px 22px 34px; } .hero-video-stage { min-height:280px; } .hero-intro h1 { font-size:clamp(32px,8.7vw,46px); } .hero-kicker { gap:12px; font-size:10px; letter-spacing:1px; } .hero-actions { flex-direction:column; } .square-link { padding:18px; } .film-caption { right:12px; bottom:12px; } .expertise-section,.team-directory { padding:54px 20px; } .team-portraits { gap:24px 14px; } .team-portraits h3 { font-size:15px; } }
 
@@ -156,9 +166,12 @@
   .square-link { width:100%; min-height:52px; padding:15px 18px; }
   .film-caption { align-items:flex-start; min-height:54px; font-size:10px; }
   .film-caption button { min-height:40px; padding:9px 12px; }
-  .expertise-section { padding:48px 20px 54px; gap:32px; }
+  .expertise-section { padding:48px 20px 54px; gap:28px; }
+  .expertise-media { min-height:340px; max-height:420px; border-radius:14px 14px 48px 14px; }
   .expertise-heading h2 { font-size:clamp(34px,10vw,46px); }
-  .service-rows a { grid-template-columns:22px minmax(0,1fr) 20px; gap:10px; min-height:66px; padding:17px 7px; font-size:19px; }
+  .service-rows { grid-template-columns:1fr; margin-top:32px; }
+  .service-rows>div:last-child:nth-child(odd) { grid-column:auto; }
+  .service-rows a { grid-template-columns:22px minmax(0,1fr) 20px; gap:10px; min-height:72px; padding:20px 16px; font-size:19px; }
   .service-rows a svg { width:19px; height:19px; }
   .team-portraits,.testimonial-grid,.news-grid { display:flex; gap:14px; overflow-x:auto; margin-right:-20px; padding:2px 20px 10px 0; scroll-snap-type:x mandatory; scrollbar-width:none; }
   .team-portraits::-webkit-scrollbar,.testimonial-grid::-webkit-scrollbar,.news-grid::-webkit-scrollbar { display:none; }
