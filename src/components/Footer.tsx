@@ -6,8 +6,8 @@ import { LinkedInIcon, InstagramIcon, FacebookIcon, XIcon } from "./SocialIcons"
 import { individualServices, businessServices, offices } from "../data/content";
 
 const social = [
-  { icon: LinkedInIcon, href: "#", label: "LinkedIn" },
-  { icon: InstagramIcon, href: "#", label: "Instagram" },
+  { icon: LinkedInIcon, href: "https://www.linkedin.com/company/lawandlawyersuk/", label: "LinkedIn" },
+  { icon: InstagramIcon, href: "https://www.instagram.com/lawandlawyersuk?stkn=MXM4cGl3NmZxNGdjeg==", label: "Instagram" },
   { icon: FacebookIcon, href: "#", label: "Facebook" },
   { icon: XIcon, href: "#", label: "X" },
 ];
@@ -60,11 +60,11 @@ export default function Footer() {
             SRA-regulated solicitors managing your legal matters with care and efficiency across London and Manchester.
           </p>
           <div className="mt-5 flex gap-2">
-            {social.map((s) => <a key={s.label} href={s.href} aria-label={s.label} className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/50 transition-colors hover:border-brand-300/40 hover:text-brand-300"><s.icon size={15} /></a>)}
+            {social.map((s) => <a key={s.label} href={s.href} aria-label={s.label} target={s.href.startsWith("http") ? "_blank" : undefined} rel={s.href.startsWith("http") ? "noreferrer" : undefined} className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/50 transition-colors hover:border-brand-300/40 hover:text-brand-300"><s.icon size={15} /></a>)}
           </div>
           <div className="mt-7 border-t border-white/10">
             <FooterAccordion title="Company"><ul className="space-y-3">{company.map((l) => <li key={l.label}><Link to={l.to} className="hover:text-brand-300">{l.label}</Link></li>)}<li><a href="https://lawandlawyers.perfectportal.co.uk/" target="_blank" rel="noreferrer" className="hover:text-brand-300">Client Login</a></li></ul></FooterAccordion>
-            <FooterAccordion title="For Individuals"><ul className="space-y-3">{individualServices.map((s) => <li key={s.slug}><Link to={`/services/${s.slug}`} className="hover:text-brand-300">{s.title}</Link></li>)}<li><Link to="/services/residential-conveyancing/fees" className="font-semibold text-brand-300 hover:text-white">Conveyancing Fees</Link></li></ul></FooterAccordion>
+            <FooterAccordion title="For Individuals"><ul className="space-y-3">{individualServices.map((s) => <li key={s.slug}><Link to={`/services/${s.slug}`} className="hover:text-brand-300">{s.title}</Link></li>)}<li><Link to="/services/residential-conveyancing/fees" className="font-semibold text-brand-300 hover:text-white">Fees information</Link></li></ul></FooterAccordion>
             <FooterAccordion title="For Businesses"><ul className="space-y-3">{businessServices.map((s) => <li key={s.slug}><Link to={`/services/${s.slug}`} className="hover:text-brand-300">{s.title}</Link></li>)}</ul></FooterAccordion>
             <FooterAccordion title="Our offices"><div className="space-y-5">{offices.map((o) => <div key={o.name}><p className="text-[13px] font-semibold uppercase tracking-wide text-white/80">{o.name}</p><p className="mt-1 text-white/50">{o.address}</p>{o.mapUrl && <a href={o.mapUrl} target="_blank" rel="noreferrer" className="mt-2 block text-brand-300">View on map ↗</a>}<a href={`tel:${o.phone.replace(/[^\d+]/g, "")}`} className="mt-2 block">{o.phone}</a><a href={`tel:${o.mobile.replace(/[^\d+]/g, "")}`} className="block">{o.mobile}</a><a href={`mailto:${o.email}`} className="block break-all">{o.email}</a></div>)}</div></FooterAccordion>
           </div>
@@ -86,6 +86,8 @@ export default function Footer() {
                   key={s.label}
                   href={s.href}
                   aria-label={s.label}
+                  target={s.href.startsWith("http") ? "_blank" : undefined}
+                  rel={s.href.startsWith("http") ? "noreferrer" : undefined}
                   className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/50 transition-colors hover:border-brand-300/40 hover:text-brand-300"
                 >
                   <s.icon size={15} />
@@ -133,7 +135,7 @@ export default function Footer() {
               ))}
               <li>
                 <Link to="/services/residential-conveyancing/fees" className="font-semibold text-brand-300 hover:text-white">
-                  Conveyancing Fees
+                  Fees information
                 </Link>
               </li>
             </ul>

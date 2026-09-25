@@ -6,72 +6,23 @@ import { news } from "../data/content";
 const MotionLink = motion.create(Link);
 
 export default function News() {
+  const [featured, ...stories] = news;
   return (
-    <section id="news" className="bg-paper py-20 lg:py-24">
-      <div className="container-px">
-        <div className="max-w-xl">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-[12px] font-semibold uppercase tracking-[0.16em] text-brand-600"
-          >
-            Latest News
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.08 }}
-            className="mt-3 font-serif text-4xl leading-[1.05] text-brand-950 sm:text-5xl"
-          >
-            Insights &amp; law updates.
-          </motion.h2>
-        </div>
-
-        <div className="news-grid mt-12 grid gap-6 lg:mt-14 lg:grid-cols-2">
-          {news.map((n, i) => (
-            <MotionLink
-              key={n.slug}
-              to={`/news/${n.slug}`}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: (i % 2) * 0.1 }}
-              whileHover={{ y: -4 }}
-              className={`group flex flex-col gap-6 rounded-2xl border border-brand-900/8 bg-white p-6 transition-colors hover:border-brand-300/60 sm:flex-row ${
-                i === 0 ? "lg:col-span-2" : ""
-              }`}
-            >
-              {n.image && (
-                <div className="h-40 w-full shrink-0 overflow-hidden rounded-xl sm:w-56">
-                  <img
-                    src={n.image}
-                    alt={n.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-              )}
-              <div className="flex flex-1 flex-col">
-                <p className="text-[12px] uppercase tracking-wide text-brand-800/45">
-                  {n.date}
-                </p>
-                <h3 className="mt-2 font-serif text-xl leading-snug text-brand-950">
-                  {n.title}
-                </h3>
-                <p className="mt-3 line-clamp-3 text-[14px] leading-relaxed text-brand-800/60">
-                  {n.excerpt}
-                </p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-brand-600">
-                  Read more
-                  <ArrowRight
-                    size={14}
-                    className="transition-transform group-hover:translate-x-1"
-                  />
-                </span>
-              </div>
-            </MotionLink>
-          ))}
+    <section id="news" className="news-section">
+      <div className="news-shell">
+        <header className="news-heading">
+          <p>Latest news</p>
+          <h2>Guides for the decisions ahead.</h2>
+          <a className="news-instagram" href="https://www.instagram.com/lawandlawyersuk?stkn=MXM4cGl3NmZxNGdjeg==" target="_blank" rel="noreferrer">Follow our recent updates on Instagram <ArrowRight size={15} /></a>
+        </header>
+        <div className="news-editorial-grid">
+          <MotionLink to={`/news/${featured.slug}`} className="news-featured group" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-40px" }} transition={{ duration: 0.55 }} whileHover={{ y: -4 }}>
+            {featured.image && <img src={featured.image} alt={featured.title} />}
+            <div className="news-featured-copy"><p>{featured.date}</p><h3>{featured.title}</h3><span>Read article <ArrowRight size={16} /></span></div>
+          </MotionLink>
+          <div className="news-list">
+            {stories.map((story, index) => <MotionLink key={story.slug} to={`/news/${story.slug}`} className="news-list-item group" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-40px" }} transition={{ duration: 0.45, delay: index * 0.08 }}><p>{story.date}</p><h3>{story.title}</h3><span>Read article <ArrowRight size={15} /></span></MotionLink>)}
+          </div>
         </div>
       </div>
     </section>

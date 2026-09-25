@@ -67,7 +67,7 @@ export default function MobileNav({ open, onClose }: { open: boolean; onClose: (
       <Box sx={{ px: 3, py: 3 }}>
         <Button
           component="a"
-          href="https://lawandlawyers.perfectportal.co.uk/"
+          href="https://lawandlawyers.perfectportal.co.uk/login"
           target="_blank"
           rel="noreferrer"
           fullWidth

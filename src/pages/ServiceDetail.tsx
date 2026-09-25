@@ -54,7 +54,7 @@ export default function ServiceDetail() {
                     New purchase quote form
                   </Button>
                   <Button component={Link} to="/services/residential-conveyancing/fees" variant="text" sx={{ mt: 0.5, display: "block", px: 0 }}>
-                    View conveyancing fees
+                    Fees information
                   </Button>
                 </>
               )}

@@ -31,10 +31,18 @@ export default function NewsDetail() {
             />
           )}
 
-          <Typography sx={{ fontSize: 17, lineHeight: 1.8, color: "#0d1424" }}>{post.excerpt}</Typography>
+          <Box sx={{ display: "grid", gap: 4 }}>
+            {post.content.map((section, index) => (
+              <Box key={section.heading ?? index}>
+                {section.heading && <Typography component="h2" sx={{ fontFamily: "Fraunces, serif", fontSize: { xs: 24, sm: 30 }, lineHeight: 1.2, color: "#0d1424", mb: 1.5 }}>{section.heading}</Typography>}
+                {section.paragraphs?.map((paragraph) => <Typography key={paragraph} sx={{ fontSize: 17, lineHeight: 1.8, color: "#263248", mb: 1.5 }}>{paragraph}</Typography>)}
+                {section.points && <Box component="ul" sx={{ pl: 2.5, m: 0, color: "#263248", display: "grid", gap: 1 }}>{section.points.map((point) => <Typography component="li" key={point} sx={{ fontSize: 16, lineHeight: 1.65 }}>{point}</Typography>)}</Box>}
+              </Box>
+            ))}
+          </Box>
 
-          <Typography sx={{ fontSize: 14, color: "text.secondary", mt: 4, fontStyle: "italic" }}>
-            This is a summary. Read the full article on the Law and Lawyers website.
+          <Typography sx={{ fontSize: 14, color: "text.secondary", mt: 4, p: 2, borderLeft: "3px solid #4a97d6", bgcolor: "#f3f6fa" }}>
+            This article is published for general information only. It is not legal advice, and the law or guidance may have changed since publication.
           </Typography>
 
           <Button

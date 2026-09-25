@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AddRounded, PersonRounded } from "@mui/icons-material";
+import { AddRounded, ArrowOutward, PersonRounded } from "@mui/icons-material";
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { team } from "../data/content";
@@ -31,21 +31,20 @@ function TeamPortrait({ member, index }: { member: typeof team[number]; index: n
     <motion.div id={`team-details-${index}`} className="team-card-details" aria-hidden={!open}
       initial={false} animate={{ y: open ? 0 : "100%", opacity: open ? 1 : 0 }}
       transition={{ duration: reduceMotion ? 0 : .28, ease: [.22, 1, .36, 1] }}>
-      <span className="team-detail-label">Meet your team</span>
       <p>{member.role}</p>
-      {!member.photo && <small>Portrait not available</small>}
+      {member.photo ? <Link to={`/team/${member.slug}`} className="team-overlay-link">View profile <ArrowOutward fontSize="small" /></Link> : <small>Portrait not available</small>}
     </motion.div>
     </article>
-    {member.photo && <Link to={`/team/${member.slug}`} className="team-profile-link">View profile</Link>}
   </motion.div>;
 }
 
 export default function Team() {
   const reduced = useReducedMotion();
   return <ScrollSection id="team" className="team-directory" light>
-    <p className="section-index">02 / Meet your team</p>
-    <motion.div className="team-heading" initial={reduced ? false : { x: -16, opacity: .4 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true, amount: .2 }} transition={{ duration: .6 }}><h2>Real people.<br />On your side.</h2>
-      <p>A personal approach starts with our people.<br /><span>Hover or tap a portrait to meet the team.</span></p>
+    <motion.div className="team-heading" initial={reduced ? false : { x: -16, opacity: .4 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true, amount: .2 }} transition={{ duration: .6 }}>
+      <p className="section-index">Meet the team</p>
+      <h2>Real people.<br />On your side.</h2>
+      <p>A personal approach starts with our people. Hover or tap a portrait to meet the team.</p>
     </motion.div>
     <div className="team-portraits">{team.map((member, index) => <TeamPortrait key={member.name} member={member} index={index} />)}</div>
   </ScrollSection>;
