@@ -11,6 +11,15 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 
+function RouteLoader() {
+  return (
+    <div className="route-loader" role="status" aria-live="polite">
+      <img src="/images/logo-icon.png" alt="" width="40" height="40" />
+      <span>Loading Law &amp; Lawyers</span>
+    </div>
+  );
+}
+
 const About = lazy(() => import("./pages/About"));
 const CareersPage = lazy(() => import("./pages/Careers"));
 const NewsPage = lazy(() => import("./pages/News"));
@@ -37,7 +46,7 @@ export default function App() {
             <ScrollProgress />
             <Navbar />
             <main>
-              <Suspense fallback={<div className="min-h-[45vh]" aria-busy="true" />}>
+              <Suspense fallback={<RouteLoader />}>
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/about" element={<About />} />
