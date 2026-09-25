@@ -71,9 +71,9 @@
 .nav-contact { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-right:8px; padding:13px 19px; border:0; border-radius:999px; background:#22458a; color:#fff!important; text-transform:uppercase; font-size:12px; font-weight:700; letter-spacing:1px; }
 .nav-menu:hover { background:#e3f1fa; transform:translateY(-1px); }
 .nav-contact:hover { background:#1d3468!important; }
-.reference-hero { max-width:1440px; margin:auto; color:#1d3468; }
-.hero-intro { padding:80px 24px 72px; }
-.hero-intro-video { position:relative; overflow:hidden; border-radius:28px; background:#0a1122; color:#1d3468; }
+.reference-hero { width:100%; max-width:none; margin:0; color:#1d3468; }
+.hero-intro { padding:56px 0 72px; }
+.hero-intro-video { position:relative; overflow:hidden; border-radius:0; background:#0a1122; color:#1d3468; }
 .hero-intro-content { position:absolute; z-index:2; bottom:clamp(24px,4vw,56px); left:clamp(24px,5vw,72px); width:min(620px,calc(100% - 48px)); padding:clamp(28px,4vw,52px); background:#fcfdfe; box-shadow:0 24px 56px rgba(10,17,34,.22); }
 .hero-title-block { max-width:560px; }
 .hero-summary { max-width:520px; }
@@ -135,10 +135,10 @@
 @media(min-width:851px) and (max-width:1199px) { .team-portraits { grid-template-columns:repeat(3,minmax(0,1fr)); } .team-portrait { aspect-ratio:1; } }
 @media(max-width:850px) { .team-heading { align-items:flex-start; flex-direction:column; gap:16px; } .team-portrait { aspect-ratio:1; } }
 :is(a,button):focus-visible { outline:3px solid #2f74bd; outline-offset:4px; }
-@media(max-width:1488px) { .reference-nav { margin-inline:24px; } .reference-hero,.expertise-section,.team-directory { margin-inline:24px; } }
+@media(max-width:1488px) { .reference-nav { margin-inline:24px; } .expertise-section,.team-directory { margin-inline:24px; } }
 @media(max-width:850px) { .nav-menu { display:grid; } .reference-nav nav { display:none; } .nav-brand { flex:1; } .expertise-section { grid-template-columns:1fr; gap:40px; } .team-portraits { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(max-width:850px) { .hero-intro-content { position:relative; bottom:auto; left:auto; width:auto; padding:52px clamp(24px,7vw,64px) 36px; box-shadow:none; } .hero-video-stage { min-height:420px; } }
-@media(max-width:540px) { .reference-nav,.reference-hero,.expertise-section,.team-directory { margin-inline:12px; } .reference-nav { margin-top:12px; min-height:58px; } .nav-menu { width:48px; flex-shrink:0; } .nav-brand { padding:12px 8px; font-size:16px; gap:8px; letter-spacing:-.5px; } .nav-brand img { width:28px; height:28px; } .nav-contact { margin-right:6px; padding:11px; font-size:0; gap:0; } .hero-intro { padding:52px 16px 40px; } .hero-intro-video { min-height:0; border-radius:18px; } .hero-intro-content { padding:46px 22px 34px; } .hero-video-stage { min-height:280px; } .hero-intro h1 { font-size:clamp(32px,8.7vw,46px); } .hero-kicker { gap:12px; font-size:10px; letter-spacing:1px; } .hero-actions { flex-direction:column; } .square-link { padding:18px; } .film-caption { right:12px; bottom:12px; } .expertise-section,.team-directory { padding:54px 20px; } .team-portraits { gap:24px 14px; } .team-portraits h3 { font-size:15px; } }
+@media(max-width:540px) { .reference-nav,.expertise-section,.team-directory { margin-inline:12px; } .reference-nav { margin-top:12px; min-height:58px; } .nav-menu { width:48px; flex-shrink:0; } .nav-brand { padding:12px 8px; font-size:16px; gap:8px; letter-spacing:-.5px; } .nav-brand img { width:28px; height:28px; } .nav-contact { margin-right:6px; padding:11px; font-size:0; gap:0; } .hero-intro { padding:36px 0 32px; } .hero-intro-video { min-height:0; border-radius:0; } .hero-intro-content { padding:46px 22px 34px; } .hero-video-stage { min-height:280px; } .hero-intro h1 { font-size:clamp(32px,8.7vw,46px); } .hero-kicker { gap:12px; font-size:10px; letter-spacing:1px; } .hero-actions { flex-direction:column; } .square-link { padding:18px; } .film-caption { right:12px; bottom:12px; } .expertise-section,.team-directory { padding:54px 20px; } .team-portraits { gap:24px 14px; } .team-portraits h3 { font-size:15px; } }
 
 /* Small-screen layout: preserve reading order, comfortable tap areas and no horizontal overflow. */
 @media(max-width:640px) {
