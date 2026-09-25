@@ -34,19 +34,19 @@ function FooterAccordion({ title, children }: { title: string; children: React.R
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-950 border-t border-white/10 pt-20 pb-10 text-white/60">
+    <footer className="bg-brand-950 border-t border-white/10 pt-10 pb-6 text-white/60 lg:pt-12">
       <div className="container-px">
-        <div className="mb-14 flex flex-col gap-6 rounded-2xl bg-brand-900/70 p-6 sm:p-8 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mb-9 flex flex-col gap-4 rounded-xl bg-brand-900/70 px-5 py-4 sm:px-6 sm:py-5 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-xl">
-            <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-brand-300">Get in touch</p>
-            <h2 className="mt-2 font-serif text-2xl text-white sm:text-3xl">Book a consultation or call us directly.</h2>
-            <p className="mt-2 text-sm leading-relaxed text-white/60">Speak to an adviser now, or choose a convenient time through our Zoom scheduler.</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-300">Get in touch</p>
+            <h2 className="mt-1 font-serif text-xl text-white sm:text-2xl">Book a consultation or call us directly.</h2>
+            <p className="mt-1 text-[13px] leading-relaxed text-white/60">Speak to an adviser now, or choose a convenient time through our Zoom scheduler.</p>
           </div>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <Link to="/book-a-consultation" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-400 px-5 text-sm font-semibold text-brand-950 transition-colors hover:bg-brand-300">
+          <div className="flex flex-col gap-2 sm:flex-row">
+            <Link to="/book-a-consultation" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-brand-400 px-4 text-[13px] font-semibold text-brand-950 transition-colors hover:bg-brand-300">
               <CalendarMonth fontSize="small" /> Book via Zoom
             </Link>
-            <a href="tel:+447380866528" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/25 px-5 text-sm font-semibold text-white transition-colors hover:border-brand-300 hover:text-brand-300" aria-label={`Call ${directPhone}`}>
+            <a href="tel:+447380866528" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/25 px-4 text-[13px] font-semibold text-white transition-colors hover:border-brand-300 hover:text-brand-300" aria-label={`Call ${directPhone}`}>
               <Phone fontSize="small" /> {directPhone}
             </a>
           </div>
@@ -70,17 +70,17 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="hidden gap-12 lg:grid lg:grid-cols-5">
+        <div className="hidden gap-8 lg:grid lg:grid-cols-5">
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-2.5">
               <img src="/images/logo-icon.png" alt="Law and Lawyers" className="h-9 w-auto" />
               <span className="font-serif text-lg text-white">Law &amp; Lawyers</span>
             </Link>
-            <p className="mt-5 max-w-xs text-[14px] leading-relaxed">
+            <p className="mt-3 max-w-xs text-[13px] leading-relaxed">
               SRA-regulated solicitors managing your legal matters with care
               and efficiency across London and Manchester.
             </p>
-            <div className="mt-6 flex gap-2">
+            <div className="mt-4 flex gap-2">
               {social.map((s) => (
                 <a
                   key={s.label}
@@ -98,7 +98,7 @@ export default function Footer() {
             <p className="text-[12px] font-semibold uppercase tracking-wide text-white/40">
               Company
             </p>
-            <ul className="mt-4 space-y-3 text-[14px]">
+            <ul className="mt-3 space-y-2 text-[13px]">
               {company.map((l) => (
                 <li key={l.label}>
                   <Link to={l.to} className="hover:text-brand-300">
@@ -123,7 +123,7 @@ export default function Footer() {
             <p className="text-[12px] font-semibold uppercase tracking-wide text-white/40">
               For Individuals
             </p>
-            <ul className="mt-4 space-y-3 text-[14px]">
+            <ul className="mt-3 space-y-2 text-[13px]">
               {individualServices.map((s) => (
                 <li key={s.slug}>
                   <Link to={`/services/${s.slug}`} className="hover:text-brand-300">
@@ -138,7 +138,7 @@ export default function Footer() {
             <p className="text-[12px] font-semibold uppercase tracking-wide text-white/40">
               For Businesses
             </p>
-            <ul className="mt-4 space-y-3 text-[14px]">
+            <ul className="mt-3 space-y-2 text-[13px]">
               {businessServices.map((s) => (
                 <li key={s.slug}>
                   <Link to={`/services/${s.slug}`} className="hover:text-brand-300">
@@ -150,7 +150,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 hidden gap-6 border-t border-white/10 pt-10 sm:grid-cols-3 lg:grid">
+        <div className="mt-8 hidden gap-6 border-t border-white/10 pt-5 sm:grid-cols-3 lg:grid">
           {offices.map((o) => (
             <div key={o.name}>
               <p className="text-[13px] font-semibold uppercase tracking-wide text-white/80">
@@ -163,7 +163,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-6 text-[12.5px] sm:flex-row sm:items-center sm:justify-between lg:mt-10 lg:pt-8">
+        <div className="mt-6 flex flex-col gap-3 border-t border-white/10 pt-5 text-[12px] sm:flex-row sm:items-center sm:justify-between">
           <p>
             Law and Lawyers Limited is authorised and regulated by the
             Solicitors Regulation Authority (SRA ID: 613159).
