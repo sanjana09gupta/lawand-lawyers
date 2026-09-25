@@ -19,20 +19,20 @@ function TeamPortrait({ member, index }: { member: typeof team[number]; index: n
     onPointerEnter={event => { if (event.pointerType === "mouse") setHovered(true); }}
     onPointerLeave={() => setHovered(false)}
     onKeyDown={event => { if (event.key === "Escape") { setExpanded(false); setHovered(false); } }}>
+    <Link to={`/team/${member.slug}`} className="team-portrait" aria-label={`View ${member.name}'s profile`}>
+      {member.photo ? <img src={member.photo} alt={member.name} loading="lazy" width="600" height="600" /> : <PersonRounded className="team-placeholder" aria-hidden="true" />}
+    </Link>
     <button type="button" className="team-card-toggle" aria-expanded={open}
       aria-controls={`team-details-${index}`} aria-label={`${member.name}, ${open ? "hide" : "show"} details`}
       onClick={() => setExpanded(value => !value)}>
       <span className="team-file-index" aria-hidden="true">L&L / {String(index + 1).padStart(2, "0")}</span>
-      <span className="team-portrait">
-        {member.photo ? <img src={member.photo} alt={member.name} loading="lazy" width="600" height="600" /> : <PersonRounded className="team-placeholder" aria-hidden="true" />}
-      </span>
       <span className="team-nameplate"><span>{member.name}</span><AddRounded className="team-reveal-icon" aria-hidden="true" /></span>
     </button>
     <motion.div id={`team-details-${index}`} className="team-card-details" aria-hidden={!open}
       initial={false} animate={{ y: open ? 0 : "100%", opacity: open ? 1 : 0 }}
       transition={{ duration: reduceMotion ? 0 : .28, ease: [.22, 1, .36, 1] }}>
       <p>{member.role}</p>
-      {member.photo ? <Link to={`/team/${member.slug}`} className="team-overlay-link">View profile <ArrowOutward fontSize="small" /></Link> : <small>Portrait not available</small>}
+      <Link to={`/team/${member.slug}`} className="team-overlay-link">View profile <ArrowOutward fontSize="small" /></Link>
     </motion.div>
     </article>
   </motion.div>;
