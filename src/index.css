@@ -71,17 +71,17 @@
 .reference-hero { max-width:1440px; margin:auto; color:#1d3468; }
 .hero-intro { text-align:center; padding:80px 24px 72px; }
 .hero-intro-video { position:relative; display:grid; min-height:clamp(560px,74vh,760px); place-items:center; overflow:hidden; border-radius:28px; background:#0a1122; color:#fff; }
-.hero-background-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.74) saturate(.9) contrast(1.05); transform:scale(1.02); }
-.hero-video-overlay { position:absolute; inset:0; background:linear-gradient(90deg,rgba(5,12,31,.7),rgba(10,17,34,.52) 50%,rgba(5,12,31,.7)),linear-gradient(180deg,rgba(5,12,31,.18),rgba(5,12,31,.54)); }
+.hero-background-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.9) saturate(.96) contrast(1.05); transform:scale(1.02); }
+.hero-video-overlay { position:absolute; inset:0; background:linear-gradient(90deg,rgba(5,12,31,.48),rgba(10,17,34,.3) 50%,rgba(5,12,31,.48)),linear-gradient(180deg,rgba(5,12,31,.08),rgba(5,12,31,.3)); }
 .hero-intro-content { position:relative; z-index:1; max-width:1280px; padding:72px 24px; }
 .hero-kicker { display:flex; align-items:center; justify-content:center; gap:24px; text-transform:uppercase; letter-spacing:2px; font-size:12px; font-weight:650; }
 .hero-kicker span { font-size:44px; line-height:1; }
 .hero-intro h1 { margin:30px auto; font-family:Arial, sans-serif; font-size:clamp(42px,6.4vw,92px); font-weight:900; line-height:.98; letter-spacing:-.065em; text-transform:uppercase; max-width:1250px; }
-.hero-intro-video h1 { color:#fff; text-shadow:0 4px 28px rgba(0,0,0,.55); }
+.hero-intro-video h1 { color:#fff; text-shadow:0 3px 22px rgba(0,0,0,.8), 0 1px 2px rgba(0,0,0,.9); }
 .hero-intro h1>span { display:block; }
 .hero-intro h1 em { font-style:normal; color:transparent; -webkit-text-stroke:1.6px #22458a; }
 .hero-description { max-width:660px; margin:0 auto; font-size:clamp(16px,1.7vw,22px); line-height:1.6; color:#4a5468; }
-.hero-intro-video .hero-description { color:rgba(255,255,255,.82); text-shadow:0 2px 14px rgba(0,0,0,.25); }
+.hero-intro-video .hero-description { color:rgba(255,255,255,.92); text-shadow:0 2px 14px rgba(0,0,0,.78); }
 .hero-actions { display:flex; justify-content:center; margin-top:36px; }
 .square-link { display:flex; align-items:center; justify-content:space-between; gap:32px; padding:22px 26px; border:1px solid #22458a; text-decoration:none; color:#22458a; text-transform:uppercase; font-size:12px; font-weight:700; letter-spacing:1px; transition:background .2s,color .2s; }
 .square-link.filled { background:#22458a; color:white; }
