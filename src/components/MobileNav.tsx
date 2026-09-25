@@ -21,8 +21,7 @@ export default function MobileNav({ open, onClose }: { open: boolean; onClose: (
       slotProps={{
         paper: {
           sx: {
-            width: "100%",
-            maxWidth: 380,
+            width: "min(88vw, 380px)",
             bgcolor: "#0a1122",
             color: "#fff",
             backgroundImage: "none",

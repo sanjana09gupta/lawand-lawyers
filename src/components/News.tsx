@@ -29,7 +29,7 @@ export default function News() {
           </motion.h2>
         </div>
 
-        <div className="mt-16 grid gap-6 lg:grid-cols-2">
+        <div className="news-grid mt-16 grid gap-6 lg:grid-cols-2">
           {news.map((n, i) => (
             <MotionLink
               key={n.slug}
