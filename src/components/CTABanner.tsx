@@ -5,14 +5,14 @@ import BrandMark from "./BrandMark";
 
 export default function CTABanner() {
   return (
-    <section className="bg-paper py-6">
+    <section className="bg-paper py-8">
       <div className="container-px">
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
-          className="brand-gradient relative flex flex-col items-center gap-6 overflow-hidden rounded-3xl px-8 py-14 text-center sm:flex-row sm:justify-between sm:text-left"
+          className="brand-gradient relative flex flex-col items-center gap-6 overflow-hidden rounded-3xl px-8 py-10 text-center sm:flex-row sm:justify-between sm:text-left"
         >
           <div className="pointer-events-none absolute -right-10 -top-10 w-44 opacity-20 rotate-6">
             <BrandMark id="cta-mark" className="w-full" />

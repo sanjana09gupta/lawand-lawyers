@@ -5,7 +5,7 @@ const loop = [...recognitions, ...recognitions, ...recognitions];
 
 export default function Recognition() {
   return (
-    <section className="border-y border-brand-900/8 bg-white py-16">
+    <section className="border-y border-brand-900/8 bg-white py-14 lg:py-16">
       <div className="container-px">
         <p className="text-center text-[12px] font-semibold uppercase tracking-[0.16em] text-brand-600">
           Industry Recognition
@@ -16,7 +16,7 @@ export default function Recognition() {
         </p>
       </div>
 
-      <div className="relative mt-10 overflow-hidden">
+      <div className="relative mt-8 overflow-hidden lg:mt-10">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent sm:w-32" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent sm:w-32" />
 

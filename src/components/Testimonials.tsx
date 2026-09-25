@@ -6,7 +6,7 @@ import { testimonials } from "../data/content";
 
 export default function Testimonials() {
   return (
-    <section className="bg-mist py-28">
+    <section className="bg-mist py-20 lg:py-24">
       <div className="container-px">
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <div className="max-w-xl">
@@ -37,7 +37,7 @@ export default function Testimonials() {
           </div>
         </div>
 
-        <div className="testimonial-grid mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="testimonial-grid mt-12 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}

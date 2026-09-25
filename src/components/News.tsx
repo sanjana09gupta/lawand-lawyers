@@ -7,7 +7,7 @@ const MotionLink = motion.create(Link);
 
 export default function News() {
   return (
-    <section id="news" className="bg-paper py-28">
+    <section id="news" className="bg-paper py-20 lg:py-24">
       <div className="container-px">
         <div className="max-w-xl">
           <motion.p
@@ -29,7 +29,7 @@ export default function News() {
           </motion.h2>
         </div>
 
-        <div className="news-grid mt-16 grid gap-6 lg:grid-cols-2">
+        <div className="news-grid mt-12 grid gap-6 lg:mt-14 lg:grid-cols-2">
           {news.map((n, i) => (
             <MotionLink
               key={n.slug}

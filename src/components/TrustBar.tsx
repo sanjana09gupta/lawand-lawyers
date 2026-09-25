@@ -4,7 +4,7 @@ import { stats } from "../data/content";
 
 export default function TrustBar() {
   return (
-    <section className="relative -mt-px bg-brand-900 py-10">
+    <section className="relative -mt-px bg-brand-900 py-8 sm:py-9">
       <div className="container-px grid grid-cols-2 gap-8 sm:grid-cols-4">
         {stats.map((s, i) => (
           <motion.div

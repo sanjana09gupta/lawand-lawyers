@@ -236,6 +236,10 @@ body {
 }
 
 .container-px {
+  width:100%;
+  max-width:1440px;
+  margin-left:auto;
+  margin-right:auto;
   padding-left: clamp(1.25rem, 4vw, 5rem);
   padding-right: clamp(1.25rem, 4vw, 5rem);
 }

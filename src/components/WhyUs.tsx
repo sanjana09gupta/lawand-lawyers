@@ -26,7 +26,7 @@ const points = [
 
 export default function WhyUs() {
   return (
-    <section id="why-us" className="bg-brand-950 py-28">
+    <section id="why-us" className="bg-brand-950 py-20 lg:py-24">
       <div className="container-px">
         <div className="max-w-2xl">
           <motion.p
@@ -48,7 +48,7 @@ export default function WhyUs() {
           </motion.h2>
         </div>
 
-        <div className="mt-16 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
           {points.map((p, i) => (
             <motion.div
               key={p.title}
