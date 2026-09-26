@@ -330,7 +330,7 @@ export const offices = [
   {
     name: "Liverpool Street",
     tag: "Head Office",
-    address: "Second Floor, 31–41 Worship Street, London EC2A 2DX",
+    address: "Second Floor, 31-41 Worship Street, London EC2A 2DX",
     phone: "+44 20 8586 5657",
     mobile: "07767 610001",
     email: "Sales@lawandlawyers.co.uk",

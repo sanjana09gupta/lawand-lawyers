@@ -22,6 +22,51 @@ const businessImmigrationServices = [
   "Home Office civil-penalty notices, suspensions and revocations",
 ];
 
+const legacyServiceContent: Record<string, { heading: string; paragraphs: string[]; secondaryHeading?: string; secondaryParagraph?: string }> = {
+  "wills-and-probate": {
+    heading: "Practical wills and probate advice for individuals and families.",
+    paragraphs: ["Our wills and probate solicitors provide tailored advice on estate planning, wills and the legal work required after a death. We take a practical, considerate approach and explain the available options clearly.", "We can help when you need to make or update a will, plan for the future, deal with a relative's estate, or understand a contested will or inheritance decision."],
+    secondaryHeading: "Administration of estates",
+    secondaryParagraph: "Where there is a will, it sets out how the estate should be dealt with. Where there is no will, the Rules of Intestacy apply. We can assist with grants of probate or letters of administration, property transfers, policies, assets, beneficiaries and HMRC matters.",
+  },
+  employment: {
+    heading: "Clear and focused advice for each employment matter.",
+    paragraphs: ["Our employment solicitors advise employees who need prompt, practical support when a difficult situation arises at work. We understand that employment disputes can be stressful and time-sensitive.", "We advise on bullying and harassment, redundancy, disciplinary proceedings, performance issues, sickness, discrimination, settlement agreements, gross misconduct, constructive dismissal, unfair dismissal, resignation and contractual disputes."],
+    secondaryHeading: "Prompt representation when it matters",
+    secondaryParagraph: "Our employment team can provide practical and authoritative advice and representation across the UK, with support tailored to the facts of your case.",
+  },
+  family: {
+    heading: "Sensitive family-law advice when circumstances change.",
+    paragraphs: ["Our family-law solicitors advise on divorce and separation with a focus on confidentiality, clear communication and practical next steps.", "We can help resolve matters involving financial arrangements, maintenance, children, civil partnerships and cohabitation. We aim to combine practical advice with decisive action during a difficult time."],
+    secondaryHeading: "Divorce and separation",
+    secondaryParagraph: "Whether you are starting a divorce, responding to proceedings or considering a formal separation, we can explain the process and the implications for your family and finances.",
+  },
+  "landlord-and-tenant": {
+    heading: "Experienced advice on landlord and tenant issues.",
+    paragraphs: ["We advise landlords and tenants on residential repossessions and evictions, notices, tenancy agreements and commercial property disputes.", "We offer competitive rates, including fixed fees for possession proceedings where appropriate. Contact us to discuss the best way forward for your matter."],
+    secondaryHeading: "A clear route through possession and tenancy disputes",
+    secondaryParagraph: "We assess the documents, notice requirements and the practical steps needed to resolve the issue as efficiently as possible.",
+  },
+  "dispute-resolution": {
+    heading: "Practical representation for disputes that need resolution.",
+    paragraphs: ["Our dispute-resolution service supports individuals and businesses when negotiation, mediation or formal proceedings are needed. We will explain the risks, likely costs and available options before you commit to a course of action.", "We work to resolve matters proportionately, while preparing thoroughly if court or tribunal representation becomes necessary."],
+    secondaryHeading: "Clear strategy from the outset",
+    secondaryParagraph: "Every dispute is different. We focus on the facts, documents and commercial or personal outcome that matters to you.",
+  },
+  "commercial-conveyancing": {
+    heading: "Commercial property advice for transactions and leases.",
+    paragraphs: ["Our commercial conveyancing team advises on buying, selling, leasing and refinancing commercial property across England and Wales.", "We help businesses and investors understand title, lease, finance and transaction risks, keeping the legal work aligned with the timetable for your deal."],
+    secondaryHeading: "Commercial transactions handled with care",
+    secondaryParagraph: "We support property acquisitions, disposals, lease negotiations and landlord and tenant matters with clear advice at each stage.",
+  },
+  "corporate-immigration-services": {
+    heading: "Corporate immigration support for employers and sponsors.",
+    paragraphs: ["We support businesses with sponsor licence applications, Certificates of Sponsorship, workforce immigration compliance and recruitment from overseas.", "Our team can assist with sponsor licence renewals, audits, Home Office notices, suspensions and ongoing sponsorship management."],
+    secondaryHeading: "Support for your sponsored workforce",
+    secondaryParagraph: "We give employers practical guidance on compliance duties and the immigration routes available to prospective and existing staff.",
+  },
+};
+
 function ImmigrationDetail() {
   return <>
     <PageHeader
@@ -149,6 +194,7 @@ export default function ServiceDetail() {
   if (service.slug === "residential-conveyancing") return <ConveyancingDetail />;
 
   const related = services.filter((s) => s.category === service.category && s.slug !== service.slug).slice(0, 3);
+  const legacy = legacyServiceContent[service.slug];
 
   return (
     <>
@@ -163,9 +209,10 @@ export default function ServiceDetail() {
         <Container maxWidth="lg">
           <Grid container spacing={6}>
             <Grid size={{ xs: 12, md: 7 }}>
-              <Typography sx={{ fontFamily: "Fraunces, serif", fontSize: 24, color: "#0d1424" }}>
-                How we can help
-              </Typography>
+              <Typography component="h2" sx={{ fontFamily: "Arial, sans-serif", fontWeight: 800, fontSize: { xs: 27, sm: 36 }, lineHeight: 1.08, letterSpacing: "-.04em", color: "#1d3468" }}>{legacy?.heading ?? "How we can help"}</Typography>
+              {legacy?.paragraphs.map((paragraph) => <Typography key={paragraph} sx={{ mt: 2, color: "#4a5468", fontSize: 16, lineHeight: 1.75 }}>{paragraph}</Typography>)}
+              {legacy?.secondaryHeading && <Box sx={{ mt: 4, p: { xs: 2.5, sm: 3 }, bgcolor: "#e3f1fa" }}><Typography component="h3" sx={{ fontFamily: "Arial, sans-serif", fontWeight: 800, fontSize: { xs: 21, sm: 25 }, color: "#1d3468" }}>{legacy.secondaryHeading}</Typography><Typography sx={{ mt: 1, color: "#4a5468", lineHeight: 1.7 }}>{legacy.secondaryParagraph}</Typography></Box>}
+              <Typography component="h3" sx={{ mt: 4, fontFamily: "Arial, sans-serif", fontWeight: 800, fontSize: 22, color: "#0d1424" }}>How we can help</Typography>
               <List sx={{ mt: 1 }}>
                 {service.points.map((p) => (
                   <ListItem key={p} disableGutters>
@@ -184,7 +231,7 @@ export default function ServiceDetail() {
                 endIcon={<ArrowForward />}
                 sx={{ mt: 3, background: "linear-gradient(115deg,#1d3468,#22458a,#2f74bd,#4a97d6)" }}
               >
-                {service.slug === "residential-conveyancing" ? "Book a Consultation" : "Get a Quote"}
+                {service.slug === "residential-conveyancing" ? "Book a Consultation" : "Contact our team"}
               </Button>
               {service.slug === "residential-conveyancing" && (
                 <>

@@ -88,7 +88,7 @@ export default function MobileNav({ open, onClose }: { open: boolean; onClose: (
           variant="contained"
           onClick={() => {
             onClose();
-            navigate("/contact");
+            navigate("/services/residential-conveyancing/new-purchase-quote");
           }}
           sx={{ py: 1.5, background: "linear-gradient(115deg,#1d3468,#22458a,#2f74bd,#4a97d6)" }}
         >

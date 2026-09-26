@@ -1,6 +1,6 @@
-# Quote request sheet setup
+# Legacy Google Apps Script alternative
 
-The website submits new-purchase quote requests to the Google Sheet supplied by the business. This keeps Google account credentials out of the website code.
+The production website now uses the Vercel server-side endpoint in `api/quote.js`, because it confirms Google has saved a row before showing success to the user. The Apps Script option is retained only as an alternative.
 
 1. Open the supplied Google Sheet and choose **Extensions > Apps Script**.
 2. Replace the default script with `QuoteSheet.gs` from this folder and save it.

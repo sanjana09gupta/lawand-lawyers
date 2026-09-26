@@ -28,7 +28,6 @@ export default function NewPurchaseQuote() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const quoteSheetEndpoint = import.meta.env.VITE_QUOTE_SHEET_ENDPOINT?.trim();
 
   useEffect(() => {
     try {
@@ -56,27 +55,8 @@ export default function NewPurchaseQuote() {
   const sendByEmail = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmitError(null);
-    const buyers = activeBuyers.map((buyer, index) => `Buyer ${index + 1}: ${buyer.name || "Not provided"} | ${buyer.email || "Not provided"} | ${buyer.phone || "Not provided"}`).join("\n");
-    const body = [
-      "NEW PURCHASE DETAILS - QUOTE REQUEST", "", "PROPERTY DETAILS",
-      `Purchase price: ${data.price || "Not provided"}`,
-      `Purchase address: ${data.propertyAddress || "Not provided"}`,
-      `Tenure: ${data.tenure || "Not provided"}`, "", "BUYER DETAILS",
-      `Number of buyers: ${data.buyerCount}`, buyers,
-      `Current address: ${data.currentAddress || "Not provided"}`, "", "PURCHASE AND FINANCIAL DETAILS",
-      `New build: ${data.newBuild || "Not provided"}`,
-      `First-time buyer: ${data.firstTimeBuyer || "Not provided"}`,
-      `Mortgage advisor: ${data.mortgageAdvisor || "Not provided"}`,
-      `Mortgage bank: ${data.mortgageBank || "Not provided"}`,
-      `Gifted money: ${data.giftedMoney || "Not provided"}`,
-      data.giftedMoney === "Yes" ? `Gift details: ${data.giftDetails || "Not provided"}` : "",
-      `How did you hear about us: ${data.referralSource || "Not provided"}`,
-      data.notes ? `Additional notes: ${data.notes}` : "",
-    ].filter(Boolean).join("\n");
-
-    if (quoteSheetEndpoint) {
-      setSubmitting(true);
-      try {
+    setSubmitting(true);
+    try {
         const payload = {
           submittedAt: new Date().toISOString(),
           formType: "New purchase quote request",
@@ -103,23 +83,20 @@ export default function NewPurchaseQuote() {
           referralName: data.referralName,
           notes: data.notes,
         };
-        await fetch(quoteSheetEndpoint, {
+        const response = await fetch("/api/quote", {
           method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
-          body: new URLSearchParams({ payload: JSON.stringify(payload) }),
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
         });
+        const result = await response.json().catch(() => null);
+        if (!response.ok || !result?.ok) throw new Error(result?.error || "Unable to save quote request.");
         setSubmitted(true);
         localStorage.removeItem(storageKey);
-      } catch {
-        setSubmitError("We could not send your details. Please call 07380 866528 or try again shortly.");
-      } finally {
-        setSubmitting(false);
-      }
-      return;
+    } catch {
+      setSubmitError("We could not save your details. Nothing has been submitted. Please call 07380 866528 or try again shortly.");
+    } finally {
+      setSubmitting(false);
     }
-
-    window.location.href = `mailto:mohit@lawandlawyers.co.uk?subject=${encodeURIComponent("New purchase details - quote request")}&body=${encodeURIComponent(body)}`;
   };
 
   const resetForm = () => {
@@ -188,9 +165,9 @@ export default function NewPurchaseQuote() {
 
             <Box sx={{ borderTop: "1px solid rgba(29,52,104,0.14)", pt: 4 }}>
               <Typography variant="h5" sx={{ color: "#0a1122" }}>Send your details</Typography>
-              <Typography sx={{ mt: 1, color: "text.secondary", lineHeight: 1.7 }}>{quoteSheetEndpoint ? "Your completed details will be sent securely to our Property Team." : "Email opens with your completed information ready to send to our Property Team."} You can also call 07380 866528 for direct advice.</Typography>
+              <Typography sx={{ mt: 1, color: "text.secondary", lineHeight: 1.7 }}>Your completed details will be saved securely and sent to our Property Team. You can also call 07380 866528 for direct advice.</Typography>
               <Box sx={{ mt: 3, display: "flex", flexWrap: "wrap", gap: 1.5 }}>
-                <Button type="submit" variant="contained" disabled={submitting || submitted} startIcon={submitted ? <CheckCircle /> : <Email />} sx={{ py: 1.4, background: "linear-gradient(115deg,#1d3468,#22458a,#2f74bd)" }}>{submitted ? "Details sent" : submitting ? "Sending details..." : quoteSheetEndpoint ? "Send my details" : "Email my details"}</Button>
+                <Button type="submit" variant="contained" disabled={submitting || submitted} startIcon={submitted ? <CheckCircle /> : <Email />} sx={{ py: 1.4, background: "linear-gradient(115deg,#1d3468,#22458a,#2f74bd)" }}>{submitted ? "Details sent" : submitting ? "Sending details..." : "Send my details"}</Button>
                 <Button type="button" onClick={resetForm} variant="outlined" startIcon={<RestartAlt />}>Clear form</Button>
                 <Button component={Link} to="/book-a-consultation" variant="text">Book via Zoom</Button>
               </Box>
