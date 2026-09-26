@@ -92,9 +92,8 @@ export default function Footer() {
           </div>
         </div>
         <div className="lg:hidden">
-          <Link to="/" className="flex items-center gap-2.5">
-            <img src="/images/logo-icon.png" alt="Law and Lawyers" className="h-9 w-auto" />
-            <span className="font-serif text-lg text-white">Law &amp; Lawyers</span>
+          <Link to="/" className="inline-flex rounded-md bg-white p-1.5">
+            <img src="/images/law-and-lawyers-logo.jpeg" alt="Law and Lawyers Solicitors" className="h-10 w-auto object-contain" />
           </Link>
           <p className="mt-4 max-w-xs text-[14px] leading-relaxed">
             SRA-regulated solicitors managing your legal matters with care and efficiency across London and Manchester.
@@ -113,9 +112,8 @@ export default function Footer() {
 
         <div className="hidden gap-8 lg:grid lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2.5">
-              <img src="/images/logo-icon.png" alt="Law and Lawyers" className="h-9 w-auto" />
-              <span className="font-serif text-lg text-white">Law &amp; Lawyers</span>
+            <Link to="/" className="inline-flex rounded-md bg-white p-1.5">
+              <img src="/images/law-and-lawyers-logo.jpeg" alt="Law and Lawyers Solicitors" className="h-10 w-auto object-contain" />
             </Link>
             <p className="mt-3 max-w-xs text-[13px] leading-relaxed">
               SRA-regulated solicitors managing your legal matters with care

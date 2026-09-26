@@ -41,7 +41,7 @@ export default function Navbar() {
   return <>
     <header className="reference-nav">
       <button className="nav-menu" onClick={() => setOpen(true)} aria-label="Open menu"><Menu /></button>
-      <Link to="/" className="nav-brand"><motion.img src="/images/logo-icon.png" alt="" initial={reduced ? false : { rotate: -12, scale: .8, opacity: 0 }} animate={{ rotate: 0, scale: 1, opacity: 1 }} transition={{ duration: .6, ease: [.22, 1, .36, 1] }} /><span>Law &amp; Lawyers</span></Link>
+      <Link to="/" className="nav-brand"><motion.img src="/images/law-and-lawyers-logo.jpeg" alt="Law and Lawyers Solicitors" initial={reduced ? false : { opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .45, ease: [.22, 1, .36, 1] }} /></Link>
       <nav aria-label="Main navigation">
         <div className="nav-company" ref={companyMenuRef}>
           <button type="button" className="nav-company-trigger" onClick={() => setCompanyOpen((current) => !current)} aria-expanded={companyOpen} aria-controls="company-menu">Company <KeyboardArrowDown fontSize="small" /></button>
