@@ -37,35 +37,35 @@ function FooterAccordion({ title, children }: { title: string; children: React.R
 
 function TrustBadges() {
   return (
-    <div className="mt-6 flex flex-wrap gap-2.5">
+    <div className="mt-5 flex flex-wrap gap-2 sm:mt-6 sm:gap-2.5">
       <div
         aria-label="ReviewSolicitors client review badge"
-        className="min-w-48 rounded-lg bg-[#00a849] px-3 py-2.5 text-white"
+        className="min-w-36 rounded-lg bg-[#00a849] px-2.5 py-2 text-white sm:min-w-48 sm:px-3 sm:py-2.5"
       >
-        <p className="text-[13px] font-semibold tracking-wide">reviewsolicitors</p>
+        <p className="text-[12px] font-semibold tracking-wide sm:text-[13px]">reviewsolicitors</p>
         <div className="mt-1 flex items-center gap-0.5 text-amber-300" aria-hidden="true">
-          {[0, 1, 2, 3, 4].map((star) => <StarRounded key={star} sx={{ fontSize: 18 }} />)}
+          {[0, 1, 2, 3, 4].map((star) => <StarRounded key={star} sx={{ fontSize: { xs: 16, sm: 18 } }} />)}
         </div>
-        <p className="mt-1 text-[10px] font-medium text-white/90">Independent client reviews</p>
+        <p className="mt-1 text-[9px] font-medium text-white/90 sm:text-[10px]">Independent client reviews</p>
       </div>
       <div
         aria-label="Authorised and regulated by the Solicitors Regulation Authority"
-        className="flex min-w-48 items-center gap-2.5 rounded-lg bg-white px-3 py-2.5 text-[#b52039]"
+        className="flex min-w-40 items-center gap-2 rounded-lg bg-white px-2.5 py-2 text-[#b52039] sm:min-w-48 sm:gap-2.5 sm:px-3 sm:py-2.5"
       >
-        <VerifiedUser sx={{ fontSize: 34, color: "#d3253e" }} />
+        <VerifiedUser sx={{ fontSize: { xs: 28, sm: 34 }, color: "#d3253e" }} />
         <div>
-          <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Regulated by</p>
-          <p className="text-[12px] font-extrabold leading-tight">Solicitors Regulation Authority</p>
-          <p className="mt-0.5 text-[10px] text-slate-500">SRA ID: 613159</p>
+          <p className="text-[9px] font-semibold uppercase tracking-wide text-slate-500 sm:text-[10px]">Regulated by</p>
+          <p className="text-[11px] font-extrabold leading-tight sm:text-[12px]">Solicitors Regulation Authority</p>
+          <p className="mt-0.5 text-[9px] text-slate-500 sm:text-[10px]">SRA ID: 613159</p>
         </div>
       </div>
-      <div className="flex h-[86px] w-[118px] items-center justify-center rounded-lg bg-white p-2" aria-label="Lexcel accredited by the Law Society">
+      <div className="flex h-[66px] w-[92px] items-center justify-center rounded-lg bg-white p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Lexcel accredited by the Law Society">
         <img src="/images/recog1.jpg" alt="Lexcel accredited by the Law Society" className="max-h-full max-w-full object-contain" />
       </div>
-      <div className="flex h-[86px] w-[118px] items-center justify-center rounded-lg bg-white p-2" aria-label="Conveyancing Quality Scheme accredited by the Law Society">
+      <div className="flex h-[66px] w-[92px] items-center justify-center rounded-lg bg-white p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Conveyancing Quality Scheme accredited by the Law Society">
         <img src="/images/recog2.png" alt="Conveyancing Quality Scheme accredited by the Law Society" className="max-h-full max-w-full object-contain" />
       </div>
-      <div className="flex h-[86px] w-[118px] items-center justify-center rounded-lg bg-white p-2" aria-label="Cyber Essentials certified">
+      <div className="flex h-[66px] w-[92px] items-center justify-center rounded-lg bg-white p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Cyber Essentials certified">
         <img src="/images/recog3.png" alt="Cyber Essentials certified" className="max-h-full max-w-full object-contain" />
       </div>
     </div>

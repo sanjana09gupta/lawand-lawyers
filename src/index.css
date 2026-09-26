@@ -259,7 +259,79 @@
   #contact .container-px { padding-inline:20px; }
   #contact input, #contact select, #contact textarea { font-size:16px; }
   #contact button[type="submit"] { min-height:48px; }
-  footer { padding-top:52px!important; }
+  footer { padding-top:38px!important; }
+
+  /* Mobile-only type and action system: compact sections, generous touch targets. */
+  .container-px { padding-left:18px; padding-right:18px; }
+  .reference-nav { min-height:56px; }
+  .nav-menu { width:44px; height:44px; margin-left:6px; }
+  .nav-contact { width:48px; min-height:44px; margin-right:5px; padding:10px; }
+  .nav-contact svg { width:19px; height:19px; }
+  .square-link { min-height:48px; padding:14px 16px; font-size:11px; letter-spacing:.08em; }
+  .MuiButton-root { min-height:44px!important; font-size:13px!important; line-height:1.2!important; }
+  .MuiIconButton-root { min-width:40px!important; min-height:40px!important; }
+
+  .hero-intro { padding-bottom:24px; }
+  .hero-intro-content { padding:34px 20px 28px; }
+  .hero-intro h1 { font-size:clamp(31px,9.5vw,40px); line-height:.98; }
+  .hero-description { font-size:15px; line-height:1.52; }
+  .hero-actions { margin-top:20px; }
+  .hero-film { margin-inline:12px; border-radius:18px; }
+
+  .news-section { padding-block:32px!important; }
+  .news-heading>p,.section-index { font-size:10px; letter-spacing:.12em; }
+  .news-heading h2 { font-size:clamp(30px,9vw,38px); }
+  .news-featured { min-height:254px; }
+  .news-featured>img { height:254px; }
+  .news-featured-copy { width:90%; padding:16px; }
+  .news-featured-copy h3 { font-size:19px; }
+
+  .expertise-section { padding:30px 18px 34px; gap:16px; }
+  .expertise-media { min-height:210px; max-height:250px; }
+  .expertise-heading h2,.team-directory h2 { font-size:clamp(29px,8.7vw,37px); }
+  .expertise-heading>p:not(.section-index),.team-heading>p:not(.section-index) { font-size:14px; line-height:1.48; }
+  .service-rows { margin-top:16px; }
+  .service-rows a { min-height:54px; padding:12px 11px; font-size:16px; }
+
+  .team-directory { padding:32px 18px 36px; gap:18px; }
+  .team-portraits { margin-top:14px; margin-right:-18px; padding-right:18px; }
+  .team-scroll-card { flex-basis:min(62vw,228px); }
+
+  #why-us { padding-block:34px!important; }
+  #why-us .container-px { padding-inline:18px; }
+  #why-us h2 { font-size:clamp(30px,8.8vw,38px); }
+  .why-us-points { margin-top:20px; margin-right:-18px; padding-right:18px; }
+  .why-us-points>div { flex-basis:min(74vw,270px); min-height:194px; padding:20px; }
+  .why-us-points>div h3 { margin-top:14px; font-size:19px; }
+
+  .testimonial-grid { margin-right:-18px; padding-right:18px; }
+  .testimonial-grid>div { flex-basis:min(78vw,296px); }
+  .bg-mist.py-20 { padding-block:40px; }
+  .bg-mist h2 { font-size:clamp(31px,9vw,39px); }
+  .bg-mist .rounded-2xl { padding:12px 14px; }
+  .bg-mist .text-\[15px\] { font-size:14px; line-height:1.55; }
+
+  .bg-brand-900.py-8 { padding-block:20px; }
+  .bg-brand-900 .font-serif { font-size:30px; }
+  .bg-brand-900 .text-\[12px\] { font-size:10px; letter-spacing:.1em; }
+  .border-y.bg-white.py-14 { padding-block:34px; }
+  .border-y.bg-white .text-\[14\.5px\] { font-size:13px; }
+
+  .consultation-line-section { padding-top:28px; }
+  .consultation-copy h2 { margin:14px 0 18px; font-size:29px; line-height:1.08; }
+  .consultation-copy>a { min-height:40px; gap:14px; font-size:13px; }
+  .consultation-art { margin-top:12px; }
+
+  .bg-paper.py-8 { padding-block:20px; }
+  .bg-paper .rounded-3xl { gap:18px; border-radius:20px; padding:24px 20px; }
+  .bg-paper h3 { font-size:24px; line-height:1.1; }
+  .bg-paper .inline-flex { min-height:46px; padding:12px 18px; font-size:12px; }
+  #contact { margin-bottom:18px; padding-block:32px; }
+  #contact .container-px { padding-inline:18px; }
+  #contact h2 { font-size:30px; }
+  footer .mb-9 { margin-bottom:28px; padding:18px; }
+  footer .mb-9 h2 { font-size:21px; line-height:1.15; }
+  footer .mb-9 .inline-flex { min-height:44px; font-size:12px; }
 }
 @media(max-width:374px) {
   .team-scroll-card { flex-basis:min(78vw,250px); }
