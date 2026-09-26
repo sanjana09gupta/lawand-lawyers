@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import CalendarMonth from "@mui/icons-material/CalendarMonth";
 import Phone from "@mui/icons-material/Phone";
+import StarRounded from "@mui/icons-material/StarRounded";
+import VerifiedUser from "@mui/icons-material/VerifiedUser";
 import { LinkedInIcon, InstagramIcon, FacebookIcon, XIcon } from "./SocialIcons";
 import { individualServices, businessServices, offices } from "../data/content";
 import { conveyancingFeesUrl } from "../data/links";
@@ -31,6 +33,43 @@ function FooterAccordion({ title, children }: { title: string; children: React.R
     </summary>
     <div className="pb-5 text-[14px]">{children}</div>
   </details>;
+}
+
+function TrustBadges() {
+  return (
+    <div className="mt-6 flex flex-wrap gap-2.5">
+      <div
+        aria-label="ReviewSolicitors client review badge"
+        className="min-w-48 rounded-lg bg-[#00a849] px-3 py-2.5 text-white"
+      >
+        <p className="text-[13px] font-semibold tracking-wide">reviewsolicitors</p>
+        <div className="mt-1 flex items-center gap-0.5 text-amber-300" aria-hidden="true">
+          {[0, 1, 2, 3, 4].map((star) => <StarRounded key={star} sx={{ fontSize: 18 }} />)}
+        </div>
+        <p className="mt-1 text-[10px] font-medium text-white/90">Independent client reviews</p>
+      </div>
+      <div
+        aria-label="Authorised and regulated by the Solicitors Regulation Authority"
+        className="flex min-w-48 items-center gap-2.5 rounded-lg bg-white px-3 py-2.5 text-[#b52039]"
+      >
+        <VerifiedUser sx={{ fontSize: 34, color: "#d3253e" }} />
+        <div>
+          <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Regulated by</p>
+          <p className="text-[12px] font-extrabold leading-tight">Solicitors Regulation Authority</p>
+          <p className="mt-0.5 text-[10px] text-slate-500">SRA ID: 613159</p>
+        </div>
+      </div>
+      <div className="flex h-[86px] w-[118px] items-center justify-center rounded-lg bg-white p-2" aria-label="Lexcel accredited by the Law Society">
+        <img src="/images/recog1.jpg" alt="Lexcel accredited by the Law Society" className="max-h-full max-w-full object-contain" />
+      </div>
+      <div className="flex h-[86px] w-[118px] items-center justify-center rounded-lg bg-white p-2" aria-label="Conveyancing Quality Scheme accredited by the Law Society">
+        <img src="/images/recog2.png" alt="Conveyancing Quality Scheme accredited by the Law Society" className="max-h-full max-w-full object-contain" />
+      </div>
+      <div className="flex h-[86px] w-[118px] items-center justify-center rounded-lg bg-white p-2" aria-label="Cyber Essentials certified">
+        <img src="/images/recog3.png" alt="Cyber Essentials certified" className="max-h-full max-w-full object-contain" />
+      </div>
+    </div>
+  );
 }
 
 export default function Footer() {
@@ -63,9 +102,10 @@ export default function Footer() {
           <div className="mt-5 flex gap-2">
             {social.map((s) => <a key={s.label} href={s.href} aria-label={s.label} target={s.href.startsWith("http") ? "_blank" : undefined} rel={s.href.startsWith("http") ? "noreferrer" : undefined} className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/50 transition-colors hover:border-brand-300/40 hover:text-brand-300"><s.icon size={15} /></a>)}
           </div>
+          <TrustBadges />
           <div className="mt-7 border-t border-white/10">
             <FooterAccordion title="Company"><ul className="space-y-3">{company.map((l) => <li key={l.label}><Link to={l.to} className="hover:text-brand-300">{l.label}</Link></li>)}<li><a href="https://lawandlawyers.perfectportal.co.uk/" target="_blank" rel="noreferrer" className="hover:text-brand-300">Client Login</a></li></ul></FooterAccordion>
-            <FooterAccordion title="For Individuals"><ul className="space-y-3">{individualServices.map((s) => <li key={s.slug}><Link to={`/services/${s.slug}`} className="hover:text-brand-300">{s.title}</Link></li>)}<li><a href={conveyancingFeesUrl} target="_blank" rel="noreferrer" className="font-semibold text-brand-300 hover:text-white">Fees information</a></li></ul></FooterAccordion>
+            <FooterAccordion title="For Individuals"><ul className="space-y-3">{individualServices.map((s) => <li key={s.slug}><Link to={`/services/${s.slug}`} className="hover:text-brand-300">{s.title}</Link></li>)}<li><Link to={conveyancingFeesUrl} className="font-semibold text-brand-300 hover:text-white">Fees information</Link></li></ul></FooterAccordion>
             <FooterAccordion title="For Businesses"><ul className="space-y-3">{businessServices.map((s) => <li key={s.slug}><Link to={`/services/${s.slug}`} className="hover:text-brand-300">{s.title}</Link></li>)}</ul></FooterAccordion>
             <FooterAccordion title="Our offices"><div className="space-y-5">{offices.map((o) => <div key={o.name}><p className="text-[13px] font-semibold uppercase tracking-wide text-white/80">{o.name}</p><p className="mt-1 text-white/50">{o.address}</p>{o.mapUrl && <a href={o.mapUrl} target="_blank" rel="noreferrer" className="mt-2 block text-brand-300">View on map ↗</a>}<a href={`tel:${o.phone.replace(/[^\d+]/g, "")}`} className="mt-2 block">{o.phone}</a><a href={`tel:${o.mobile.replace(/[^\d+]/g, "")}`} className="block">{o.mobile}</a><a href={`mailto:${o.email}`} className="footer-email block break-all">{o.email}</a></div>)}</div></FooterAccordion>
           </div>
@@ -95,6 +135,7 @@ export default function Footer() {
                 </a>
               ))}
             </div>
+            <TrustBadges />
           </div>
 
           <div>
@@ -135,9 +176,9 @@ export default function Footer() {
                 </li>
               ))}
               <li>
-                <a href={conveyancingFeesUrl} target="_blank" rel="noreferrer" className="font-semibold text-brand-300 hover:text-white">
+                <Link to={conveyancingFeesUrl} className="font-semibold text-brand-300 hover:text-white">
                   Fees information
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

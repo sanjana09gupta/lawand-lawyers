@@ -19,6 +19,7 @@ import Booking from "./pages/Booking";
 import NewPurchaseQuote from "./pages/NewPurchaseQuote";
 import CorporateSocialResponsibility from "./pages/CorporateSocialResponsibility";
 import TeamProfile from "./pages/TeamProfile";
+import ConveyancingFees from "./pages/ConveyancingFees";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -44,6 +45,7 @@ export default function App() {
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/book-a-consultation" element={<Booking />} />
                 <Route path="/services/residential-conveyancing/new-purchase-quote" element={<NewPurchaseQuote />} />
+                <Route path="/services/residential-conveyancing/residential-conveyancing-fees" element={<ConveyancingFees />} />
                 <Route path="/corporate-social-responsibility" element={<CorporateSocialResponsibility />} />
                 <Route path="/team/:slug" element={<TeamProfile />} />
                 <Route path="*" element={<NotFound />} />

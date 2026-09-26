@@ -27,14 +27,12 @@ export default function CTABanner() {
             </p>
           </div>
           <div className="relative flex flex-col items-center gap-3 sm:items-end">
-            <a
-              href={conveyancingFeesUrl}
-              target="_blank"
-              rel="noreferrer"
+            <Link
+              to={conveyancingFeesUrl}
               className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-semibold uppercase tracking-wide text-brand-800 transition-transform hover:-translate-y-0.5"
             >
               Conveyancing fees <ArrowRight size={16} />
-            </a>
+            </Link>
             <Link to="/contact" className="text-sm font-semibold text-white underline underline-offset-4">
               Get a quote
             </Link>

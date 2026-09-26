@@ -159,7 +159,7 @@ function ConveyancingDetail() {
                 <li>Panel access with major mortgage lenders</li>
                 <li>Personal attention at every stage</li>
               </Box>
-              <Button component="a" href={conveyancingFeesUrl} target="_blank" rel="noreferrer" variant="outlined" endIcon={<ArrowForward />} sx={{ alignSelf: "flex-start", mt: 3, color: "#fff", borderColor: "rgba(255,255,255,.75)", "&:hover": { borderColor: "#fff", bgcolor: "rgba(255,255,255,.1)" } }}>View fee information</Button>
+              <Button component={Link} to={conveyancingFeesUrl} variant="outlined" endIcon={<ArrowForward />} sx={{ alignSelf: "flex-start", mt: 3, color: "#fff", borderColor: "rgba(255,255,255,.75)", "&:hover": { borderColor: "#fff", bgcolor: "rgba(255,255,255,.1)" } }}>View fee information</Button>
             </Box>
           </Grid>
           <Grid size={{ xs: 12, md: 8 }}>
@@ -238,7 +238,7 @@ export default function ServiceDetail() {
                   <Button component={Link} to="/services/residential-conveyancing/new-purchase-quote" variant="text" sx={{ mt: 1.5, display: "block", px: 0 }}>
                     New purchase quote form
                   </Button>
-                  <Button component="a" href={conveyancingFeesUrl} target="_blank" rel="noreferrer" variant="text" sx={{ mt: 0.5, display: "block", px: 0 }}>
+                  <Button component={Link} to={conveyancingFeesUrl} variant="text" sx={{ mt: 0.5, display: "block", px: 0 }}>
                     Fees information
                   </Button>
                 </>
