@@ -21,6 +21,7 @@ import CorporateSocialResponsibility from "./pages/CorporateSocialResponsibility
 import TeamProfile from "./pages/TeamProfile";
 import ConveyancingFees from "./pages/ConveyancingFees";
 import NotFound from "./pages/NotFound";
+import ChatAssistant from "./components/ChatAssistant";
 
 export default function App() {
   return (
@@ -52,6 +53,7 @@ export default function App() {
               </Routes>
             </main>
             <Footer />
+            <ChatAssistant />
           </div>
         </BrowserRouter>
       </ConfigProvider>

@@ -1,6 +1,6 @@
-# Secure Google Apps Script quote receiver
+# Secure Google Apps Script form receiver
 
-The browser sends quote data only to the site's server endpoint. The server signs the request before forwarding it to Apps Script, so the sheet cannot be written by direct browser requests.
+The browser sends quote, career-application and website-assistant requests only to the site's server endpoint. The server signs every request before forwarding it to Apps Script, so a direct browser request cannot write to the sheet or invoke the assistant. Quote records are stored in `Sheet1`; career applications are stored in a separate `Career Applications` tab, created automatically on the first successful application. The OpenAI request is made by Apps Script, so its API key never reaches the website or Vercel.
 
 1. Open the target Google Sheet and choose **Extensions > Apps Script**.
 2. Replace the default script with `QuoteSheet.gs` and save it.
@@ -8,6 +8,8 @@ The browser sends quote data only to the site's server endpoint. The server sign
    - `SHEET_ID`: `1jDVaHxWoqd0xG8go6xLh3N8v-CerxNeLcOgwLEQXCzk`
    - `QUOTE_WEBHOOK_SECRET`: a long random secret
    - `SHEET_NAME`: `Sheet1` (optional)
+   - `OPENAI_API_KEY`: your OpenAI API key, for the website assistant only
+   - `OPENAI_CHAT_MODEL`: `gpt-4.1-mini` (optional)
 4. Deploy as a **Web app**. Set **Execute as** to **Me** and **Who has access** to **Anyone**. Copy the deployed `/exec` URL.
 5. In Vercel Project Settings > Environment Variables, add the values from `.env.example`:
    - `APPS_SCRIPT_WEB_APP_URL`: deployed Apps Script `/exec` URL
@@ -15,4 +17,4 @@ The browser sends quote data only to the site's server endpoint. The server sign
    - `ALLOWED_QUOTE_ORIGINS`: production website origin
 6. Redeploy after adding the variables.
 
-Keep the webhook secret in Script Properties and Vercel only. Never add it to frontend code, a `VITE_` environment variable, Git, or chat.
+Keep the webhook secret in Script Properties and Vercel only. Keep `OPENAI_API_KEY` in Apps Script Script Properties only. Never add either value to frontend code, a `VITE_` environment variable, Git, or chat. After changing Apps Script code or properties, deploy a new Web App version and retain the `/exec` URL.

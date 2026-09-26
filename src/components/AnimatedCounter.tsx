@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { animate, useInView } from "framer-motion";
+import { animate, useInView, useReducedMotion } from "framer-motion";
 
 type Props = {
   target: number;
@@ -20,20 +20,26 @@ export default function AnimatedCounter({
 }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const reduceMotion = useReducedMotion();
   const [value, setValue] = useState(0);
 
   useEffect(() => {
     if (!inView) return;
+    if (reduceMotion) {
+      setValue(target);
+      return;
+    }
     const controls = animate(0, target, {
       duration,
       ease: [0.16, 1, 0.3, 1],
-      onUpdate: (v) => setValue(v),
+      onUpdate: (nextValue) => setValue(nextValue),
+      onComplete: () => setValue(target),
     });
     return () => controls.stop();
-  }, [inView, target, duration]);
+  }, [duration, inView, reduceMotion, target]);
 
   return (
-    <span ref={ref} className={className}>
+    <span ref={ref} className={className} aria-label={`${prefix}${target.toFixed(decimals)}${suffix}`}>
       {prefix}
       {value.toFixed(decimals)}
       {suffix}

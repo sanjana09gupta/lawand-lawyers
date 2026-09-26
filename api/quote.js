@@ -33,21 +33,39 @@ function normaliseQuote(input) {
   return quote;
 }
 
-export default async function handler(request, response) {
+function normaliseCareerApplication(input) {
+  if (!input || typeof input !== "object" || Array.isArray(input)) return null;
+  const application = {
+    submittedAt: new Date().toISOString(),
+    formType: "Career application",
+    fullName: safeCell(input.fullName, 160),
+    email: text(input.email, 254).toLowerCase(),
+    telephone: safeCell(input.telephone, 40),
+    role: safeCell(input.role, 160),
+    profileUrl: safeCell(input.profileUrl, 500),
+    coverLetter: safeCell(input.coverLetter, 2_000),
+    privacyConsent: input.privacyConsent === true,
+  };
+  if (!application.fullName || !validEmail(application.email) || !application.telephone || !application.role || !application.privacyConsent) return null;
+  return application;
+}
+
+export function createSubmissionHandler(formKind = "quote") {
+  return async function handler(request, response) {
   if (request.method !== "POST") return response.status(405).json({ ok: false, error: "Method not allowed." });
   if (!trustedOrigin(request)) return response.status(403).json({ ok: false, error: "Invalid submission origin." });
   if (JSON.stringify(request.body || {}).length > MAX_BODY_BYTES) return response.status(413).json({ ok: false, error: "Submission is too large." });
   if (request.body?.website || !Number.isFinite(request.body?.formStartedAt) || Date.now() - request.body.formStartedAt < MIN_FORM_TIME_MS || Date.now() - request.body.formStartedAt > MAX_FORM_TIME_MS) return response.status(400).json({ ok: false, error: "Unable to accept this submission." });
 
-  const quote = normaliseQuote(request.body);
-  if (!quote) return response.status(400).json({ ok: false, error: "Please check the required quote fields and consent." });
+  const submission = formKind === "career" ? normaliseCareerApplication(request.body) : normaliseQuote(request.body);
+  if (!submission) return response.status(400).json({ ok: false, error: "Please check the required fields and consent." });
   const scriptUrl = process.env.APPS_SCRIPT_WEB_APP_URL;
   const secret = process.env.APPS_SCRIPT_WEBHOOK_SECRET;
   if (!scriptUrl || !secret) return response.status(503).json({ ok: false, error: "Quote service is not configured." });
 
   try {
     const timestamp = Date.now();
-    const payload = JSON.stringify(quote);
+    const payload = JSON.stringify(submission);
     const signature = createHmac("sha256", secret).update(`${timestamp}.${payload}`).digest("hex");
     const scriptResponse = await fetch(scriptUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ timestamp, payload, signature }) });
     const result = await scriptResponse.json().catch(() => null);
@@ -56,4 +74,7 @@ export default async function handler(request, response) {
   } catch {
     return response.status(502).json({ ok: false, error: "Quote service is temporarily unavailable." });
   }
+  };
 }
+
+export default createSubmissionHandler();
