@@ -16,7 +16,6 @@ import NewsDetail from "./pages/NewsDetail";
 import ServiceDetail from "./pages/ServiceDetail";
 import ContactPage from "./pages/ContactPage";
 import Booking from "./pages/Booking";
-import ConveyancingFees from "./pages/ConveyancingFees";
 import NewPurchaseQuote from "./pages/NewPurchaseQuote";
 import CorporateSocialResponsibility from "./pages/CorporateSocialResponsibility";
 import TeamProfile from "./pages/TeamProfile";
@@ -44,7 +43,6 @@ export default function App() {
                 <Route path="/services/:slug" element={<ServiceDetail />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/book-a-consultation" element={<Booking />} />
-                <Route path="/services/residential-conveyancing/fees" element={<ConveyancingFees />} />
                 <Route path="/services/residential-conveyancing/new-purchase-quote" element={<NewPurchaseQuote />} />
                 <Route path="/corporate-social-responsibility" element={<CorporateSocialResponsibility />} />
                 <Route path="/team/:slug" element={<TeamProfile />} />

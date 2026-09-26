@@ -48,7 +48,7 @@ export default function WhyUs() {
           </motion.h2>
         </div>
 
-        <div className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
+        <div className="why-us-points mt-10 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
           {points.map((p, i) => (
             <motion.div
               key={p.title}

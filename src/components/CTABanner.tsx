@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import BrandMark from "./BrandMark";
+import { conveyancingFeesUrl } from "../data/links";
 
 export default function CTABanner() {
   return (
@@ -22,16 +23,22 @@ export default function CTABanner() {
               Get a conveyancing quote
             </h3>
             <p className="mt-2 max-w-md text-[14.5px] text-white/75">
-              Fixed, transparent fees — see what your move will cost in
-              minutes.
+              Fixed, transparent fees. Review our published fee information before you begin.
             </p>
           </div>
-          <Link
-            to="/contact"
-            className="relative inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-semibold uppercase tracking-wide text-brand-800 transition-transform hover:-translate-y-0.5"
-          >
-            Click Here <ArrowRight size={16} />
-          </Link>
+          <div className="relative flex flex-col items-center gap-3 sm:items-end">
+            <a
+              href={conveyancingFeesUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-semibold uppercase tracking-wide text-brand-800 transition-transform hover:-translate-y-0.5"
+            >
+              Conveyancing fees <ArrowRight size={16} />
+            </a>
+            <Link to="/contact" className="text-sm font-semibold text-white underline underline-offset-4">
+              Get a quote
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>

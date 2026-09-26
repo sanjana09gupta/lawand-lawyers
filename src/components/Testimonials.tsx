@@ -1,10 +1,28 @@
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { Rate } from "antd";
 import { FormatQuote } from "@mui/icons-material";
 import TiltCard from "./TiltCard";
 import { testimonials } from "../data/content";
 
 export default function Testimonials() {
+  const railRef = useRef<HTMLDivElement>(null);
+  const [paused, setPaused] = useState(false);
+  const reducedMotion = useReducedMotion();
+
+  useEffect(() => {
+    const rail = railRef.current;
+    if (!rail || paused || reducedMotion) return;
+    const timer = window.setInterval(() => {
+      const card = rail.querySelector<HTMLElement>("[data-testimonial-card]");
+      if (!card) return;
+      const distance = card.offsetWidth + 14;
+      const reachedEnd = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 8;
+      rail.scrollTo({ left: reachedEnd ? 0 : rail.scrollLeft + distance, behavior: "smooth" });
+    }, 4800);
+    return () => window.clearInterval(timer);
+  }, [paused, reducedMotion]);
+
   return (
     <section className="bg-mist py-20 lg:py-24">
       <div className="container-px">
@@ -37,10 +55,11 @@ export default function Testimonials() {
           </div>
         </div>
 
-        <div className="testimonial-grid mt-12 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
+        <div ref={railRef} className="testimonial-grid mt-10 grid gap-5 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onTouchStart={() => setPaused(true)} onTouchEnd={() => setPaused(false)} aria-label="Client testimonials">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
+              data-testimonial-card
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}

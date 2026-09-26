@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/services/residential-conveyancing/fees",
+      "destination": "https://lawandlawyer.aabasoft.info/services/residential-conveyancing/residential-conveyancing-fees/",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
