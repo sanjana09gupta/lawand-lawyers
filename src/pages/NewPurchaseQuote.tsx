@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
-import { Box, Button, Container, Grid, MenuItem, TextField, Typography } from "@mui/material";
+import { useMemo, useState } from "react";
+import { Box, Button, Checkbox, Container, FormControlLabel, Grid, MenuItem, TextField, Typography } from "@mui/material";
 import { CheckCircle, Email, RestartAlt } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import PageHeader from "../components/PageHeader";
@@ -12,7 +12,6 @@ type QuoteData = {
   propertyLocation: string; transactionDetail: string; purchasePurpose: string; newMortgage: string; notes: string;
 };
 
-const storageKey = "law-and-lawyers-new-purchase-quote";
 const newData = (): QuoteData => ({
   price: "", propertyAddress: "", tenure: "", buyerCount: 2,
   buyers: Array.from({ length: 4 }, () => ({ name: "", email: "", phone: "" })),
@@ -23,27 +22,12 @@ const newData = (): QuoteData => ({
 
 export default function NewPurchaseQuote() {
   const [data, setData] = useState<QuoteData>(newData);
-  const [loaded, setLoaded] = useState(false);
-  const [savedAt, setSavedAt] = useState<string | null>(null);
+  const [startedAt] = useState(() => Date.now());
+  const [privacyConsent, setPrivacyConsent] = useState(false);
+  const [website, setWebsite] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(storageKey);
-      if (saved) setData({ ...newData(), ...JSON.parse(saved) });
-    } catch { /* Keep the form usable when storage is unavailable. */ }
-    setLoaded(true);
-  }, []);
-
-  useEffect(() => {
-    if (!loaded) return;
-    try {
-      localStorage.setItem(storageKey, JSON.stringify(data));
-      setSavedAt(new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }));
-    } catch { /* Saving locally is an enhancement, not a requirement. */ }
-  }, [data, loaded]);
 
   const activeBuyers = useMemo(() => data.buyers.slice(0, data.buyerCount), [data.buyers, data.buyerCount]);
   const setField = (field: keyof QuoteData, value: string | number) => setData((current) => ({ ...current, [field]: value }));
@@ -82,6 +66,9 @@ export default function NewPurchaseQuote() {
           referralSource: data.referralSource,
           referralName: data.referralName,
           notes: data.notes,
+          privacyConsent,
+          formStartedAt: startedAt,
+          website,
         };
         const response = await fetch("/api/quote", {
           method: "POST",
@@ -91,7 +78,6 @@ export default function NewPurchaseQuote() {
         const result = await response.json().catch(() => null);
         if (!response.ok || !result?.ok) throw new Error(result?.error || "Unable to save quote request.");
         setSubmitted(true);
-        localStorage.removeItem(storageKey);
     } catch {
       setSubmitError("We could not save your details. Nothing has been submitted. Please call 07380 866528 or try again shortly.");
     } finally {
@@ -101,8 +87,8 @@ export default function NewPurchaseQuote() {
 
   const resetForm = () => {
     if (!window.confirm("Clear all the details entered in this form?")) return;
-    localStorage.removeItem(storageKey);
     setData(newData());
+    setPrivacyConsent(false);
   };
 
   return (
@@ -118,7 +104,7 @@ export default function NewPurchaseQuote() {
           <form onSubmit={sendByEmail}>
             <Box sx={{ mb: 5 }}>
               <Typography variant="h5" sx={{ color: "#0a1122" }}>Property details</Typography>
-              <Typography sx={{ mt: 1, color: "text.secondary" }}>Your answers save automatically on this device.</Typography>
+              <Typography sx={{ mt: 1, color: "text.secondary" }}>Your details are submitted only when you choose to send them.</Typography>
               <Grid container spacing={2.5} sx={{ mt: 1 }}>
                 <Grid size={{ xs: 12, sm: 6 }}><TextField required fullWidth label="Purchase price" placeholder="£350,000" value={data.price} onChange={(e) => setField("price", e.target.value)} /></Grid>
                 <Grid size={{ xs: 12, sm: 6 }}><TextField required select fullWidth label="Property location" value={data.propertyLocation} onChange={(e) => setField("propertyLocation", e.target.value)}><MenuItem value="England">England</MenuItem><MenuItem value="Wales">Wales</MenuItem></TextField></Grid>
@@ -166,12 +152,13 @@ export default function NewPurchaseQuote() {
             <Box sx={{ borderTop: "1px solid rgba(29,52,104,0.14)", pt: 4 }}>
               <Typography variant="h5" sx={{ color: "#0a1122" }}>Send your details</Typography>
               <Typography sx={{ mt: 1, color: "text.secondary", lineHeight: 1.7 }}>Your completed details will be saved securely and sent to our Property Team. You can also call 07380 866528 for direct advice.</Typography>
+              <TextField tabIndex={-1} autoComplete="off" aria-hidden="true" value={website} onChange={(event) => setWebsite(event.target.value)} sx={{ position: "absolute", left: -10000, width: 1, height: 1, opacity: 0 }} />
+              <FormControlLabel required control={<Checkbox checked={privacyConsent} onChange={(event) => setPrivacyConsent(event.target.checked)} />} label="I consent to Law & Lawyers using these details to prepare and respond to my quote request." sx={{ mt: 2, alignItems: "flex-start", "& .MuiFormControlLabel-label": { fontSize: 14, lineHeight: 1.45, mt: 0.9 } }} />
               <Box sx={{ mt: 3, display: "flex", flexWrap: "wrap", gap: 1.5 }}>
                 <Button type="submit" variant="contained" disabled={submitting || submitted} startIcon={submitted ? <CheckCircle /> : <Email />} sx={{ py: 1.4, background: "linear-gradient(115deg,#1d3468,#22458a,#2f74bd)" }}>{submitted ? "Details sent" : submitting ? "Sending details..." : "Send my details"}</Button>
                 <Button type="button" onClick={resetForm} variant="outlined" startIcon={<RestartAlt />}>Clear form</Button>
                 <Button component={Link} to="/book-a-consultation" variant="text">Book via Zoom</Button>
               </Box>
-              {savedAt && <Typography sx={{ mt: 2, fontSize: 13, color: "text.secondary" }}>Saved on this device at {savedAt}.</Typography>}
               {submitted && <Typography sx={{ mt: 2, fontSize: 14, color: "#177245", fontWeight: 700 }}>Thank you. Your quote request has been received.</Typography>}
               {submitError && <Typography role="alert" sx={{ mt: 2, fontSize: 14, color: "#b42318", fontWeight: 700 }}>{submitError}</Typography>}
             </Box>
