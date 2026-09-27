@@ -210,12 +210,18 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-6 flex flex-col gap-3 border-t border-white/10 pt-5 text-[12px] sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            Law and Lawyers Limited is authorised and regulated by the
-            Solicitors Regulation Authority (SRA ID: 613159).
-          </p>
-          <p>© {new Date().getFullYear()} Law and Lawyers Solicitors Ltd. All rights reserved.</p>
+        <div className="mt-6 flex flex-col gap-3 border-t border-white/10 pt-5 text-[12px] leading-relaxed sm:flex-row sm:items-center sm:justify-between">
+          <div className="max-w-3xl">
+            <p>Law and Lawyers Limited is authorised and regulated by the Solicitors Regulation Authority (SRA ID: 613159).</p>
+            <p>
+              © {new Date().getFullYear()} Law and Lawyers Solicitors Ltd. All rights reserved. {" "}
+              <a href="https://www.lawandlawyers.co.uk/privacy-policy/" target="_blank" rel="noreferrer" className="hover:text-brand-300">Privacy Policy</a>{" | "}
+              <a href="https://www.lawandlawyers.co.uk/cookie-policy/" target="_blank" rel="noreferrer" className="hover:text-brand-300">Cookie Policy</a>{" | "}
+              <a href="https://www.lawandlawyers.co.uk/complaints-procedure/" target="_blank" rel="noreferrer" className="hover:text-brand-300">Complaints</a>{" | "}
+              <a href="https://www.lawandlawyers.co.uk/fee-information/" target="_blank" rel="noreferrer" className="hover:text-brand-300">Fee Information</a>{" | "}
+              <a href="https://www.lawandlawyers.co.uk/covid-19/" target="_blank" rel="noreferrer" className="hover:text-brand-300">Covid-19</a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
