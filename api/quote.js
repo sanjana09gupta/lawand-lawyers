@@ -18,6 +18,13 @@ function trustedOrigin(request) {
   return Boolean(origin && host && new Set([`${protocol}://${host}`, ...configured]).has(origin));
 }
 
+function setCorsHeaders(request, response) {
+  response.setHeader("Access-Control-Allow-Origin", request.headers.origin);
+  response.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  response.setHeader("Vary", "Origin");
+}
+
 function validEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) && value.length <= 254;
 }
@@ -52,8 +59,14 @@ function normaliseCareerApplication(input) {
 
 export function createSubmissionHandler(formKind = "quote") {
   return async function handler(request, response) {
+  if (request.method === "OPTIONS") {
+    if (!trustedOrigin(request)) return response.status(403).end();
+    setCorsHeaders(request, response);
+    return response.status(204).end();
+  }
   if (request.method !== "POST") return response.status(405).json({ ok: false, error: "Method not allowed." });
   if (!trustedOrigin(request)) return response.status(403).json({ ok: false, error: "Invalid submission origin." });
+  setCorsHeaders(request, response);
   if (JSON.stringify(request.body || {}).length > MAX_BODY_BYTES) return response.status(413).json({ ok: false, error: "Submission is too large." });
   if (request.body?.website || !Number.isFinite(request.body?.formStartedAt) || Date.now() - request.body.formStartedAt < MIN_FORM_TIME_MS || Date.now() - request.body.formStartedAt > MAX_FORM_TIME_MS) return response.status(400).json({ ok: false, error: "Unable to accept this submission." });
 

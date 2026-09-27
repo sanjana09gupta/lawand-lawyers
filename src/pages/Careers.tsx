@@ -3,6 +3,7 @@ import { ArrowForward, CheckCircle, LocationOn, Search, WorkOutlined } from "@mu
 import { Box, Button, Checkbox, Container, FormControlLabel, Grid, InputAdornment, MenuItem, TextField, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { careers, team } from "../data/content";
+import { apiUrl } from "../lib/api";
 
 const benefits = [
   ["Grow with responsibility", "Take ownership of meaningful work with experienced colleagues close by."],
@@ -44,7 +45,7 @@ export default function CareersPage() {
     setSubmitting(true);
     setSubmitError(null);
     try {
-      const response = await fetch("/api/career", {
+      const response = await fetch(apiUrl("/api/career"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...application, submittedAt: new Date().toISOString(), formType: "Career application", privacyConsent, formStartedAt: startedAt, website }),

@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { AutoAwesomeRounded, Close, ForumRounded, SendRounded, SmartToyRounded, VerifiedRounded } from "@mui/icons-material";
 import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import { apiUrl } from "../lib/api";
 
 type Message = { role: "assistant" | "user"; text: string };
 
@@ -25,7 +26,7 @@ export default function ChatAssistant() {
     setSending(true);
     setError(null);
     try {
-      const result = await fetch("/api/chat", {
+      const result = await fetch(apiUrl("/api/chat"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: cleanQuestion, formStartedAt: startedAt.current, website: website.current }),

@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Box, Button, Checkbox, Container, FormControlLabel, Grid, MenuItem, TextField, Typography } from "@mui/material";
 import { CheckCircle, Email, RestartAlt } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import { apiUrl } from "../lib/api";
 import PageHeader from "../components/PageHeader";
 
 type Buyer = { name: string; email: string; phone: string };
@@ -70,7 +71,7 @@ export default function NewPurchaseQuote() {
           formStartedAt: startedAt,
           website,
         };
-        const response = await fetch("/api/quote", {
+        const response = await fetch(apiUrl("/api/quote"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),

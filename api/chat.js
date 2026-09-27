@@ -15,6 +15,13 @@ function trustedOrigin(request) {
   return Boolean(origin && host && new Set([`${protocol}://${host}`, ...configured]).has(origin));
 }
 
+function setCorsHeaders(request, response) {
+  response.setHeader("Access-Control-Allow-Origin", request.headers.origin);
+  response.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  response.setHeader("Vary", "Origin");
+}
+
 function withinRateLimit(request) {
   const ip = String(request.headers["x-forwarded-for"] || request.socket?.remoteAddress || "unknown").split(",")[0].trim();
   const now = Date.now();
@@ -36,8 +43,14 @@ function fallbackAnswer(question) {
 }
 
 export default async function handler(request, response) {
+  if (request.method === "OPTIONS") {
+    if (!trustedOrigin(request)) return response.status(403).end();
+    setCorsHeaders(request, response);
+    return response.status(204).end();
+  }
   if (request.method !== "POST") return response.status(405).json({ ok: false, error: "Method not allowed." });
   if (!trustedOrigin(request)) return response.status(403).json({ ok: false, error: "Invalid request origin." });
+  setCorsHeaders(request, response);
   if (!withinRateLimit(request)) return response.status(429).json({ ok: false, error: "Please wait a few minutes before sending another question." });
   if (Number(request.headers["content-length"] || 0) > MAX_BODY_BYTES) return response.status(413).json({ ok: false, error: "Message is too large." });
   const message = typeof request.body?.message === "string" ? request.body.message.trim().slice(0, MAX_MESSAGE_LENGTH) : "";
