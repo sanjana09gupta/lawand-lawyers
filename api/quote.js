@@ -1,6 +1,8 @@
 import { createHmac } from "node:crypto";
 
 const MAX_BODY_BYTES = 32_000;
+const MAX_CAREER_BODY_BYTES = 3_200_000;
+const MAX_CV_BASE64_LENGTH = 2_800_000;
 const MIN_FORM_TIME_MS = 2_000;
 const MAX_FORM_TIME_MS = 7_200_000;
 
@@ -42,6 +44,16 @@ function normaliseQuote(input) {
 
 function normaliseCareerApplication(input) {
   if (!input || typeof input !== "object" || Array.isArray(input)) return null;
+  const cv = input.cv && typeof input.cv === "object" && !Array.isArray(input.cv) ? input.cv : null;
+  const cvName = text(cv?.name, 160);
+  const cvBase64 = typeof cv?.base64 === "string" ? cv.base64.replace(/\s/g, "") : "";
+  const cvExtension = cvName.split(".").pop()?.toLowerCase();
+  const cvMimeTypes = {
+    pdf: "application/pdf",
+    doc: "application/msword",
+    docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  };
+  if (cv && (!cvMimeTypes[cvExtension] || !cvBase64 || cvBase64.length > MAX_CV_BASE64_LENGTH || !/^[A-Za-z0-9+/]+={0,2}$/.test(cvBase64))) return null;
   const application = {
     submittedAt: new Date().toISOString(),
     formType: "Career application",
@@ -51,6 +63,7 @@ function normaliseCareerApplication(input) {
     role: safeCell(input.role, 160),
     profileUrl: safeCell(input.profileUrl, 500),
     coverLetter: safeCell(input.coverLetter, 2_000),
+    cv: cv ? { name: cvName, mimeType: cvMimeTypes[cvExtension], base64: cvBase64 } : null,
     privacyConsent: input.privacyConsent === true,
   };
   if (!application.fullName || !validEmail(application.email) || !application.telephone || !application.role || !application.privacyConsent) return null;
@@ -67,7 +80,8 @@ export function createSubmissionHandler(formKind = "quote") {
   if (request.method !== "POST") return response.status(405).json({ ok: false, error: "Method not allowed." });
   if (!trustedOrigin(request)) return response.status(403).json({ ok: false, error: "Invalid submission origin." });
   setCorsHeaders(request, response);
-  if (JSON.stringify(request.body || {}).length > MAX_BODY_BYTES) return response.status(413).json({ ok: false, error: "Submission is too large." });
+  const bodyLimit = formKind === "career" ? MAX_CAREER_BODY_BYTES : MAX_BODY_BYTES;
+  if (JSON.stringify(request.body || {}).length > bodyLimit) return response.status(413).json({ ok: false, error: "Submission is too large." });
   if (request.body?.website || !Number.isFinite(request.body?.formStartedAt) || Date.now() - request.body.formStartedAt < MIN_FORM_TIME_MS || Date.now() - request.body.formStartedAt > MAX_FORM_TIME_MS) return response.status(400).json({ ok: false, error: "Unable to accept this submission." });
 
   const submission = formKind === "career" ? normaliseCareerApplication(request.body) : normaliseQuote(request.body);

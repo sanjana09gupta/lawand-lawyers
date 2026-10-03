@@ -142,34 +142,34 @@ function ConveyancingDetail() {
   return <>
     <PageHeader
       eyebrow="Residential conveyancing"
-      title="Conveyancing solicitors"
-      subtitle="Clear, specialist legal support for property buyers and sellers from instruction through to completion."
+      title="Experienced conveyancing solicitors"
+      subtitle="Ensuring smooth, secure, and stress-free property transactions."
       crumbs={[{ label: "Home", to: "/" }, { label: "Services", to: "/#services" }, { label: "Residential Conveyancing" }]}
     />
     <Box sx={{ bgcolor: "#fcfdfe", py: { xs: 6, sm: 9 } }}>
       <Container maxWidth="lg">
         <Grid container spacing={{ xs: 4, md: 7 }}>
           <Grid size={{ xs: 12, md: 4 }}>
-            <Box sx={{ height: "100%", minHeight: { md: 540 }, display: "flex", flexDirection: "column", justifyContent: "center", p: { xs: 3.5, sm: 5 }, bgcolor: "#17366f", color: "#fff" }}>
-              <Typography component="h2" sx={{ fontFamily: "Arial, sans-serif", fontWeight: 800, fontSize: { xs: 27, sm: 32 }, lineHeight: 1.12, letterSpacing: "-.035em" }}>Specialist conveyancing solicitors for buyers and sellers.</Typography>
-              <Typography sx={{ mt: 2, fontSize: 15, lineHeight: 1.65, color: "rgba(255,255,255,.86)" }}>Supporting property transactions with a focused team, clear communication and careful legal advice.</Typography>
+            <Box sx={{ height: "100%", minHeight: { md: 540 }, display: "flex", flexDirection: "column", justifyContent: "center", p: { xs: 3.5, sm: 5 }, bgcolor: "#17366f", color: "#fff", borderRadius: { xs: 2, md: 0 } }}>
+              <Typography component="h2" sx={{ fontFamily: "Arial, sans-serif", fontWeight: 800, fontSize: { xs: 27, sm: 32 }, lineHeight: 1.12, letterSpacing: "-.035em" }}>Specialist conveyancing solicitors</Typography>
+              <Typography sx={{ mt: 2, fontSize: 15, lineHeight: 1.65, color: "rgba(255,255,255,.86)" }}>When you are buying or selling a property, it is vital to have experienced legal professionals protecting your interests well before contracts are exchanged. Our conveyancing teams are fast, efficient and proactive, helping make your move as stress-free as possible.</Typography>
               <Box component="ul" sx={{ pl: 2.25, mt: 2.5, mb: 0, color: "rgba(255,255,255,.92)", fontSize: 14, lineHeight: 1.75 }}>
-                <li>Trusted by over 5,000 clients</li>
+                <li>Trusted by over 50,000 clients</li>
                 <li>Professional conveyancing experience</li>
-                <li>Panel access with major mortgage lenders</li>
+                <li>Dedicated team to support</li>
                 <li>Personal attention at every stage</li>
               </Box>
               <Button component={Link} to={conveyancingFeesUrl} variant="outlined" endIcon={<ArrowForward />} sx={{ alignSelf: "flex-start", mt: 3, color: "#fff", borderColor: "rgba(255,255,255,.75)", "&:hover": { borderColor: "#fff", bgcolor: "rgba(255,255,255,.1)" } }}>View fee information</Button>
             </Box>
           </Grid>
           <Grid size={{ xs: 12, md: 8 }}>
-            <Typography component="h2" sx={{ fontFamily: "Arial, sans-serif", fontWeight: 800, fontSize: { xs: 28, sm: 38 }, letterSpacing: "-.04em", color: "#1d3468" }}>Exceptional conveyancing service for property buyers and sellers.</Typography>
+            <Typography component="h2" sx={{ fontFamily: "Arial, sans-serif", fontWeight: 800, fontSize: { xs: 28, sm: 38 }, letterSpacing: "-.04em", color: "#1d3468" }}>Experienced conveyancing solicitors</Typography>
             <Typography sx={{ mt: 2, color: "#4a5468", fontSize: 16.5, lineHeight: 1.75 }}>Law and Lawyers Solicitors provides residential conveyancing support for buyers and sellers across England and Wales. We advise on buying, selling, remortgaging and transfers of equity, with a clear view of the legal work and expected costs from the outset.</Typography>
             <Typography sx={{ mt: 2, color: "#4a5468", fontSize: 16.5, lineHeight: 1.75 }}>A property transaction often involves lenders, estate agents, surveyors and other solicitors. Our role is to protect your interests, explain the documents and keep the matter moving from instruction to completion.</Typography>
             <Box sx={{ mt: 4, p: { xs: 3, sm: 4 }, bgcolor: "#e3f1fa" }}>
-              <Typography component="h2" sx={{ fontFamily: "Arial, sans-serif", fontWeight: 800, fontSize: { xs: 23, sm: 28 }, letterSpacing: "-.03em", color: "#1d3468" }}>A practical service from first instruction to completion.</Typography>
-              <Typography sx={{ mt: 1.5, color: "#4a5468", fontSize: 16, lineHeight: 1.7 }}>We deal with the legal stages of your transaction, including contract review, searches, enquiries, mortgage requirements, exchange, completion and registration. We will explain the work required for your property and give you a transparent estimate before you instruct us.</Typography>
-              <Button component={Link} to="/book-a-consultation" variant="contained" endIcon={<ArrowForward />} sx={{ mt: 2.5, bgcolor: "#22458a", "&:hover": { bgcolor: "#1d3468" } }}>Book a consultation</Button>
+              <Typography component="h2" sx={{ fontFamily: "Arial, sans-serif", fontWeight: 800, fontSize: { xs: 23, sm: 28 }, letterSpacing: "-.03em", color: "#1d3468" }}>Conveyancing made simple</Typography>
+              <Typography sx={{ mt: 1.5, color: "#4a5468", fontSize: 16, lineHeight: 1.7 }}>Practical support from instruction to completion. We handle every legal stage of your transaction, from contracts and searches to exchange, completion and registration. You will receive clear advice and a transparent quote before you instruct us.</Typography>
+              <Button component={Link} to="/quote" variant="contained" endIcon={<ArrowForward />} sx={{ mt: 2.5, bgcolor: "#22458a", "&:hover": { bgcolor: "#1d3468" } }}>Get your free quote</Button>
             </Box>
             <Box sx={{ mt: 4, pt: 4, borderTop: "1px solid rgba(29,52,104,.16)" }}>
               <Typography component="h2" sx={{ color: "#1d3468", fontFamily: "Arial, sans-serif", fontWeight: 800, fontSize: { xs: 25, sm: 31 } }}>Our conveyancing experts</Typography>

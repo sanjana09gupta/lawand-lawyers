@@ -16,7 +16,8 @@ const HEADERS = [
   "Current address", "New build", "First-time buyer", "Mortgage advisor", "Mortgage bank", "Gifted money", "Gift details", "How did you hear about us", "Referrer's name", "Additional notes", "Privacy notice confirmed",
 ];
 
-const CAREER_HEADERS = ["Submitted at", "Form type", "Full name", "Email", "Telephone", "Role applied for", "CV or profile link", "Cover letter", "Privacy notice confirmed"];
+const CAREER_HEADERS = ["Submitted at", "Form type", "Full name", "Email", "Telephone", "Role applied for", "CV or profile link", "CV attachment", "Cover letter", "Privacy notice confirmed", "HR email sent"];
+const HR_EMAIL = "HR@lawandlawyers.co.uk";
 const CHAT_MAX_MESSAGE_LENGTH = 900;
 const CHAT_MAX_ANSWER_LENGTH = 2000;
 const WEBSITE_CONTEXT = "Law & Lawyers is an SRA-regulated law firm (SRA ID: 613159). The website covers residential and commercial conveyancing, immigration, corporate immigration services, wills and probate, employment, employment law, landlord and tenant, family law and dispute resolution. Main contact: +44 20 8586 5657, Sales@lawandlawyers.co.uk. The head office is Second Floor, 31-41 Worship Street, London EC2A 2DX. Opening hours are Monday to Friday, 9:30 to 17:30. Website routes include services, contact, careers, consultation and conveyancing quote pages. Client Login links to lawandlawyers.perfectportal.co.uk/login.";
@@ -47,6 +48,16 @@ function valid_(quote) {
 
 function validCareer_(application) {
   return application && application.fullName && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(application.email || "") && application.telephone && application.role && application.privacyConsent === true;
+}
+
+function validCareerCv_(cv) {
+  if (!cv) return true;
+  var allowedMimeTypes = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+  return typeof cv.name === "string" && cv.name.length > 0 && cv.name.length <= 160 && allowedMimeTypes.indexOf(cv.mimeType) !== -1 && typeof cv.base64 === "string" && cv.base64.length > 0 && cv.base64.length <= 2800000 && /^[A-Za-z0-9+/]+={0,2}$/.test(cv.base64);
+}
+
+function escapeHtml_(value) {
+  return String(value || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;");
 }
 
 function validChat_(submission) {
@@ -102,9 +113,28 @@ function appendCareer_(spreadsheet, application) {
   var sheet = spreadsheet.getSheetByName("Career Applications");
   if (!sheet) sheet = spreadsheet.insertSheet("Career Applications");
   if (sheet.getLastRow() === 0) sheet.appendRow(CAREER_HEADERS);
+  else sheet.getRange(1, 1, 1, CAREER_HEADERS.length).setValues([CAREER_HEADERS]);
   sheet.appendRow([
-    application.submittedAt || new Date().toISOString(), "Career application", cell_(application.fullName, 160), cell_(application.email, 254), cell_(application.telephone, 40), cell_(application.role, 160), cell_(application.profileUrl, 500), cell_(application.coverLetter, 2000), "Yes",
+    application.submittedAt || new Date().toISOString(), "Career application", cell_(application.fullName, 160), cell_(application.email, 254), cell_(application.telephone, 40), cell_(application.role, 160), cell_(application.profileUrl, 500), application.cv ? cell_(application.cv.name, 160) : "", cell_(application.coverLetter, 2000), "Yes", "Yes",
   ]);
+}
+
+function notifyHr_(application) {
+  var lines = [
+    "A new career application has been submitted through the Law & Lawyers website.",
+    "",
+    "Name: " + application.fullName,
+    "Email: " + application.email,
+    "Telephone: " + application.telephone,
+    "Role: " + application.role,
+    "Profile: " + (application.profileUrl || "Not supplied"),
+    "",
+    "Cover letter:",
+    application.coverLetter || "Not supplied",
+  ];
+  var options = { htmlBody: "<p>A new career application has been submitted through the Law &amp; Lawyers website.</p><p><strong>Name:</strong> " + escapeHtml_(application.fullName) + "<br><strong>Email:</strong> " + escapeHtml_(application.email) + "<br><strong>Telephone:</strong> " + escapeHtml_(application.telephone) + "<br><strong>Role:</strong> " + escapeHtml_(application.role) + "</p><p><strong>Profile:</strong> " + escapeHtml_(application.profileUrl || "Not supplied") + "</p><p><strong>Cover letter:</strong><br>" + escapeHtml_(application.coverLetter || "Not supplied").replace(/\n/g, "<br>") + "</p>" };
+  if (application.cv) options.attachments = [Utilities.newBlob(Utilities.base64Decode(application.cv.base64), application.cv.mimeType, application.cv.name)];
+  GmailApp.sendEmail(HR_EMAIL, "New career application: " + application.fullName, lines.join("\n"), options);
 }
 
 function doPost(event) {
@@ -125,7 +155,7 @@ function doPost(event) {
       if (!validChat_(submission)) throw new Error("Invalid assistant request.");
       return output_({ ok: true, answer: chatAnswer_(properties, submission.message.trim()) });
     }
-    if (isCareerApplication ? !validCareer_(submission) : !valid_(submission)) throw new Error("Invalid submission data.");
+    if (isCareerApplication ? (!validCareer_(submission) || !validCareerCv_(submission.cv)) : !valid_(submission)) throw new Error("Invalid submission data.");
 
     var sheetId = properties.getProperty("SHEET_ID");
     var sheetName = properties.getProperty("SHEET_NAME") || "Sheet1";
@@ -137,6 +167,7 @@ function doPost(event) {
       var spreadsheet = SpreadsheetApp.openById(sheetId);
       if (isCareerApplication) {
         appendCareer_(spreadsheet, submission);
+        notifyHr_(submission);
       } else {
         var sheet = spreadsheet.getSheetByName(sheetName);
         if (!sheet) throw new Error("Quote receiver is not configured.");

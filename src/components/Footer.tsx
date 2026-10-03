@@ -60,10 +60,10 @@ function TrustBadges() {
         </div>
       </div>
       <div className="flex h-[66px] w-[92px] items-center justify-center rounded-lg bg-white p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Lexcel accredited by the Law Society">
-        <img src="/images/recog1.jpg" alt="Lexcel accredited by the Law Society" className="max-h-full max-w-full object-contain" />
+        <img src="/images/lexcel-accreditation.png" alt="Lexcel accredited by the Law Society" className="max-h-full max-w-full object-contain" />
       </div>
       <div className="flex h-[66px] w-[92px] items-center justify-center rounded-lg bg-white p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Conveyancing Quality Scheme accredited by the Law Society">
-        <img src="/images/recog2.png" alt="Conveyancing Quality Scheme accredited by the Law Society" className="max-h-full max-w-full object-contain" />
+        <img src="/images/cqs-logo-2026.png" alt="Conveyancing Quality Scheme accredited by the Law Society" className="max-h-full max-w-full object-contain" />
       </div>
       <div className="flex h-[66px] w-[92px] items-center justify-center rounded-lg bg-white p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Cyber Essentials certified">
         <img src="/images/recog3.png" alt="Cyber Essentials certified" className="max-h-full max-w-full object-contain" />
@@ -215,11 +215,11 @@ export default function Footer() {
             <p>Law and Lawyers Limited is authorised and regulated by the Solicitors Regulation Authority (SRA ID: 613159).</p>
             <p>
               © {new Date().getFullYear()} Law and Lawyers Solicitors Ltd. All rights reserved. {" "}
-              <a href="https://www.lawandlawyers.co.uk/privacy-policy/" target="_blank" rel="noreferrer" className="hover:text-brand-300">Privacy Policy</a>{" | "}
-              <a href="https://www.lawandlawyers.co.uk/cookie-policy/" target="_blank" rel="noreferrer" className="hover:text-brand-300">Cookie Policy</a>{" | "}
-              <a href="https://www.lawandlawyers.co.uk/complaints-procedure/" target="_blank" rel="noreferrer" className="hover:text-brand-300">Complaints</a>{" | "}
-              <a href="https://www.lawandlawyers.co.uk/fee-information/" target="_blank" rel="noreferrer" className="hover:text-brand-300">Fee Information</a>{" | "}
-              <a href="https://www.lawandlawyers.co.uk/covid-19/" target="_blank" rel="noreferrer" className="hover:text-brand-300">Covid-19</a>
+              <Link to="/privacy-policy" className="hover:text-brand-300">Privacy Policy</Link>{" | "}
+              <Link to="/cookie-policy" className="hover:text-brand-300">Cookie Policy</Link>{" | "}
+              <Link to="/complaints-procedure" className="hover:text-brand-300">Complaints</Link>{" | "}
+              <Link to="/fee-information" className="hover:text-brand-300">Fee Information</Link>{" | "}
+              <Link to="/covid-19" className="hover:text-brand-300">Covid-19</Link>
             </p>
           </div>
         </div>

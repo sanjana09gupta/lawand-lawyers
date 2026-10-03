@@ -20,6 +20,8 @@ import NewPurchaseQuote from "./pages/NewPurchaseQuote";
 import CorporateSocialResponsibility from "./pages/CorporateSocialResponsibility";
 import TeamProfile from "./pages/TeamProfile";
 import ConveyancingFees from "./pages/ConveyancingFees";
+import LegalInformation from "./pages/LegalInformation";
+import FeeInformation from "./pages/FeeInformation";
 import NotFound from "./pages/NotFound";
 import ChatAssistant from "./components/ChatAssistant";
 
@@ -47,6 +49,11 @@ export default function App() {
                 <Route path="/book-a-consultation" element={<Booking />} />
                 <Route path="/services/residential-conveyancing/new-purchase-quote" element={<NewPurchaseQuote />} />
                 <Route path="/services/residential-conveyancing/residential-conveyancing-fees" element={<ConveyancingFees />} />
+                <Route path="/fee-information" element={<FeeInformation />} />
+                <Route path="/privacy-policy" element={<LegalInformation />} />
+                <Route path="/cookie-policy" element={<LegalInformation />} />
+                <Route path="/complaints-procedure" element={<LegalInformation />} />
+                <Route path="/covid-19" element={<LegalInformation />} />
                 <Route path="/corporate-social-responsibility" element={<CorporateSocialResponsibility />} />
                 <Route path="/team/:slug" element={<TeamProfile />} />
                 <Route path="*" element={<NotFound />} />
