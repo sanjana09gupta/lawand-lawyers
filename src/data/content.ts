@@ -340,12 +340,12 @@ export const offices = [
 
 export const recognitions = [
   {
-    src: "/images/lexcel-accreditation.png",
-    alt: "Lexcel accredited by the Law Society",
+    src: "/images/recog1.jpg",
+    alt: "Lexcel - Law Society Accredited Practice Management Standard",
   },
   {
-    src: "/images/cqs-logo-2026.png",
-    alt: "Conveyancing Quality Scheme accredited by the Law Society",
+    src: "/images/recog2.png",
+    alt: "The Law Society - Conveyancing Quality Accredited",
   },
   {
     src: "/images/recog3.png",
