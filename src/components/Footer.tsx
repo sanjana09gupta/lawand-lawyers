@@ -37,10 +37,10 @@ function FooterAccordion({ title, children }: { title: string; children: React.R
 
 function TrustBadges() {
   return (
-    <div className="mt-5 flex flex-nowrap gap-2 overflow-x-auto pb-1 sm:mt-6 sm:gap-2.5" aria-label="Client reviews and professional accreditations">
+    <div className="mt-5 flex flex-wrap gap-2 sm:mt-6 sm:gap-2.5 lg:flex-nowrap" aria-label="Client reviews and professional accreditations">
       <div
         aria-label="ReviewSolicitors client review badge"
-        className="min-w-36 shrink-0 rounded-lg bg-[#00a849] px-2.5 py-2 text-white sm:min-w-48 sm:px-3 sm:py-2.5"
+        className="min-w-36 rounded-lg bg-[#00a849] px-2.5 py-2 text-white sm:min-w-48 sm:px-3 sm:py-2.5"
       >
         <p className="text-[12px] font-semibold tracking-wide sm:text-[13px]">reviewsolicitors</p>
         <div className="mt-1 flex items-center gap-0.5 text-amber-300" aria-hidden="true">
@@ -50,7 +50,7 @@ function TrustBadges() {
       </div>
       <div
         aria-label="Authorised and regulated by the Solicitors Regulation Authority"
-        className="flex min-w-40 shrink-0 items-center gap-2 rounded-lg bg-white px-2.5 py-2 text-[#b52039] sm:min-w-48 sm:gap-2.5 sm:px-3 sm:py-2.5"
+        className="flex min-w-40 items-center gap-2 rounded-lg bg-white px-2.5 py-2 text-[#b52039] sm:min-w-48 sm:gap-2.5 sm:px-3 sm:py-2.5"
       >
         <VerifiedUser sx={{ fontSize: { xs: 28, sm: 34 }, color: "#d3253e" }} />
         <div>
@@ -59,13 +59,13 @@ function TrustBadges() {
           <p className="mt-0.5 text-[9px] text-slate-500 sm:text-[10px]">SRA ID: 613159</p>
         </div>
       </div>
-      <div className="flex h-[66px] w-[92px] shrink-0 items-center justify-center rounded-lg bg-white p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Lexcel accredited by the Law Society">
+      <div className="flex h-[66px] w-[92px] items-center justify-center rounded-lg bg-white p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Lexcel accredited by the Law Society">
         <img src="/images/lexcel-accreditation.png" alt="Lexcel accredited by the Law Society" className="max-h-full max-w-full object-contain" />
       </div>
-      <div className="flex h-[66px] w-[92px] shrink-0 items-center justify-center rounded-lg bg-white p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Conveyancing Quality Scheme accredited by the Law Society">
+      <div className="flex h-[66px] w-[92px] items-center justify-center rounded-lg bg-white p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Conveyancing Quality Scheme accredited by the Law Society">
         <img src="/images/cqs-logo-2026.png" alt="Conveyancing Quality Scheme accredited by the Law Society" className="max-h-full max-w-full object-contain" />
       </div>
-      <div className="flex h-[66px] w-[92px] shrink-0 items-center justify-center rounded-lg bg-white p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Cyber Essentials certified">
+      <div className="flex h-[66px] w-[92px] items-center justify-center rounded-lg bg-white p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Cyber Essentials certified">
         <img src="/images/recog3.png" alt="Cyber Essentials certified" className="max-h-full max-w-full object-contain" />
       </div>
     </div>
@@ -110,8 +110,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="hidden gap-8 lg:grid lg:grid-cols-5">
-          <div className="lg:col-span-2">
+        <div className="hidden gap-8 lg:grid lg:grid-cols-6">
+          <div className="lg:col-span-3">
             <Link to="/" className="inline-flex rounded-md bg-white p-1.5">
               <img src="/images/law-and-lawyers-logo.jpeg" alt="Law and Lawyers Solicitors" className="h-10 w-auto object-contain" />
             </Link>
