@@ -5,6 +5,7 @@
  * - SHEET_ID: destination Google Sheet ID
  * - QUOTE_WEBHOOK_SECRET: long random secret shared only with Vercel
  * - OPENAI_API_KEY: OpenAI key for the website assistant, stored only in Apps Script
+ * - CAREER_CV_FOLDER_ID: private Google Drive folder ID for uploaded career CVs
  * Optional: SHEET_NAME, defaults to Sheet1.
  *
  * Deploy as Web app: Execute as Me, Who has access: Anyone.
@@ -16,7 +17,7 @@ const HEADERS = [
   "Current address", "New build", "First-time buyer", "Mortgage advisor", "Mortgage bank", "Gifted money", "Gift details", "How did you hear about us", "Referrer's name", "Additional notes", "Privacy notice confirmed",
 ];
 
-const CAREER_HEADERS = ["Submitted at", "Form type", "Full name", "Email", "Telephone", "Role applied for", "CV or profile link", "CV attachment", "Cover letter", "Privacy notice confirmed", "HR email sent"];
+const CAREER_HEADERS = ["Submitted at", "Form type", "Full name", "Email", "Telephone", "Role applied for", "CV or profile link", "Uploaded CV", "Cover letter", "Privacy notice confirmed", "HR email sent"];
 const HR_EMAIL = "HR@lawandlawyers.co.uk";
 const CHAT_MAX_MESSAGE_LENGTH = 900;
 const CHAT_MAX_ANSWER_LENGTH = 2000;
@@ -109,14 +110,25 @@ function chatAnswer_(properties, message) {
   }
 }
 
-function appendCareer_(spreadsheet, application) {
+function appendCareer_(spreadsheet, application, cvUrl) {
   var sheet = spreadsheet.getSheetByName("Career Applications");
   if (!sheet) sheet = spreadsheet.insertSheet("Career Applications");
   if (sheet.getLastRow() === 0) sheet.appendRow(CAREER_HEADERS);
   else sheet.getRange(1, 1, 1, CAREER_HEADERS.length).setValues([CAREER_HEADERS]);
   sheet.appendRow([
-    application.submittedAt || new Date().toISOString(), "Career application", cell_(application.fullName, 160), cell_(application.email, 254), cell_(application.telephone, 40), cell_(application.role, 160), cell_(application.profileUrl, 500), application.cv ? cell_(application.cv.name, 160) : "", cell_(application.coverLetter, 2000), "Yes", "Yes",
+    application.submittedAt || new Date().toISOString(), "Career application", cell_(application.fullName, 160), cell_(application.email, 254), cell_(application.telephone, 40), cell_(application.role, 160), cell_(application.profileUrl, 500), cvUrl || "", cell_(application.coverLetter, 2000), "Yes", "Yes",
   ]);
+}
+
+function uploadCareerCv_(properties, application) {
+  if (!application.cv) return "";
+  var folderId = properties.getProperty("CAREER_CV_FOLDER_ID");
+  if (!folderId) throw new Error("Career CV folder is not configured.");
+  var cleanName = application.cv.name.replace(/[^a-zA-Z0-9._ -]/g, "_");
+  var fileName = new Date().toISOString().replace(/[:.]/g, "-") + " - " + cleanName;
+  var blob = Utilities.newBlob(Utilities.base64Decode(application.cv.base64), application.cv.mimeType, fileName);
+  var file = DriveApp.getFolderById(folderId).createFile(blob);
+  return file.getUrl();
 }
 
 function notifyHr_(application) {
@@ -166,7 +178,8 @@ function doPost(event) {
     try {
       var spreadsheet = SpreadsheetApp.openById(sheetId);
       if (isCareerApplication) {
-        appendCareer_(spreadsheet, submission);
+        var cvUrl = uploadCareerCv_(properties, submission);
+        appendCareer_(spreadsheet, submission, cvUrl);
         notifyHr_(submission);
       } else {
         var sheet = spreadsheet.getSheetByName(sheetName);

@@ -1,6 +1,6 @@
 # Secure Google Apps Script form receiver
 
-The browser sends quote, career-application and website-assistant requests only to the site's server endpoint. The server signs every request before forwarding it to Apps Script, so a direct browser request cannot write to the sheet or invoke the assistant. Quote records are stored in `Sheet1`; career applications are stored in a separate `Career Applications` tab, created automatically on the first successful application. When a candidate uploads a PDF, DOC or DOCX CV up to 2 MB, it is attached to the notification email sent to `HR@lawandlawyers.co.uk`. The OpenAI request is made by Apps Script, so its API key never reaches the website or Vercel.
+The browser sends quote, career-application and website-assistant requests only to the site's server endpoint. The server signs every request before forwarding it to Apps Script, so a direct browser request cannot write to the sheet or invoke the assistant. Quote records are stored in `Sheet1`; career applications are stored in a separate `Career Applications` tab, created automatically on the first successful application. When a candidate uploads a PDF, DOC or DOCX CV up to 2 MB, it is stored in the private Drive folder identified by `CAREER_CV_FOLDER_ID`, its Drive URL is added to the sheet, and it is attached to the notification email sent to `HR@lawandlawyers.co.uk`. The OpenAI request is made by Apps Script, so its API key never reaches the website or Vercel.
 
 1. Open the target Google Sheet and choose **Extensions > Apps Script**.
 2. Replace the default script with `QuoteSheet.gs` and save it.
@@ -10,6 +10,7 @@ The browser sends quote, career-application and website-assistant requests only 
    - `SHEET_NAME`: `Sheet1` (optional)
    - `OPENAI_API_KEY`: your OpenAI API key, for the website assistant only
    - `OPENAI_CHAT_MODEL`: `gpt-4.1-mini` (optional)
+   - `CAREER_CV_FOLDER_ID`: ID from the Drive folder URL that will hold uploaded CVs
 4. Deploy as a **Web app**. Set **Execute as** to **Me** and **Who has access** to **Anyone**. Copy the deployed `/exec` URL.
 5. In Vercel Project Settings > Environment Variables, add the values from `.env.example`:
    - `APPS_SCRIPT_WEB_APP_URL`: deployed Apps Script `/exec` URL
