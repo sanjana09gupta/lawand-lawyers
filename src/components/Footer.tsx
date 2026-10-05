@@ -3,7 +3,6 @@ import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import CalendarMonth from "@mui/icons-material/CalendarMonth";
 import Phone from "@mui/icons-material/Phone";
 import StarRounded from "@mui/icons-material/StarRounded";
-import VerifiedUser from "@mui/icons-material/VerifiedUser";
 import { LinkedInIcon, InstagramIcon, FacebookIcon, XIcon } from "./SocialIcons";
 import { individualServices, businessServices, offices } from "../data/content";
 import { conveyancingFeesUrl } from "../data/links";
@@ -50,13 +49,17 @@ function TrustBadges() {
       </div>
       <div
         aria-label="Authorised and regulated by the Solicitors Regulation Authority"
-        className="flex min-w-40 items-center gap-2 rounded-lg bg-white px-2.5 py-2 text-[#b52039] sm:min-w-48 sm:gap-2.5 sm:px-3 sm:py-2.5"
+        className="min-w-40 overflow-hidden rounded-lg bg-white sm:min-w-48"
       >
-        <VerifiedUser sx={{ fontSize: { xs: 28, sm: 34 }, color: "#d3253e" }} />
-        <div>
-          <p className="text-[9px] font-semibold uppercase tracking-wide text-slate-500 sm:text-[10px]">Regulated by</p>
-          <p className="text-[11px] font-extrabold leading-tight sm:text-[12px]">Solicitors Regulation Authority</p>
-          <p className="mt-0.5 text-[9px] text-slate-500 sm:text-[10px]">SRA ID: 613159</p>
+        <div className="relative aspect-[275/163] w-full">
+          <iframe
+            title="Solicitors Regulation Authority digital badge"
+            src="https://cdn.yoshki.com/iframe/55845r.html"
+            frameBorder="0"
+            scrolling="no"
+            loading="lazy"
+            className="absolute inset-0 h-full w-full border-0"
+          />
         </div>
       </div>
       <div className="flex h-[66px] w-[92px] items-center justify-center rounded-lg bg-white p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Lexcel accredited by the Law Society">
