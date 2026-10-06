@@ -26,10 +26,10 @@ export const muiTheme = createTheme({
   shape: { borderRadius: 14 },
   typography: {
     fontFamily: '"Inter", system-ui, -apple-system, sans-serif',
-    h1: { fontFamily: '"Fraunces", Georgia, serif' },
-    h2: { fontFamily: '"Fraunces", Georgia, serif' },
-    h3: { fontFamily: '"Fraunces", Georgia, serif' },
-    h4: { fontFamily: '"Fraunces", Georgia, serif' },
+    h1: { fontFamily: '"Inter", system-ui, -apple-system, sans-serif' },
+    h2: { fontFamily: '"Inter", system-ui, -apple-system, sans-serif' },
+    h3: { fontFamily: '"Inter", system-ui, -apple-system, sans-serif' },
+    h4: { fontFamily: '"Inter", system-ui, -apple-system, sans-serif' },
     button: { textTransform: "none", fontWeight: 600 },
   },
   components: {

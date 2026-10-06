@@ -65,13 +65,13 @@ function TrustBadges() {
           />
         </div>
       </div>}
-      <div className="flex h-[66px] w-[92px] items-center justify-center rounded-lg bg-white p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Lexcel accredited by the Law Society">
+      <div className="flex h-[66px] w-[92px] items-center justify-center p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Lexcel accredited by the Law Society">
         <img src="/images/lexcel-accreditation.png" alt="Lexcel accredited by the Law Society" className="max-h-full max-w-full object-contain" />
       </div>
-      <div className="flex h-[66px] w-[92px] items-center justify-center rounded-lg bg-white p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Conveyancing Quality Scheme accredited by the Law Society">
+      <div className="flex h-[66px] w-[92px] items-center justify-center p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Conveyancing Quality Scheme accredited by the Law Society">
         <img src="/images/cqs-logo-2026.png" alt="Conveyancing Quality Scheme accredited by the Law Society" className="max-h-full max-w-full object-contain" />
       </div>
-      <div className="flex h-[66px] w-[92px] items-center justify-center rounded-lg bg-white p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Cyber Essentials certified">
+      <div className="flex h-[66px] w-[92px] items-center justify-center p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Cyber Essentials certified">
         <img src="/images/recog3.png" alt="Cyber Essentials certified" className="max-h-full max-w-full object-contain" />
       </div>
     </div>

@@ -45,7 +45,7 @@ export default function ContactPage() {
                     <Box sx={{ display: "flex", alignItems: "flex-start", gap: 1.5 }}>
                       <LocationOn sx={{ color: "#2657a3", fontSize: 20, mt: 0.3 }} />
                       <Box>
-                        <Typography sx={{ fontFamily: "Fraunces, serif", fontSize: 18 }}>{o.name}</Typography>
+                        <Typography sx={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: 18 }}>{o.name}</Typography>
                         <Typography sx={{ fontSize: 13.5, color: "text.secondary", mt: 0.5 }}>
                           {o.address}
                         </Typography>

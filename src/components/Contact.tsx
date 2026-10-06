@@ -9,9 +9,10 @@ export default function Contact() {
   const reduced = useReducedMotion();
 
   return (
-    <ScrollSection id="contact" className="relative mb-12 overflow-hidden bg-brand-950 py-10 sm:py-12">
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,#0a1122_8%,#101b38_48%,#22458a_100%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_72%_78%_at_92%_14%,rgba(74,151,214,.55)_0%,transparent_66%)]" />
+    <ScrollSection id="contact" className="relative mb-12 overflow-hidden bg-brand-900 py-12 sm:py-14">
+      <div className="absolute inset-0 bg-[linear-gradient(128deg,#0d1c42_0%,#17366f_46%,#2864ae_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_58%_90%_at_100%_8%,rgba(126,202,247,.46)_0%,transparent_68%)]" />
+      <div className="absolute inset-x-0 top-0 h-px bg-white/35" />
 
       <div className="container-px relative">
         <div className="max-w-2xl">
@@ -32,14 +33,14 @@ export default function Contact() {
           >
             Contact our team today.
           </motion.h2>
-          <p className="mt-3 text-sm leading-relaxed text-white/60">
+          <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-white/75">
             We aim to respond to your query within 4 working hours. Monday to
             Friday, 9:30–17:30. Closed weekends &amp; bank holidays.
           </p>
         </div>
 
-        <div className="mt-7 grid items-start gap-6 lg:grid-cols-[1fr_1.2fr]">
-          <div className="min-w-0 space-y-3">
+        <div className="mt-8 grid items-stretch gap-5 lg:grid-cols-2">
+          <div className="min-w-0 space-y-3 rounded-2xl border border-white/15 bg-brand-950/20 p-3 sm:p-4">
             {offices.map((o, i) => (
               <motion.div
                 key={o.name}
@@ -47,7 +48,7 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="rounded-xl border border-white/10 bg-white/[0.04] p-4"
+                className="rounded-xl border border-white/15 bg-white/[0.09] p-4 shadow-[0_10px_30px_rgba(5,17,50,.13)] transition-colors hover:bg-white/[0.13]"
               >
                 <div className="flex items-start gap-3">
                   <MapPin className="mt-0.5 shrink-0 text-brand-300" size={18} />
@@ -58,17 +59,17 @@ export default function Contact() {
                         {o.tag}
                       </span>
                     </div>
-                    <p className="mt-1.5 text-[13.5px] text-white/45">{o.address}</p>
+                    <p className="mt-1.5 text-[13.5px] text-white/65">{o.address}</p>
                     {o.mapUrl && <a href={o.mapUrl} target="_blank" rel="noreferrer" className="mt-2 inline-flex text-[12px] font-semibold uppercase tracking-wide text-brand-300 hover:text-white">View on map ↗</a>}
                     <a
                       href={`tel:${o.phone.replace(/[^\d+]/g, "")}`}
-                      className="mt-2 flex items-center gap-2 text-[14px] text-white/65 hover:text-brand-300"
+                      className="mt-2 flex items-center gap-2 text-[14px] text-white/80 hover:text-brand-200"
                     >
                       <Phone size={13} /> {o.phone}
                     </a>
                     <a
                       href={`mailto:${o.email}`}
-                      className="mt-1 flex items-center gap-2 break-all text-[14px] text-white/65 hover:text-brand-300"
+                      className="mt-1 flex items-center gap-2 break-all text-[14px] text-white/80 hover:text-brand-200"
                     >
                       <Mail size={13} /> {o.email}
                     </a>
@@ -82,15 +83,15 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex items-start gap-3 px-4 pt-2"
+              className="flex items-start gap-3 rounded-xl px-4 pb-1 pt-2"
             >
               <Clock className="mt-0.5 shrink-0 text-brand-300" size={18} />
               <div>
                 <p className="text-sm font-semibold text-white">Opening Hours</p>
-                <p className="mt-1 text-[13px] text-white/65">
+                <p className="mt-1 text-[13px] text-white/80">
                   Monday to Friday: 9:30 – 17:30
                 </p>
-                <p className="text-[13px] text-white/45">
+                <p className="text-[13px] text-white/60">
                   Closed weekends &amp; bank holidays
                 </p>
               </div>
@@ -106,7 +107,7 @@ export default function Contact() {
               e.preventDefault();
               setSent(true);
             }}
-            className="min-w-0 rounded-xl border border-white/10 bg-white/[0.04] p-5 sm:p-6"
+            className="min-w-0 rounded-2xl border border-white/20 bg-[#102957]/55 p-5 shadow-[0_18px_45px_rgba(4,14,42,.2)] backdrop-blur-sm sm:p-6"
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="sm:col-span-1">
@@ -116,7 +117,7 @@ export default function Contact() {
                 <input
                   required
                   type="text"
-                  className="mt-2 w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none focus:border-brand-300"
+                  className="mt-2 w-full rounded-lg border border-white/20 bg-white/[0.09] px-4 py-3 text-sm text-white placeholder:text-white/45 outline-none transition-colors focus:border-brand-200 focus:bg-white/[0.13]"
                   placeholder="Jane Doe"
                 />
               </div>
@@ -127,7 +128,7 @@ export default function Contact() {
                 <input
                   required
                   type="email"
-                  className="mt-2 w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none focus:border-brand-300"
+                  className="mt-2 w-full rounded-lg border border-white/20 bg-white/[0.09] px-4 py-3 text-sm text-white placeholder:text-white/45 outline-none transition-colors focus:border-brand-200 focus:bg-white/[0.13]"
                   placeholder="jane@email.com"
                 />
               </div>
@@ -135,7 +136,7 @@ export default function Contact() {
                 <label className="text-[12px] uppercase tracking-wide text-white/50">
                   I'm enquiring about
                 </label>
-                <select className="mt-2 w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm text-white outline-none focus:border-brand-300">
+                <select className="mt-2 w-full rounded-lg border border-white/20 bg-white/[0.09] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-brand-200 focus:bg-white/[0.13]">
                   <option className="bg-brand-900">Residential Conveyancing</option>
                   <option className="bg-brand-900">Immigration</option>
                   <option className="bg-brand-900">Wills and Probate</option>
@@ -153,7 +154,7 @@ export default function Contact() {
                 <textarea
                   required
                   rows={3}
-                  className="mt-2 w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none focus:border-brand-300"
+                  className="mt-2 w-full rounded-lg border border-white/20 bg-white/[0.09] px-4 py-3 text-sm text-white placeholder:text-white/45 outline-none transition-colors focus:border-brand-200 focus:bg-white/[0.13]"
                   placeholder="Tell us briefly about your matter..."
                 />
               </div>
@@ -162,7 +163,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={sent}
-              className="brand-gradient mt-4 flex min-h-11 w-full items-center justify-center gap-2 rounded-lg py-3 text-sm font-semibold uppercase tracking-wide text-white transition-opacity hover:opacity-90 disabled:opacity-70"
+              className="mt-4 flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-[#4a97d6] py-3 text-sm font-semibold uppercase tracking-wide text-brand-950 shadow-[0_8px_18px_rgba(112,198,255,.22)] transition hover:bg-[#7fbde5] disabled:opacity-70"
             >
               {sent ? (
                 <>

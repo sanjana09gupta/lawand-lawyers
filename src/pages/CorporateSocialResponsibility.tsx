@@ -29,7 +29,7 @@ export default function CorporateSocialResponsibility() {
                 Under the leadership of Francis Mathew, Solicitor and Director, charitable giving and social responsibility are an important part of the firm&apos;s identity. Our approach is rooted in compassion, faith, community service and the belief that success should help uplift others.
               </Typography>
               <Box sx={{ mt: 5, borderLeft: "3px solid #4a97d6", pl: { xs: 2.5, sm: 3.5 } }}>
-                <Typography sx={{ color: "#0a1122", fontFamily: "Fraunces, serif", fontSize: { xs: 23, sm: 28 }, lineHeight: 1.25 }}>
+                <Typography sx={{ color: "#0a1122", fontFamily: "Inter, system-ui, sans-serif", fontSize: { xs: 23, sm: 28 }, lineHeight: 1.25 }}>
                   More than £400,000 contributed to charitable causes over the past three years.
                 </Typography>
               </Box>
