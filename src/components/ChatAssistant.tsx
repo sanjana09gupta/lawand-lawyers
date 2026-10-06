@@ -58,6 +58,6 @@ export default function ChatAssistant() {
         <Box sx={{ display: "flex", alignItems: "center", gap: 0.7, mt: 1.25 }}><VerifiedRounded sx={{ color: "#168fca", fontSize: 15 }} /><Typography sx={{ color: "#60728f", fontSize: 11, lineHeight: 1.4 }}>Website guidance only. For legal advice, <Link to="/contact" onClick={() => setOpen(false)} style={{ color: "#22458a", fontWeight: 700 }}>contact the team</Link>.</Typography></Box>
       </Box>
     </Box>}
-    <Button onClick={() => setOpen((current) => !current)} aria-expanded={open} aria-controls="website-assistant" startIcon={open ? <Close /> : <ForumRounded />} sx={{ minHeight: 50, borderRadius: "999px", bgcolor: "#22458a", color: "#fff", boxShadow: "0 10px 24px rgba(34, 69, 138, 0.28)", px: 2.25, fontWeight: 800, textTransform: "none", "&:hover": { bgcolor: "#17366f" }, "&:active": { transform: "translateY(1px)" } }}>{open ? "Close" : "Ask Law & Lawyers"}</Button>
+    <Button onClick={() => setOpen((current) => !current)} aria-expanded={open} aria-controls="website-assistant" startIcon={open ? <Close /> : <ForumRounded />} sx={{ minHeight: 50, borderRadius: "999px", bgcolor: "#22458a", color: "#fff", boxShadow: "0 10px 24px rgba(34, 69, 138, 0.28)", px: 2.25, fontWeight: 800, textTransform: "none", "&:hover": { bgcolor: "#17366f" }, "&:active": { transform: "translateY(1px)" } }}>{open ? "Close" : "LnL 💬"}</Button>
   </Box>;
 }

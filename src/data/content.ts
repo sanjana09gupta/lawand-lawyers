@@ -332,9 +332,27 @@ export const offices = [
     tag: "Head Office",
     address: "Second Floor, 31-41 Worship Street, London EC2A 2DX",
     phone: "+44 20 8586 5657",
-    mobile: "07767 610001",
-    email: "Sales@lawandlawyers.co.uk",
+    email: "info@lawandlawyers.co.uk",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Second+Floor%2C+31-41+Worship+Street%2C+London+EC2A+2DX",
+  },
+];
+
+export const officeContacts = [
+  {
+    name: "London - Worship Street",
+    label: "Head Office",
+    phone: "+44 (0) 208 586 5657",
+    email: "info@lawandlawyers.co.uk",
+  },
+  {
+    name: "London - Hornchurch",
+    phone: "+44 (0) 207 062 6666",
+    email: "london@lawandlawyers.co.uk",
+  },
+  {
+    name: "Manchester",
+    phone: "+44 (0) 161 748 3335",
+    email: "manchester@lawandlawyers.co.uk",
   },
 ];
 

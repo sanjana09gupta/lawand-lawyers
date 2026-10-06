@@ -24,7 +24,7 @@ export default function Booking() {
             />
           </Box>
           <Typography sx={{ mt: 2, color: "text.secondary", fontSize: 13.5, textAlign: "center" }}>
-            If the scheduler does not load, please call 07767 610001 or email Sales@lawandlawyers.co.uk.
+            If the scheduler does not load, please call +44 20 8586 5657 or email info@lawandlawyers.co.uk.
           </Typography>
         </Container>
       </Box>

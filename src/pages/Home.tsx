@@ -1,6 +1,6 @@
 import Hero from "../components/Hero";
 import TrustBar from "../components/TrustBar";
-import Recognition from "../components/Recognition";
+import TrustProof from "../components/TrustProof";
 import Services from "../components/Services";
 import CTABanner from "../components/CTABanner";
 import WhyUs from "../components/WhyUs";
@@ -16,9 +16,7 @@ export default function Home() {
     <div className="editorial-home">
       <Hero />
       <TrustBar />
-      <ScrollSection id="recognition" className="">
-        <Recognition />
-      </ScrollSection>
+      <TrustProof />
       <Services />
       <ScrollSection id="consultation-cta" className="">
         <CTABanner />

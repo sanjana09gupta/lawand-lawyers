@@ -55,10 +55,6 @@ export default function ContactPage() {
                           <Typography sx={{ fontSize: 13.5 }}>{o.phone}</Typography>
                         </Box>
                         <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 0.5 }}>
-                          <Phone sx={{ fontSize: 14, color: "text.secondary" }} />
-                          <Typography sx={{ fontSize: 13.5 }}>{o.mobile}</Typography>
-                        </Box>
-                        <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 0.5 }}>
                           <Mail sx={{ fontSize: 14, color: "text.secondary" }} />
                           <Typography sx={{ fontSize: 13.5 }}>{o.email}</Typography>
                         </Box>

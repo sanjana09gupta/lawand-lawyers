@@ -4,7 +4,7 @@ import CalendarMonth from "@mui/icons-material/CalendarMonth";
 import Phone from "@mui/icons-material/Phone";
 import StarRounded from "@mui/icons-material/StarRounded";
 import { LinkedInIcon, InstagramIcon, FacebookIcon, XIcon } from "./SocialIcons";
-import { individualServices, businessServices, offices } from "../data/content";
+import { individualServices, businessServices, officeContacts } from "../data/content";
 import { conveyancingFeesUrl } from "../data/links";
 
 const social = [
@@ -24,6 +24,7 @@ const company = [
 ];
 
 const directPhone = "+44 7380 866528";
+const SRA_LIVE_HOSTNAME = "lawandlawyers.co.uk";
 
 function FooterAccordion({ title, children }: { title: string; children: React.ReactNode }) {
   return <details className="group border-b border-white/10">
@@ -35,6 +36,8 @@ function FooterAccordion({ title, children }: { title: string; children: React.R
 }
 
 function TrustBadges() {
+  const isSraLive = typeof window !== "undefined" && window.location.hostname === SRA_LIVE_HOSTNAME;
+
   return (
     <div className="mt-5 flex flex-wrap gap-2 sm:mt-6 sm:gap-2.5 lg:flex-nowrap" aria-label="Client reviews and professional accreditations">
       <div
@@ -47,7 +50,7 @@ function TrustBadges() {
         </div>
         <p className="mt-1 text-[9px] font-medium text-white/90 sm:text-[10px]">Independent client reviews</p>
       </div>
-      <div
+      {isSraLive && <div
         aria-label="Authorised and regulated by the Solicitors Regulation Authority"
         className="min-w-40 overflow-hidden rounded-lg bg-white sm:min-w-48"
       >
@@ -61,7 +64,7 @@ function TrustBadges() {
             className="absolute inset-0 h-full w-full border-0"
           />
         </div>
-      </div>
+      </div>}
       <div className="flex h-[66px] w-[92px] items-center justify-center rounded-lg bg-white p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Lexcel accredited by the Law Society">
         <img src="/images/lexcel-accreditation.png" alt="Lexcel accredited by the Law Society" className="max-h-full max-w-full object-contain" />
       </div>
@@ -109,7 +112,7 @@ export default function Footer() {
             <FooterAccordion title="Company"><ul className="space-y-3">{company.map((l) => <li key={l.label}><Link to={l.to} className="hover:text-brand-300">{l.label}</Link></li>)}<li><a href="https://lawandlawyers.perfectportal.co.uk/" target="_blank" rel="noreferrer" className="hover:text-brand-300">Client Login</a></li></ul></FooterAccordion>
             <FooterAccordion title="For Individuals"><ul className="space-y-3">{individualServices.map((s) => <li key={s.slug}><Link to={`/services/${s.slug}`} className="hover:text-brand-300">{s.title}</Link></li>)}<li><Link to={conveyancingFeesUrl} className="font-semibold text-brand-300 hover:text-white">Fees information</Link></li></ul></FooterAccordion>
             <FooterAccordion title="For Businesses"><ul className="space-y-3">{businessServices.map((s) => <li key={s.slug}><Link to={`/services/${s.slug}`} className="hover:text-brand-300">{s.title}</Link></li>)}</ul></FooterAccordion>
-            <FooterAccordion title="Our offices"><div className="space-y-5">{offices.map((o) => <div key={o.name}><p className="text-[13px] font-semibold uppercase tracking-wide text-white/80">{o.name}</p><p className="mt-1 text-white/50">{o.address}</p>{o.mapUrl && <a href={o.mapUrl} target="_blank" rel="noreferrer" className="mt-2 block text-brand-300">View on map ↗</a>}<a href={`tel:${o.phone.replace(/[^\d+]/g, "")}`} className="mt-2 block">{o.phone}</a><a href={`tel:${o.mobile.replace(/[^\d+]/g, "")}`} className="block">{o.mobile}</a><a href={`mailto:${o.email}`} className="footer-email block break-all">{o.email}</a></div>)}</div></FooterAccordion>
+            <FooterAccordion title="Our offices"><div className="space-y-5">{officeContacts.map((office) => <div key={office.name}><p className="text-[13px] font-semibold uppercase tracking-wide text-white/80">{office.name}{office.label && <span className="ml-2 text-[10px] text-brand-300">{office.label}</span>}</p><a href={`tel:${office.phone.replace(/[^\d+]/g, "")}`} className="mt-1 block">{office.phone}</a><a href={`mailto:${office.email}`} className="footer-email block break-all">{office.email}</a></div>)}</div></FooterAccordion>
           </div>
         </div>
 
@@ -201,14 +204,13 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 hidden gap-6 border-t border-white/10 pt-5 sm:grid-cols-3 lg:grid">
-          {offices.map((o) => (
-            <div key={o.name}>
+          {officeContacts.map((office) => (
+            <div key={office.name}>
               <p className="text-[13px] font-semibold uppercase tracking-wide text-white/80">
-                {o.name}
+                {office.name}{office.label && <span className="ml-2 text-[10px] text-brand-300">{office.label}</span>}
               </p>
-              <p className="mt-1 text-[13.5px]">{o.phone}</p>
-              <p className="text-[13.5px]">{o.mobile}</p>
-              <a href={`mailto:${o.email}`} className="footer-email text-[13.5px]">{o.email}</a>
+              <a href={`tel:${office.phone.replace(/[^\d+]/g, "")}`} className="mt-1 block text-[13.5px] hover:text-brand-300">{office.phone}</a>
+              <a href={`mailto:${office.email}`} className="footer-email text-[13.5px]">{office.email}</a>
             </div>
           ))}
         </div>

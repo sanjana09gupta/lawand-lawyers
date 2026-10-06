@@ -10,7 +10,8 @@ export default function Contact() {
 
   return (
     <ScrollSection id="contact" className="relative mb-12 overflow-hidden bg-brand-950 py-10 sm:py-12">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_100%_60%_at_100%_0%,#22458a_0%,transparent_60%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,#0a1122_8%,#101b38_48%,#22458a_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_72%_78%_at_92%_14%,rgba(74,151,214,.55)_0%,transparent_66%)]" />
 
       <div className="container-px relative">
         <div className="max-w-2xl">
@@ -64,12 +65,6 @@ export default function Contact() {
                       className="mt-2 flex items-center gap-2 text-[14px] text-white/65 hover:text-brand-300"
                     >
                       <Phone size={13} /> {o.phone}
-                    </a>
-                    <a
-                      href={`tel:${o.mobile.replace(/[^\d+]/g, "")}`}
-                      className="mt-1 flex items-center gap-2 text-[14px] text-white/65 hover:text-brand-300"
-                    >
-                      <Phone size={13} /> {o.mobile}
                     </a>
                     <a
                       href={`mailto:${o.email}`}

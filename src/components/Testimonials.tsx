@@ -50,7 +50,7 @@ export default function Testimonials() {
             <Rate disabled allowHalf defaultValue={4.6} style={{ fontSize: 16 }} />
             <div className="leading-tight">
               <p className="text-sm font-semibold text-brand-950">4.6 / 5</p>
-              <p className="text-[12px] text-brand-800/50">732+ reviews</p>
+              <p className="text-[12px] text-brand-800/50">774 reviews</p>
             </div>
           </div>
         </div>

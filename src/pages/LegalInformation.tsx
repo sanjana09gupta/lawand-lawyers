@@ -39,7 +39,7 @@ const pages = {
     eyebrow: "Archived service notice",
     sections: [
       ["Current service availability", "Our team continues to support clients. If you need to discuss an appointment, documents or a specific matter, please contact the office directly so we can confirm the most suitable arrangements."],
-      ["Contact the team", "Call +44 20 8586 5657 or email Sales@lawandlawyers.co.uk for assistance with your matter."],
+      ["Contact the team", "Call +44 20 8586 5657 or email info@lawandlawyers.co.uk for assistance with your matter."],
     ],
   },
 } as const;
