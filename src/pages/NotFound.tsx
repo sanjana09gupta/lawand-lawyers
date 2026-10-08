@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function NotFound() {
   return (
-    <Box sx={{ bgcolor: "#0a1122", minHeight: "70vh", display: "flex", alignItems: "center" }}>
+    <Box sx={{ background: "linear-gradient(120deg, #1d5eaa, #4a97d6)", minHeight: "70vh", display: "flex", alignItems: "center" }}>
       <Container maxWidth="sm" sx={{ textAlign: "center", py: 12 }}>
         <Typography sx={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: 96, color: "#4a97d6", lineHeight: 1 }}>
           404

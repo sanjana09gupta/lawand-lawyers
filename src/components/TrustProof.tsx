@@ -20,7 +20,7 @@ const rankings = [
 
 export default function TrustProof() {
   return (
-    <section className="bg-brand-950 py-16 text-white sm:py-20">
+    <section className="bg-[#2469b2] py-16 text-white sm:py-20">
       <div className="container-px grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <div>
           <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-brand-300">Independent feedback</p>

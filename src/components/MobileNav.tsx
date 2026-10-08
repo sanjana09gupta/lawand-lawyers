@@ -22,7 +22,7 @@ export default function MobileNav({ open, onClose }: { open: boolean; onClose: (
         paper: {
           sx: {
             width: "min(88vw, 380px)",
-            bgcolor: "#0a1122",
+            bgcolor: "#1d5eaa",
             color: "#fff",
             backgroundImage: "none",
           },
