@@ -80,9 +80,9 @@ function TrustBadges() {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1b5b9e] border-t border-white/20 pt-10 pb-6 text-white/75 lg:pt-12">
+    <footer className="bg-[linear-gradient(120deg,#123568_0%,#1f5fa8_58%,#4a97d6_100%)] border-t border-white/20 pt-10 pb-6 text-white/75 lg:pt-12">
       <div className="container-px">
-        <div className="mb-9 flex flex-col gap-4 rounded-xl bg-[#164d8b]/75 px-5 py-4 sm:px-6 sm:py-5 lg:flex-row lg:items-center lg:justify-between">
+        <div className="mb-9 flex flex-col gap-4 rounded-xl bg-[#102e5e]/65 px-5 py-4 sm:px-6 sm:py-5 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-xl">
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-300">Get in touch</p>
             <h2 className="mt-1 font-serif text-xl text-white sm:text-2xl">Book a consultation or call us directly.</h2>
