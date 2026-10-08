@@ -16,7 +16,7 @@ export default function PageHeader({
   crumbs: Crumb[];
 }) {
   return (
-    <Box sx={{ background: "linear-gradient(120deg, #123568, #2469b2 58%, #4a97d6)", pt: { xs: 16, sm: 20 }, pb: { xs: 8, sm: 10 } }}>
+    <Box sx={{ background: "linear-gradient(120deg, #0d1c42, #17366f 52%, #4a97d6)", pt: { xs: 16, sm: 20 }, pb: { xs: 8, sm: 10 } }}>
       <Container maxWidth="lg">
         <Breadcrumbs
           separator="/"

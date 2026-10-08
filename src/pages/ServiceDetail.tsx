@@ -79,7 +79,7 @@ function ImmigrationDetail() {
       <Container maxWidth="lg">
         <Grid container spacing={{ xs: 4, md: 7 }}>
           <Grid size={{ xs: 12, md: 4 }}>
-            <Box sx={{ height: "100%", minHeight: { md: 430 }, display: "flex", flexDirection: "column", justifyContent: "center", p: { xs: 3.5, sm: 5 }, background: "linear-gradient(135deg, #123568, #2469b2 58%, #4a97d6)", color: "#fff" }}>
+            <Box sx={{ height: "100%", minHeight: { md: 430 }, display: "flex", flexDirection: "column", justifyContent: "center", p: { xs: 3.5, sm: 5 }, background: "linear-gradient(135deg, #0d1c42, #17366f 52%, #4a97d6)", color: "#fff" }}>
               <Typography component="h2" sx={{ fontFamily: "Inter, system-ui, sans-serif", fontWeight: 800, fontSize: { xs: 27, sm: 33 }, lineHeight: 1.12, letterSpacing: "-.035em" }}>
                 Experienced immigration lawyers. Professional, practical advice.
               </Typography>
@@ -115,7 +115,7 @@ function ImmigrationDetail() {
             </Box>
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
-            <Box sx={{ height: "100%", p: { xs: 3, sm: 4 }, background: "linear-gradient(135deg, #123568, #2469b2 58%, #4a97d6)", color: "#fff", borderRadius: 3 }}>
+            <Box sx={{ height: "100%", p: { xs: 3, sm: 4 }, background: "linear-gradient(135deg, #0d1c42, #17366f 52%, #4a97d6)", color: "#fff", borderRadius: 3 }}>
               <Typography component="h2" sx={{ fontFamily: "Inter, system-ui, sans-serif", fontWeight: 800, fontSize: 25 }}>For businesses</Typography>
               <List sx={{ mt: 1 }}>{businessImmigrationServices.map((item) => <ListItem key={item} disableGutters><ListItemIcon sx={{ minWidth: 30 }}><CheckCircle sx={{ color: "#7fbde5", fontSize: 18 }} /></ListItemIcon><ListItemText primary={item} sx={{ "& .MuiListItemText-primary": { color: "#fff" } }} /></ListItem>)}</List>
             </Box>
@@ -150,7 +150,7 @@ function ConveyancingDetail() {
       <Container maxWidth="lg">
         <Grid container spacing={{ xs: 4, md: 7 }}>
           <Grid size={{ xs: 12, md: 4 }}>
-            <Box sx={{ height: "100%", minHeight: { md: 540 }, display: "flex", flexDirection: "column", justifyContent: "center", p: { xs: 3.5, sm: 5 }, background: "linear-gradient(135deg, #123568, #2469b2 58%, #4a97d6)", color: "#fff", borderRadius: { xs: 2, md: 0 } }}>
+            <Box sx={{ height: "100%", minHeight: { md: 540 }, display: "flex", flexDirection: "column", justifyContent: "center", p: { xs: 3.5, sm: 5 }, background: "linear-gradient(135deg, #0d1c42, #17366f 52%, #4a97d6)", color: "#fff", borderRadius: { xs: 2, md: 0 } }}>
               <Typography component="h2" sx={{ fontFamily: "Inter, system-ui, sans-serif", fontWeight: 800, fontSize: { xs: 27, sm: 32 }, lineHeight: 1.12, letterSpacing: "-.035em" }}>Specialist conveyancing solicitors</Typography>
               <Typography sx={{ mt: 2, fontSize: 15, lineHeight: 1.65, color: "rgba(255,255,255,.86)" }}>When you are buying or selling a property, it is vital to have experienced legal professionals protecting your interests well before contracts are exchanged. Our conveyancing teams are fast, efficient and proactive, helping make your move as stress-free as possible.</Typography>
               <Box component="ul" sx={{ pl: 2.25, mt: 2.5, mb: 0, color: "rgba(255,255,255,.92)", fontSize: 14, lineHeight: 1.75 }}>
@@ -246,7 +246,7 @@ export default function ServiceDetail() {
             </Grid>
 
             <Grid size={{ xs: 12, md: 5 }}>
-              <Box sx={{ p: 4, borderRadius: 3, background: "linear-gradient(135deg, #123568, #2469b2 58%, #4a97d6)", color: "#fff" }}>
+              <Box sx={{ p: 4, borderRadius: 3, background: "linear-gradient(135deg, #0d1c42, #17366f 52%, #4a97d6)", color: "#fff" }}>
                 <Typography sx={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: 20 }}>
                   Related services
                 </Typography>

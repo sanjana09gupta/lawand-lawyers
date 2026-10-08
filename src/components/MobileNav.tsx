@@ -22,7 +22,7 @@ export default function MobileNav({ open, onClose }: { open: boolean; onClose: (
         paper: {
           sx: {
             width: "min(88vw, 380px)",
-            background: "linear-gradient(120deg, #123568, #2469b2)",
+            background: "linear-gradient(120deg, #0d1c42, #17366f 52%, #4a97d6)",
             color: "#fff",
             backgroundImage: "none",
           },

@@ -25,7 +25,7 @@ export default function NewsPage() {
 
   return <>
     <PageHeader eyebrow="News & Insights" title="Guides and updates from our legal team." subtitle="Practical explainers on conveyancing, immigration, wills and probate, written by the solicitors who handle these matters every day." crumbs={[{ label: "Home", to: "/" }, { label: "News & Insights" }]} />
-    <Box sx={{ background: "linear-gradient(120deg, #123568, #2469b2 58%, #4a97d6)", color: "#fcfdfe", py: { xs: 4, sm: 5.5 } }}>
+    <Box sx={{ background: "linear-gradient(120deg, #0d1c42, #17366f 52%, #4a97d6)", color: "#fcfdfe", py: { xs: 4, sm: 5.5 } }}>
       <Container maxWidth="lg">
         <Typography component="h2" sx={{ fontFamily: "Inter, system-ui, sans-serif", fontSize: { xs: 28, sm: 34 }, fontWeight: 800, letterSpacing: "-.05em" }}>Latest news</Typography>
         <Typography sx={{ mt: .5, color: "#b8dcf0", fontSize: 14 }}>Clear guidance for the legal decisions ahead.</Typography>
