@@ -19,6 +19,7 @@ import Booking from "./pages/Booking";
 import NewPurchaseQuote from "./pages/NewPurchaseQuote";
 import CorporateSocialResponsibility from "./pages/CorporateSocialResponsibility";
 import TeamProfile from "./pages/TeamProfile";
+import OurPeople from "./pages/OurPeople";
 import ConveyancingFees from "./pages/ConveyancingFees";
 import LegalInformation from "./pages/LegalInformation";
 import FeeInformation from "./pages/FeeInformation";
@@ -56,6 +57,7 @@ export default function App() {
                 <Route path="/covid-19" element={<LegalInformation />} />
                 <Route path="/corporate-social-responsibility" element={<CorporateSocialResponsibility />} />
                 <Route path="/team/:slug" element={<TeamProfile />} />
+                <Route path="/our-people" element={<OurPeople />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

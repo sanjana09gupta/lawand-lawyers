@@ -404,3 +404,31 @@ body {
   background-clip: text;
   color: transparent;
 }
+
+/* Our People: formal, people-first directory. */
+.people-page { background:#fcfdfe; color:#0d1424; overflow:hidden; }
+.people-hero { padding:clamp(56px,8vw,112px) 0 clamp(48px,6vw,88px); background:#e3f1fa; }
+.people-hero-grid { display:grid; grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr); gap:clamp(32px,8vw,110px); align-items:end; }
+.people-eyebrow { margin:0 0 14px; color:#2874c9; font-size:11px; line-height:1.2; font-weight:800; letter-spacing:.15em; text-transform:uppercase; }
+.people-hero h1,.people-section-heading h2,.department-panel h2,.people-contact h2 { margin:0; color:#18366f; font:800 clamp(42px,6vw,76px)/.94 var(--font-sans); letter-spacing:-.06em; }
+.people-lead { max-width:590px; margin:22px 0 0; color:#465a78; font-size:clamp(17px,2vw,21px); line-height:1.55; }
+.people-hero-note { padding:26px; border-left:3px solid #2874c9; background:#fff; box-shadow:0 14px 30px rgba(29,52,104,.08); }
+.people-section-heading { max-width:610px; margin-bottom:34px; }
+.people-section-heading h2,.department-panel h2 { font-size:clamp(32px,4vw,49px); }
+.people-section-heading>p:last-child { margin:14px 0 0; color:#53647e; font-size:16px; line-height:1.6; }
+.directors-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+.director-card { display:flex; flex-direction:column; gap:16px; padding:14px; color:inherit; text-decoration:none; border:1px solid rgba(34,69,138,.13); border-radius:16px; background:#fff; transition:transform .2s ease,box-shadow .2s ease; }
+.director-card>div:first-child { display:grid; gap:12px; }.director-card>div:first-child>div:first-child { aspect-ratio:1.08 / 1; border-radius:10px; }
+.director-card:hover { transform:translateY(-4px); box-shadow:0 18px 32px rgba(29,52,104,.13); }
+.director-link { display:flex; align-items:center; gap:5px; color:#2874c9; font-size:13px; font-weight:800; }
+.lead-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-bottom:40px; }
+.lead-card { padding:14px; border:1px solid rgba(34,69,138,.12); border-radius:12px; background:#fff; }.lead-card>div { grid-template-columns:52px 1fr; }.lead-card>div>div:first-child { width:52px; }
+.team-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.case-team { min-height:176px; padding:22px; border-radius:14px; background:#fff; border:1px solid rgba(34,69,138,.1); }
+.case-team-top { display:flex; align-items:center; gap:13px; }.case-team-phone { display:flex; align-items:center; gap:7px; width:max-content; margin-top:8px; color:#1d5ca8; font-size:14px; font-weight:800; text-decoration:none; }.case-team-phone:hover { text-decoration:underline; }
+.departments-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }.department-panel { padding:clamp(26px,4vw,44px); border-radius:18px; background:#f3f8fb; }.department-panel-blue { background:#18366f; }.department-panel-blue h2 { color:#fff; }.department-panel-blue .people-eyebrow { color:#9dd2ed; }.department-panel-blue .MuiTypography-root { color:#fff!important; }.department-panel-blue .MuiTypography-root:not(.people-eyebrow) + .MuiTypography-root { color:#c2d7e8!important; }
+.department-list { display:grid; gap:15px; margin-top:30px; }.department-list>div { grid-template-columns:56px 1fr; }.department-list>div>div:first-child { width:56px; }
+.profile-gallery { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:14px; }.profile-gallery-card { padding:10px; border:1px solid rgba(34,69,138,.1); border-radius:14px; background:#fff; }.profile-gallery-card>div { gap:10px; }.profile-gallery-card>div>div:first-child { border-radius:9px; aspect-ratio:1 / 1.08; }
+.people-contact { background:#e3f1fa; padding:42px 0; }.people-contact .MuiContainer-root { display:flex; align-items:center; justify-content:space-between; gap:28px; }.people-contact h2 { font-size:clamp(30px,3.7vw,45px); }.people-contact h2 + p { margin:10px 0 0; color:#53647e; font-size:15px; }.people-contact-button { background:#22458a!important; border-radius:8px!important; padding:11px 18px!important; text-transform:none!important; font-weight:800!important; }.people-call-button { border-color:#22458a!important; color:#22458a!important; border-radius:8px!important; padding:10px 16px!important; text-transform:none!important; font-weight:800!important; }
+@media(max-width:900px) { .people-hero-grid,.departments-grid { grid-template-columns:1fr; }.lead-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }.directors-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }.profile-gallery { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+@media(max-width:600px) { .people-hero { padding:52px 0 44px; }.people-hero-grid { gap:28px; }.people-hero h1 { font-size:52px; }.people-lead { font-size:16px; }.people-hero-note { padding:20px; }.people-section-heading { margin-bottom:25px; }.directors-grid,.lead-grid,.team-grid { grid-template-columns:1fr; }.profile-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }.director-card>div:first-child { grid-template-columns:96px 1fr; align-items:center; }.director-card>div:first-child>div:first-child { width:96px; aspect-ratio:1; }.case-team { min-height:0; padding:20px; }.people-contact .MuiContainer-root { display:block; }.people-contact .MuiContainer-root>div:last-child { margin-top:22px; }.people-contact-button,.people-call-button { flex:1; } }

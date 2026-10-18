@@ -54,7 +54,7 @@ export default function Navbar() {
             <Link to="/book-a-consultation" onClick={() => setCompanyOpen(false)}>Book a Consultation</Link>
           </div>}
         </div>
-        <a href="/#services">Services</a><a href="/#why-us">Why us</a><a href="/#team">Our team</a><Link to="/news">Insights</Link>
+        <a href="/#services">Services</a><a href="/#why-us">Why us</a><Link to="/our-people">Our people</Link><Link to="/news">Insights</Link>
       </nav>
       <a href="https://lawandlawyers.perfectportal.co.uk/login" target="_blank" rel="noreferrer" className="nav-login">Client login</a>
       <Link to="/services/residential-conveyancing/new-purchase-quote" className="nav-contact">Get a quote <ArrowOutward /></Link>
