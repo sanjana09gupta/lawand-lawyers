@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Segmented } from "antd";
 import ArrowOutward from "@mui/icons-material/ArrowOutward";
@@ -9,10 +9,13 @@ import ScrollSection from "./ScrollSection";
 export default function Services() {
   const [business, setBusiness] = useState(false);
   const reduced = useReducedMotion();
+  const revealTarget = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: revealTarget, offset: ["start 90%", "start 35%"] });
+  const clipPath = useTransform(scrollYProgress, [0, 1], ["inset(0 16% 0 16%)", "inset(0 0% 0 0%)"]);
   const items = business ? businessServices : individualServices;
   return (
     <ScrollSection id="services" className="expertise-section" light>
-      <motion.div className="expertise-media" initial={reduced ? false : { opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.65 }}>
+      <motion.div ref={revealTarget} className="expertise-media" style={reduced ? undefined : { clipPath }} initial={reduced ? false : { opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.65 }}>
         <img src="/images/legal-advice-consultation.png" alt="Solicitor guiding a client through property documents" />
       </motion.div>
       <div className="expertise-content">

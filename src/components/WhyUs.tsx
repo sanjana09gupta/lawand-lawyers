@@ -26,7 +26,7 @@ const points = [
 
 export default function WhyUs() {
   return (
-    <section id="why-us" className="bg-[linear-gradient(120deg,#0d1c42_0%,#17366f_52%,#4a97d6_100%)] py-20 lg:py-24">
+    <section id="why-us" className="home-contrast-section py-20 lg:py-24">
       <div className="container-px">
         <div className="max-w-2xl">
           <motion.p
@@ -42,7 +42,7 @@ export default function WhyUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.08 }}
-            className="mt-3 font-serif text-4xl leading-[1.05] text-brand-950 sm:text-5xl"
+            className="mt-3 font-serif text-4xl leading-[1.05] text-white sm:text-5xl"
           >
             Care and efficiency, from the first call to completion.
           </motion.h2>
@@ -56,7 +56,7 @@ export default function WhyUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group bg-[#17477f]/90 p-8 transition-colors hover:bg-[#123568]/90"
+              className="group border-l border-white/10 bg-white/[0.045] p-8 transition-colors hover:bg-white/[0.1]"
             >
               <p.icon sx={{ color: "#7fbde5", fontSize: 26 }} />
               <h3 className="mt-6 font-serif text-xl text-white">{p.title}</h3>
