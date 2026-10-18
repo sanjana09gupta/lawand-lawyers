@@ -379,6 +379,14 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+footer a:not(.footer-email):hover,
+footer a:not(.footer-email):focus-visible {
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
 /* Defer rendering work for below-the-fold sections without affecting layout. */
 .news-section, .team-directory, #contact, footer { content-visibility: auto; contain-intrinsic-size: auto 800px; }
 
