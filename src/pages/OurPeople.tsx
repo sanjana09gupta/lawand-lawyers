@@ -17,6 +17,11 @@ const conveyancingLeads: Person[] = [
   { name: "Sujini Mundayam Kara", title: "Solicitor" },
 ];
 
+const directors = [
+  ...team.filter((person) => person.slug !== "raju-radhakrishnan"),
+  { name: "Charles Vargehese", role: "Director", photo: null, slug: "charles-vargehese" },
+];
+
 const conveyancingTeams = [
   ["Conveyancing Team 1", "Arathy Kurup", "Alan Joy", "020 4618 9110", "/images/team/Arathy.jpg", undefined],
   ["Conveyancing Team 2", "Pravya Prasad", "Arun Babu", "0208 088 4584", "/images/team/Pravya.jpg", "/images/team/Arun babu.jpg"],
@@ -52,7 +57,7 @@ export default function OurPeople() {
 
     <Container maxWidth="lg" sx={{ py: { xs: 6, md: 9 } }}>
       <Box className="people-section-heading"><Typography className="people-eyebrow">Leadership</Typography><Typography component="h2">Directors</Typography><Typography>Meet the directors leading Law and Lawyers.</Typography></Box>
-      <Box className="directors-grid">{team.map((person) => <Link className="director-card" to={`/team/${person.slug}`} key={person.slug}><Portrait person={{ name: person.name, title: person.role, image: person.photo ?? undefined }} /><Box className="director-link">View profile <ArrowOutward fontSize="small" /></Box></Link>)}</Box>
+      <Box className="directors-grid">{directors.map((person) => person.photo ? <Link className="director-card" to={`/team/${person.slug}`} key={person.slug}><Portrait person={{ name: person.name, title: person.role, image: person.photo }} /><Box className="director-link">View profile <ArrowOutward fontSize="small" /></Box></Link> : <Box component="article" className="director-card" key={person.slug}><Portrait person={{ name: person.name, title: person.role }} /></Box>)}</Box>
     </Container>
 
     <Box component="section" id="conveyancing" sx={{ bgcolor: "#eaf4f9", py: { xs: 6, md: 9 } }}><Container maxWidth="lg">
