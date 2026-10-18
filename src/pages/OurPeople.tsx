@@ -30,27 +30,6 @@ const conveyancingTeams = [
   ["Conveyancing Team 10", "Sujini Mundayam Kara", "Kukku Joy and Agimol Sonya", "", undefined],
 ] as const;
 
-const suppliedProfiles: Person[] = [
-  { name: "Abhirami", title: "", image: "/images/team/Abhirami.jpg" },
-  { name: "Ajai Chalappuram", title: "Paralegal", image: "/images/team/Ajay.jpg" },
-  { name: "Aleena Jayan", title: "Paralegal", image: "/images/team/Aleena.jpg" },
-  { name: "Alex Martin", title: "Paralegal", image: "/images/team/Alex.jpg" },
-  { name: "Annet Mary", title: "Paralegal", image: "/images/team/Annet.jpg" },
-  { name: "Arathy Kurup", title: "Paralegal", image: "/images/team/Arathy.jpg" },
-  { name: "Arun Babu", title: "Paralegal", image: "/images/team/Arun babu.jpg" },
-  { name: "Bhavini Bhudia", title: "Solicitor", image: "/images/team/Bhavini.jpg" },
-  { name: "Gurupriya Ramachandran", title: "Paralegal", image: "/images/team/Gurupriya.jpg" },
-  { name: "Majo Davis", title: "Solicitor", image: "/images/team/Majo.jpg" },
-  { name: "Melvin Bino", title: "Paralegal", image: "/images/team/Melvin Bino.jpg" },
-  { name: "Pravya Prasad", title: "Paralegal", image: "/images/team/Pravya.jpg" },
-  { name: "Ramakrishnan Kandasamy", title: "Paralegal", image: "/images/team/Ramakrishnan.jpg" },
-  { name: "Ramya Logeswaran", title: "Paralegal", image: "/images/team/Ramya.jpg" },
-  { name: "Sanjana Koshy", title: "Paralegal", image: "/images/team/Sanjana.jpg" },
-  { name: "Sarath Nair", title: "Solicitor", image: "/images/team/Sarath.jpg" },
-  { name: "SreeGovind", title: "Paralegal", image: "/images/team/Sree Govind.jpg" },
-  { name: "Stinnie John", title: "Paralegal", image: "/images/team/Stinnie.jpg" },
-];
-
 const initials = (name: string) => name.split(" ").map((part) => part[0]).join("").slice(0, 2);
 
 function Portrait({ person, compact = false }: { person: Person; compact?: boolean }) {
@@ -92,11 +71,6 @@ export default function OurPeople() {
       </Box>
       <Box component="section" className="department-panel department-panel-blue" aria-labelledby="litigation-heading"><Typography className="people-eyebrow">Dispute support</Typography><Typography component="h2" id="litigation-heading">Litigation</Typography><Box className="department-list"><Portrait person={{ name: "Natarajan Ramachandran", title: "" }} compact /><Portrait person={{ name: "Mary Magdalene Anthony", title: "" }} compact /></Box><Link to="/contact" className="department-contact-link">Contact our team <ArrowOutward fontSize="small" /></Link></Box>
     </Box></Container>
-
-    <Box component="section" sx={{ bgcolor: "#f4f9fc", py: { xs: 6, md: 9 } }}><Container maxWidth="lg">
-      <Box className="people-section-heading"><Typography className="people-eyebrow">Our wider team</Typography><Typography component="h2">The people behind the work</Typography><Typography>Every member of our team plays a part in delivering practical, attentive legal support.</Typography></Box>
-      <Box className="profile-gallery">{suppliedProfiles.map((person) => <Box className="profile-gallery-card" key={person.image}><Portrait person={person} /></Box>)}</Box>
-    </Container></Box>
 
     <Box component="section" className="people-contact"><Container maxWidth="lg"><Box><Typography component="h2">Need to speak with us?</Typography><Typography>Contact us and we will direct you to the right legal team.</Typography></Box><Box sx={{ display: "flex", flexWrap: "wrap", gap: 1.25 }}><Button component={Link} to="/contact" variant="contained" endIcon={<EmailOutlined />} className="people-contact-button">Contact us</Button><Button component="a" href="tel:+442085865657" variant="outlined" startIcon={<CallOutlined />} className="people-call-button">020 8586 5657</Button></Box></Container></Box>
   </Box>;
