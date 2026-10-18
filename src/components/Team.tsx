@@ -3,6 +3,7 @@ import { AddRounded, ArrowOutward, PersonRounded } from "@mui/icons-material";
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { team } from "../data/content";
+import { portraitImage } from "../lib/portraitImage";
 import ScrollSection from "./ScrollSection";
 
 function TeamPortrait({ member, index }: { member: typeof team[number]; index: number }) {
@@ -20,7 +21,7 @@ function TeamPortrait({ member, index }: { member: typeof team[number]; index: n
     onPointerLeave={() => setHovered(false)}
     onKeyDown={event => { if (event.key === "Escape") { setExpanded(false); setHovered(false); } }}>
     <Link to={`/team/${member.slug}`} className="team-portrait" aria-label={`View ${member.name}'s profile`}>
-      {member.photo ? <img src={member.photo} alt={member.name} loading="lazy" width="600" height="600" /> : <PersonRounded className="team-placeholder" aria-hidden="true" />}
+      {member.photo ? <img {...portraitImage(member.photo, "(max-width: 600px) 250px, (max-width: 850px) 45vw, 30vw")} alt={member.name} loading="lazy" decoding="async" width="600" height="600" /> : <PersonRounded className="team-placeholder" aria-hidden="true" />}
     </Link>
     <button type="button" className="team-card-toggle" aria-expanded={open}
       aria-controls={`team-details-${index}`} aria-label={`${member.name}, ${open ? "hide" : "show"} details`}

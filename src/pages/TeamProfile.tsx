@@ -3,6 +3,7 @@ import { LinkedIn, Email } from "@mui/icons-material";
 import { Link, Navigate, useParams } from "react-router-dom";
 import PageHeader from "../components/PageHeader";
 import { team } from "../data/content";
+import { portraitImage } from "../lib/portraitImage";
 
 export default function TeamProfile() {
   const { slug } = useParams();
@@ -23,7 +24,7 @@ export default function TeamProfile() {
           <Grid container spacing={{ xs: 4, md: 8 }}>
             <Grid size={{ xs: 12, md: 5 }}>
               <Box sx={{ overflow: "hidden", borderRadius: 3, bgcolor: "#e3f1fa", aspectRatio: "4 / 5" }}>
-                <img src={member.photo!} alt={member.name} width="800" height="1000" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
+                <img {...portraitImage(member.photo!, "(max-width: 600px) 100vw, 50vw")} alt={member.name} decoding="async" width="800" height="1000" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
               </Box>
             </Grid>
             <Grid size={{ xs: 12, md: 7 }}>

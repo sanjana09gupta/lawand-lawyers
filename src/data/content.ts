@@ -8,7 +8,7 @@ export const team = [
   {
     name: "Sarath Nair",
     role: "Director",
-    photo: "/images/sarath.webp",
+    photo: "/images/team/Sarath.jpg",
     slug: "sarath-nair",
   },
   {
@@ -20,13 +20,13 @@ export const team = [
   {
     name: "Bhavini Bhudia",
     role: "Director",
-    photo: "/images/bhavini.webp",
+    photo: "/images/team/Bhavini.jpg",
     slug: "bhavini-bhudia",
   },
   {
     name: "Majo Jose",
     role: "Director",
-    photo: null,
+    photo: "/images/team/Majo.jpg",
     slug: "majo-jose",
   },
   {
