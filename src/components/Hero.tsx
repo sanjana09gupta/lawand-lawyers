@@ -53,14 +53,14 @@ export default function Hero() {
         <div className="hero-intro-content">
           <div className="hero-title-block">
             <p className="hero-kicker">Trusted Legal Advice</p>
-            <h1 aria-label="Clear legal support.">
+            <div className="hero-headline" aria-label="Clear legal support.">
               <motion.span initial={reduced ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65 }}><DancingWord text="Clear" />{" "}<DancingWord text="legal" /></motion.span>
               <motion.span initial={reduced ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65, delay: .12 }}><DancingWord text="support." /></motion.span>
-            </h1>
+            </div>
           </div>
           <div className="hero-summary">
             <p className="hero-description">Clear, practical and client-focused legal support across property, immigration, wills and probate, employment, family law and dispute resolution. Whether you are buying, selling, remortgaging or managing a commercial transaction, our experienced team will guide you through every stage.</p>
-            <div className="hero-actions"><Link to="/contact" className="square-link filled">Talk to our team <ArrowOutward /></Link><a href="#services" className="square-link">Explore services <ArrowOutward /></a></div>
+            <div className="hero-actions"><Link to="/services" className="square-link">Explore services <ArrowOutward /></Link></div>
           </div>
         </div>
         <div className="hero-video-stage">

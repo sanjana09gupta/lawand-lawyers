@@ -43,7 +43,7 @@ export default function Team() {
   return <ScrollSection id="team" className="team-directory" light>
     <motion.div className="team-heading" initial={reduced ? false : { x: -16, opacity: .4 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true, amount: .2 }} transition={{ duration: .6 }}>
       <p className="section-index">Meet the team</p>
-      <h2>Real people.<br />On your side.</h2>
+      <h1>Real people.<br />On your side.</h1>
       <p>A personal approach starts with our people. Hover or tap a portrait to meet the team.</p>
     </motion.div>
     <div className="team-portraits">{team.map((member, index) => <TeamPortrait key={member.name} member={member} index={index} />)}</div>

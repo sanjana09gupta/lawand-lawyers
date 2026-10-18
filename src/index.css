@@ -93,10 +93,10 @@
 .hero-video-overlay { position:absolute; inset:0; background:linear-gradient(90deg,rgba(10,17,34,.26),transparent 52%),linear-gradient(180deg,rgba(10,17,34,.1),rgba(10,17,34,.22)); pointer-events:none; }
 .hero-kicker { display:flex; align-items:center; gap:12px; text-transform:uppercase; letter-spacing:1.8px; font-size:11px; font-weight:700; color:#2f74bd; }
 .hero-kicker span { font-size:44px; line-height:1; }
-.hero-intro h1 { margin:18px 0 0; font-family:var(--font-sans); font-size:clamp(42px,5.1vw,76px); font-weight:900; line-height:.95; letter-spacing:-.07em; text-transform:uppercase; max-width:620px; }
-.hero-intro-video h1 { color:#1d3468; }
-.hero-intro h1>span { display:block; }
-.hero-intro h1 em { font-style:normal; color:transparent; -webkit-text-stroke:1.6px #22458a; }
+.hero-headline { margin:18px 0 0; font-family:var(--font-sans); font-size:clamp(42px,5.1vw,76px); font-weight:900; line-height:.95; letter-spacing:-.07em; text-transform:uppercase; max-width:620px; }
+.hero-intro-video .hero-headline { color:#1d3468; }
+.hero-headline>span { display:block; }
+.hero-headline em { font-style:normal; color:transparent; -webkit-text-stroke:1.6px #22458a; }
 .hero-description { max-width:570px; margin:0; font-size:clamp(16px,1.5vw,20px); line-height:1.6; color:#4a5468; }
 .hero-intro-video .hero-description { color:#4a5468; }
 .hero-actions { display:flex; justify-content:flex-start; margin-top:28px; }
@@ -156,7 +156,7 @@
 .service-rows a:hover .service-number { color:#9ecde9; }
 .team-directory { display:grid; grid-template-columns:minmax(220px,.68fr) minmax(0,1.32fr); gap:clamp(24px,4vw,56px); max-width:1280px; margin:auto; padding:clamp(44px,4.5vw,64px) clamp(20px,4vw,48px); background:#e3f1fa; }
 .team-heading { align-self:start; padding-top:8px; }
-.team-directory h2 { font:800 clamp(32px,3.5vw,50px)/.98 var(--font-sans); letter-spacing:-.055em; color:#1d3468; margin:14px 0; }
+.team-directory h1 { font:800 clamp(32px,3.5vw,50px)/.98 var(--font-sans); letter-spacing:-.055em; color:#1d3468; margin:14px 0; }
 .team-heading>p:not(.section-index) { max-width:300px; font-size:15px; line-height:1.65; color:#4a5468; margin:0; }
 .team-portraits { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); grid-auto-rows:clamp(132px,12vw,188px); gap:10px; }
 .team-scroll-card { min-height:0; }
@@ -184,7 +184,7 @@
 @media(max-width:1488px) { .expertise-section,.team-directory { margin-inline:24px; } }
 @media(max-width:850px) { .nav-menu { display:grid; } .reference-nav nav,.nav-login { display:none; } .nav-brand { flex:1; } .expertise-section { grid-template-columns:1fr; gap:24px; } .expertise-media { min-height:300px; max-height:380px; } .team-portraits { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(max-width:850px) { .hero-intro-content { position:relative; bottom:auto; left:auto; width:auto; padding:52px clamp(24px,7vw,64px) 36px; box-shadow:none; } .hero-video-stage { min-height:420px; } }
-@media(max-width:540px) { .expertise-section,.team-directory { margin-inline:12px; } .reference-nav { min-height:58px; } .nav-menu { width:48px; flex-shrink:0; } .nav-brand { padding:7px 8px; } .nav-brand img { width:128px; height:36px; } .nav-contact { margin-right:6px; padding:11px; font-size:0; gap:0; } .hero-intro { padding:36px 0 32px; } .hero-intro-video { min-height:0; border-radius:0; } .hero-intro-content { padding:46px 22px 34px; } .hero-video-stage { min-height:280px; } .hero-intro h1 { font-size:clamp(32px,8.7vw,46px); } .hero-kicker { gap:12px; font-size:10px; letter-spacing:1px; } .hero-actions { flex-direction:column; } .square-link { padding:18px; } .film-caption { right:12px; bottom:12px; } .expertise-section,.team-directory { padding:54px 20px; } .team-portraits { gap:24px 14px; } .team-portraits h3 { font-size:15px; } }
+@media(max-width:540px) { .expertise-section,.team-directory { margin-inline:12px; } .reference-nav { min-height:58px; } .nav-menu { width:48px; flex-shrink:0; } .nav-brand { padding:7px 8px; } .nav-brand img { width:128px; height:36px; } .nav-contact { margin-right:6px; padding:11px; font-size:0; gap:0; } .hero-intro { padding:36px 0 32px; } .hero-intro-video { min-height:0; border-radius:0; } .hero-intro-content { padding:46px 22px 34px; } .hero-video-stage { min-height:280px; } .hero-headline { font-size:clamp(32px,8.7vw,46px); } .hero-kicker { gap:12px; font-size:10px; letter-spacing:1px; } .hero-actions { flex-direction:column; } .square-link { padding:18px; } .film-caption { right:12px; bottom:12px; } .expertise-section,.team-directory { padding:54px 20px; } .team-portraits { gap:24px 14px; } .team-portraits h3 { font-size:15px; } }
 
 /* Small-screen layout: preserve reading order, comfortable tap areas and no horizontal overflow. */
 @media(max-width:640px) {
@@ -195,7 +195,7 @@
   .nav-contact svg { width:20px; height:20px; }
   .hero-intro { padding:44px 18px 32px; background-size:50% 100%; }
   .hero-kicker { font-size:9px; line-height:1.5; text-align:center; }
-  .hero-intro h1 { font-size:clamp(32px,10.5vw,44px); line-height:1; }
+  .hero-headline { font-size:clamp(32px,10.5vw,44px); line-height:1; }
   .hero-description { font-size:16px; line-height:1.5; }
   .hero-actions { margin-top:28px; gap:10px; }
   .square-link { width:100%; min-height:52px; padding:15px 18px; }
@@ -237,7 +237,7 @@
   .testimonial-grid>div>* { width:100%; }
   .team-directory { padding:40px 20px 46px; }
   .team-heading { margin-bottom:4px; }
-  .team-heading h2 { margin:10px 0; font-size:clamp(31px,9vw,39px); }
+  .team-heading h1 { margin:10px 0; font-size:clamp(31px,9vw,39px); }
   .team-heading>p { max-width:330px; font-size:14px; line-height:1.5; }
   .team-portraits { display:flex; gap:14px; margin:20px -20px 0 0; padding:0 20px 12px 0; overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory; scrollbar-width:none; }
   .team-portraits::-webkit-scrollbar { display:none; }
@@ -274,7 +274,7 @@
 
   .hero-intro { padding-bottom:24px; }
   .hero-intro-content { padding:34px 20px 28px; }
-  .hero-intro h1 { font-size:clamp(31px,9.5vw,40px); line-height:.98; }
+  .hero-headline { font-size:clamp(31px,9.5vw,40px); line-height:.98; }
   .hero-description { font-size:15px; line-height:1.52; }
   .hero-actions { margin-top:20px; }
   .hero-film { margin-inline:12px; border-radius:18px; }
@@ -289,7 +289,7 @@
 
   .expertise-section { padding:30px 18px 34px; gap:16px; }
   .expertise-media { min-height:210px; max-height:250px; }
-  .expertise-heading h2,.team-directory h2 { font-size:clamp(29px,8.7vw,37px); }
+  .expertise-heading h2,.team-directory h1 { font-size:clamp(29px,8.7vw,37px); }
   .expertise-heading>p:not(.section-index),.team-heading>p:not(.section-index) { font-size:14px; line-height:1.48; }
   .service-rows { margin-top:16px; }
   .service-rows a { min-height:54px; padding:12px 11px; font-size:16px; }
@@ -399,6 +399,18 @@ body {
   padding-left: clamp(1.25rem, 4vw, 5rem);
   padding-right: clamp(1.25rem, 4vw, 5rem);
 }
+
+.director-message { padding:clamp(64px,8vw,112px) 0; background:#f3f6fa; color:#1d3468; }
+.director-message-grid { display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:clamp(32px,8vw,110px); align-items:start; }
+.director-message h2 { max-width:520px; margin:14px 0 0; font:800 clamp(32px,4vw,52px)/1 var(--font-sans); letter-spacing:-.055em; }
+.director-message-copy { max-width:660px; padding:clamp(24px,4vw,40px); border-left:3px solid #4a97d6; background:#fff; box-shadow:0 18px 38px rgba(29,52,104,.08); }
+.director-message-copy>p:first-child { margin:0; color:#40546f; font-size:clamp(17px,1.7vw,21px); line-height:1.65; }
+.director-signature { margin:26px 0 0; color:#1d3468; font-weight:800; }
+.director-signature span { display:block; margin-top:3px; color:#58708f; font-size:13px; font-weight:600; }
+.director-message-copy>a { display:inline-flex; gap:12px; margin-top:26px; padding-bottom:6px; border-bottom:1px solid #22458a; color:#22458a; font-size:13px; font-weight:800; text-decoration:none; }
+.director-message-copy>a:hover { color:#4a97d6; border-color:#4a97d6; }
+@media(max-width:850px) { .director-message-grid { grid-template-columns:1fr; gap:28px; } }
+@media(max-width:540px) { .director-message { padding-block:52px; } .director-message-copy { padding:24px 20px; } }
 
 .brand-gradient {
   background-image: linear-gradient(115deg, #1d3468 0%, #22458a 35%, #2f74bd 70%, #4a97d6 100%);

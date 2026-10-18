@@ -8,6 +8,13 @@ const commitments = [
   ["Faith and service", "Supporting charitable work rooted in humility, compassion and practical care for others."],
 ];
 
+const values = [
+  ["Compassion", "Recognising hardship and responding with care and practical support."],
+  ["Responsibility", "Using professional success to give back to society and support people in need."],
+  ["Education and opportunity", "Supporting access to learning, opportunity and long-term stability."],
+  ["Dignity and practical support", "Helping in ways that respect dignity and address real needs."],
+];
+
 export default function CorporateSocialResponsibility() {
   return (
     <>
@@ -36,6 +43,10 @@ export default function CorporateSocialResponsibility() {
               <Typography sx={{ mt: 5, color: "text.secondary", lineHeight: 1.8 }}>
                 Francis Mathew was admitted to the Roll of Solicitors in England and Wales in 2004 and founded Law and Lawyers Solicitors in 2007. His personal commitment to service includes donating a kidney in 2015, an act that continues to inform the values behind the firm&apos;s charitable work.
               </Typography>
+              <Typography variant="h5" sx={{ mt: 5, color: "#0a1122" }}>Supporting education, poverty relief and homelessness</Typography>
+              <Typography sx={{ mt: 2, color: "text.secondary", lineHeight: 1.8 }}>
+                Access to education can transform lives and create opportunity for families facing financial difficulty. We also support causes that provide shelter, food, clothing and other essentials to people experiencing poverty or homelessness. Our aim is to offer practical help with compassion and care.
+              </Typography>
             </Grid>
             <Grid size={{ xs: 12, md: 5 }}>
               <Box sx={{ bgcolor: "#e3f1fa", p: { xs: 3, sm: 4 }, borderRadius: 3 }}>
@@ -56,10 +67,16 @@ export default function CorporateSocialResponsibility() {
               </Grid>
             ))}
           </Grid>
+          <Box sx={{ mt: { xs: 6, sm: 9 }, pt: { xs: 5, sm: 7 }, borderTop: "1px solid rgba(29,52,104,0.14)" }}>
+            <Typography variant="h4" sx={{ color: "#0a1122" }}>Our CSR values</Typography>
+            <Grid container spacing={2} sx={{ mt: 1 }}>
+              {values.map(([title, text]) => <Grid key={title} size={{ xs: 12, sm: 6, md: 3 }}><Box sx={{ height: "100%", p: 2.5, bgcolor: "#f3f6fa", borderRadius: 2 }}><Typography sx={{ color: "#1d3468", fontWeight: 800 }}>{title}</Typography><Typography sx={{ mt: 1, color: "text.secondary", fontSize: 14, lineHeight: 1.65 }}>{text}</Typography></Box></Grid>)}
+            </Grid>
+          </Box>
           <Box sx={{ mt: { xs: 5, sm: 8 }, maxWidth: 760 }}>
             <Typography variant="h4" sx={{ color: "#0a1122" }}>A continuing mission</Typography>
             <Typography sx={{ mt: 2, color: "text.secondary", lineHeight: 1.8 }}>
-              We will continue supporting causes that align with our values, particularly education, poverty relief, homelessness, faith-based charitable work and community welfare. Our aim is to serve with integrity, give with humility and use our resources to support those who need help most.
+              Corporate Social Responsibility at Law and Lawyers Ltd is part of our culture and purpose. We will continue supporting causes that align with our values, particularly education, poverty relief, homelessness, faith-based charitable work and community welfare. Our aim is to serve with integrity, give with humility and use our resources to support those who need help most.
             </Typography>
           </Box>
         </Container>
