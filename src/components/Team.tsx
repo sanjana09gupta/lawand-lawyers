@@ -46,6 +46,7 @@ export default function Team() {
       <p className="section-index">Meet the team</p>
       <h1>Real people.<br />On your side.</h1>
       <p>A personal approach starts with our people. Hover or tap a portrait to meet the team.</p>
+      <Link to="/our-people" className="team-directory-link">Meet our team <ArrowOutward fontSize="small" /></Link>
     </motion.div>
     <div className="team-portraits">{team.map((member, index) => <TeamPortrait key={member.name} member={member} index={index} />)}</div>
   </ScrollSection>;
