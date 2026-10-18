@@ -67,6 +67,7 @@
 .reference-nav nav { display:flex; align-items:center; justify-content:center; gap:8px; flex:1; font-size:14px; }
 .reference-nav nav a { position:relative; padding:9px 14px; border-radius:999px; transition:background .2s ease,color .2s ease,transform .2s ease; }
 .reference-nav nav a:hover,.reference-nav nav a:focus-visible { background:#e3f1fa; color:#17366f; outline:none; transform:translateY(-1px); }
+.reference-nav nav a.is-active { background:#e3f1fa; color:#17366f; font-weight:700; }
 .reference-nav nav a:focus-visible { box-shadow:0 0 0 3px rgba(74,151,214,.36); }
 .nav-company { position:relative; }
 .nav-company-trigger { display:flex; align-items:center; gap:2px; border:0; border-radius:999px; background:transparent; color:inherit; cursor:pointer; padding:9px 12px; font:inherit; transition:background .2s ease,color .2s ease,transform .2s ease; }
@@ -366,6 +367,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 76px;
 }
 
 body {
@@ -374,7 +376,11 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
+
+/* Defer rendering work for below-the-fold sections without affecting layout. */
+.news-section, .team-directory, #contact, footer { content-visibility: auto; contain-intrinsic-size: auto 800px; }
 
 ::selection {
   background: var(--color-brand-300);

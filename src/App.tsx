@@ -1,30 +1,32 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import { ConfigProvider } from "antd";
 import { muiTheme, antdTheme } from "./theme";
 import ScrollToTop from "./components/ScrollToTop";
 import ScrollProgress from "./components/ScrollProgress";
-import OpeningIntro from "./components/OpeningIntro";
-import CustomCursor from "./components/CustomCursor";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import CareersPage from "./pages/Careers";
-import NewsPage from "./pages/News";
-import NewsDetail from "./pages/NewsDetail";
-import ServiceDetail from "./pages/ServiceDetail";
-import ContactPage from "./pages/ContactPage";
-import Booking from "./pages/Booking";
-import NewPurchaseQuote from "./pages/NewPurchaseQuote";
-import CorporateSocialResponsibility from "./pages/CorporateSocialResponsibility";
-import TeamProfile from "./pages/TeamProfile";
-import OurPeople from "./pages/OurPeople";
-import ConveyancingFees from "./pages/ConveyancingFees";
-import LegalInformation from "./pages/LegalInformation";
-import FeeInformation from "./pages/FeeInformation";
-import NotFound from "./pages/NotFound";
 import ChatAssistant from "./components/ChatAssistant";
+import Seo from "./components/Seo";
+
+const Home = lazy(() => import("./pages/Home"));
+const ServicesPage = lazy(() => import("./pages/ServicesPage"));
+const About = lazy(() => import("./pages/About"));
+const CareersPage = lazy(() => import("./pages/Careers"));
+const NewsPage = lazy(() => import("./pages/News"));
+const NewsDetail = lazy(() => import("./pages/NewsDetail"));
+const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const Booking = lazy(() => import("./pages/Booking"));
+const NewPurchaseQuote = lazy(() => import("./pages/NewPurchaseQuote"));
+const CorporateSocialResponsibility = lazy(() => import("./pages/CorporateSocialResponsibility"));
+const TeamProfile = lazy(() => import("./pages/TeamProfile"));
+const OurPeople = lazy(() => import("./pages/OurPeople"));
+const ConveyancingFees = lazy(() => import("./pages/ConveyancingFees"));
+const LegalInformation = lazy(() => import("./pages/LegalInformation"));
+const FeeInformation = lazy(() => import("./pages/FeeInformation"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 export default function App() {
   return (
@@ -33,14 +35,15 @@ export default function App() {
         <CssBaseline />
         <BrowserRouter>
           <ScrollToTop />
-          <OpeningIntro />
-          <CustomCursor />
+          <Seo />
           <div className="min-h-screen bg-paper">
             <ScrollProgress />
             <Navbar />
             <main>
-              <Routes>
+              <Suspense fallback={<div className="route-loader" role="status"><img src="/images/logo-icon.png" alt="" width="40" height="40" />Loading page</div>}>
+                <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/services" element={<ServicesPage />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/careers" element={<CareersPage />} />
                 <Route path="/news" element={<NewsPage />} />
@@ -59,7 +62,8 @@ export default function App() {
                 <Route path="/team/:slug" element={<TeamProfile />} />
                 <Route path="/our-people" element={<OurPeople />} />
                 <Route path="*" element={<NotFound />} />
-              </Routes>
+                </Routes>
+              </Suspense>
             </main>
             <Footer />
             <ChatAssistant />

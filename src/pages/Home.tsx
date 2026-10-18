@@ -4,10 +4,6 @@ import TrustProof from "../components/TrustProof";
 import Services from "../components/Services";
 import CTABanner from "../components/CTABanner";
 import WhyUs from "../components/WhyUs";
-import Team from "../components/Team";
-import Testimonials from "../components/Testimonials";
-import News from "../components/News";
-import Contact from "../components/Contact";
 import ConsultationLine from "../components/ConsultationLine";
 import ScrollSection from "../components/ScrollSection";
 
@@ -27,14 +23,6 @@ export default function Home() {
       <ScrollSection id="consultation-path" className="">
         <ConsultationLine />
       </ScrollSection>
-      <Team />
-      <ScrollSection id="testimonials" className="">
-        <Testimonials />
-      </ScrollSection>
-      <ScrollSection id="news-reveal" className="">
-        <News />
-      </ScrollSection>
-      <Contact />
     </div>
   );
 }

@@ -3,9 +3,8 @@ import { Close, ChevronRight } from "@mui/icons-material";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 const links = [
-  { label: "Services", href: "/#services" },
-  { label: "Why Us", href: "/#why-us" },
-  { label: "Our Team", href: "/#team" },
+  { label: "Services", href: "/services" },
+  { label: "Our People", href: "/our-people" },
   { label: "Insights", href: "/news" },
   { label: "Contact", href: "/contact" },
 ];
