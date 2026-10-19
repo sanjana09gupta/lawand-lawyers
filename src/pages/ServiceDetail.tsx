@@ -135,7 +135,7 @@ function ImmigrationDetail() {
 
 function ConveyancingDetail() {
   const experts = [
-    { name: "Francis Mathew", role: "Senior Director", slug: "francis-mathew", image: "/images/francis.webp" },
+    { name: "Francis Mathew", role: "Senior Director", slug: "francis-mathew", image: "/images/francis-mathew.jpeg" },
     { name: "Bhavini Bhudia", role: "Director", slug: "bhavini-bhudia", image: "/images/bhavini.webp" },
   ];
 

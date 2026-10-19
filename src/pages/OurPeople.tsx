@@ -7,7 +7,7 @@ import { portraitImage } from "../lib/portraitImage";
 type Person = { name: string; title: string; image?: string };
 
 const conveyancingLeads: Person[] = [
-  { name: "Francis Mathew", title: "Solicitor", image: "/images/francis.webp" },
+  { name: "Francis Mathew", title: "Solicitor", image: "/images/francis-mathew.jpeg" },
   { name: "Bhavini Bhudia", title: "Solicitor", image: "/images/team/Bhavini.jpg" },
   { name: "Sarath Nair", title: "Solicitor", image: "/images/team/Sarath.jpg" },
   { name: "Juneeta John", title: "Solicitor" },

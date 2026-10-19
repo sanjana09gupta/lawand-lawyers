@@ -2,7 +2,7 @@ export const team = [
   {
     name: "Francis Mathew",
     role: "Senior Director",
-    photo: "/images/francis.webp",
+    photo: "/images/francis-mathew.jpeg",
     slug: "francis-mathew",
   },
   {
