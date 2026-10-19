@@ -2,7 +2,7 @@ export const team = [
   {
     name: "Francis Mathew",
     role: "Senior Director",
-    photo: "/images/francis.webp",
+    photo: "/images/francis-mathew.jpeg",
     slug: "francis-mathew",
   },
   {
@@ -10,12 +10,6 @@ export const team = [
     role: "Director",
     photo: "/images/team/Sarath.jpg",
     slug: "sarath-nair",
-  },
-  {
-    name: "Charles Varghese",
-    role: "Director",
-    photo: null,
-    slug: "charles-varghese",
   },
   {
     name: "Bhavini Bhudia",
@@ -34,6 +28,12 @@ export const team = [
     role: "Director",
     photo: null,
     slug: "juneeta-valariyil-john",
+  },
+  {
+    name: "Charles Vargehese",
+    role: "Director",
+    photo: null,
+    slug: "charles-vargehese",
   },
 ];
 

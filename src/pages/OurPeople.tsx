@@ -7,28 +7,15 @@ import { portraitImage } from "../lib/portraitImage";
 type Person = { name: string; title: string; image?: string };
 
 const conveyancingLeads: Person[] = [
-  { name: "Francis Mathew", title: "Solicitor", image: "/images/francis.webp" },
+  { name: "Francis Mathew", title: "Solicitor", image: "/images/francis-mathew.jpeg" },
   { name: "Bhavini Bhudia", title: "Solicitor", image: "/images/team/Bhavini.jpg" },
   { name: "Sarath Nair", title: "Solicitor", image: "/images/team/Sarath.jpg" },
   { name: "Juneeta John", title: "Solicitor" },
   { name: "Shinto Poulose", title: "Solicitor" },
-  { name: "Charles Varghese", title: "Solicitor" },
+  { name: "Charles Vargehese", title: "Solicitor" },
   { name: "Abhinav Kiran Sekhon", title: "Solicitor" },
   { name: "Sujini Mundayam Kara", title: "Solicitor" },
 ];
-
-const conveyancingTeams = [
-  ["Conveyancing Team 1", "Arathy Kurup", "Alan Joy", "020 4618 9110", "/images/team/Arathy.jpg"],
-  ["Conveyancing Team 2", "Pravya Prasad", "Arun Babu", "0208 088 4584", "/images/team/Pravya.jpg"],
-  ["Conveyancing Team 3", "Michael Job", "Melvin Bino", "020 3345 4947", undefined],
-  ["Conveyancing Team 4", "Isshak Jaleel", "Annet Mary", "020 4618 9127", undefined],
-  ["Conveyancing Team 5", "Ajai Chalappuram", "Margaret James", "0208 088 4583", "/images/team/Ajay.jpg"],
-  ["Conveyancing Team 6", "Gurupriya Ramachandran", "Stinnie John", "020 3345 4952", "/images/team/Gurupriya.jpg"],
-  ["Conveyancing Team 7", "Ramakrishnan Kandasamy", "Roji Sera Varghese", "020 3345 4949", "/images/team/Ramakrishnan.jpg"],
-  ["Conveyancing Team 8", "Alex Martin", "Aleena Jayan", "0208 088 4581", "/images/team/Alex.jpg"],
-  ["Conveyancing Team 9", "Sanjana Koshy", "Ramya Logeswaran", "020 3345 4950", "/images/team/Sanjana.jpg"],
-  ["Conveyancing Team 10", "Sujini Mundayam Kara", "Kukku Joy and Agimol Sonya", "", undefined],
-] as const;
 
 const suppliedProfiles: Person[] = [
   { name: "Abhirami", title: "", image: "/images/team/Abhirami.jpg" },
@@ -56,6 +43,19 @@ const suppliedProfiles: Person[] = [
   { name: "Stinnie John", title: "Paralegal", image: "/images/team/Stinnie.jpg" },
 ];
 
+const conveyancingTeams = [
+  ["Conveyancing Team 1", "Arathy Kurup", "Alan Joy", "020 4618 9110", "/images/team/Arathy.jpg", "/images/team/Alan Joy.jpg"],
+  ["Conveyancing Team 2", "Pravya Prasad", "Arun Babu", "0208 088 4584", "/images/team/Pravya.jpg", "/images/team/Arun babu.jpg"],
+  ["Conveyancing Team 3", "Michael Job", "Melvin Bino", "020 3345 4947", undefined, "/images/team/Melvin Bino.jpg"],
+  ["Conveyancing Team 4", "Isshak Jaleel", "Annet Mary", "020 4618 9127", undefined, "/images/team/Annet.jpg"],
+  ["Conveyancing Team 5", "Ajai Chalappuram", "Margaret James", "0208 088 4583", "/images/team/Ajay.jpg", undefined],
+  ["Conveyancing Team 6", "Gurupriya Ramachandran", "Stinnie John", "020 3345 4952", "/images/team/Gurupriya.jpg", "/images/team/Stinnie.jpg"],
+  ["Conveyancing Team 7", "Ramakrishnan Kandasamy", "Roji Sera Varghese", "020 3345 4949", "/images/team/Ramakrishnan.jpg", undefined],
+  ["Conveyancing Team 8", "Alex Martin", "Aleena Jayan", "0208 088 4581", "/images/team/Alex.jpg", "/images/team/Aleena.jpg"],
+  ["Conveyancing Team 9", "Sanjana Koshy", "Ramya Logeswaran", "020 3345 4950", "/images/team/Sanjana.jpg", "/images/team/Ramya.jpg"],
+  ["Conveyancing Team 10", "Sujini Mundayam Kara", "Kukku Joy and Agimol Sonya", "", undefined, undefined],
+] as const;
+
 const initials = (name: string) => name.split(" ").map((part) => part[0]).join("").slice(0, 2);
 
 function Portrait({ person, compact = false }: { person: Person; compact?: boolean }) {
@@ -78,15 +78,15 @@ export default function OurPeople() {
 
     <Container maxWidth="lg" sx={{ py: { xs: 6, md: 9 } }}>
       <Box className="people-section-heading"><Typography className="people-eyebrow">Leadership</Typography><Typography component="h2">Directors</Typography><Typography>Meet the directors leading Law and Lawyers.</Typography></Box>
-      <Box className="directors-grid">{team.map((person) => <Link className="director-card" to={`/team/${person.slug}`} key={person.slug}><Portrait person={{ name: person.name, title: person.role, image: person.photo ?? undefined }} /><Box className="director-link">View profile <ArrowOutward fontSize="small" /></Box></Link>)}</Box>
+      <Box className="directors-grid">{team.map((person) => person.photo ? <Link className="director-card" to={`/team/${person.slug}`} key={person.slug}><Portrait person={{ name: person.name, title: person.role, image: person.photo }} /><Box className="director-link">View profile <ArrowOutward fontSize="small" /></Box></Link> : <Box component="article" className="director-card" key={person.slug}><Portrait person={{ name: person.name, title: person.role }} /></Box>)}</Box>
     </Container>
 
     <Box component="section" id="conveyancing" sx={{ bgcolor: "#eaf4f9", py: { xs: 6, md: 9 } }}><Container maxWidth="lg">
       <Box className="people-section-heading"><Typography className="people-eyebrow">Property law</Typography><Typography component="h2">Conveyancing</Typography><Typography>Our conveyancing solicitors and case teams are ready to help with your property transaction.</Typography></Box>
       <Box className="lead-grid">{conveyancingLeads.map((person) => <Box className="lead-card" key={person.name}><Portrait person={person} compact /></Box>)}</Box>
-      <Box className="team-grid">{conveyancingTeams.map(([label, lead, paralegal, phone, image]) => <Box className="case-team" key={label}>
+      <Box className="team-grid">{conveyancingTeams.map(([label, lead, paralegal, phone, leadImage, paralegalImage]) => <Box className="case-team" key={label}>
         <Box className="case-team-top"><Box><Typography component="h3" sx={{ color: "#18366f", fontWeight: 800 }}>{label}</Typography><Typography sx={{ color: "#61718a", fontSize: 12, mt: .25 }}>Your dedicated case team</Typography></Box></Box>
-        <Box className="case-team-members"><Portrait person={{ name: lead, title: "Paralegal", image: suppliedProfiles.find(person => person.name === lead)?.image ?? image }} compact /><Portrait person={{ name: paralegal, title: "Paralegal", image: suppliedProfiles.find(person => person.name === paralegal)?.image }} compact /></Box>
+        <Box className="case-team-members"><Portrait person={{ name: lead, title: "Paralegal", image: suppliedProfiles.find(person => person.name === lead)?.image ?? leadImage }} compact /><Portrait person={{ name: paralegal, title: "Paralegal", image: suppliedProfiles.find(person => person.name === paralegal)?.image ?? paralegalImage }} compact /></Box>
         {phone && <Typography component="a" href={`tel:${phone.replace(/[^+\d]/g, "")}`} className="case-team-phone"><CallOutlined fontSize="small" />{phone}</Typography>}
       </Box>)}</Box>
     </Container></Box>
@@ -101,11 +101,6 @@ export default function OurPeople() {
       </Box>
       <Box component="section" className="department-panel department-panel-blue" aria-labelledby="litigation-heading"><Typography className="people-eyebrow">Dispute support</Typography><Typography component="h2" id="litigation-heading">Litigation</Typography><Box className="department-list"><Portrait person={{ name: "Natarajan Ramachandran", title: "", image: "/images/team/Natarajan Ramachandran.jpg" }} compact /><Portrait person={{ name: "Mary Magdalene Anthony", title: "", image: "/images/team/Mary Magdalene Anthony.jpg" }} compact /></Box><Link to="/contact" className="department-contact-link">Contact our team <ArrowOutward fontSize="small" /></Link></Box>
     </Box></Container>
-
-    <Box component="section" sx={{ bgcolor: "#f4f9fc", py: { xs: 6, md: 9 } }}><Container maxWidth="lg">
-      <Box className="people-section-heading"><Typography className="people-eyebrow">Our wider team</Typography><Typography component="h2">The people behind the work</Typography><Typography>Every member of our team plays a part in delivering practical, attentive legal support.</Typography></Box>
-      <Box className="profile-gallery">{suppliedProfiles.map((person) => <Box className="profile-gallery-card" key={person.image}><Portrait person={person} /></Box>)}</Box>
-    </Container></Box>
 
     <Box component="section" className="people-contact"><Container maxWidth="lg"><Box><Typography component="h2">Need to speak with us?</Typography><Typography>Contact us and we will direct you to the right legal team.</Typography></Box><Box sx={{ display: "flex", flexWrap: "wrap", gap: 1.25 }}><Button component={Link} to="/contact" variant="contained" endIcon={<EmailOutlined />} className="people-contact-button">Contact us</Button><Button component="a" href="tel:+442085865657" variant="outlined" startIcon={<CallOutlined />} className="people-call-button">020 8586 5657</Button></Box></Container></Box>
   </Box>;

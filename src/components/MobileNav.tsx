@@ -21,9 +21,10 @@ export default function MobileNav({ open, onClose }: { open: boolean; onClose: (
         paper: {
           sx: {
             width: "min(88vw, 380px)",
-            background: "linear-gradient(120deg, #0d1c42, #17366f 52%, #4a97d6)",
+            backgroundColor: "#10213f",
+            backgroundImage: "radial-gradient(circle at 100% 0%, rgba(74,151,214,0.28), transparent 38%)",
             color: "#fff",
-            backgroundImage: "none",
+            opacity: 1,
           },
         },
       }}
