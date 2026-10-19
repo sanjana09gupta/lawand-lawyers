@@ -12,10 +12,10 @@ export const team = [
     slug: "sarath-nair",
   },
   {
-    name: "Raju Radhakrishnan",
+    name: "Charles Varghese",
     role: "Director",
-    photo: "/images/raju.jpg",
-    slug: "raju-radhakrishnan",
+    photo: null,
+    slug: "charles-varghese",
   },
   {
     name: "Bhavini Bhudia",

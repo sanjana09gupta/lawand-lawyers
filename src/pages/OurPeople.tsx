@@ -12,7 +12,7 @@ const conveyancingLeads: Person[] = [
   { name: "Sarath Nair", title: "Solicitor", image: "/images/team/Sarath.jpg" },
   { name: "Juneeta John", title: "Solicitor" },
   { name: "Shinto Poulose", title: "Solicitor" },
-  { name: "Charles Vargehese", title: "Solicitor" },
+  { name: "Charles Varghese", title: "Solicitor" },
   { name: "Abhinav Kiran Sekhon", title: "Solicitor" },
   { name: "Sujini Mundayam Kara", title: "Solicitor" },
 ];
@@ -32,6 +32,7 @@ const conveyancingTeams = [
 
 const suppliedProfiles: Person[] = [
   { name: "Abhirami", title: "", image: "/images/team/Abhirami.jpg" },
+  { name: "Alan Joy", title: "Paralegal", image: "/images/team/Alan Joy.jpg" },
   { name: "Ajai Chalappuram", title: "Paralegal", image: "/images/team/Ajay.jpg" },
   { name: "Aleena Jayan", title: "Paralegal", image: "/images/team/Aleena.jpg" },
   { name: "Alex Martin", title: "Paralegal", image: "/images/team/Alex.jpg" },
@@ -39,9 +40,13 @@ const suppliedProfiles: Person[] = [
   { name: "Arathy Kurup", title: "Paralegal", image: "/images/team/Arathy.jpg" },
   { name: "Arun Babu", title: "Paralegal", image: "/images/team/Arun babu.jpg" },
   { name: "Bhavini Bhudia", title: "Solicitor", image: "/images/team/Bhavini.jpg" },
+  { name: "Chidiyaraj", title: "Paralegal", image: "/images/team/Chidiyaraj.jpg" },
   { name: "Gurupriya Ramachandran", title: "Paralegal", image: "/images/team/Gurupriya.jpg" },
+  { name: "Kausicprabu S", title: "Paralegal", image: "/images/team/Kausicprabu S.jpg" },
   { name: "Majo Davis", title: "Solicitor", image: "/images/team/Majo.jpg" },
+  { name: "Mary Magdalene Anthony", title: "", image: "/images/team/Mary Magdalene Anthony.jpg" },
   { name: "Melvin Bino", title: "Paralegal", image: "/images/team/Melvin Bino.jpg" },
+  { name: "Natarajan Ramachandran", title: "", image: "/images/team/Natarajan Ramachandran.jpg" },
   { name: "Pravya Prasad", title: "Paralegal", image: "/images/team/Pravya.jpg" },
   { name: "Ramakrishnan Kandasamy", title: "Paralegal", image: "/images/team/Ramakrishnan.jpg" },
   { name: "Ramya Logeswaran", title: "Paralegal", image: "/images/team/Ramya.jpg" },
@@ -79,7 +84,11 @@ export default function OurPeople() {
     <Box component="section" id="conveyancing" sx={{ bgcolor: "#eaf4f9", py: { xs: 6, md: 9 } }}><Container maxWidth="lg">
       <Box className="people-section-heading"><Typography className="people-eyebrow">Property law</Typography><Typography component="h2">Conveyancing</Typography><Typography>Our conveyancing solicitors and case teams are ready to help with your property transaction.</Typography></Box>
       <Box className="lead-grid">{conveyancingLeads.map((person) => <Box className="lead-card" key={person.name}><Portrait person={person} compact /></Box>)}</Box>
-      <Box className="team-grid">{conveyancingTeams.map(([label, lead, paralegal, phone, image]) => <Box className="case-team" key={label}><Box className="case-team-top">{image ? <Box component="img" {...portraitImage(image, "54px")} loading="lazy" decoding="async" alt="" sx={{ width: 54, height: 54, borderRadius: "50%", objectFit: "cover", objectPosition: "center top" }} /> : <Box sx={{ width: 54, height: 54, borderRadius: "50%", bgcolor: "#c8dfec", display: "grid", placeItems: "center", color: "#22458a", fontWeight: 800 }}>{initials(lead)}</Box>}<Box><Typography sx={{ color: "#18366f", fontWeight: 800 }}>{label}</Typography><Typography sx={{ color: "#61718a", fontSize: 12, mt: .25 }}>Your dedicated case team</Typography></Box></Box><Box sx={{ mt: 2, display: "grid", gap: 1 }}><Typography sx={{ color: "#263854", fontSize: 14 }}><strong>Paralegal</strong> {lead}</Typography><Typography sx={{ color: "#263854", fontSize: 14 }}><strong>Paralegal</strong> {paralegal}</Typography>{phone && <Typography component="a" href={`tel:${phone.replace(/[^+\\d]/g, "")}`} className="case-team-phone"><CallOutlined fontSize="small" />{phone}</Typography>}</Box></Box>)}</Box>
+      <Box className="team-grid">{conveyancingTeams.map(([label, lead, paralegal, phone, image]) => <Box className="case-team" key={label}>
+        <Box className="case-team-top"><Box><Typography component="h3" sx={{ color: "#18366f", fontWeight: 800 }}>{label}</Typography><Typography sx={{ color: "#61718a", fontSize: 12, mt: .25 }}>Your dedicated case team</Typography></Box></Box>
+        <Box className="case-team-members"><Portrait person={{ name: lead, title: "Paralegal", image: suppliedProfiles.find(person => person.name === lead)?.image ?? image }} compact /><Portrait person={{ name: paralegal, title: "Paralegal", image: suppliedProfiles.find(person => person.name === paralegal)?.image }} compact /></Box>
+        {phone && <Typography component="a" href={`tel:${phone.replace(/[^+\d]/g, "")}`} className="case-team-phone"><CallOutlined fontSize="small" />{phone}</Typography>}
+      </Box>)}</Box>
     </Container></Box>
 
     <Container maxWidth="lg" sx={{ py: { xs: 6, md: 9 } }}><Box className="departments-grid">
@@ -88,9 +97,9 @@ export default function OurPeople() {
         <Box className="specialist-profiles">
           {[{ name: "Majo Davis", title: "Solicitor", image: "/images/team/Majo.jpg" }, { name: "SreeGovind", title: "Paralegal", image: "/images/team/Sree Govind.jpg" }].map((person) => <Box className="specialist-profile" key={person.name}><Box className="specialist-photo"><img {...portraitImage(person.image, "(max-width: 600px) 45vw, (max-width: 900px) 50vw, 30vw")} alt={person.name} loading="lazy" decoding="async" width="960" height="640" /></Box><Box className="specialist-caption"><Typography component="h3">{person.name}</Typography><Typography>{person.title}</Typography></Box></Box>)}
         </Box>
-        <Box className="support-roster"><Typography component="h3" className="support-roster-label">Working alongside you</Typography><Box className="support-roster-grid"><Portrait person={{ name: "Chidiyaraj", title: "Paralegal" }} compact /><Portrait person={{ name: "Kausicprabu S", title: "Paralegal" }} compact /><Portrait person={{ name: "Andrews Renil", title: "Legal Assistant" }} compact /></Box></Box>
+        <Box className="support-roster"><Typography component="h3" className="support-roster-label">Working alongside you</Typography><Box className="support-roster-grid"><Portrait person={{ name: "Chidiyaraj", title: "Paralegal", image: "/images/team/Chidiyaraj.jpg" }} compact /><Portrait person={{ name: "Kausicprabu S", title: "Paralegal", image: "/images/team/Kausicprabu S.jpg" }} compact /><Portrait person={{ name: "Andrews Renil", title: "Legal Assistant" }} compact /></Box></Box>
       </Box>
-      <Box component="section" className="department-panel department-panel-blue" aria-labelledby="litigation-heading"><Typography className="people-eyebrow">Dispute support</Typography><Typography component="h2" id="litigation-heading">Litigation</Typography><Box className="department-list"><Portrait person={{ name: "Natarajan Ramachandran", title: "" }} compact /><Portrait person={{ name: "Mary Magdalene Anthony", title: "" }} compact /></Box><Link to="/contact" className="department-contact-link">Contact our team <ArrowOutward fontSize="small" /></Link></Box>
+      <Box component="section" className="department-panel department-panel-blue" aria-labelledby="litigation-heading"><Typography className="people-eyebrow">Dispute support</Typography><Typography component="h2" id="litigation-heading">Litigation</Typography><Box className="department-list"><Portrait person={{ name: "Natarajan Ramachandran", title: "", image: "/images/team/Natarajan Ramachandran.jpg" }} compact /><Portrait person={{ name: "Mary Magdalene Anthony", title: "", image: "/images/team/Mary Magdalene Anthony.jpg" }} compact /></Box><Link to="/contact" className="department-contact-link">Contact our team <ArrowOutward fontSize="small" /></Link></Box>
     </Box></Container>
 
     <Box component="section" sx={{ bgcolor: "#f4f9fc", py: { xs: 6, md: 9 } }}><Container maxWidth="lg">

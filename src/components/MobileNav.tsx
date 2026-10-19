@@ -43,13 +43,13 @@ export default function MobileNav({ open, onClose }: { open: boolean; onClose: (
             to={l.href}
             onClick={onClose}
             sx={{
-              borderBottom: "1px solid rgba(255,255,255,0.08)",
+              borderBottom: "1px solid rgba(157,210,237,0.35)",
               py: 2,
             }}
           >
             <ListItemText
               primary={l.label}
-              slotProps={{ primary: { sx: { fontFamily: "Inter, system-ui, sans-serif", fontSize: 22 } } }}
+              slotProps={{ primary: { sx: { fontFamily: "Inter, system-ui, sans-serif", fontSize: 22, fontWeight: 700 } } }}
             />
             <ChevronRight sx={{ color: "rgba(255,255,255,0.4)" }} />
           </ListItemButton>

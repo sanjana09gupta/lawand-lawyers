@@ -7,7 +7,7 @@ import { portraitImage } from "../lib/portraitImage";
 
 export default function TeamProfile() {
   const { slug } = useParams();
-  const member = team.find((person) => person.slug === slug && person.photo);
+  const member = team.find((person) => person.slug === slug);
 
   if (!member) return <Navigate to="/" replace />;
 
@@ -23,8 +23,8 @@ export default function TeamProfile() {
         <Container maxWidth="lg">
           <Grid container spacing={{ xs: 4, md: 8 }}>
             <Grid size={{ xs: 12, md: 5 }}>
-              <Box sx={{ overflow: "hidden", borderRadius: 3, bgcolor: "#e3f1fa", aspectRatio: "4 / 5" }}>
-                <img {...portraitImage(member.photo!, "(max-width: 600px) 100vw, 50vw")} alt={member.name} decoding="async" width="800" height="1000" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
+              <Box sx={{ overflow: "hidden", borderRadius: 3, bgcolor: "#e3f1fa", aspectRatio: "4 / 5", display: "grid", placeItems: "center" }}>
+                {member.photo ? <img {...portraitImage(member.photo, "(max-width: 600px) 100vw, 50vw")} alt={member.name} decoding="async" width="800" height="1000" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} /> : <Typography aria-hidden="true" sx={{ fontSize: 64, fontWeight: 800, color: "#22458a" }}>{member.name.split(" ").map(part => part[0]).join("")}</Typography>}
               </Box>
             </Grid>
             <Grid size={{ xs: 12, md: 7 }}>
