@@ -14,6 +14,7 @@ import { offices } from "../data/content";
 
 const enquiryOptions = [
   "Residential Conveyancing",
+  "Commercial Conveyancing",
   "Immigration",
   "Wills and Probate",
   "Employment",
@@ -62,6 +63,17 @@ export default function ContactPage() {
                     </Box>
                   </Box>
                 ))}
+                <Box sx={{ p: 3, borderRadius: 3, border: "1px solid #8caed3", bgcolor: "#f3f8fb", display: "grid", gap: 3 }}>
+                  <Box>
+                    <Typography component="h2" sx={{ color: "#1d3468", fontSize: 13, fontWeight: 800, mb: 1 }}>Accounts / Payments</Typography>
+                    <Typography component="a" href="mailto:accounts@lawandlawyers.co.uk" sx={{ color: "#22458a", fontSize: 14, overflowWrap: "anywhere", textUnderlineOffset: "3px" }}>accounts@lawandlawyers.co.uk</Typography>
+                  </Box>
+                  <Box>
+                    <Typography component="h2" sx={{ color: "#1d3468", fontSize: 13, fontWeight: 800, mb: 1 }}>Opening hours</Typography>
+                    <Typography sx={{ fontSize: 14 }}>Monday to Friday: 9:30 to 17:30</Typography>
+                    <Typography sx={{ fontSize: 13, color: "text.secondary", mt: .5 }}>Closed on weekends &amp; bank holidays</Typography>
+                  </Box>
+                </Box>
               </Box>
             </Grid>
 

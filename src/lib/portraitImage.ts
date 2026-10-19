@@ -1,8 +1,9 @@
 // Keep the original portraits available; serve pre-sized copies to avoid noisy downscaling.
 export function portraitImage(source: string, sizes: string) {
-  const filename = source.startsWith("/images/team/") && source.endsWith(".jpg")
-    ? source.slice("/images/team/".length, -4)
-    : source === "/images/raju.jpg" ? "raju-restored" : null;
+  const filename = source.startsWith("/images/team/") && /\.(jpg|webp)$/.test(source)
+    ? source.slice("/images/team/".length).replace(/\.(jpg|webp)$/, "")
+    : source === "/images/raju.jpg" ? "raju-restored"
+    : source === "/images/francis-mathew.jpeg" ? "francis-mathew" : null;
 
   if (!filename) return { src: source };
 

@@ -78,6 +78,14 @@ export default function Contact() {
               </motion.div>
             ))}
 
+            <div className="flex items-start gap-3 rounded-xl px-4 pb-1 pt-2">
+              <Mail className="mt-0.5 shrink-0 text-brand-300" size={18} />
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-white">Accounts / Payments</p>
+                <a href="mailto:accounts@lawandlawyers.co.uk" className="mt-1 block break-all text-[13px] text-white/80 underline underline-offset-4 hover:text-brand-200">accounts@lawandlawyers.co.uk</a>
+              </div>
+            </div>
+
             <motion.div
               initial={reduced ? false : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -138,6 +146,7 @@ export default function Contact() {
                 </label>
                 <select className="mt-2 w-full rounded-lg border border-white/20 bg-white/[0.09] px-4 py-3 text-sm text-white outline-none transition-colors focus:border-brand-200 focus:bg-white/[0.13]">
                   <option className="bg-brand-900">Residential Conveyancing</option>
+                  <option className="bg-brand-900">Commercial Conveyancing</option>
                   <option className="bg-brand-900">Immigration</option>
                   <option className="bg-brand-900">Wills and Probate</option>
                   <option className="bg-brand-900">Employment</option>

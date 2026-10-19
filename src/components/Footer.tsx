@@ -36,10 +36,10 @@ function FooterAccordion({ title, children }: { title: string; children: React.R
 }
 
 function TrustBadges() {
-  const isSraLive = typeof window !== "undefined" && window.location.hostname === SRA_LIVE_HOSTNAME;
+  const isSraLive = typeof window !== "undefined" && window.location.hostname.replace(/^www\./, "") === SRA_LIVE_HOSTNAME;
 
   return (
-    <div className="mt-5 flex flex-wrap gap-2 sm:mt-6 sm:gap-2.5 lg:flex-nowrap" aria-label="Client reviews and professional accreditations">
+    <div className="mt-5 flex flex-wrap gap-2 sm:mt-6 sm:gap-2.5" aria-label="Client reviews and professional accreditations">
       <div
         aria-label="ReviewSolicitors client review badge"
         className="min-w-36 rounded-lg bg-[#00a849] px-2.5 py-2 text-white sm:min-w-48 sm:px-3 sm:py-2.5"
@@ -52,7 +52,7 @@ function TrustBadges() {
       </div>
       {isSraLive && <div
         aria-label="Authorised and regulated by the Solicitors Regulation Authority"
-        className="min-w-40 overflow-hidden rounded-lg bg-white sm:min-w-48"
+        className="h-[163px] w-[275px] shrink-0 overflow-hidden bg-white"
       >
         <div className="relative aspect-[275/163] w-full">
           <iframe

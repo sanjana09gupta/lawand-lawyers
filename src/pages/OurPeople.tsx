@@ -7,17 +7,22 @@ import { portraitImage } from "../lib/portraitImage";
 type Person = { name: string; title: string; image?: string };
 
 const conveyancingLeads: Person[] = [
-  { name: "Francis Mathew", title: "Solicitor", image: "/images/francis-mathew.jpeg" },
-  { name: "Bhavini Bhudia", title: "Solicitor", image: "/images/team/Bhavini.jpg" },
-  { name: "Sarath Nair", title: "Solicitor", image: "/images/team/Sarath.jpg" },
-  { name: "Juneeta John", title: "Solicitor" },
+  { name: "Francis Mathew", title: "Senior Director", image: "/images/francis-mathew.jpeg" },
+  { name: "Bhavini Bhudia", title: "Director", image: "/images/team/Bhavini.jpg" },
+  { name: "Sarath Nair", title: "Director", image: "/images/team/Sarath.jpg" },
+  { name: "Juneeta John", title: "Director" },
   { name: "Shinto Poulose", title: "Solicitor" },
-  { name: "Charles Vargehese", title: "Solicitor" },
+  { name: "Charles Vargehese", title: "Director" },
   { name: "Abhinav Kiran Sekhon", title: "Solicitor" },
-  { name: "Sujini Mundayam Kara", title: "Solicitor" },
+  { name: "Sujini Mundayam Kara", title: "Solicitor", image: "/images/team/Sujini Mundayam Kara.webp" },
 ];
 
 const suppliedProfiles: Person[] = [
+  { name: "Sujini Mundayam Kara", title: "Solicitor", image: "/images/team/Sujini Mundayam Kara.webp" },
+  { name: "Michael Job", title: "Paralegal", image: "/images/team/Michael Job.webp" },
+  { name: "Isshak Jaleel", title: "Paralegal", image: "/images/team/Isshak Jaleel.webp" },
+  { name: "Kukku Joy", title: "Paralegal", image: "/images/team/Kukku Joy.webp" },
+  { name: "Agimol Sonya", title: "Paralegal", image: "/images/team/Agimol Sonya.webp" },
   { name: "Abhirami", title: "", image: "/images/team/Abhirami.jpg" },
   { name: "Alan Joy", title: "Paralegal", image: "/images/team/Alan Joy.jpg" },
   { name: "Ajai Chalappuram", title: "Paralegal", image: "/images/team/Ajay.jpg" },
@@ -26,11 +31,11 @@ const suppliedProfiles: Person[] = [
   { name: "Annet Mary", title: "Paralegal", image: "/images/team/Annet.jpg" },
   { name: "Arathy Kurup", title: "Paralegal", image: "/images/team/Arathy.jpg" },
   { name: "Arun Babu", title: "Paralegal", image: "/images/team/Arun babu.jpg" },
-  { name: "Bhavini Bhudia", title: "Solicitor", image: "/images/team/Bhavini.jpg" },
+  { name: "Bhavini Bhudia", title: "Director", image: "/images/team/Bhavini.jpg" },
   { name: "Chidiyaraj", title: "Paralegal", image: "/images/team/Chidiyaraj.jpg" },
   { name: "Gurupriya Ramachandran", title: "Paralegal", image: "/images/team/Gurupriya.jpg" },
   { name: "Kausicprabu S", title: "Paralegal", image: "/images/team/Kausicprabu S.jpg" },
-  { name: "Majo Davis", title: "Solicitor", image: "/images/team/Majo.jpg" },
+  { name: "Majo Davis", title: "Director", image: "/images/team/Majo.jpg" },
   { name: "Mary Magdalene Anthony", title: "", image: "/images/team/Mary Magdalene Anthony.jpg" },
   { name: "Melvin Bino", title: "Paralegal", image: "/images/team/Melvin Bino.jpg" },
   { name: "Natarajan Ramachandran", title: "", image: "/images/team/Natarajan Ramachandran.jpg" },
@@ -38,7 +43,7 @@ const suppliedProfiles: Person[] = [
   { name: "Ramakrishnan Kandasamy", title: "Paralegal", image: "/images/team/Ramakrishnan.jpg" },
   { name: "Ramya Logeswaran", title: "Paralegal", image: "/images/team/Ramya.jpg" },
   { name: "Sanjana Koshy", title: "Paralegal", image: "/images/team/Sanjana.jpg" },
-  { name: "Sarath Nair", title: "Solicitor", image: "/images/team/Sarath.jpg" },
+  { name: "Sarath Nair", title: "Director", image: "/images/team/Sarath.jpg" },
   { name: "SreeGovind", title: "Paralegal", image: "/images/team/Sree Govind.jpg" },
   { name: "Stinnie John", title: "Paralegal", image: "/images/team/Stinnie.jpg" },
 ];
@@ -82,11 +87,11 @@ export default function OurPeople() {
     </Container>
 
     <Box component="section" id="conveyancing" sx={{ bgcolor: "#eaf4f9", py: { xs: 6, md: 9 } }}><Container maxWidth="lg">
-      <Box className="people-section-heading"><Typography className="people-eyebrow">Property law</Typography><Typography component="h2">Conveyancing</Typography><Typography>Our conveyancing solicitors and case teams are ready to help with your property transaction.</Typography></Box>
+      <Box className="people-section-heading"><Typography className="people-eyebrow">Property law</Typography><Typography component="h2">Conveyancing</Typography><Typography>Our conveyancing solicitors and case teams are SME to help with your property transaction.</Typography></Box>
       <Box className="lead-grid">{conveyancingLeads.map((person) => <Box className="lead-card" key={person.name}><Portrait person={person} compact /></Box>)}</Box>
       <Box className="team-grid">{conveyancingTeams.map(([label, lead, paralegal, phone, leadImage, paralegalImage]) => <Box className="case-team" key={label}>
         <Box className="case-team-top"><Box><Typography component="h3" sx={{ color: "#18366f", fontWeight: 800 }}>{label}</Typography><Typography sx={{ color: "#61718a", fontSize: 12, mt: .25 }}>Your dedicated case team</Typography></Box></Box>
-        <Box className="case-team-members"><Portrait person={{ name: lead, title: "Paralegal", image: suppliedProfiles.find(person => person.name === lead)?.image ?? leadImage }} compact /><Portrait person={{ name: paralegal, title: "Paralegal", image: suppliedProfiles.find(person => person.name === paralegal)?.image ?? paralegalImage }} compact /></Box>
+        <Box className="case-team-members"><Portrait person={{ name: lead, title: conveyancingLeads.find(person => person.name === lead)?.title ?? "Paralegal", image: suppliedProfiles.find(person => person.name === lead)?.image ?? leadImage }} compact />{paralegal.split(" and ").map(name => <Portrait key={name} person={{ name, title: "Paralegal", image: suppliedProfiles.find(person => person.name === name)?.image ?? paralegalImage }} compact />)}</Box>
         {phone && <Typography component="a" href={`tel:${phone.replace(/[^+\d]/g, "")}`} className="case-team-phone"><CallOutlined fontSize="small" />{phone}</Typography>}
       </Box>)}</Box>
     </Container></Box>
@@ -95,7 +100,7 @@ export default function OurPeople() {
       <Box component="section" className="department-panel immigration-panel" aria-labelledby="immigration-heading">
         <Box className="department-heading"><Box><Typography className="people-eyebrow">Specialist team</Typography><Typography component="h2" id="immigration-heading">Immigration</Typography></Box><Link to="/services/immigration" className="department-service-link" aria-label="Explore immigration services"><ArrowOutward /></Link></Box>
         <Box className="specialist-profiles">
-          {[{ name: "Majo Davis", title: "Solicitor", image: "/images/team/Majo.jpg" }, { name: "SreeGovind", title: "Paralegal", image: "/images/team/Sree Govind.jpg" }].map((person) => <Box className="specialist-profile" key={person.name}><Box className="specialist-photo"><img {...portraitImage(person.image, "(max-width: 600px) 45vw, (max-width: 900px) 50vw, 30vw")} alt={person.name} loading="lazy" decoding="async" width="960" height="640" /></Box><Box className="specialist-caption"><Typography component="h3">{person.name}</Typography><Typography>{person.title}</Typography></Box></Box>)}
+          {[{ name: "Majo Davis", title: "Director", image: "/images/team/Majo.jpg" }, { name: "SreeGovind", title: "Paralegal", image: "/images/team/Sree Govind.jpg" }].map((person) => <Box className="specialist-profile" key={person.name}><Box className="specialist-photo"><img {...portraitImage(person.image, "(max-width: 600px) 45vw, (max-width: 900px) 50vw, 30vw")} alt={person.name} loading="lazy" decoding="async" width="960" height="640" /></Box><Box className="specialist-caption"><Typography component="h3">{person.name}</Typography><Typography>{person.title}</Typography></Box></Box>)}
         </Box>
         <Box className="support-roster"><Typography component="h3" className="support-roster-label">Working alongside you</Typography><Box className="support-roster-grid"><Portrait person={{ name: "Chidiyaraj", title: "Paralegal", image: "/images/team/Chidiyaraj.jpg" }} compact /><Portrait person={{ name: "Kausicprabu S", title: "Paralegal", image: "/images/team/Kausicprabu S.jpg" }} compact /><Portrait person={{ name: "Andrews Renil", title: "Legal Assistant" }} compact /></Box></Box>
       </Box>

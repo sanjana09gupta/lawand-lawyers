@@ -4,6 +4,7 @@ import { CheckCircle, ArrowForward } from "@mui/icons-material";
 import PageHeader from "../components/PageHeader";
 import { services } from "../data/content";
 import { conveyancingFeesUrl } from "../data/links";
+import { portraitImage } from "../lib/portraitImage";
 
 const individualImmigrationServices = [
   "Investor, Global Talent, Innovator and Start-up routes",
@@ -125,7 +126,7 @@ function ImmigrationDetail() {
         <Box sx={{ mt: { xs: 5, sm: 8 }, pt: { xs: 4, sm: 6 }, borderTop: "1px solid rgba(29,52,104,.16)" }}>
           <Typography component="h2" sx={{ color: "#1d3468", fontFamily: "Inter, system-ui, sans-serif", fontWeight: 800, fontSize: { xs: 27, sm: 34 } }}>Our immigration experts</Typography>
           <Grid container spacing={3} sx={{ mt: 1 }}>
-            {[{ name: "Raju Radhakrishnan", role: "Director", slug: "raju-radhakrishnan", image: "/images/raju.jpg" }, { name: "Majo Jose", role: "Director", slug: "majo-jose", image: null }].map((expert) => <Grid key={expert.slug} size={{ xs: 12, sm: 6 }}><Box component={Link} to={`/team/${expert.slug}`} sx={{ display: "flex", alignItems: "center", gap: 2, p: 2, textDecoration: "none", color: "#0d1424", border: "1px solid rgba(29,52,104,.16)", borderRadius: 2, "&:hover": { borderColor: "#2f74bd", bgcolor: "#f3f6fa" } }}>{expert.image ? <Box component="img" src={expert.image} alt="" sx={{ width: 60, height: 60, borderRadius: "50%", objectFit: "cover", objectPosition: "center top" }} /> : <Box sx={{ display: "grid", placeItems: "center", width: 60, height: 60, borderRadius: "50%", bgcolor: "#e3f1fa", color: "#22458a", fontWeight: 800 }}>M</Box>}<Box><Typography sx={{ fontWeight: 800 }}>{expert.name}</Typography><Typography sx={{ color: "#4a5468", fontSize: 14 }}>{expert.role}</Typography></Box></Box></Grid>)}
+            {[{ name: "Raju Radhakrishnan", role: "Director", slug: "raju-radhakrishnan", image: "/images/raju.jpg" }, { name: "Majo Jose", role: "Director", slug: "majo-jose", image: null }].map((expert) => <Grid key={expert.slug} size={{ xs: 12, sm: 6 }}><Box component={Link} to={`/team/${expert.slug}`} sx={{ display: "flex", alignItems: "center", gap: 2, p: 2, textDecoration: "none", color: "#0d1424", border: "1px solid rgba(29,52,104,.16)", borderRadius: 2, "&:hover": { borderColor: "#2f74bd", bgcolor: "#f3f6fa" } }}>{expert.image ? <Box component="img" {...portraitImage(expert.image, "60px")} loading="lazy" decoding="async" alt="" sx={{ width: 60, height: 60, borderRadius: "50%", objectFit: "cover", objectPosition: "center top" }} /> : <Box sx={{ display: "grid", placeItems: "center", width: 60, height: 60, borderRadius: "50%", bgcolor: "#e3f1fa", color: "#22458a", fontWeight: 800 }}>M</Box>}<Box><Typography sx={{ fontWeight: 800 }}>{expert.name}</Typography><Typography sx={{ color: "#4a5468", fontSize: 14 }}>{expert.role}</Typography></Box></Box></Grid>)}
           </Grid>
         </Box>
       </Container>
@@ -136,7 +137,7 @@ function ImmigrationDetail() {
 function ConveyancingDetail() {
   const experts = [
     { name: "Francis Mathew", role: "Senior Director", slug: "francis-mathew", image: "/images/francis-mathew.jpeg" },
-    { name: "Bhavini Bhudia", role: "Director", slug: "bhavini-bhudia", image: "/images/bhavini.webp" },
+    { name: "Bhavini Bhudia", role: "Director", slug: "bhavini-bhudia", image: "/images/team/Bhavini.jpg" },
   ];
 
   return <>
@@ -174,7 +175,7 @@ function ConveyancingDetail() {
             <Box sx={{ mt: 4, pt: 4, borderTop: "1px solid rgba(29,52,104,.16)" }}>
               <Typography component="h2" sx={{ color: "#1d3468", fontFamily: "Inter, system-ui, sans-serif", fontWeight: 800, fontSize: { xs: 25, sm: 31 } }}>Our conveyancing experts</Typography>
               <Grid container spacing={2} sx={{ mt: 1 }}>
-                {experts.map((expert) => <Grid key={expert.slug} size={{ xs: 12, sm: 6 }}><Box component={Link} to={`/team/${expert.slug}`} sx={{ display: "flex", alignItems: "center", gap: 2, p: 2, textDecoration: "none", color: "#0d1424", border: "1px solid rgba(29,52,104,.16)", "&:hover": { borderColor: "#2f74bd", bgcolor: "#f3f6fa" } }}><Box component="img" src={expert.image} alt="" sx={{ width: 64, height: 64, borderRadius: "50%", objectFit: "cover", objectPosition: "center top" }} /><Box><Typography sx={{ fontWeight: 800 }}>{expert.name}</Typography><Typography sx={{ color: "#4a5468", fontSize: 14 }}>{expert.role}</Typography></Box></Box></Grid>)}
+                {experts.map((expert) => <Grid key={expert.slug} size={{ xs: 12, sm: 6 }}><Box component={Link} to={`/team/${expert.slug}`} sx={{ display: "flex", alignItems: "center", gap: 2, p: 2, textDecoration: "none", color: "#0d1424", border: "1px solid rgba(29,52,104,.16)", "&:hover": { borderColor: "#2f74bd", bgcolor: "#f3f6fa" } }}><Box component="img" {...portraitImage(expert.image, "64px")} loading="lazy" decoding="async" alt="" sx={{ width: 64, height: 64, borderRadius: "50%", objectFit: "cover", objectPosition: "center top" }} /><Box><Typography sx={{ fontWeight: 800 }}>{expert.name}</Typography><Typography sx={{ color: "#4a5468", fontSize: 14 }}>{expert.role}</Typography></Box></Box></Grid>)}
               </Grid>
             </Box>
           </Grid>

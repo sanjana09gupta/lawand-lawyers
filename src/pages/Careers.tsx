@@ -5,6 +5,7 @@ import { Box, Button, Checkbox, Container, FormControlLabel, Grid, MenuItem, Tex
 import { Link } from "react-router-dom";
 import { careers, team } from "../data/content";
 import { apiUrl } from "../lib/api";
+import { portraitImage } from "../lib/portraitImage";
 
 const benefits = [
   ["Grow with responsibility", "Take ownership of meaningful work with experienced colleagues close by."],
@@ -161,7 +162,7 @@ export default function CareersPage() {
         <Container maxWidth="lg">
           <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" }, alignItems: { md: "end" }, justifyContent: "space-between", gap: 3 }}><Box><Typography component="h2" sx={{ ...titleSx, fontSize: { xs: 31, sm: 40 } }}>Meet the people behind the work.</Typography><Typography sx={{ color: "#52637e", fontSize: 16, lineHeight: 1.6, maxWidth: 550, mt: 1.5 }}>You will work alongside experienced lawyers who care about quality, clarity and doing right by clients.</Typography></Box><Button component={Link} to="/#team" endIcon={<ArrowForward />} sx={{ color: "#22458a", fontWeight: 800, textTransform: "none", whiteSpace: "nowrap" }}>Meet the full team</Button></Box>
           <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", sm: "repeat(3, 1fr)" }, gap: 2, mt: 4 }}>
-            {team.slice(0, 3).map((person) => <Box component={Link} to={`/team/${person.slug}`} key={person.slug} sx={{ display: "block", color: "inherit", textDecoration: "none", borderRadius: "14px", overflow: "hidden", bgcolor: "#fff", transition: "transform 180ms ease, box-shadow 180ms ease", "&:hover": { transform: "translateY(-3px)", boxShadow: "0 12px 26px rgba(34, 69, 138, 0.15)" } }}><Box component="img" src={person.photo ?? "/images/logo-icon.png"} alt={person.name} sx={{ display: "block", width: "100%", height: { xs: 260, sm: 220 }, objectFit: "cover", objectPosition: "top" }} /><Box sx={{ p: 2 }}><Typography sx={{ color: "#1e3d7a", fontWeight: 800, fontSize: 18 }}>{person.name}</Typography><Typography sx={{ color: "#60728f", fontSize: 14, mt: 0.4 }}>{person.role}</Typography></Box></Box>)}
+            {team.slice(0, 3).map((person) => <Box component={Link} to={`/team/${person.slug}`} key={person.slug} sx={{ display: "block", color: "inherit", textDecoration: "none", borderRadius: "14px", overflow: "hidden", bgcolor: "#fff", transition: "transform 180ms ease, box-shadow 180ms ease", "&:hover": { transform: "translateY(-3px)", boxShadow: "0 12px 26px rgba(34, 69, 138, 0.15)" } }}><Box component="img" {...portraitImage(person.photo ?? "/images/logo-icon.png", "(max-width: 599px) calc(100vw - 48px), (max-width: 1199px) 33vw, 384px")} loading="lazy" decoding="async" alt={person.name} sx={{ display: "block", width: "100%", height: { xs: 260, sm: 220 }, objectFit: "cover", objectPosition: "top" }} /><Box sx={{ p: 2 }}><Typography sx={{ color: "#1e3d7a", fontWeight: 800, fontSize: 18 }}>{person.name}</Typography><Typography sx={{ color: "#60728f", fontSize: 14, mt: 0.4 }}>{person.role}</Typography></Box></Box>)}
           </Box>
         </Container>
       </Box>
