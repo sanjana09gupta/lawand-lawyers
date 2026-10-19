@@ -276,8 +276,8 @@
   .container-px { padding-left:18px; padding-right:18px; }
   .reference-nav { min-height:56px; }
   .nav-menu { width:44px; height:44px; margin-left:6px; }
-  .nav-contact { width:48px; min-height:44px; margin-right:5px; padding:10px; }
-  .nav-contact svg { width:19px; height:19px; }
+  .nav-contact { width:auto; min-width:max-content; min-height:44px; margin-right:5px; padding:10px 12px; gap:6px; font-size:10px; letter-spacing:.35px; }
+  .nav-contact svg { width:16px; height:16px; }
   .square-link { min-height:48px; padding:14px 16px; font-size:11px; letter-spacing:.08em; }
   .MuiButton-root { min-height:44px!important; font-size:13px!important; line-height:1.2!important; }
   .MuiIconButton-root { min-width:40px!important; min-height:40px!important; }

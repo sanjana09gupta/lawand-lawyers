@@ -20,6 +20,7 @@ const conveyancingLeads: Person[] = [
 const suppliedProfiles: Person[] = [
   { name: "Sujini Mundayam Kara", title: "Solicitor", image: "/images/team/Sujini Mundayam Kara.webp" },
   { name: "Michael Job", title: "Paralegal", image: "/images/team/Michael Job.webp" },
+  { name: "Margaret James", title: "Paralegal", image: "/images/team/Margaret James.webp" },
   { name: "Isshak Jaleel", title: "Paralegal", image: "/images/team/Isshak Jaleel.webp" },
   { name: "Kukku Joy", title: "Paralegal", image: "/images/team/Kukku Joy.webp" },
   { name: "Agimol Sonya", title: "Paralegal", image: "/images/team/Agimol Sonya.webp" },

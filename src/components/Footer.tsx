@@ -10,8 +10,8 @@ import { conveyancingFeesUrl } from "../data/links";
 const social = [
   { icon: LinkedInIcon, href: "https://www.linkedin.com/company/lawandlawyersuk/", label: "LinkedIn" },
   { icon: InstagramIcon, href: "https://www.instagram.com/lawandlawyersuk?stkn=MXM4cGl3NmZxNGdjeg==", label: "Instagram" },
-  { icon: FacebookIcon, href: "#", label: "Facebook" },
-  { icon: XIcon, href: "#", label: "X" },
+  { icon: FacebookIcon, href: "https://www.facebook.com/lawandlawyersuk", label: "Facebook" },
+  { icon: XIcon, href: "https://x.com/LawandLawyersUK", label: "X" },
 ];
 
 const company = [
