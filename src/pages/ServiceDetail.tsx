@@ -234,6 +234,19 @@ export default function ServiceDetail() {
               >
                 {service.slug === "residential-conveyancing" ? "Book a Consultation" : "Contact our team"}
               </Button>
+              {service.slug === "wills-and-probate" && (
+                <Typography sx={{ mt: 2, color: "#4a5468", fontSize: 16, lineHeight: 1.6 }}>
+                  For Wills and Probate enquiries, email{" "}
+                  <Box
+                    component="a"
+                    href="mailto:wills@lawandlawyers.co.uk"
+                    sx={{ color: "#1f7f59", fontWeight: 700, textUnderlineOffset: "3px", "&:hover": { color: "#14573d" } }}
+                  >
+                    wills@lawandlawyers.co.uk
+                  </Box>
+                  .
+                </Typography>
+              )}
               {service.slug === "residential-conveyancing" && (
                 <>
                   <Button component={Link} to="/services/residential-conveyancing/new-purchase-quote" variant="text" sx={{ mt: 1.5, display: "block", px: 0 }}>
