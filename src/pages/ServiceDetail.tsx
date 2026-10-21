@@ -126,7 +126,11 @@ function ImmigrationDetail() {
         <Box sx={{ mt: { xs: 5, sm: 8 }, pt: { xs: 4, sm: 6 }, borderTop: "1px solid rgba(29,52,104,.16)" }}>
           <Typography component="h2" sx={{ color: "#1d3468", fontFamily: "Inter, system-ui, sans-serif", fontWeight: 800, fontSize: { xs: 27, sm: 34 } }}>Our immigration experts</Typography>
           <Grid container spacing={3} sx={{ mt: 1 }}>
-            {[{ name: "Majo Jose", role: "Director", slug: "majo-jose", image: null }].map((expert) => <Grid key={expert.slug} size={{ xs: 12, sm: 6 }}><Box component={Link} to={`/team/${expert.slug}`} sx={{ display: "flex", alignItems: "center", gap: 2, p: 2, textDecoration: "none", color: "#0d1424", border: "1px solid rgba(29,52,104,.16)", borderRadius: 2, "&:hover": { borderColor: "#2f74bd", bgcolor: "#f3f6fa" } }}>{expert.image ? <Box component="img" {...portraitImage(expert.image, "60px")} loading="lazy" decoding="async" alt="" sx={{ width: 60, height: 60, borderRadius: "50%", objectFit: "cover", objectPosition: "center top" }} /> : <Box sx={{ display: "grid", placeItems: "center", width: 60, height: 60, borderRadius: "50%", bgcolor: "#e3f1fa", color: "#22458a", fontWeight: 800 }}>M</Box>}<Box><Typography sx={{ fontWeight: 800 }}>{expert.name}</Typography><Typography sx={{ color: "#4a5468", fontSize: 14 }}>{expert.role}</Typography></Box></Box></Grid>)}
+            {[
+              { name: "Majo Jose", role: "Director", slug: "majo-jose", image: null },
+              { name: "SreeGovind", role: "Paralegal", slug: "sreegovind", image: "/images/team/Sree Govind.jpg" },
+              { name: "Chidiyaraj", role: "Paralegal", slug: "chidiyaraj", image: "/images/team/Chidiyaraj.jpg" },
+            ].map((expert) => <Grid key={expert.slug} size={{ xs: 12, sm: 6 }}><Box component="article" sx={{ display: "flex", alignItems: "center", gap: 2, p: 2, color: "#0d1424", border: "1px solid rgba(29,52,104,.16)", borderRadius: 2 }}>{expert.image ? <Box component="img" {...portraitImage(expert.image, "60px")} loading="lazy" decoding="async" alt="" sx={{ width: 60, height: 60, borderRadius: "50%", objectFit: "cover", objectPosition: "center top" }} /> : <Box sx={{ display: "grid", placeItems: "center", width: 60, height: 60, borderRadius: "50%", bgcolor: "#e3f1fa", color: "#22458a", fontWeight: 800 }}>M</Box>}<Box><Typography sx={{ fontWeight: 800 }}>{expert.name}</Typography><Typography sx={{ color: "#4a5468", fontSize: 14 }}>{expert.role}</Typography></Box></Box></Grid>)}
           </Grid>
         </Box>
       </Container>
