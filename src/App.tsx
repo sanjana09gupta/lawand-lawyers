@@ -57,7 +57,6 @@ export default function App() {
                 <Route path="/privacy-policy" element={<LegalInformation />} />
                 <Route path="/cookie-policy" element={<LegalInformation />} />
                 <Route path="/complaints-procedure" element={<LegalInformation />} />
-                <Route path="/covid-19" element={<LegalInformation />} />
                 <Route path="/corporate-social-responsibility" element={<CorporateSocialResponsibility />} />
                 <Route path="/team/:slug" element={<TeamProfile />} />
                 <Route path="/our-people" element={<OurPeople />} />

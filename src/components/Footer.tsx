@@ -223,8 +223,7 @@ export default function Footer() {
               <Link to="/privacy-policy" className="hover:text-brand-300">Privacy Policy</Link>{" | "}
               <Link to="/cookie-policy" className="hover:text-brand-300">Cookie Policy</Link>{" | "}
               <Link to="/complaints-procedure" className="hover:text-brand-300">Complaints</Link>{" | "}
-              <Link to="/fee-information" className="hover:text-brand-300">Fee Information</Link>{" | "}
-              <Link to="/covid-19" className="hover:text-brand-300">Covid-19</Link>
+              <Link to="/fee-information" className="hover:text-brand-300">Fee Information</Link>
             </p>
           </div>
         </div>

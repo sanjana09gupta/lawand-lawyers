@@ -34,14 +34,6 @@ const pages = {
       ["Legal Ombudsman", "PO Box 6806, Wolverhampton WV1 9WJ. Telephone: 0300 555 0333. Email: enquiries@legalombudsman.org.uk. The SRA deals with concerns about conduct."],
     ],
   },
-  "/covid-19": {
-    title: "Covid-19 Information",
-    eyebrow: "Archived service notice",
-    sections: [
-      ["Current service availability", "Our team continues to support clients. If you need to discuss an appointment, documents or a specific matter, please contact the office directly so we can confirm the most suitable arrangements."],
-      ["Contact the team", "Call +44 20 8586 5657 or email info@lawandlawyers.co.uk for assistance with your matter."],
-    ],
-  },
 } as const;
 
 export default function LegalInformation() {
