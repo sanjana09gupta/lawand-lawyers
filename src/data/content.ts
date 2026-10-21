@@ -345,11 +345,6 @@ export const officeContacts = [
     email: "info@lawandlawyers.co.uk",
   },
   {
-    name: "London - Hornchurch",
-    phone: "+44 (0) 207 062 6666",
-    email: "london@lawandlawyers.co.uk",
-  },
-  {
     name: "Manchester",
     phone: "+44 (0) 161 748 3335",
     email: "manchester@lawandlawyers.co.uk",
