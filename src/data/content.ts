@@ -26,7 +26,7 @@ export const team = [
   {
     name: "Juneeta Valariyil John",
     role: "Director",
-    photo: null,
+    photo: "/images/team/Juneeta Valariyil John.jpeg",
     slug: "juneeta-valariyil-john",
   },
   {
