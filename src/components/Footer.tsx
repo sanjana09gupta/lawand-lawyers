@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import CalendarMonth from "@mui/icons-material/CalendarMonth";
 import Phone from "@mui/icons-material/Phone";
-import StarRounded from "@mui/icons-material/StarRounded";
 import { LinkedInIcon, InstagramIcon, FacebookIcon, XIcon } from "./SocialIcons";
 import { individualServices, businessServices, officeContacts } from "../data/content";
 import { conveyancingFeesUrl } from "../data/links";
@@ -39,17 +38,7 @@ function TrustBadges() {
   const isSraLive = typeof window !== "undefined" && window.location.hostname.replace(/^www\./, "") === SRA_LIVE_HOSTNAME;
 
   return (
-    <div className="mt-5 flex flex-wrap gap-2 sm:mt-6 sm:gap-2.5" aria-label="Client reviews and professional accreditations">
-      <div
-        aria-label="ReviewSolicitors client review badge"
-        className="min-w-36 rounded-lg bg-[#00a849] px-2.5 py-2 text-white sm:min-w-48 sm:px-3 sm:py-2.5"
-      >
-        <p className="text-[12px] font-semibold tracking-wide sm:text-[13px]">reviewsolicitors</p>
-        <div className="mt-1 flex items-center gap-0.5 text-amber-300" aria-hidden="true">
-          {[0, 1, 2, 3, 4].map((star) => <StarRounded key={star} sx={{ fontSize: { xs: 16, sm: 18 } }} />)}
-        </div>
-        <p className="mt-1 text-[9px] font-medium text-white/90 sm:text-[10px]">Independent client reviews</p>
-      </div>
+    <div className="mt-5 flex flex-wrap gap-2 sm:mt-6 sm:gap-2.5" aria-label="Professional accreditations">
       {isSraLive && <div
         aria-label="Authorised and regulated by the Solicitors Regulation Authority"
         className="h-[163px] w-[275px] shrink-0 overflow-hidden bg-white"
