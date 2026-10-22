@@ -45,9 +45,15 @@ function FooterAccordion({ title, children }: { title: string; children: React.R
 function ReviewSolicitorsWidget() {
   useEffect(() => {
     const target = document.getElementById(reviewWidgetId);
-    if (!target) return;
+    if (!target || target.dataset.reviewsolicitorsLoaded === "true") return;
 
-    const loadWidget = () => window.rs?.loadWidget(reviewWidgetId, "3-column-carosel", 10832, {});
+    target.dataset.reviewsolicitorsLoaded = "true";
+
+    const loadWidget = () => {
+      if (target.isConnected && !target.querySelector("iframe")) {
+        window.rs?.loadWidget(reviewWidgetId, "3-column-carosel", 10832, {});
+      }
+    };
     const existingScript = document.querySelector<HTMLScriptElement>('script[data-reviewsolicitors-widget="true"]');
 
     if (window.rs) {
@@ -63,10 +69,9 @@ function ReviewSolicitorsWidget() {
       document.body.appendChild(script);
     }
 
-    return () => target.replaceChildren();
   }, []);
 
-  return <div id={reviewWidgetId} className="min-w-[260px] max-w-full" style={{ position: "relative" }} />;
+  return <div id={reviewWidgetId} className="min-w-[260px] max-w-full [&_iframe]:min-h-[250px]" style={{ position: "relative" }} />;
 }
 
 function TrustBadges() {
