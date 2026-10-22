@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import CalendarMonth from "@mui/icons-material/CalendarMonth";
@@ -24,6 +25,13 @@ const company = [
 
 const directPhone = "+44 7380 866528";
 const SRA_LIVE_HOSTNAME = "lawandlawyers.co.uk";
+const reviewWidgetId = "rswidget_6f69d";
+
+declare global {
+  interface Window {
+    rs?: { loadWidget: (elementId: string, widgetType: string, firmId: number, props: Record<string, unknown>) => void };
+  }
+}
 
 function FooterAccordion({ title, children }: { title: string; children: React.ReactNode }) {
   return <details className="group border-b border-white/10">
@@ -34,11 +42,39 @@ function FooterAccordion({ title, children }: { title: string; children: React.R
   </details>;
 }
 
+function ReviewSolicitorsWidget() {
+  useEffect(() => {
+    const target = document.getElementById(reviewWidgetId);
+    if (!target) return;
+
+    const loadWidget = () => window.rs?.loadWidget(reviewWidgetId, "3-column-carosel", 10832, {});
+    const existingScript = document.querySelector<HTMLScriptElement>('script[data-reviewsolicitors-widget="true"]');
+
+    if (window.rs) {
+      loadWidget();
+    } else if (existingScript) {
+      existingScript.addEventListener("load", loadWidget, { once: true });
+    } else {
+      const script = document.createElement("script");
+      script.src = "https://www.reviewsolicitors.co.uk/widget/rs.js";
+      script.async = true;
+      script.dataset.reviewsolicitorsWidget = "true";
+      script.addEventListener("load", loadWidget, { once: true });
+      document.body.appendChild(script);
+    }
+
+    return () => target.replaceChildren();
+  }, []);
+
+  return <div id={reviewWidgetId} className="min-w-[260px] max-w-full" style={{ position: "relative" }} />;
+}
+
 function TrustBadges() {
   const isSraLive = typeof window !== "undefined" && window.location.hostname.replace(/^www\./, "") === SRA_LIVE_HOSTNAME;
 
   return (
     <div className="mt-5 flex flex-wrap gap-2 sm:mt-6 sm:gap-2.5" aria-label="Professional accreditations">
+      <ReviewSolicitorsWidget />
       {isSraLive && <div
         aria-label="Authorised and regulated by the Solicitors Regulation Authority"
         className="h-[163px] w-[275px] shrink-0 overflow-hidden bg-white"
