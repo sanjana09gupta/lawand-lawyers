@@ -71,7 +71,7 @@ function ReviewSolicitorsWidget() {
 
   }, []);
 
-  return <div id={reviewWidgetId} className="min-w-[260px] max-w-full [&_iframe]:min-h-[250px]" style={{ position: "relative" }} />;
+  return <div id={reviewWidgetId} className="min-w-[260px] max-w-full [&_iframe]:min-h-[536px] sm:[&_iframe]:min-h-[320px]" style={{ position: "relative" }} />;
 }
 
 function TrustBadges() {
