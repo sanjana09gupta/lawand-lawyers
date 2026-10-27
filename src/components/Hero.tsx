@@ -38,6 +38,10 @@ export default function Hero() {
     return () => window.clearTimeout(timer);
   }, [reduced]);
 
+  useEffect(() => {
+    if (video.current) video.current.playbackRate = 0.72;
+  }, [videoReady]);
+
   async function toggleVideo() {
     if (!videoReady) {
       setVideoReady(true);
@@ -52,19 +56,19 @@ export default function Hero() {
       <div className="hero-intro hero-intro-video">
         <div className="hero-intro-content">
           <div className="hero-title-block">
-            <p className="hero-kicker">Trusted Legal Advice</p>
-            <div className="hero-headline" aria-label="Clear legal support.">
-              <motion.span initial={reduced ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65 }}><DancingWord text="Clear" />{" "}<DancingWord text="legal" /></motion.span>
-              <motion.span initial={reduced ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65, delay: .12 }}><DancingWord text="support." /></motion.span>
-            </div>
+            <p className="hero-kicker">London solicitors · SRA regulated</p>
+            <h1 className="hero-headline" aria-label="Immigration and property solicitors in London">
+              <motion.span initial={reduced ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65 }}><DancingWord text="Immigration and property" /></motion.span>
+              <motion.span initial={reduced ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65, delay: .12 }}><DancingWord text="solicitors in London" /></motion.span>
+            </h1>
           </div>
           <div className="hero-summary">
-            <p className="hero-description">Clear, practical and client-focused legal support across property, immigration, wills and probate, employment, family law and dispute resolution. Whether you are buying, selling, remortgaging or managing a commercial transaction, our experienced team will guide you through every stage.</p>
-            <div className="hero-actions"><Link to="/services" className="square-link">Explore services <ArrowOutward /></Link></div>
+            <p className="hero-description">Law and Lawyers is an SRA-regulated London law firm advising on immigration, conveyancing, wills and probate, employment and family law. Speak to an experienced solicitor today.</p>
+            <div className="hero-actions"><Link to="/contact" className="square-link">Get a free quote <ArrowOutward /></Link></div>
           </div>
         </div>
         <div className="hero-video-stage">
-          <video ref={video} className="hero-background-video" autoPlay={videoReady && !reduced} muted loop playsInline preload="none" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} aria-label="Law and Lawyers introduction video">
+          <video ref={video} className="hero-background-video" autoPlay={videoReady && !reduced} muted loop playsInline preload="none" onLoadedMetadata={() => { if (video.current) video.current.playbackRate = 0.72; }} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} aria-label="Law and Lawyers introduction video">
             {videoReady && <source src="/videos/banner-video.mp4" type="video/mp4" />}
           </video>
           <div className="hero-video-overlay" />

@@ -5,6 +5,7 @@ import PageHeader from "../components/PageHeader";
 import { services } from "../data/content";
 import { conveyancingFeesUrl } from "../data/links";
 import { portraitImage } from "../lib/portraitImage";
+import ReviewSolicitorsWidget from "../components/ReviewSolicitorsWidget";
 
 const individualImmigrationServices = [
   "Investor, Global Talent, Innovator and Start-up routes",
@@ -107,6 +108,18 @@ function ImmigrationDetail() {
             </Box>
           </Grid>
         </Grid>
+
+        <Box component="section" aria-labelledby="immigration-reviews-heading" sx={{ mt: { xs: 5, sm: 8 }, pt: { xs: 4, sm: 6 }, borderTop: "1px solid rgba(29,52,104,.16)" }}>
+          <Typography id="immigration-reviews-heading" component="h2" sx={{ color: "#1d3468", fontFamily: "Inter, system-ui, sans-serif", fontWeight: 800, fontSize: { xs: 27, sm: 34 } }}>
+            Client reviews
+          </Typography>
+          <Typography sx={{ mt: 1, maxWidth: 620, color: "#4a5468", fontSize: 16, lineHeight: 1.7 }}>
+            See feedback from clients who have used our immigration services.
+          </Typography>
+          <Box sx={{ mt: 3, maxWidth: 960 }}>
+            <ReviewSolicitorsWidget id="rswidget_immigration" className="max-w-full [&_iframe]:min-h-[536px] sm:[&_iframe]:min-h-[320px]" />
+          </Box>
+        </Box>
 
         <Grid container spacing={3} sx={{ mt: { xs: 5, sm: 8 } }}>
           <Grid size={{ xs: 12, md: 6 }}>

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import CalendarMonth from "@mui/icons-material/CalendarMonth";
@@ -6,6 +5,7 @@ import Phone from "@mui/icons-material/Phone";
 import { LinkedInIcon, InstagramIcon, FacebookIcon, XIcon } from "./SocialIcons";
 import { individualServices, businessServices, officeContacts } from "../data/content";
 import { conveyancingFeesUrl } from "../data/links";
+import ReviewSolicitorsWidget from "./ReviewSolicitorsWidget";
 
 const social = [
   { icon: LinkedInIcon, href: "https://www.linkedin.com/company/lawandlawyersuk/", label: "LinkedIn" },
@@ -25,13 +25,6 @@ const company = [
 
 const directPhone = "+44 7380 866528";
 const SRA_LIVE_HOSTNAME = "lawandlawyers.co.uk";
-const reviewWidgetId = "rswidget_6f69d";
-
-declare global {
-  interface Window {
-    rs?: { loadWidget: (elementId: string, widgetType: string, firmId: number, props: Record<string, unknown>) => void };
-  }
-}
 
 function FooterAccordion({ title, children }: { title: string; children: React.ReactNode }) {
   return <details className="group border-b border-white/10">
@@ -42,44 +35,12 @@ function FooterAccordion({ title, children }: { title: string; children: React.R
   </details>;
 }
 
-function ReviewSolicitorsWidget() {
-  useEffect(() => {
-    const target = document.getElementById(reviewWidgetId);
-    if (!target || target.dataset.reviewsolicitorsLoaded === "true") return;
-
-    target.dataset.reviewsolicitorsLoaded = "true";
-
-    const loadWidget = () => {
-      if (target.isConnected && !target.querySelector("iframe")) {
-        window.rs?.loadWidget(reviewWidgetId, "3-column-carosel", 10832, {});
-      }
-    };
-    const existingScript = document.querySelector<HTMLScriptElement>('script[data-reviewsolicitors-widget="true"]');
-
-    if (window.rs) {
-      loadWidget();
-    } else if (existingScript) {
-      existingScript.addEventListener("load", loadWidget, { once: true });
-    } else {
-      const script = document.createElement("script");
-      script.src = "https://www.reviewsolicitors.co.uk/widget/rs.js";
-      script.async = true;
-      script.dataset.reviewsolicitorsWidget = "true";
-      script.addEventListener("load", loadWidget, { once: true });
-      document.body.appendChild(script);
-    }
-
-  }, []);
-
-  return <div id={reviewWidgetId} className="min-w-[260px] max-w-full [&_iframe]:min-h-[536px] sm:[&_iframe]:min-h-[320px]" style={{ position: "relative" }} />;
-}
-
 function TrustBadges() {
   const isSraLive = typeof window !== "undefined" && window.location.hostname.replace(/^www\./, "") === SRA_LIVE_HOSTNAME;
 
   return (
     <div className="mt-5 flex flex-wrap gap-2 sm:mt-6 sm:gap-2.5" aria-label="Professional accreditations">
-      <ReviewSolicitorsWidget />
+      <ReviewSolicitorsWidget id="rswidget_6f69d" className="min-w-[260px] max-w-full [&_iframe]:min-h-[536px] sm:[&_iframe]:min-h-[320px]" />
       {isSraLive && <div
         aria-label="Authorised and regulated by the Solicitors Regulation Authority"
         className="h-[163px] w-[275px] shrink-0 overflow-hidden bg-white"
