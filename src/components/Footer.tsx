@@ -5,7 +5,6 @@ import Phone from "@mui/icons-material/Phone";
 import { LinkedInIcon, InstagramIcon, FacebookIcon, XIcon } from "./SocialIcons";
 import { individualServices, businessServices, officeContacts } from "../data/content";
 import { conveyancingFeesUrl } from "../data/links";
-import ReviewSolicitorsWidget from "./ReviewSolicitorsWidget";
 
 const social = [
   { icon: LinkedInIcon, href: "https://www.linkedin.com/company/lawandlawyersuk/", label: "LinkedIn" },
@@ -39,34 +38,31 @@ function TrustBadges() {
   const isSraLive = typeof window !== "undefined" && window.location.hostname.replace(/^www\./, "") === SRA_LIVE_HOSTNAME;
 
   return (
-    <div className="mt-5 sm:mt-6" aria-label="Professional accreditations">
-      <ReviewSolicitorsWidget id="rswidget_6f69d" className="mx-auto w-full max-w-[380px] sm:mx-0 sm:max-w-[440px] [&_iframe]:min-h-[536px] sm:[&_iframe]:min-h-[320px]" />
-      <div className="mt-5 flex flex-wrap items-center justify-center gap-3 sm:justify-start sm:gap-2.5">
-        {isSraLive && <div
-          aria-label="Authorised and regulated by the Solicitors Regulation Authority"
-          className="h-[163px] w-[275px] shrink-0 overflow-hidden bg-white"
-        >
-          <div className="relative aspect-[275/163] w-full">
-            <iframe
-              title="Solicitors Regulation Authority digital badge"
-              src="https://cdn.yoshki.com/iframe/55845r.html"
-              frameBorder="0"
-              scrolling="no"
-              loading="lazy"
-              className="absolute inset-0 h-full w-full border-0"
-            />
-          </div>
+    <div className="mt-5 flex flex-wrap items-center justify-center gap-3 sm:mt-6 sm:justify-start sm:gap-2.5" aria-label="Professional accreditations">
+      {isSraLive && <div
+        aria-label="Authorised and regulated by the Solicitors Regulation Authority"
+        className="h-[163px] w-[275px] shrink-0 overflow-hidden bg-white"
+      >
+        <div className="relative aspect-[275/163] w-full">
+          <iframe
+            title="Solicitors Regulation Authority digital badge"
+            src="https://cdn.yoshki.com/iframe/55845r.html"
+            frameBorder="0"
+            scrolling="no"
+            loading="lazy"
+            className="absolute inset-0 h-full w-full border-0"
+          />
         </div>
-        }
-        <div className="flex h-[66px] w-[92px] items-center justify-center p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Lexcel accredited by the Law Society">
-          <img src="/images/lexcel-accreditation.png" alt="Lexcel accredited by the Law Society" className="max-h-full max-w-full object-contain" />
-        </div>
-        <div className="flex h-[66px] w-[92px] items-center justify-center p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Conveyancing Quality Scheme accredited by the Law Society">
-          <img src="/images/cqs-logo-2026.png" alt="Conveyancing Quality Scheme accredited by the Law Society" className="max-h-full max-w-full object-contain" />
-        </div>
-        <div className="flex h-[66px] w-[92px] items-center justify-center p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Cyber Essentials certified">
-          <img src="/images/recog3.png" alt="Cyber Essentials certified" className="max-h-full max-w-full object-contain" />
-        </div>
+      </div>
+      }
+      <div className="flex h-[66px] w-[92px] items-center justify-center p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Lexcel accredited by the Law Society">
+        <img src="/images/lexcel-accreditation.png" alt="Lexcel accredited by the Law Society" className="max-h-full max-w-full object-contain" />
+      </div>
+      <div className="flex h-[66px] w-[92px] items-center justify-center p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Conveyancing Quality Scheme accredited by the Law Society">
+        <img src="/images/cqs-logo-2026.png" alt="Conveyancing Quality Scheme accredited by the Law Society" className="max-h-full max-w-full object-contain" />
+      </div>
+      <div className="flex h-[66px] w-[92px] items-center justify-center p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Cyber Essentials certified">
+        <img src="/images/recog3.png" alt="Cyber Essentials certified" className="max-h-full max-w-full object-contain" />
       </div>
     </div>
   );
