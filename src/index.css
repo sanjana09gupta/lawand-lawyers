@@ -34,18 +34,6 @@
   .scroll-section { transform:none!important; border-radius:0!important; }
 }
 
-.dancing-word { display:inline-block; white-space:nowrap; }
-.dancing-letter { position:relative; display:inline-block; transform-origin:50% 85%; }
-.dancing-word-outlined { color:transparent; -webkit-text-stroke:1.6px #22458a; }
-@media(hover:hover) and (pointer:fine) {
-  .dancing-letter:hover { z-index:1; }
-  .dancing-word-outlined .dancing-letter:hover { text-shadow:2px 3px 0 #22458a; }
-}
-@media(prefers-reduced-motion:reduce) {
-  .dancing-letter { transform:none!important; }
-  .dancing-word-outlined .dancing-letter:hover { text-shadow:none; }
-}
-
 .consultation-line-section { position:relative; overflow:hidden; background:linear-gradient(128deg,#0d1c42 0%,#17366f 52%,#4a97d6 100%); color:#e3f1fa; padding:56px 0 0; }
 .consultation-copy { padding-inline:clamp(24px,5vw,72px); }
 .consultation-copy h2 { margin:20px 0 24px; font:600 clamp(30px,4vw,52px)/1.1 "Inter",system-ui,sans-serif; color:#fcfdfe; letter-spacing:-.035em; }

@@ -5,27 +5,6 @@ import ArrowOutward from "@mui/icons-material/ArrowOutward";
 import Pause from "@mui/icons-material/Pause";
 import PlayArrow from "@mui/icons-material/PlayArrow";
 
-function DancingWord({ text, outlined = false }: { text: string; outlined?: boolean }) {
-  const reduced = useReducedMotion();
-  return (
-    <span
-      className={`dancing-word${outlined ? " dancing-word-outlined" : ""}`}
-      aria-hidden="true"
-    >
-      {Array.from(text).map((letter, index) => (
-        <motion.span
-          key={`${letter}-${index}`}
-          className="dancing-letter"
-          initial={false}
-          animate={{ y: 0, scale: 1 }}
-          whileHover={reduced ? undefined : { y: -5, scale: 1.18 }}
-          transition={{ type: "spring", stiffness: 320, damping: 20 }}
-        >{letter}</motion.span>
-      ))}
-    </span>
-  );
-}
-
 export default function Hero() {
   const reduced = useReducedMotion();
   const video = useRef<HTMLVideoElement>(null);
@@ -58,9 +37,10 @@ export default function Hero() {
           <div className="hero-title-block">
             <p className="hero-kicker">London solicitors · SRA regulated</p>
             <h1 className="hero-headline" aria-label="Immigration and property solicitors in London">
-              <motion.span initial={reduced ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65 }}><DancingWord text="Immigration" /></motion.span>
-              <motion.span initial={reduced ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65, delay: .1 }}><DancingWord text="and property" /></motion.span>
-              <motion.span initial={reduced ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65, delay: .2 }}><DancingWord text="solicitors in London" /></motion.span>
+              <motion.span initial={reduced ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .55 }}>Immigration</motion.span>
+              <motion.span initial={reduced ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .55, delay: .08 }}>and property</motion.span>
+              <motion.span initial={reduced ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .55, delay: .16 }}>solicitors</motion.span>
+              <motion.span initial={reduced ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .55, delay: .24 }}>in London</motion.span>
             </h1>
           </div>
           <div className="hero-summary">
