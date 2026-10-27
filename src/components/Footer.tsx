@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import CalendarMonth from "@mui/icons-material/CalendarMonth";
 import Phone from "@mui/icons-material/Phone";
+import StarRounded from "@mui/icons-material/StarRounded";
 import { LinkedInIcon, InstagramIcon, FacebookIcon, XIcon } from "./SocialIcons";
 import { individualServices, businessServices, officeContacts } from "../data/content";
 import { conveyancingFeesUrl } from "../data/links";
@@ -24,6 +25,7 @@ const company = [
 
 const directPhone = "+44 7380 866528";
 const SRA_LIVE_HOSTNAME = "lawandlawyers.co.uk";
+const reviewProfileUrl = "https://www.reviewsolicitors.co.uk/london/london/law-and-lawyers-ltd?rating=1&source=GOOGLE#section-reviews";
 
 function FooterAccordion({ title, children }: { title: string; children: React.ReactNode }) {
   return <details className="group border-b border-white/10">
@@ -39,6 +41,19 @@ function TrustBadges() {
 
   return (
     <div className="mt-5 flex flex-wrap items-center justify-center gap-3 sm:mt-6 sm:justify-start sm:gap-2.5" aria-label="Professional accreditations">
+      <a
+        href={reviewProfileUrl}
+        target="_blank"
+        rel="noreferrer"
+        className="group flex h-[84px] w-[208px] shrink-0 flex-col justify-center rounded-xl bg-[#00a84f] px-4 text-white transition-transform duration-200 hover:-translate-y-0.5 hover:bg-[#008f43] focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-brand-300"
+        aria-label="Read Law and Lawyers client reviews on ReviewSolicitors"
+      >
+        <span className="text-[17px] font-semibold leading-none tracking-[-0.05em]">reviewsolicitors</span>
+        <span className="mt-1.5 flex items-center gap-0.5" aria-hidden="true">
+          {[0, 1, 2, 3, 4].map((star) => <StarRounded key={star} sx={{ fontSize: 17 }} />)}
+        </span>
+        <span className="mt-1 text-[11px] font-medium text-white/90">Independent client reviews</span>
+      </a>
       {isSraLive && <div
         aria-label="Authorised and regulated by the Solicitors Regulation Authority"
         className="h-[163px] w-[275px] shrink-0 overflow-hidden bg-white"
