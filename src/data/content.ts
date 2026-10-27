@@ -28,6 +28,11 @@ export const team = [
     role: "Director",
     photo: "/images/team/Juneeta Valariyil John.jpeg",
     slug: "juneeta-valariyil-john",
+    profile: {
+      sraNumber: "654711",
+      biography: "Juneeta studied Law with Criminology at the University of Lancashire and went on to complete an LLM in International Human Rights at the University of Liverpool and an LLM in Legal Practice in the University of Lancashire. Since qualifying as a solicitor in February 2020, she has specialised in residential conveyancing and supported estate agents and mortgage brokers in Manchester, Liverpool, Runcorn and London. Juneeta joined the Law and Lawyers Residential Property department as a Director in September 2025.",
+      email: "juneeta@lawandlawyers.co.uk",
+    },
   },
   {
     name: "Charles Vargehese",
