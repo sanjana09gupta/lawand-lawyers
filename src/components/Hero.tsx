@@ -58,8 +58,9 @@ export default function Hero() {
           <div className="hero-title-block">
             <p className="hero-kicker">London solicitors · SRA regulated</p>
             <h1 className="hero-headline" aria-label="Immigration and property solicitors in London">
-              <motion.span initial={reduced ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65 }}><DancingWord text="Immigration and property" /></motion.span>
-              <motion.span initial={reduced ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65, delay: .12 }}><DancingWord text="solicitors in London" /></motion.span>
+              <motion.span initial={reduced ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65 }}><DancingWord text="Immigration" /></motion.span>
+              <motion.span initial={reduced ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65, delay: .1 }}><DancingWord text="and property" /></motion.span>
+              <motion.span initial={reduced ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65, delay: .2 }}><DancingWord text="solicitors in London" /></motion.span>
             </h1>
           </div>
           <div className="hero-summary">
