@@ -45,7 +45,7 @@ function TrustBadges() {
         href={reviewProfileUrl}
         target="_blank"
         rel="noreferrer"
-        className="group flex h-[84px] w-[208px] shrink-0 flex-col justify-center rounded-xl bg-[#00a84f] px-4 text-white transition-transform duration-200 hover:-translate-y-0.5 hover:bg-[#008f43] focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-brand-300"
+        className="group mx-auto flex h-[84px] w-[208px] shrink-0 basis-full flex-col justify-center rounded-xl bg-[#00a84f] px-4 text-white transition-transform duration-200 hover:-translate-y-0.5 hover:bg-[#008f43] focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-brand-300 sm:mx-0 sm:basis-auto"
         aria-label="Read Law and Lawyers client reviews on ReviewSolicitors"
       >
         <span className="text-[17px] font-semibold leading-none tracking-[-0.05em]">reviewsolicitors</span>
