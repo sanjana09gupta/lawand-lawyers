@@ -19,7 +19,7 @@
 .opening-brand { display:flex; flex-direction:column; align-items:center; gap:18px; padding:24px; color:#1d3468; text-align:center; }
 .opening-brand img { width:clamp(56px,8vw,88px); height:auto; }
 .opening-wordmark-mask { overflow:hidden; }
-.opening-wordmark-mask p { margin:0; font:500 clamp(30px,5vw,64px)/1.2 "Inter",system-ui,sans-serif; letter-spacing:-.04em; }
+.opening-wordmark-mask p { margin:0; font:500 clamp(30px,5vw,64px)/1.2 var(--font-sans); letter-spacing:-.04em; }
 .opening-brand>span { font-size:11px; text-transform:uppercase; letter-spacing:.18em; }
 @media(prefers-reduced-motion:reduce) { .opening-intro { display:none; } }
 
@@ -36,7 +36,7 @@
 
 .consultation-line-section { position:relative; overflow:hidden; background:linear-gradient(128deg,#0d1c42 0%,#17366f 52%,#4a97d6 100%); color:#e3f1fa; padding:56px 0 0; }
 .consultation-copy { padding-inline:clamp(24px,5vw,72px); }
-.consultation-copy h2 { margin:20px 0 24px; font:600 clamp(30px,4vw,52px)/1.1 "Inter",system-ui,sans-serif; color:#fcfdfe; letter-spacing:-.035em; }
+.consultation-copy h2 { margin:20px 0 24px; font:600 clamp(30px,4vw,52px)/1.1 var(--font-sans); color:#fcfdfe; letter-spacing:-.035em; }
 .consultation-copy h2 em { color:#7fbde5; font-weight:400; }
 .consultation-copy>a { display:inline-flex; gap:24px; align-items:center; padding-bottom:8px; border-bottom:1px solid currentColor; color:#b8dcf0; text-decoration:none; font-size:14px; }
 .consultation-copy>a:hover { color:white; }
@@ -334,8 +334,8 @@
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; } }
 
 @theme {
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-serif: "Inter", system-ui, -apple-system, sans-serif;
+  --font-sans: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  --font-serif: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
 
   /* Brand blues, sampled directly from the Law and Lawyers logo mark */
   --color-brand-950: #0a1122;
@@ -371,6 +371,11 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* The supplied campaign banners use an editorial serif voice. Keep that voice consistent on every site surface. */
+button, input, textarea, select, .MuiTypography-root, .MuiButton-root, .MuiInputBase-root, .ant-typography, .ant-btn, .ant-input, .ant-select {
+  font-family: var(--font-sans)!important;
 }
 
 footer a:not(.footer-email):hover,

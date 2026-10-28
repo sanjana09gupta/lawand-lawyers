@@ -16,6 +16,8 @@ export const brand = {
   100: "#e3f1fa",
 };
 
+const bannerFont = '"Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif';
+
 export const muiTheme = createTheme({
   palette: {
     primary: { main: brand[700], light: brand[400], dark: brand[900], contrastText: "#fff" },
@@ -25,11 +27,11 @@ export const muiTheme = createTheme({
   },
   shape: { borderRadius: 14 },
   typography: {
-    fontFamily: '"Inter", system-ui, -apple-system, sans-serif',
-    h1: { fontFamily: '"Inter", system-ui, -apple-system, sans-serif' },
-    h2: { fontFamily: '"Inter", system-ui, -apple-system, sans-serif' },
-    h3: { fontFamily: '"Inter", system-ui, -apple-system, sans-serif' },
-    h4: { fontFamily: '"Inter", system-ui, -apple-system, sans-serif' },
+    fontFamily: bannerFont,
+    h1: { fontFamily: bannerFont },
+    h2: { fontFamily: bannerFont },
+    h3: { fontFamily: bannerFont },
+    h4: { fontFamily: bannerFont },
     button: { textTransform: "none", fontWeight: 600 },
   },
   components: {
@@ -50,7 +52,7 @@ export const antdTheme: ThemeConfig = {
   token: {
     colorPrimary: brand[700],
     colorLink: brand[600],
-    fontFamily: '"Inter", system-ui, -apple-system, sans-serif',
+    fontFamily: bannerFont,
     borderRadius: 14,
   },
 };
