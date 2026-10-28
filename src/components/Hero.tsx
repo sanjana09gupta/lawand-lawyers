@@ -2,7 +2,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import ChevronLeft from "@mui/icons-material/ChevronLeft";
 import ChevronRight from "@mui/icons-material/ChevronRight";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const heroSlides = [
   {
@@ -24,6 +24,14 @@ export default function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
   const slide = heroSlides[activeSlide];
 
+  useEffect(() => {
+    if (reduced) return;
+    const timer = window.setTimeout(() => {
+      setActiveSlide((current) => (current + 1) % heroSlides.length);
+    }, 6500);
+    return () => window.clearTimeout(timer);
+  }, [activeSlide, reduced]);
+
   function changeSlide(direction: -1 | 1) {
     setActiveSlide((current) => (current + direction + heroSlides.length) % heroSlides.length);
   }
@@ -33,9 +41,8 @@ export default function Hero() {
       <div className="hero-html-banner" aria-roledescription="carousel" aria-label="Featured legal services">
         <h1 className="sr-only">{slide.title}</h1>
         <motion.div key={slide.image} className="hero-banner-slide" initial={reduced ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.35 }}>
-          <Link to={slide.to} className="hero-banner-link" aria-label={`Learn more about ${slide.title}`}>
-            <img src={slide.image} alt={slide.imageAlt} fetchPriority={activeSlide === 0 ? "high" : "auto"} />
-          </Link>
+          <img src={slide.image} alt={slide.imageAlt} fetchPriority={activeSlide === 0 ? "high" : "auto"} />
+          <Link to={slide.to} className={`hero-banner-cta hero-banner-cta-${activeSlide}`} aria-label={`Learn more about ${slide.title}`} />
           <div className="hero-banner-controls">
             <button type="button" onClick={() => changeSlide(-1)} aria-label="Show previous featured service"><ChevronLeft /></button>
             <span aria-live="polite">{activeSlide + 1} / {heroSlides.length}</span>

@@ -83,8 +83,11 @@
 .reference-hero { width:100vw; max-width:100vw; margin-inline:calc(50% - 50vw); color:#1d3468; }
 .hero-html-banner { position:relative; overflow:hidden; background:#f3f6fa; }
 .hero-banner-slide { position:relative; width:100%; }
-.hero-banner-link { display:block; width:100%; color:inherit; }
-.hero-banner-link img { display:block; width:100%; height:auto; }
+.hero-banner-slide>img { display:block; width:100%; height:auto; }
+.hero-banner-cta { position:absolute; left:4.2%; width:36.8%; border-radius:10px; outline-offset:3px; }
+.hero-banner-cta-0 { top:62%; height:8.8%; }
+.hero-banner-cta-1 { top:64.2%; height:9.1%; }
+.hero-banner-cta:focus-visible { outline:3px solid #1d3468; background:rgba(255,255,255,.16); }
 .hero-title-block { max-width:560px; }
 .hero-summary { max-width:520px; }
 .hero-kicker { display:flex; align-items:center; gap:12px; text-transform:uppercase; letter-spacing:1.8px; font-size:11px; font-weight:700; color:#2f74bd; }
