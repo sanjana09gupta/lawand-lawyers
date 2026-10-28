@@ -9,6 +9,11 @@ export default function TeamProfile() {
   const { slug } = useParams();
   const member = team.find((person) => person.slug === slug);
   const profile = member && "profile" in member ? member.profile : undefined;
+  const biography = profile ? (Array.isArray(profile.biography) ? profile.biography : [profile.biography]) : undefined;
+  const profileTitle = profile && "title" in profile ? profile.title : undefined;
+  const qualifications = profile && "qualifications" in profile ? profile.qualifications : undefined;
+  const sraLabel = profile && "sraLabel" in profile ? profile.sraLabel : undefined;
+  const email = profile && "email" in profile ? profile.email : undefined;
 
   if (!member) return <Navigate to="/" replace />;
 
@@ -30,14 +35,14 @@ export default function TeamProfile() {
             </Grid>
             <Grid size={{ xs: 12, md: 7 }}>
               <Typography variant="h4" sx={{ color: "#0a1122" }}>Profile</Typography>
-              <Typography sx={{ mt: 2, maxWidth: 650, color: "text.secondary", fontSize: 17, lineHeight: 1.8 }}>
-                {profile?.biography ?? `Biography and professional background for ${member.name} will be added here shortly.`}
-              </Typography>
+              {biography ? biography.map((paragraph) => <Typography key={paragraph} sx={{ mt: 2, maxWidth: 650, color: "text.secondary", fontSize: 17, lineHeight: 1.8 }}>{paragraph}</Typography>) : <Typography sx={{ mt: 2, maxWidth: 650, color: "text.secondary", fontSize: 17, lineHeight: 1.8 }}>Biography and professional background for {member.name} will be added here shortly.</Typography>}
               <Box sx={{ mt: 5, py: 3, borderTop: "1px solid rgba(29,52,104,0.14)", borderBottom: "1px solid rgba(29,52,104,0.14)" }}>
                 <Typography sx={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#2657a3" }}>Professional profile</Typography>
                 {profile ? <Box sx={{ mt: 1.25, display: "grid", gap: 1, color: "text.secondary", lineHeight: 1.7 }}>
-                  <Typography>SRA number: {profile.sraNumber}</Typography>
-                  <Typography>Contact: <Box component="a" href={`mailto:${profile.email}`} sx={{ color: "#1f7f59", fontWeight: 700, textUnderlineOffset: "3px", "&:hover": { color: "#14573d" } }}>{profile.email}</Box></Typography>
+                  {profileTitle && <Typography>{profileTitle}</Typography>}
+                  {qualifications && <Typography>{qualifications}</Typography>}
+                  {profile.sraNumber && <Typography>{sraLabel ?? "SRA number"}: {profile.sraNumber}</Typography>}
+                  {email && <Typography>Contact: <Box component="a" href={`mailto:${email}`} sx={{ color: "#1f7f59", fontWeight: 700, textUnderlineOffset: "3px", "&:hover": { color: "#14573d" } }}>{email}</Box></Typography>}
                 </Box> : <Typography sx={{ mt: 1.25, color: "text.secondary", lineHeight: 1.7 }}>Practice areas, qualifications and LinkedIn details can be added to this profile when approved.</Typography>}
               </Box>
               <Box sx={{ mt: 4, display: "flex", flexWrap: "wrap", gap: 1.5 }}>

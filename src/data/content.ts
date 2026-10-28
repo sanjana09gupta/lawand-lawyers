@@ -10,6 +10,17 @@ export const team = [
     role: "Director",
     photo: "/images/team/Sarath.jpg",
     slug: "sarath-nair",
+    profile: {
+      title: "Solicitor | Prosecution",
+      qualifications: "M.Com, LLB, DPM",
+      sraLabel: "SRA No.",
+      sraNumber: "[to be added]",
+      biography: [
+        "Sarath Nair is a solicitor specialising in prosecution work, acting for both government bodies and private clients. He brings more than 35 years of legal and professional experience, including two decades in India and 15 years in the United Kingdom. That cross-jurisdictional background gives him a broad, practical perspective on complex matters.",
+        "Sarath holds a Master of Commerce (M.Com), a Bachelor of Laws (LLB) and a DPM. Alongside his practice, he has lectured in commerce and law, sharing his knowledge with the next generation of professionals. His combination of legal and commercial expertise allows him to handle cases with precision, clarity and a strong understanding of the wider context.",
+        "Outside the courtroom, Sarath is committed to giving back. He actively supports educational, social and charitable causes and regularly takes part in community events.",
+      ],
+    },
   },
   {
     name: "Bhavini Bhudia",
