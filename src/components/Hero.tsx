@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import ArrowOutward from "@mui/icons-material/ArrowOutward";
 import ChevronLeft from "@mui/icons-material/ChevronLeft";
@@ -40,15 +40,24 @@ export default function Hero() {
   return (
     <section id="top" className="reference-hero">
       <div className="hero-html-banner" aria-roledescription="carousel" aria-label="Featured legal services">
-        <motion.div key={slide.image} className="hero-banner-slide" initial={reduced ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.35 }}>
-          <img src={slide.image} alt={slide.imageAlt} fetchPriority={activeSlide === 0 ? "high" : "auto"} />
-          <Link to={slide.to} className={`hero-banner-cta hero-banner-cta-${activeSlide}`} aria-label={`Learn more about ${slide.title}`} />
-          <div className="hero-banner-controls">
-            <button type="button" onClick={() => changeSlide(-1)} aria-label="Show previous featured service"><ChevronLeft /></button>
-            <span aria-live="polite">{activeSlide + 1} / {heroSlides.length}</span>
-            <button type="button" onClick={() => changeSlide(1)} aria-label="Show next featured service"><ChevronRight /></button>
-          </div>
-        </motion.div>
+        <AnimatePresence initial={false} mode="wait">
+          <motion.div
+            key={slide.image}
+            className="hero-banner-slide"
+            initial={reduced ? false : { opacity: 0, x: 34 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={reduced ? undefined : { opacity: 0, x: -34 }}
+            transition={{ duration: reduced ? 0 : 0.58, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <img src={slide.image} alt={slide.imageAlt} fetchPriority={activeSlide === 0 ? "high" : "auto"} />
+            <Link to={slide.to} className={`hero-banner-cta hero-banner-cta-${activeSlide}`} aria-label={`Learn more about ${slide.title}`} />
+            <div className="hero-banner-controls">
+              <button type="button" onClick={() => changeSlide(-1)} aria-label="Show previous featured service"><ChevronLeft /></button>
+              <span aria-live="polite">{activeSlide + 1} / {heroSlides.length}</span>
+              <button type="button" onClick={() => changeSlide(1)} aria-label="Show next featured service"><ChevronRight /></button>
+            </div>
+          </motion.div>
+        </AnimatePresence>
         <div className="hero-live-copy">
           <p className="hero-kicker">London solicitors · SRA regulated</p>
           <h1>Immigration and property solicitors in London</h1>
