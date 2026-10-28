@@ -1,60 +1,63 @@
-import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import ArrowOutward from "@mui/icons-material/ArrowOutward";
-import Pause from "@mui/icons-material/Pause";
-import PlayArrow from "@mui/icons-material/PlayArrow";
+import ChevronLeft from "@mui/icons-material/ChevronLeft";
+import ChevronRight from "@mui/icons-material/ChevronRight";
+import { useState } from "react";
+
+const heroSlides = [
+  {
+    eyebrow: "Immigration solicitors",
+    title: "Your immigration matter, guided with confidence.",
+    description: "Expert support for visas, sponsorship, settlement and other UK immigration matters.",
+    cta: "Speak to our immigration team",
+    to: "/services/immigration",
+    image: "/images/immigration-banner.jpeg",
+    imageAlt: "Immigration support from Law and Lawyers",
+  },
+  {
+    eyebrow: "Conveyancing solicitors",
+    title: "Track your property matter with confidence.",
+    description: "Real-time updates, clear milestones and secure communication from instruction to completion.",
+    cta: "View our conveyancing service",
+    to: "/services/residential-conveyancing",
+    image: "/images/conveyancing-app-banner.jpeg",
+    imageAlt: "Property conveyancing service from Law and Lawyers",
+  },
+];
 
 export default function Hero() {
   const reduced = useReducedMotion();
-  const video = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
-  const [videoReady, setVideoReady] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const slide = heroSlides[activeSlide];
 
-  useEffect(() => {
-    if (reduced) return;
-    const timer = window.setTimeout(() => setVideoReady(true), 900);
-    return () => window.clearTimeout(timer);
-  }, [reduced]);
-
-  useEffect(() => {
-    if (video.current) video.current.playbackRate = 0.72;
-  }, [videoReady]);
-
-  async function toggleVideo() {
-    if (!videoReady) {
-      setVideoReady(true);
-      return;
-    }
-    if (!video.current) return;
-    if (video.current.paused) { try { await video.current.play(); } catch { setPlaying(false); } }
-    else video.current.pause();
+  function changeSlide(direction: -1 | 1) {
+    setActiveSlide((current) => (current + direction + heroSlides.length) % heroSlides.length);
   }
+
   return (
     <section id="top" className="reference-hero">
-      <div className="hero-intro hero-intro-video">
-        <div className="hero-intro-content">
-          <div className="hero-title-block">
-            <p className="hero-kicker">London solicitors · SRA regulated</p>
-            <h1 className="hero-headline" aria-label="Immigration and property solicitors in London">
-              <motion.span initial={reduced ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .55 }}>Immigration</motion.span>
-              <motion.span initial={reduced ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .55, delay: .08 }}>and property</motion.span>
-              <motion.span initial={reduced ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .55, delay: .16 }}>solicitors</motion.span>
-              <motion.span initial={reduced ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .55, delay: .24 }}>in London</motion.span>
-            </h1>
+      <div className="hero-html-banner" aria-roledescription="carousel" aria-label="Featured legal services">
+        <motion.div
+          key={slide.to}
+          className="hero-html-banner-copy"
+          initial={reduced ? false : { opacity: 0, x: -18 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <p className="hero-kicker">{slide.eyebrow}</p>
+          <h1 className="hero-html-banner-title">{slide.title}</h1>
+          <p className="hero-description">{slide.description}</p>
+          <div className="hero-actions"><Link to={slide.to} className="square-link filled">{slide.cta} <ArrowOutward /></Link></div>
+          <div className="hero-banner-controls">
+            <button type="button" onClick={() => changeSlide(-1)} aria-label="Show previous featured service"><ChevronLeft /></button>
+            <span aria-live="polite">{activeSlide + 1} / {heroSlides.length}</span>
+            <button type="button" onClick={() => changeSlide(1)} aria-label="Show next featured service"><ChevronRight /></button>
           </div>
-          <div className="hero-summary">
-            <p className="hero-description">Law and Lawyers is an SRA-regulated London law firm advising on immigration, conveyancing, wills and probate, employment and family law. Speak to an experienced solicitor today.</p>
-            <div className="hero-actions"><Link to="/contact" className="square-link">Get a free quote <ArrowOutward /></Link></div>
-          </div>
-        </div>
-        <div className="hero-video-stage">
-          <video ref={video} className="hero-background-video" autoPlay={videoReady && !reduced} muted loop playsInline preload="none" onLoadedMetadata={() => { if (video.current) video.current.playbackRate = 0.72; }} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} aria-label="Law and Lawyers introduction video">
-            {videoReady && <source src="/videos/banner-video.mp4" type="video/mp4" />}
-          </video>
-          <div className="hero-video-overlay" />
-          <div className="film-caption"><button type="button" onClick={toggleVideo} aria-label={playing ? "Pause background video" : "Play background video"}>{playing ? <Pause /> : <PlayArrow />}<span>{playing ? "Pause" : "Play"}</span></button></div>
-        </div>
+        </motion.div>
+        <motion.div key={slide.image} className="hero-html-banner-media" initial={reduced ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.35 }}>
+          <img src={slide.image} alt={slide.imageAlt} fetchPriority={activeSlide === 0 ? "high" : "auto"} />
+        </motion.div>
       </div>
     </section>
   );
