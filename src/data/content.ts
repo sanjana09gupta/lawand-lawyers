@@ -37,7 +37,7 @@ export const team = [
   {
     name: "Charles Vargehese",
     role: "Director",
-    photo: null,
+    photo: "/images/team/Charles Vargehese.png",
     slug: "charles-vargehese",
   },
 ];
