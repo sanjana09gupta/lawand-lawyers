@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
+import ArrowOutward from "@mui/icons-material/ArrowOutward";
 import ChevronLeft from "@mui/icons-material/ChevronLeft";
 import ChevronRight from "@mui/icons-material/ChevronRight";
 import { useEffect, useState } from "react";
@@ -39,7 +40,6 @@ export default function Hero() {
   return (
     <section id="top" className="reference-hero">
       <div className="hero-html-banner" aria-roledescription="carousel" aria-label="Featured legal services">
-        <h1 className="sr-only">{slide.title}</h1>
         <motion.div key={slide.image} className="hero-banner-slide" initial={reduced ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.35 }}>
           <img src={slide.image} alt={slide.imageAlt} fetchPriority={activeSlide === 0 ? "high" : "auto"} />
           <Link to={slide.to} className={`hero-banner-cta hero-banner-cta-${activeSlide}`} aria-label={`Learn more about ${slide.title}`} />
@@ -49,6 +49,12 @@ export default function Hero() {
             <button type="button" onClick={() => changeSlide(1)} aria-label="Show next featured service"><ChevronRight /></button>
           </div>
         </motion.div>
+        <div className="hero-live-copy">
+          <p className="hero-kicker">London solicitors · SRA regulated</p>
+          <h1>Immigration and property solicitors in London</h1>
+          <p>Law and Lawyers is an SRA-regulated London law firm advising on immigration, conveyancing, wills and probate, employment and family law. Speak to an experienced solicitor today.</p>
+          <Link to="/contact" className="hero-quote-link">Get a free quote <ArrowOutward /></Link>
+        </div>
       </div>
     </section>
   );
