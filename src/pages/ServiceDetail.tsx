@@ -77,17 +77,6 @@ function ImmigrationDetail() {
       subtitle="Experienced immigration solicitors supporting individuals and businesses with applications, compliance and representation."
       crumbs={[{ label: "Home", to: "/" }, { label: "Services", to: "/#services" }, { label: "Immigration" }]}
     />
-    <Box sx={{ bgcolor: "#fcfdfe", pt: { xs: 3, sm: 5 } }}>
-      <Container maxWidth="lg">
-        <Box
-          component="img"
-          src="/images/immigration-banner.jpeg"
-          alt="Immigration legal services from Law and Lawyers"
-          fetchPriority="high"
-          sx={{ display: "block", width: "100%", height: "auto", borderRadius: { xs: 2, sm: 3 } }}
-        />
-      </Container>
-    </Box>
     <Box sx={{ bgcolor: "#fcfdfe", py: { xs: 6, sm: 9 } }}>
       <Container maxWidth="lg">
         <Grid container spacing={{ xs: 4, md: 7 }}>
@@ -175,17 +164,6 @@ function ConveyancingDetail() {
       subtitle="Ensuring smooth, secure, and stress-free property transactions."
       crumbs={[{ label: "Home", to: "/" }, { label: "Services", to: "/#services" }, { label: "Residential Conveyancing" }]}
     />
-    <Box sx={{ bgcolor: "#fcfdfe", pt: { xs: 3, sm: 5 } }}>
-      <Container maxWidth="lg">
-        <Box
-          component="img"
-          src="/images/conveyancing-app-banner.jpeg"
-          alt="Property conveyancing service from Law and Lawyers"
-          fetchPriority="high"
-          sx={{ display: "block", width: "100%", height: "auto", borderRadius: { xs: 2, sm: 3 } }}
-        />
-      </Container>
-    </Box>
     <Box sx={{ bgcolor: "#fcfdfe", py: { xs: 6, sm: 9 } }}>
       <Container maxWidth="lg">
         <Grid container spacing={{ xs: 4, md: 7 }}>
