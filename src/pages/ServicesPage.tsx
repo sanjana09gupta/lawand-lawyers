@@ -8,18 +8,18 @@ import Services from "../components/Services";
 
 const featuredBanners = [
   {
-    image: "/images/immigration-banner.jpeg",
-    alt: "Immigration legal services from Law and Lawyers",
-    cta: "/services/immigration",
-    ctaLabel: "Explore immigration services",
-    ctaPosition: { left: "4.5%", top: "62%", width: "36.8%", height: "9%" },
-  },
-  {
     image: "/images/conveyancing-app-banner.jpeg",
     alt: "Property conveyancing service from Law and Lawyers",
     cta: "/services/residential-conveyancing",
     ctaLabel: "Explore conveyancing services",
     ctaPosition: { left: "4%", top: "64.5%", width: "36.8%", height: "9.2%" },
+  },
+  {
+    image: "/images/immigration-banner.jpeg",
+    alt: "Immigration legal services from Law and Lawyers",
+    cta: "/services/immigration",
+    ctaLabel: "Explore immigration services",
+    ctaPosition: { left: "4.5%", top: "62%", width: "36.8%", height: "9%" },
   },
 ];
 
