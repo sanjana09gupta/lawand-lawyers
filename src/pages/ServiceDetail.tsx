@@ -77,6 +77,14 @@ function ImmigrationDetail() {
       subtitle="Experienced immigration solicitors supporting individuals and businesses with applications, compliance and representation."
       crumbs={[{ label: "Home", to: "/" }, { label: "Services", to: "/#services" }, { label: "Immigration" }]}
     />
+    <Box sx={{ bgcolor: "#fcfdfe", pt: { xs: 3, sm: 5 } }}>
+      <Container maxWidth="lg">
+        <Box sx={{ position: "relative" }}>
+          <Box component="img" src="/images/immigration-banner.jpeg" alt="Immigration legal services from Law and Lawyers" fetchPriority="high" sx={{ display: "block", width: "100%", height: "auto", borderRadius: { xs: 2, sm: 3 } }} />
+          <Box component={Link} to="/contact" aria-label="Speak to our Immigration Team" sx={{ position: "absolute", left: "4.5%", top: "62%", width: "36.8%", height: "9%", borderRadius: 1, "&:focus-visible": { outline: "3px solid #1d3468", outlineOffset: 3, bgcolor: "rgba(255,255,255,.14)" } }} />
+        </Box>
+      </Container>
+    </Box>
     <Box sx={{ bgcolor: "#fcfdfe", py: { xs: 6, sm: 9 } }}>
       <Container maxWidth="lg">
         <Grid container spacing={{ xs: 4, md: 7 }}>
@@ -164,6 +172,14 @@ function ConveyancingDetail() {
       subtitle="Ensuring smooth, secure, and stress-free property transactions."
       crumbs={[{ label: "Home", to: "/" }, { label: "Services", to: "/#services" }, { label: "Residential Conveyancing" }]}
     />
+    <Box sx={{ bgcolor: "#fcfdfe", pt: { xs: 3, sm: 5 } }}>
+      <Container maxWidth="lg">
+        <Box sx={{ position: "relative" }}>
+          <Box component="img" src="/images/conveyancing-app-banner.jpeg" alt="Property conveyancing service from Law and Lawyers" fetchPriority="high" sx={{ display: "block", width: "100%", height: "auto", borderRadius: { xs: 2, sm: 3 } }} />
+          <Box component={Link} to="/services/residential-conveyancing/new-purchase-quote" aria-label="Start a conveyancing quote" sx={{ position: "absolute", left: "4%", top: "64.5%", width: "36.8%", height: "9.2%", borderRadius: 1, "&:focus-visible": { outline: "3px solid #1d3468", outlineOffset: 3, bgcolor: "rgba(255,255,255,.14)" } }} />
+        </Box>
+      </Container>
+    </Box>
     <Box sx={{ bgcolor: "#fcfdfe", py: { xs: 6, sm: 9 } }}>
       <Container maxWidth="lg">
         <Grid container spacing={{ xs: 4, md: 7 }}>

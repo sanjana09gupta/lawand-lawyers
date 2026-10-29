@@ -11,11 +11,10 @@ export default function Hero() {
         <div className="hero-intro-content">
           <div className="hero-title-block">
             <p className="hero-kicker">London solicitors · SRA regulated</p>
-            <h1 className="hero-headline" aria-label="Immigration and property solicitors in London">
-              <motion.span initial={reduced ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>Immigration</motion.span>
-              <motion.span initial={reduced ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.08 }}>and property</motion.span>
-              <motion.span initial={reduced ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.16 }}>solicitors</motion.span>
-              <motion.span initial={reduced ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.24 }}>in London</motion.span>
+            <h1 className="hero-headline" aria-label="Property and Immigration solicitors in London">
+              <motion.span initial={reduced ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>Property and</motion.span>
+              <motion.span initial={reduced ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.08 }}>Immigration</motion.span>
+              <motion.span initial={reduced ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.16 }}>solicitors in London</motion.span>
             </h1>
           </div>
           <div className="hero-summary">
