@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Box, IconButton } from "@mui/material";
+import { Box, Container, IconButton } from "@mui/material";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
-import PageHeader from "../components/PageHeader";
 import Services from "../components/Services";
 
 const featuredBanners = [
@@ -57,10 +56,23 @@ function FeaturedServiceBanners() {
   );
 }
 
+function ServicesIntro() {
+  return (
+    <Box component="section" className="services-intro-panel" aria-labelledby="services-intro-title">
+      <Container maxWidth="lg">
+        <p className="services-intro-crumbs">Home <span aria-hidden="true">/</span> Services</p>
+        <p className="services-intro-eyebrow">Legal services</p>
+        <h2 id="services-intro-title">The right support for what comes next.</h2>
+        <p className="services-intro-copy">Explore clear, practical legal advice for individuals and businesses, then speak with the team best placed to help.</p>
+      </Container>
+    </Box>
+  );
+}
+
 export default function ServicesPage() {
   return <>
     <FeaturedServiceBanners />
-    <PageHeader eyebrow="Legal services" title="The right support for what comes next." subtitle="Explore clear, practical legal advice for individuals and businesses, then speak with the team best placed to help." crumbs={[{ label: "Home", to: "/" }, { label: "Services" }]} />
+    <ServicesIntro />
     <Services />
   </>;
 }
