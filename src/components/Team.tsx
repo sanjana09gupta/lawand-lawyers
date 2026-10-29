@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AddRounded, ArrowOutward, PersonRounded } from "@mui/icons-material";
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -41,6 +41,36 @@ function TeamPortrait({ member, index }: { member: typeof team[number]; index: n
 
 export default function Team() {
   const reduced = useReducedMotion();
+  const portraitsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (reduced) return undefined;
+
+    const mobileViewport = window.matchMedia("(max-width: 640px)");
+    let timer: number | undefined;
+
+    const advancePortraits = () => {
+      const portraits = portraitsRef.current;
+      if (!portraits || document.hidden) return;
+      const cardWidth = portraits.firstElementChild?.getBoundingClientRect().width ?? 0;
+      const maxScroll = portraits.scrollWidth - portraits.clientWidth;
+      const nextScroll = portraits.scrollLeft + cardWidth + 14;
+      portraits.scrollTo({ left: nextScroll >= maxScroll - 4 ? 0 : nextScroll, behavior: "smooth" });
+    };
+
+    const updateAutoSlide = () => {
+      if (timer) window.clearInterval(timer);
+      timer = mobileViewport.matches ? window.setInterval(advancePortraits, 5000) : undefined;
+    };
+
+    updateAutoSlide();
+    mobileViewport.addEventListener("change", updateAutoSlide);
+    return () => {
+      if (timer) window.clearInterval(timer);
+      mobileViewport.removeEventListener("change", updateAutoSlide);
+    };
+  }, [reduced]);
+
   return <ScrollSection id="team" className="team-directory" light>
     <motion.div className="team-heading" initial={reduced ? false : { x: -16, opacity: .4 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true, amount: .2 }} transition={{ duration: .6 }}>
       <p className="section-index">Meet the team</p>
@@ -48,6 +78,6 @@ export default function Team() {
       <p>A personal approach starts with our people. Hover or tap a portrait to meet the team.</p>
       <Link to="/our-people" className="team-directory-link">Meet our team <ArrowOutward fontSize="small" /></Link>
     </motion.div>
-    <div className="team-portraits">{team.map((member, index) => <TeamPortrait key={member.name} member={member} index={index} />)}</div>
+    <div ref={portraitsRef} className="team-portraits" aria-label="Meet our team carousel">{team.map((member, index) => <TeamPortrait key={member.name} member={member} index={index} />)}</div>
   </ScrollSection>;
 }
