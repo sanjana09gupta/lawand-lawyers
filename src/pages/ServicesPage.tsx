@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Box, IconButton } from "@mui/material";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import PageHeader from "../components/PageHeader";
 import Services from "../components/Services";
 
 const featuredBanners = [
@@ -59,6 +60,7 @@ function FeaturedServiceBanners() {
 export default function ServicesPage() {
   return <>
     <FeaturedServiceBanners />
+    <PageHeader eyebrow="Legal services" title="The right support for what comes next." subtitle="Explore clear, practical legal advice for individuals and businesses, then speak with the team best placed to help." crumbs={[{ label: "Home", to: "/" }, { label: "Services" }]} />
     <Services />
   </>;
 }
