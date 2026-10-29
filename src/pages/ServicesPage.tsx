@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Box, Container, IconButton } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
-import PageHeader from "../components/PageHeader";
 import Services from "../components/Services";
 
 const featuredBanners = [
@@ -38,29 +37,27 @@ function FeaturedServiceBanners() {
   const showNext = () => setActiveSlide((current) => (current + 1) % featuredBanners.length);
 
   return (
-    <Box component="section" aria-label="Featured legal services" sx={{ bgcolor: "#fcfdfe", pt: { xs: 3, sm: 5 } }}>
-      <Container maxWidth="lg">
-        <Box className="service-banner-carousel">
-          <AnimatePresence initial={false} mode="wait">
-            <motion.div key={banner.image} className="service-banner-slide" initial={reducedMotion ? false : { opacity: 0, scale: 1.015 }} animate={{ opacity: 1, scale: 1 }} exit={reducedMotion ? undefined : { opacity: 0, scale: 0.995 }} transition={{ duration: reducedMotion ? 0 : 0.55, ease: "easeInOut" }}>
-              <img src={banner.image} alt={banner.alt} />
-              <Link to={banner.cta} className="service-banner-cta" aria-label={banner.ctaLabel} style={banner.ctaPosition} />
-            </motion.div>
-          </AnimatePresence>
-          <Box className="service-banner-controls" aria-label="Featured service banner controls">
-            <IconButton onClick={showPrevious} aria-label="Show previous service banner" size="small"><ChevronLeft /></IconButton>
-            <Box component="span" aria-live="polite">{activeSlide + 1} / {featuredBanners.length}</Box>
-            <IconButton onClick={showNext} aria-label="Show next service banner" size="small"><ChevronRight /></IconButton>
-          </Box>
+    <Box component="section" className="service-banner-hero" aria-label="Featured legal services">
+      <h1 className="visually-hidden">Legal services</h1>
+      <Box className="service-banner-carousel">
+        <AnimatePresence initial={false} mode="wait">
+          <motion.div key={banner.image} className="service-banner-slide" initial={reducedMotion ? false : { opacity: 0, scale: 1.015 }} animate={{ opacity: 1, scale: 1 }} exit={reducedMotion ? undefined : { opacity: 0, scale: 0.995 }} transition={{ duration: reducedMotion ? 0 : 0.55, ease: "easeInOut" }}>
+            <img src={banner.image} alt={banner.alt} />
+            <Link to={banner.cta} className="service-banner-cta" aria-label={banner.ctaLabel} style={banner.ctaPosition} />
+          </motion.div>
+        </AnimatePresence>
+        <Box className="service-banner-controls" aria-label="Featured service banner controls">
+          <IconButton onClick={showPrevious} aria-label="Show previous service banner" size="small"><ChevronLeft /></IconButton>
+          <Box component="span" aria-live="polite">{activeSlide + 1} / {featuredBanners.length}</Box>
+          <IconButton onClick={showNext} aria-label="Show next service banner" size="small"><ChevronRight /></IconButton>
         </Box>
-      </Container>
+      </Box>
     </Box>
   );
 }
 
 export default function ServicesPage() {
   return <>
-    <PageHeader eyebrow="Legal services" title="The right support for what comes next." subtitle="Explore clear, practical legal advice for individuals and businesses, then speak with the team best placed to help." crumbs={[{ label: "Home", to: "/" }, { label: "Services" }]} />
     <FeaturedServiceBanners />
     <Services />
   </>;

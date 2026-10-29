@@ -526,9 +526,11 @@ footer a:not(.footer-email):focus-visible {
   .hero-intro-content .square-link.filled:hover { background:#b8dcf0; color:#0d1424; }
 }
 
-/* Services landing: the supplied campaign artwork stays intact; only its CTA is interactive. */
-.service-banner-carousel { position:relative; overflow:hidden; border-radius:18px; background:#e8f2f8; box-shadow:0 14px 34px rgba(20,48,91,.12); }
-.service-banner-slide { position:relative; aspect-ratio:16 / 9; }
+/* Services landing: the supplied campaign artwork is the page hero; only its CTA is interactive. */
+.visually-hidden { position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip:rect(0,0,0,0)!important; white-space:nowrap!important; border:0!important; }
+.service-banner-hero { width:100%; background:#0d1c42; }
+.service-banner-carousel { position:relative; width:100%; height:clamp(280px,29vw,430px); overflow:hidden; background:#e8f2f8; }
+.service-banner-slide { position:relative; width:100%; height:100%; }
 .service-banner-slide img { display:block; width:100%; height:100%; object-fit:cover; }
 .service-banner-cta { position:absolute; z-index:1; display:block; border-radius:8px; }
 .service-banner-cta:focus-visible { outline:3px solid #fff; outline-offset:4px; background:rgba(255,255,255,.14); }
@@ -536,4 +538,4 @@ footer a:not(.footer-email):focus-visible {
 .service-banner-controls .MuiIconButton-root { color:#fff; }
 .service-banner-controls .MuiIconButton-root:hover { background:rgba(255,255,255,.15); }
 .service-banner-controls span { min-width:34px; font-size:.72rem; font-weight:700; text-align:center; }
-@media(max-width:600px) { .service-banner-carousel { border-radius:12px; }.service-banner-controls { right:10px; bottom:10px; } }
+@media(max-width:600px) { .service-banner-carousel { height:clamp(240px,56vw,340px); }.service-banner-controls { right:10px; bottom:10px; } }
