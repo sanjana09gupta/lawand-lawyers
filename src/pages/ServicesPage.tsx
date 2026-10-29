@@ -60,7 +60,6 @@ function ServicesIntro() {
   return (
     <Box component="section" className="services-intro-panel" aria-labelledby="services-intro-title">
       <Container maxWidth="lg">
-        <p className="services-intro-crumbs">Home <span aria-hidden="true">/</span> Services</p>
         <p className="services-intro-eyebrow">Legal services</p>
         <h2 id="services-intro-title">The right support for what comes next.</h2>
         <p className="services-intro-copy">Explore clear, practical legal advice for individuals and businesses, then speak with the team best placed to help.</p>
