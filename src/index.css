@@ -511,3 +511,12 @@ footer a:not(.footer-email):focus-visible {
 .people-contact { background:#e3f1fa; padding:42px 0; }.people-contact .MuiContainer-root { display:flex; align-items:center; justify-content:space-between; gap:28px; }.people-contact h2 { font-size:clamp(30px,3.7vw,45px); }.people-contact h2 + p { margin:10px 0 0; color:#53647e; font-size:15px; }.people-contact-button { background:#22458a!important; border-radius:8px!important; padding:11px 18px!important; text-transform:none!important; font-weight:800!important; }.people-call-button { border-color:#22458a!important; color:#22458a!important; border-radius:8px!important; padding:10px 16px!important; text-transform:none!important; font-weight:800!important; }
 @media(max-width:900px) { .people-hero-grid,.departments-grid { grid-template-columns:1fr; }.lead-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }.directors-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }.profile-gallery { grid-template-columns:repeat(4,minmax(0,1fr)); } }
 @media(max-width:600px) { .people-hero { padding:52px 0 44px; }.people-hero-grid { gap:28px; }.people-hero h1 { font-size:52px; }.people-lead { font-size:16px; }.people-hero-note { padding:20px; }.people-section-heading { margin-bottom:25px; }.directors-grid,.lead-grid,.team-grid { grid-template-columns:1fr; }.profile-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }.director-card>div:first-child { grid-template-columns:96px 1fr; align-items:center; }.director-card>div:first-child>div:first-child { width:96px; aspect-ratio:1; }.case-team { min-height:0; padding:20px; }.people-contact .MuiContainer-root { display:block; }.people-contact .MuiContainer-root>div:last-child { margin-top:22px; }.people-contact-button,.people-call-button { flex:1; } }
+
+/* Mobile home hero: image first, then a clear reading panel with no decorative frame. */
+@media(max-width:850px) {
+  .hero-intro { padding:0; }
+  .hero-intro-image { display:flex; flex-direction:column; }
+  .hero-image-stage { order:1; aspect-ratio:1.38 / 1; }
+  .hero-background-image { object-position:68% center; }
+  .hero-intro-content { order:2; width:100%; padding:38px clamp(22px,7vw,54px) 42px; box-shadow:none; }
+}
