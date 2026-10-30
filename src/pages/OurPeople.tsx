@@ -37,9 +37,9 @@ const suppliedProfiles: Person[] = [
   { name: "Gurupriya Ramachandran", title: "Paralegal", image: "/images/team/Gurupriya.jpg" },
   { name: "Kausicprabu S", title: "Paralegal", image: "/images/team/Kausicprabu S.jpg" },
   { name: "Majo Davis", title: "Director", image: "/images/team/Majo.jpg" },
-  { name: "Mary Magdalene Anthony", title: "", image: "/images/team/Mary Magdalene Anthony.jpg" },
+  { name: "Mary Magdalene Anthony", title: "Paralegal", image: "/images/team/Mary Magdalene Anthony.jpg" },
   { name: "Melvin Bino", title: "Paralegal", image: "/images/team/Melvin Bino.jpg" },
-  { name: "Natarajan Ramachandran", title: "", image: "/images/team/Natarajan Ramachandran.jpg" },
+  { name: "Natarajan Ramachandran", title: "Solicitor", image: "/images/team/Natarajan Ramachandran.jpg" },
   { name: "Pravya Prasad", title: "Paralegal", image: "/images/team/Pravya.jpg" },
   { name: "Ramakrishnan Kandasamy", title: "Paralegal", image: "/images/team/Ramakrishnan.jpg" },
   { name: "Ramya Logeswaran", title: "Paralegal", image: "/images/team/Ramya.jpg" },
@@ -105,7 +105,7 @@ export default function OurPeople() {
         </Box>
         <Box className="support-roster"><Typography component="h3" className="support-roster-label">Working alongside you</Typography><Box className="support-roster-grid"><Portrait person={{ name: "Chidiyaraj", title: "Paralegal", image: "/images/team/Chidiyaraj.jpg" }} compact /><Portrait person={{ name: "Kausicprabu S", title: "Paralegal", image: "/images/team/Kausicprabu S.jpg" }} compact /><Portrait person={{ name: "Andrews Renil", title: "Legal Assistant" }} compact /></Box></Box>
       </Box>
-      <Box component="section" className="department-panel department-panel-blue" aria-labelledby="litigation-heading"><Typography className="people-eyebrow">Dispute support</Typography><Typography component="h2" id="litigation-heading">Litigation</Typography><Box className="department-list"><Portrait person={{ name: "Natarajan Ramachandran", title: "", image: "/images/team/Natarajan Ramachandran.jpg" }} compact /><Portrait person={{ name: "Mary Magdalene Anthony", title: "", image: "/images/team/Mary Magdalene Anthony.jpg" }} compact /></Box><Link to="/contact" className="department-contact-link">Contact our team <ArrowOutward fontSize="small" /></Link></Box>
+      <Box component="section" className="department-panel department-panel-blue" aria-labelledby="litigation-heading"><Typography className="people-eyebrow">Dispute support</Typography><Typography component="h2" id="litigation-heading">Litigation</Typography><Box className="department-list"><Portrait person={{ name: "Natarajan Ramachandran", title: "Solicitor", image: "/images/team/Natarajan Ramachandran.jpg" }} compact /><Portrait person={{ name: "Mary Magdalene Anthony", title: "Paralegal", image: "/images/team/Mary Magdalene Anthony.jpg" }} compact /></Box><Link to="/contact" className="department-contact-link">Contact our team <ArrowOutward fontSize="small" /></Link></Box>
     </Box></Container>
 
     <Box component="section" className="people-contact"><Container maxWidth="lg"><Box><Typography component="h2">Need to speak with us?</Typography><Typography>Contact us and we will direct you to the right legal team.</Typography></Box><Box sx={{ display: "flex", flexWrap: "wrap", gap: 1.25 }}><Button component={Link} to="/contact" variant="contained" endIcon={<EmailOutlined />} className="people-contact-button">Contact us</Button><Button component="a" href="tel:+442085865657" variant="outlined" startIcon={<CallOutlined />} className="people-call-button">020 8586 5657</Button></Box></Container></Box>

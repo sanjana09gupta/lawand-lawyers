@@ -546,3 +546,9 @@ footer a:not(.footer-email):focus-visible {
 .services-intro-panel h2 { max-width:720px; margin:0; color:#fff; font:700 clamp(31px,3.2vw,48px)/1.08 var(--font-sans); letter-spacing:-.035em; overflow-wrap:anywhere; }
 .services-intro-copy { max-width:620px; margin:14px 0 0; color:rgba(255,255,255,.76); font-size:16px; line-height:1.55; }
 @media(max-width:600px) { .services-intro-panel { padding-block:30px; }.services-intro-panel h2 { font-size:clamp(29px,9vw,38px); }.services-intro-copy { font-size:15px; } }
+
+/* Persistent review entry point: separate from the footer proof badge. */
+.review-solicitors-tab { position:fixed; z-index:70; top:50%; right:0; display:flex; align-items:center; justify-content:center; min-width:42px; min-height:150px; padding:12px 9px; border-radius:10px 0 0 10px; background:#00a84f; color:#fff; box-shadow:0 10px 24px rgba(0,75,40,.25); text-decoration:none; transform:translateY(-50%); transition:background .2s ease,transform .2s ease; }
+.review-solicitors-tab span { font-family:Arial,sans-serif; font-size:13px; font-weight:700; letter-spacing:-.06em; white-space:nowrap; writing-mode:vertical-rl; transform:rotate(180deg); }
+.review-solicitors-tab:hover,.review-solicitors-tab:focus-visible { background:#008f43; color:#fff; transform:translateY(-50%) translateX(-3px); outline:none; }
+@media(max-width:767px) { .review-solicitors-tab { display:none; } }

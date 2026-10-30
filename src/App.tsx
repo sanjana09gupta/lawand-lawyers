@@ -8,6 +8,7 @@ import ScrollProgress from "./components/ScrollProgress";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ChatAssistant from "./components/ChatAssistant";
+import ReviewSolicitorsTab from "./components/ReviewSolicitorsTab";
 import Seo from "./components/Seo";
 
 const Home = lazy(() => import("./pages/Home"));
@@ -65,6 +66,7 @@ export default function App() {
               </Suspense>
             </main>
             <Footer />
+            <ReviewSolicitorsTab />
             <ChatAssistant />
           </div>
         </BrowserRouter>
