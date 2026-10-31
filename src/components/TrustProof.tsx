@@ -1,6 +1,7 @@
 import ArrowOutward from "@mui/icons-material/ArrowOutward";
 import PlayCircleOutlineRounded from "@mui/icons-material/PlayCircleOutlineRounded";
 import StarRounded from "@mui/icons-material/StarRounded";
+import StarHalfRounded from "@mui/icons-material/StarHalfRounded";
 
 const reviewProfileUrl = "https://www.reviewsolicitors.co.uk/london/london/law-and-lawyers-ltd?rating=1&source=GOOGLE#section-reviews";
 const youtubeUrl = "https://youtube.com/@lawandlawyerssolicitors4237?si=E2FfJaC96Hkn0-QP";
@@ -46,7 +47,8 @@ export default function TrustProof() {
                 <div>
                   <p className="text-[15px] font-semibold">Excellent</p>
                   <div className="mt-1 flex items-center gap-0.5 text-star" aria-label="4.6 out of 5 stars">
-                    {[0, 1, 2, 3, 4].map((star) => <StarRounded key={star} sx={{ fontSize: 19 }} />)}
+                    {[0, 1, 2, 3].map((star) => <StarRounded key={star} sx={{ fontSize: 19 }} />)}
+                    <StarHalfRounded sx={{ fontSize: 19 }} />
                   </div>
                 </div>
               </div>

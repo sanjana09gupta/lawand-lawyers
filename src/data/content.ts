@@ -27,6 +27,13 @@ export const team = [
     role: "Director",
     photo: "/images/team/Bhavini.jpg",
     slug: "bhavini-bhudia",
+    profile: {
+      biography: [
+        "Bhavini has been part of Law and Lawyers Ltd for over 10 years, having started her journey as a trainee and progressed to her current role as Director. With extensive experience in both residential and commercial property matters, she is passionate about helping clients navigate their transactions with confidence, offering a friendly, approachable and practical service throughout.",
+        "Bhavini places the utmost importance on client care and customer service, believing that clear communication, trust and a personal approach are key to delivering an exceptional client experience. She takes pride in building lasting relationships with her clients and making what can often be a stressful process as smooth and straightforward as possible.",
+        "Outside of work, Bhavini loves travelling, discovering new places and enjoying long walks exploring different areas, always looking forward to her next adventure!",
+      ],
+    },
   },
   {
     name: "Majo Jose",
@@ -37,7 +44,7 @@ export const team = [
   {
     name: "Juneeta Valariyil John",
     role: "Director",
-    photo: "/images/team/Juneeta Valariyil John.jpeg",
+    photo: "/images/team/juneeta-enhanced.png",
     slug: "juneeta-valariyil-john",
     profile: {
       sraNumber: "654711",
@@ -350,6 +357,14 @@ export const offices = [
     phone: "+44 20 8586 5657",
     email: "info@lawandlawyers.co.uk",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Second+Floor%2C+31-41+Worship+Street%2C+London+EC2A+2DX",
+  },
+  {
+    name: "Manchester",
+    tag: "Office",
+    address: "106 Irlam Road, Manchester M41 6JT",
+    phone: "+44 (0) 161 748 3335",
+    email: "manchester@lawandlawyers.co.uk",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=106+Irlam+Road%2C+Manchester+M41+6JT",
   },
 ];
 

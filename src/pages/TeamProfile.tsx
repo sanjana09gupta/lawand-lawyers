@@ -14,6 +14,7 @@ export default function TeamProfile() {
   const qualifications = profile && "qualifications" in profile ? profile.qualifications : undefined;
   const sraLabel = profile && "sraLabel" in profile ? profile.sraLabel : undefined;
   const email = profile && "email" in profile ? profile.email : undefined;
+  const sraNumber = profile && "sraNumber" in profile ? profile.sraNumber : undefined;
 
   if (!member) return <Navigate to="/" replace />;
 
@@ -38,10 +39,10 @@ export default function TeamProfile() {
               {biography ? biography.map((paragraph) => <Typography key={paragraph} sx={{ mt: 2, maxWidth: 650, color: "text.secondary", fontSize: 17, lineHeight: 1.8 }}>{paragraph}</Typography>) : <Typography sx={{ mt: 2, maxWidth: 650, color: "text.secondary", fontSize: 17, lineHeight: 1.8 }}>Biography and professional background for {member.name} will be added here shortly.</Typography>}
               <Box sx={{ mt: 5, py: 3, borderTop: "1px solid rgba(29,52,104,0.14)", borderBottom: "1px solid rgba(29,52,104,0.14)" }}>
                 <Typography sx={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#2657a3" }}>Professional profile</Typography>
-                {profile ? <Box sx={{ mt: 1.25, display: "grid", gap: 1, color: "text.secondary", lineHeight: 1.7 }}>
+                {profileTitle || qualifications || sraNumber || email ? <Box sx={{ mt: 1.25, display: "grid", gap: 1, color: "text.secondary", lineHeight: 1.7 }}>
                   {profileTitle && <Typography>{profileTitle}</Typography>}
                   {qualifications && <Typography>{qualifications}</Typography>}
-                  {profile.sraNumber && <Typography>{sraLabel ?? "SRA number"}: {profile.sraNumber}</Typography>}
+                  {sraNumber && <Typography>{sraLabel ?? "SRA number"}: {sraNumber}</Typography>}
                   {email && <Typography>Contact: <Box component="a" href={`mailto:${email}`} sx={{ color: "#1f7f59", fontWeight: 700, textUnderlineOffset: "3px", "&:hover": { color: "#14573d" } }}>{email}</Box></Typography>}
                 </Box> : <Typography sx={{ mt: 1.25, color: "text.secondary", lineHeight: 1.7 }}>Practice areas, qualifications and LinkedIn details can be added to this profile when approved.</Typography>}
               </Box>

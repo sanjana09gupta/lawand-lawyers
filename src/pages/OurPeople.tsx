@@ -10,9 +10,9 @@ const conveyancingLeads: Person[] = [
   { name: "Francis Mathew", title: "Senior Director", image: "/images/francis-mathew.jpeg" },
   { name: "Bhavini Bhudia", title: "Director", image: "/images/team/Bhavini.jpg" },
   { name: "Sarath Nair", title: "Director", image: "/images/team/Sarath.jpg" },
-  { name: "Juneeta John", title: "Director", image: "/images/team/Juneeta Valariyil John.jpeg" },
+  { name: "Juneeta John", title: "Director", image: "/images/team/juneeta-enhanced.png" },
   { name: "Shinto Poulose", title: "Solicitor" },
-  { name: "Charles Vargehese", title: "Director" },
+  { name: "Charles Vargehese", title: "Director", image: "/images/team/Charles Vargehese.png" },
   { name: "Abhinav Kiran Sekhon", title: "Solicitor" },
   { name: "Sujini Mundayam Kara", title: "Solicitor", image: "/images/team/Sujini Mundayam Kara.webp" },
 ];

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
-import CalendarMonth from "@mui/icons-material/CalendarMonth";
 import Phone from "@mui/icons-material/Phone";
 import StarRounded from "@mui/icons-material/StarRounded";
 import { LinkedInIcon, InstagramIcon, FacebookIcon, XIcon } from "./SocialIcons";
@@ -93,13 +92,10 @@ export default function Footer() {
         <div className="mb-9 flex flex-col gap-4 rounded-xl bg-[#102e5e]/65 px-5 py-4 sm:px-6 sm:py-5 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-xl">
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-300">Get in touch</p>
-            <h2 className="mt-1 font-serif text-xl text-white sm:text-2xl">Book a consultation or call us directly.</h2>
-            <p className="mt-1 text-[13px] leading-relaxed text-white/60">Speak to an adviser now, or choose a convenient time through our Zoom scheduler.</p>
+            <h2 className="mt-1 font-serif text-xl text-white sm:text-2xl">Call us directly.</h2>
+            <p className="mt-1 text-[13px] leading-relaxed text-white/60">Speak to an adviser about your legal needs.</p>
           </div>
           <div className="flex flex-col gap-2 sm:flex-row">
-            <Link to="/book-a-consultation" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-brand-400 px-4 text-[13px] font-semibold text-brand-950 transition-colors hover:bg-brand-300">
-              <CalendarMonth fontSize="small" /> Book via Zoom
-            </Link>
             <a href="tel:+447380866528" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/25 px-4 text-[13px] font-semibold text-white transition-colors hover:border-brand-300 hover:text-brand-300" aria-label={`Call ${directPhone}`}>
               <Phone fontSize="small" /> {directPhone}
             </a>
