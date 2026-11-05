@@ -359,26 +359,28 @@ export const offices = [
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Second+Floor%2C+31-41+Worship+Street%2C+London+EC2A+2DX",
   },
   {
-    name: "Manchester",
-    tag: "Office",
-    address: "106 Irlam Road, Manchester M41 6JT",
-    phone: "+44 (0) 161 748 3335",
-    email: "manchester@lawandlawyers.co.uk",
-    mapUrl: "https://www.google.com/maps/search/?api=1&query=106+Irlam+Road%2C+Manchester+M41+6JT",
+    name: "Leeds",
+    tag: "Leeds Office",
+    address: "First & Second Floor, 33 & 35 Austhorpe Road, Crossgates, Leeds LS15 8QR",
+    phone: "0161 748 3335",
+    email: "info@lawandlawyers.co.uk",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=First+%26+Second+Floor%2C+33+%26+35+Austhorpe+Road%2C+Crossgates%2C+Leeds+LS15+8QR",
   },
 ];
 
-export const officeContacts = [
+export const officeContacts: Array<{ name: string; label?: string; address?: string; phone: string; email: string }> = [
   {
     name: "London - Worship Street",
     label: "Head Office",
+    address: "Second Floor, 31-41 Worship Street, London EC2A 2DX",
     phone: "+44 (0) 208 586 5657",
     email: "info@lawandlawyers.co.uk",
   },
   {
-    name: "Manchester",
-    phone: "+44 (0) 161 748 3335",
-    email: "manchester@lawandlawyers.co.uk",
+    name: "Leeds",
+    address: "First & Second Floor, 33 & 35 Austhorpe Road, Crossgates, Leeds LS15 8QR",
+    phone: "0161 748 3335",
+    email: "info@lawandlawyers.co.uk",
   },
 ];
 
@@ -435,7 +437,7 @@ export const testimonials = [
 export const stats = [
   { target: 732, suffix: "+", label: "Client reviews" },
   { target: 4.6, decimals: 1, suffix: " / 5", label: "Average rating" },
-  { target: 3, label: "UK offices" },
+  { target: 2, label: "UK offices" },
   { target: 7, suffix: "+", label: "Areas of law" },
 ];
 

@@ -5,12 +5,12 @@ const siteName = "Law and Lawyers Solicitors";
 const siteUrl = "https://lawandlawyers.co.uk";
 
 const pages: Record<string, { title: string; description: string }> = {
-  "/": { title: "Solicitors in London & Manchester", description: "Law and Lawyers Solicitors provide clear, practical legal advice across property, immigration, wills and probate, employment, family law and dispute resolution." },
+  "/": { title: "Solicitors in London & Leeds", description: "Law and Lawyers Solicitors provide clear, practical legal advice across property, immigration, wills and probate, employment, family law and dispute resolution." },
   "/services": { title: "Legal services", description: "Explore legal services for individuals and businesses from Law and Lawyers Solicitors." },
   "/about": { title: "About our firm", description: "Learn about Law and Lawyers Solicitors, our client-first approach and our experienced legal team." },
   "/our-people": { title: "Our people", description: "Meet the solicitors and legal professionals at Law and Lawyers." },
   "/news": { title: "Legal news and insights", description: "Practical legal guides and updates from Law and Lawyers Solicitors." },
-  "/contact": { title: "Contact us", description: "Contact Law and Lawyers Solicitors in London and Manchester to discuss your legal matter." },
+  "/contact": { title: "Contact us", description: "Contact Law and Lawyers Solicitors in London and Leeds to discuss your legal matter." },
   "/careers": { title: "Careers", description: "Explore career opportunities with Law and Lawyers Solicitors." },
   "/book-a-consultation": { title: "Book a consultation", description: "Book a consultation with Law and Lawyers Solicitors." },
 };

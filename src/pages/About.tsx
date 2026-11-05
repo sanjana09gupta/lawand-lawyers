@@ -25,7 +25,7 @@ export default function About() {
                 <Box sx={{ display: "flex", "& .MuiAvatar-root:not(:first-of-type)": { ml: -1.2 } }}>{team.slice(0, 3).map((member) => <Avatar key={member.slug} src={member.photo ?? undefined} alt={member.name} sx={{ width: 43, height: 43, border: "2px solid #fff", bgcolor: "#22458a" }} />)}</Box>
                 <Box><Typography sx={{ color: "#1e3d7a", fontSize: 31, fontWeight: 800, lineHeight: 1 }}>10+</Typography><Typography sx={{ color: "#31516f", fontSize: 12, mt: 0.25 }}>professional lawyers</Typography></Box>
               </Box>
-              <Typography sx={{ color: "#31516f", fontSize: 13, lineHeight: 1.55, mt: 2.5 }}>Established in 2007, Law & Lawyers has earned recognition for dependable legal service across London and Manchester.</Typography>
+              <Typography sx={{ color: "#31516f", fontSize: 13, lineHeight: 1.55, mt: 2.5 }}>Established in 2007, Law & Lawyers has earned recognition for dependable legal service across London and Leeds.</Typography>
             </Box>
           </Box>
         </Container>

@@ -17,50 +17,20 @@ const conveyancingLeads: Person[] = [
   { name: "Sujini Mundayam Kara", title: "Solicitor", image: "/images/team/Sujini Mundayam Kara.webp" },
 ];
 
-const suppliedProfiles: Person[] = [
-  { name: "Sujini Mundayam Kara", title: "Solicitor", image: "/images/team/Sujini Mundayam Kara.webp" },
-  { name: "Michael Job", title: "Paralegal", image: "/images/team/Michael Job.webp" },
-  { name: "Margaret James", title: "Paralegal", image: "/images/team/Margaret James.webp" },
-  { name: "Isshak Jaleel", title: "Paralegal", image: "/images/team/Isshak Jaleel.webp" },
-  { name: "Kukku Joy", title: "Paralegal", image: "/images/team/Kukku Joy.webp" },
-  { name: "Agimol Sonya", title: "Paralegal", image: "/images/team/Agimol Sonya.webp" },
-  { name: "Abhirami", title: "", image: "/images/team/Abhirami.jpg" },
-  { name: "Alan Joy", title: "Paralegal", image: "/images/team/Alan Joy.jpg" },
-  { name: "Ajai Chalappuram", title: "Paralegal", image: "/images/team/Ajay.jpg" },
-  { name: "Aleena Jayan", title: "Paralegal", image: "/images/team/Aleena.jpg" },
-  { name: "Alex Martin", title: "Paralegal", image: "/images/team/Alex.jpg" },
-  { name: "Annet Mary", title: "Paralegal", image: "/images/team/Annet.jpg" },
-  { name: "Arathy Kurup", title: "Paralegal", image: "/images/team/Arathy.jpg" },
-  { name: "Arun Babu", title: "Paralegal", image: "/images/team/Arun babu.jpg" },
-  { name: "Bhavini Bhudia", title: "Director", image: "/images/team/Bhavini.jpg" },
-  { name: "Chidiyaraj", title: "Paralegal", image: "/images/team/Chidiyaraj.jpg" },
-  { name: "Gurupriya Ramachandran", title: "Paralegal", image: "/images/team/Gurupriya.jpg" },
-  { name: "Kausicprabu S", title: "Paralegal", image: "/images/team/Kausicprabu S.jpg" },
-  { name: "Majo Davis", title: "Director", image: "/images/team/Majo.jpg" },
-  { name: "Mary Magdalene Anthony", title: "Paralegal", image: "/images/team/Mary Magdalene Anthony.jpg" },
-  { name: "Melvin Bino", title: "Paralegal", image: "/images/team/Melvin Bino.jpg" },
-  { name: "Natarajan Ramachandran", title: "Solicitor", image: "/images/team/Natarajan Ramachandran.jpg" },
-  { name: "Pravya Prasad", title: "Paralegal", image: "/images/team/Pravya.jpg" },
-  { name: "Ramakrishnan Kandasamy", title: "Paralegal", image: "/images/team/Ramakrishnan.jpg" },
-  { name: "Ramya Logeswaran", title: "Paralegal", image: "/images/team/Ramya.jpg" },
-  { name: "Sanjana Koshy", title: "Paralegal", image: "/images/team/Sanjana.jpg" },
-  { name: "Sarath Nair", title: "Director", image: "/images/team/Sarath.jpg" },
-  { name: "SreeGovind", title: "Paralegal", image: "/images/team/Sree Govind.jpg" },
-  { name: "Stinnie John", title: "Paralegal", image: "/images/team/Stinnie.jpg" },
-];
+type ConveyancingTeam = { label: string; phone?: string; members: Person[] };
 
-const conveyancingTeams = [
-  ["Conveyancing Team 1", "Arathy Kurup", "Alan Joy", "020 4618 9110", "/images/team/Arathy.jpg", "/images/team/Alan Joy.jpg"],
-  ["Conveyancing Team 2", "Pravya Prasad", "Arun Babu", "0208 088 4584", "/images/team/Pravya.jpg", "/images/team/Arun babu.jpg"],
-  ["Conveyancing Team 3", "Michael Job", "Melvin Bino", "020 3345 4947", undefined, "/images/team/Melvin Bino.jpg"],
-  ["Conveyancing Team 4", "Isshak Jaleel", "Annet Mary", "020 4618 9127", undefined, "/images/team/Annet.jpg"],
-  ["Conveyancing Team 5", "Ajai Chalappuram", "Margaret James", "0208 088 4583", "/images/team/Ajay.jpg", undefined],
-  ["Conveyancing Team 6", "Gurupriya Ramachandran", "Stinnie John", "020 3345 4952", "/images/team/Gurupriya.jpg", "/images/team/Stinnie.jpg"],
-  ["Conveyancing Team 7", "Ramakrishnan Kandasamy", "Roji Sera Varghese", "020 3345 4949", "/images/team/Ramakrishnan.jpg", undefined],
-  ["Conveyancing Team 8", "Alex Martin", "Aleena Jayan", "0208 088 4581", "/images/team/Alex.jpg", "/images/team/Aleena.jpg"],
-  ["Conveyancing Team 9", "Sanjana Koshy", "Ramya Logeswaran", "020 3345 4950", "/images/team/Sanjana.jpg", "/images/team/Ramya.jpg"],
-  ["Conveyancing Team 10", "Sujini Mundayam Kara", "Kukku Joy and Agimol Sonya", "", undefined, undefined],
-] as const;
+const conveyancingTeams: ConveyancingTeam[] = [
+  { label: "Conveyancing Team 1", phone: "020 4618 9110", members: [{ name: "Arathy Kurup", title: "Paralegal", image: "/images/team/Arathy.jpg" }, { name: "Abhirami Jackson", title: "Paralegal", image: "/images/team/Abhirami.jpg" }] },
+  { label: "Conveyancing Team 2", phone: "0208 088 4584", members: [{ name: "Pravya Prasad", title: "Paralegal", image: "/images/team/Pravya.jpg" }, { name: "Arun Babu", title: "Paralegal", image: "/images/team/Arun babu.jpg" }] },
+  { label: "Conveyancing Team 3", phone: "020 3345 4947", members: [{ name: "Michael Job", title: "Paralegal", image: "/images/team/Michael Job.webp" }, { name: "Melvin Bino", title: "Paralegal", image: "/images/team/Melvin Bino.jpg" }] },
+  { label: "Conveyancing Team 4", phone: "020 4618 9127", members: [{ name: "Isshak Jaleel", title: "Paralegal", image: "/images/team/Isshak Jaleel.webp" }, { name: "Annet Mary", title: "Paralegal", image: "/images/team/Annet.jpg" }] },
+  { label: "Conveyancing Team 5", phone: "0208 088 4583", members: [{ name: "Ajai Chalappuram", title: "Registered Foreign Lawyer", image: "/images/team/Ajay.jpg" }, { name: "Margaret James", title: "Paralegal", image: "/images/team/Margaret James.webp" }] },
+  { label: "Conveyancing Team 6", phone: "020 3345 4952", members: [{ name: "Gurupriya Ramachandran", title: "Paralegal", image: "/images/team/Gurupriya.jpg" }, { name: "Stinnie John", title: "Paralegal", image: "/images/team/Stinnie.jpg" }] },
+  { label: "Conveyancing Team 7", phone: "020 3345 4949", members: [{ name: "Ramakrishnan Kandasamy", title: "Registered Foreign Lawyer", image: "/images/team/Ramakrishnan.jpg" }, { name: "Alan Joy", title: "Paralegal", image: "/images/team/Alan Joy.jpg" }] },
+  { label: "Conveyancing Team 8", phone: "0208 088 4581", members: [{ name: "Alex Martin", title: "Paralegal", image: "/images/team/Alex.jpg" }, { name: "Aleena Jayan", title: "Paralegal", image: "/images/team/Aleena.jpg" }] },
+  { label: "Conveyancing Team 9", phone: "020 3345 4950", members: [{ name: "Sanjana Koshy", title: "Registered Foreign Lawyer", image: "/images/team/Sanjana.jpg" }, { name: "Ramya Logeswaran", title: "Paralegal", image: "/images/team/Ramya.jpg" }] },
+  { label: "Leeds Branch Conveyancing Team", members: [{ name: "Shinto Poulose", title: "Solicitor" }, { name: "Sujini Mundayam Kara", title: "Solicitor", image: "/images/team/Sujini Mundayam Kara.webp" }, { name: "Kukku Joy", title: "Paralegal", image: "/images/team/Kukku Joy.webp" }, { name: "Agimol Sonya", title: "Paralegal", image: "/images/team/Agimol Sonya.webp" }] },
+];
 
 const initials = (name: string) => name.split(" ").map((part) => part[0]).join("").slice(0, 2);
 
@@ -88,11 +58,11 @@ export default function OurPeople() {
     </Container>
 
     <Box component="section" id="conveyancing" sx={{ bgcolor: "#eaf4f9", py: { xs: 6, md: 9 } }}><Container maxWidth="lg">
-      <Box className="people-section-heading"><Typography className="people-eyebrow">Property law</Typography><Typography component="h2">Conveyancing</Typography><Typography>Our conveyancing solicitors and case teams are SME to help with your property transaction.</Typography></Box>
+      <Box className="people-section-heading"><Typography className="people-eyebrow">Property law</Typography><Typography component="h2">Conveyancing</Typography><Typography>Our conveyancing solicitors and case teams are here to help with your property transaction.</Typography></Box>
       <Box className="lead-grid">{conveyancingLeads.map((person) => <Box className="lead-card" key={person.name}><Portrait person={person} compact /></Box>)}</Box>
-      <Box className="team-grid">{conveyancingTeams.map(([label, lead, paralegal, phone, leadImage, paralegalImage]) => <Box className="case-team" key={label}>
+      <Box className="team-grid">{conveyancingTeams.map(({ label, members, phone }) => <Box className="case-team" key={label}>
         <Box className="case-team-top"><Box><Typography component="h3" sx={{ color: "#18366f", fontWeight: 800 }}>{label}</Typography><Typography sx={{ color: "#61718a", fontSize: 12, mt: .25 }}>Your dedicated case team</Typography></Box></Box>
-        <Box className="case-team-members"><Portrait person={{ name: lead, title: conveyancingLeads.find(person => person.name === lead)?.title ?? "Paralegal", image: suppliedProfiles.find(person => person.name === lead)?.image ?? leadImage }} compact />{paralegal.split(" and ").map(name => <Portrait key={name} person={{ name, title: "Paralegal", image: suppliedProfiles.find(person => person.name === name)?.image ?? paralegalImage }} compact />)}</Box>
+        <Box className="case-team-members">{members.map((person) => <Portrait key={person.name} person={person} compact />)}</Box>
         {phone && <Typography component="a" href={`tel:${phone.replace(/[^+\d]/g, "")}`} className="case-team-phone"><CallOutlined fontSize="small" />{phone}</Typography>}
       </Box>)}</Box>
     </Container></Box>

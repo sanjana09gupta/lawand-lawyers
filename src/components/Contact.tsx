@@ -34,8 +34,7 @@ export default function Contact() {
             Contact our team today.
           </motion.h2>
           <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-white/75">
-            We aim to respond to your query within 4 working hours. Monday to
-            Friday, 9:30–17:30. Closed weekends &amp; bank holidays.
+            Monday to Friday, 9:30–17:30. Closed weekends &amp; bank holidays.
           </p>
         </div>
 

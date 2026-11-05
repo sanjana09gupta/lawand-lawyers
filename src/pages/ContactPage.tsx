@@ -32,7 +32,7 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Get In Touch"
         title="Contact our team."
-        subtitle="We aim to respond to your query within 4 working hours. Monday to Friday, 9:30–17:30. Closed weekends & bank holidays."
+        subtitle="Monday to Friday, 9:30–17:30. Closed weekends & bank holidays."
         crumbs={[{ label: "Home", to: "/" }, { label: "Contact" }]}
       />
 

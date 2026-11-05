@@ -23,8 +23,8 @@ const company = [
 ];
 
 const directPhone = "+44 7380 866528";
-const SRA_LIVE_HOSTNAME = "lawandlawyers.co.uk";
 const reviewProfileUrl = "https://www.reviewsolicitors.co.uk/london/london/law-and-lawyers-ltd?rating=1&source=GOOGLE#section-reviews";
+const sraValidationUrl = "https://www.sra.org.uk/validation?083082065+069110103108105115104067111108111117114+068101102097117108116046112110103+104116116112115058047047119119119046108097119097110100108097119121101114115046099111046117107047&UGxEQk3X8u945Ku3FOxdkpABzFp%2bOxJehz%2bpocbyIaPGomfioh5oTg%3d%3d";
 
 function FooterAccordion({ title, children }: { title: string; children: React.ReactNode }) {
   return <details className="group border-b border-white/10">
@@ -36,8 +36,6 @@ function FooterAccordion({ title, children }: { title: string; children: React.R
 }
 
 function TrustBadges() {
-  const isSraLive = typeof window !== "undefined" && window.location.hostname.replace(/^www\./, "") === SRA_LIVE_HOSTNAME;
-
   return (
     <div className="mt-5 flex flex-col items-center gap-3 sm:mt-6 sm:items-start" aria-label="Professional accreditations">
       <a
@@ -53,7 +51,7 @@ function TrustBadges() {
         </span>
         <span className="mt-1 text-[11px] font-medium text-white/90">Independent client reviews</span>
       </a>
-      {isSraLive && (
+      <div className="w-full sm:w-auto">
         <div
           aria-label="Authorised and regulated by the Solicitors Regulation Authority"
           className="h-[163px] w-[275px] shrink-0 overflow-hidden bg-white"
@@ -69,7 +67,7 @@ function TrustBadges() {
             />
           </div>
         </div>
-      )}
+      </div>
       <div className="flex items-center justify-center gap-2 sm:justify-start sm:gap-2.5">
         <div className="flex h-[66px] w-[92px] items-center justify-center p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Lexcel accredited by the Law Society">
           <img src="/images/lexcel-accreditation.png" alt="Lexcel accredited by the Law Society" className="max-h-full max-w-full object-contain" />
@@ -106,7 +104,7 @@ export default function Footer() {
             <img src="/images/law-and-lawyers-logo.jpeg" alt="Law and Lawyers Solicitors" className="h-10 w-auto object-contain" />
           </Link>
           <p className="mt-4 max-w-xs text-[14px] leading-relaxed">
-            SRA-regulated solicitors managing your legal matters with care and efficiency across London and Manchester.
+            SRA-regulated solicitors managing your legal matters with care and efficiency across London and Leeds.
           </p>
           <div className="mt-5 flex gap-2">
             {social.map((s) => <a key={s.label} href={s.href} aria-label={s.label} target={s.href.startsWith("http") ? "_blank" : undefined} rel={s.href.startsWith("http") ? "noreferrer" : undefined} className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/50 transition-colors hover:border-brand-300/40 hover:text-brand-300"><s.icon size={15} /></a>)}
@@ -116,7 +114,7 @@ export default function Footer() {
             <FooterAccordion title="Company"><ul className="space-y-3">{company.map((l) => <li key={l.label}><Link to={l.to} className="hover:text-brand-300">{l.label}</Link></li>)}<li><a href="https://lawandlawyers.perfectportal.co.uk/" target="_blank" rel="noreferrer" className="hover:text-brand-300">Client Login</a></li></ul></FooterAccordion>
             <FooterAccordion title="For Individuals"><ul className="space-y-3">{individualServices.map((s) => <li key={s.slug}><Link to={`/services/${s.slug}`} className="hover:text-brand-300">{s.title}</Link></li>)}<li><Link to={conveyancingFeesUrl} className="font-semibold text-brand-300 hover:text-white">Fees information</Link></li></ul></FooterAccordion>
             <FooterAccordion title="For Businesses"><ul className="space-y-3">{businessServices.map((s) => <li key={s.slug}><Link to={`/services/${s.slug}`} className="hover:text-brand-300">{s.title}</Link></li>)}</ul></FooterAccordion>
-            <FooterAccordion title="Our offices"><div className="space-y-5">{officeContacts.map((office) => <div key={office.name}><p className="text-[13px] font-semibold uppercase tracking-wide text-white/80">{office.name}{office.label && <span className="ml-2 text-[10px] text-brand-300">{office.label}</span>}</p><a href={`tel:${office.phone.replace(/[^\d+]/g, "")}`} className="mt-1 block">{office.phone}</a><a href={`mailto:${office.email}`} className="footer-email block break-all">{office.email}</a></div>)}</div></FooterAccordion>
+            <FooterAccordion title="Our offices"><div className="space-y-5">{officeContacts.map((office) => <div key={office.name}><p className="text-[13px] font-semibold uppercase tracking-wide text-white/80">{office.name}{office.label && <span className="ml-2 text-[10px] text-brand-300">{office.label}</span>}</p>{office.address && <p className="mt-1 text-[12px] leading-relaxed text-white/55">{office.address}</p>}<a href={`tel:${office.phone.replace(/[^\d+]/g, "")}`} className="mt-1 block">{office.phone}</a><a href={`mailto:${office.email}`} className="footer-email block break-all">{office.email}</a></div>)}</div></FooterAccordion>
           </div>
         </div>
 
@@ -127,7 +125,7 @@ export default function Footer() {
             </Link>
             <p className="mt-3 max-w-xs text-[13px] leading-relaxed">
               SRA-regulated solicitors managing your legal matters with care
-              and efficiency across London and Manchester.
+              and efficiency across London and Leeds.
             </p>
             <div className="mt-4 flex gap-2">
               {social.map((s) => (
@@ -213,6 +211,7 @@ export default function Footer() {
               <p className="text-[13px] font-semibold uppercase tracking-wide text-white/80">
                 {office.name}{office.label && <span className="ml-2 text-[10px] text-brand-300">{office.label}</span>}
               </p>
+              {office.address && <p className="mt-1 text-[12px] leading-relaxed text-white/55">{office.address}</p>}
               <a href={`tel:${office.phone.replace(/[^\d+]/g, "")}`} className="mt-1 block text-[13.5px] hover:text-brand-300">{office.phone}</a>
               <a href={`mailto:${office.email}`} className="footer-email text-[13.5px]">{office.email}</a>
             </div>
@@ -221,7 +220,7 @@ export default function Footer() {
 
         <div className="mt-6 flex flex-col gap-3 border-t border-white/10 pt-5 text-[12px] leading-relaxed sm:flex-row sm:items-center sm:justify-between">
           <div className="max-w-3xl">
-            <p>Law and Lawyers Limited is authorised and regulated by the Solicitors Regulation Authority (SRA ID: 613159).</p>
+            <p>Law and Lawyers Limited is authorised and regulated by the Solicitors Regulation Authority (SRA ID: 613159). <a href={sraValidationUrl} target="_blank" rel="noreferrer" className="font-semibold text-brand-300 underline underline-offset-2 hover:text-white">Validate our SRA details</a>.</p>
             <p>
               © {new Date().getFullYear()} Law and Lawyers Solicitors Ltd. All rights reserved. {" "}
               <Link to="/privacy-policy" className="hover:text-brand-300">Privacy Policy</Link>{" | "}
