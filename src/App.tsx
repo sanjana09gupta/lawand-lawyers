@@ -19,7 +19,7 @@ const NewsPage = lazy(() => import("./pages/News"));
 const NewsDetail = lazy(() => import("./pages/NewsDetail"));
 const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
-const Booking = lazy(() => import("./pages/Booking"));
+// const Booking = lazy(() => import("./pages/Booking"));
 const NewPurchaseQuote = lazy(() => import("./pages/NewPurchaseQuote"));
 const CorporateSocialResponsibility = lazy(() => import("./pages/CorporateSocialResponsibility"));
 const TeamProfile = lazy(() => import("./pages/TeamProfile"));
@@ -51,8 +51,9 @@ export default function App() {
                 <Route path="/news/:slug" element={<NewsDetail />} />
                 <Route path="/services/:slug" element={<ServiceDetail />} />
                 <Route path="/contact" element={<ContactPage />} />
-                <Route path="/book-a-consultation" element={<Booking />} />
+                {/* <Route path="/book-a-consultation" element={<Booking />} /> */}
                 <Route path="/services/residential-conveyancing/new-purchase-quote" element={<NewPurchaseQuote />} />
+                <Route path="/quote" element={<NewPurchaseQuote />} />
                 <Route path="/services/residential-conveyancing/residential-conveyancing-fees" element={<ConveyancingFees />} />
                 <Route path="/fee-information" element={<FeeInformation />} />
                 <Route path="/privacy-policy" element={<LegalInformation />} />

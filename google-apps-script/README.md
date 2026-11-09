@@ -2,6 +2,8 @@
 
 The browser sends quote, career-application and website-assistant requests only to the site's server endpoint. The server signs every request before forwarding it to Apps Script, so a direct browser request cannot write to the sheet or invoke the assistant. Quote records are stored in `Sheet1`; career applications are stored in a separate `Career Applications` tab, created automatically on the first successful application. When a candidate uploads a PDF, DOC or DOCX CV up to 2 MB, it is stored in the private Drive folder identified by `CAREER_CV_FOLDER_ID`, its Drive URL is added to the sheet, and it is attached to the notification email sent to `HR@lawandlawyers.co.uk`. The OpenAI request is made by Apps Script, so its API key never reaches the website or Vercel.
 
+The conveyancing form stores requests in a separate `Conveyancing Requests` tab and emails info@lawandlawyers.co.uk, copying mohit@lawandlawyers.co.uk. Deploy the updated Apps Script web app version before enabling the updated form; the previous receiver does not understand the new submission format. Authorize Gmail and Sheets access for the account executing the web app.
+
 1. Open the target Google Sheet and choose **Extensions > Apps Script**.
 2. Replace the default script with `QuoteSheet.gs` and save it.
 3. In Apps Script, open **Project Settings > Script Properties** and add:

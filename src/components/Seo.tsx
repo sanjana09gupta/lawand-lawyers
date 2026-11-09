@@ -12,7 +12,7 @@ const pages: Record<string, { title: string; description: string }> = {
   "/news": { title: "Legal news and insights", description: "Practical legal guides and updates from Law and Lawyers Solicitors." },
   "/contact": { title: "Contact us", description: "Contact Law and Lawyers Solicitors in London and Leeds to discuss your legal matter." },
   "/careers": { title: "Careers", description: "Explore career opportunities with Law and Lawyers Solicitors." },
-  "/book-a-consultation": { title: "Book a consultation", description: "Book a consultation with Law and Lawyers Solicitors." },
+  // "/book-a-consultation": { title: "Book a consultation", description: "Book a consultation with Law and Lawyers Solicitors." },
 };
 
 function setMeta(name: string, content: string, property = false) {

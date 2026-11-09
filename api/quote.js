@@ -42,6 +42,41 @@ function normaliseQuote(input) {
   return quote;
 }
 
+function normaliseConveyancingQuote(input) {
+  if (!input || !["Sale", "Purchase", "Sale & Purchase"].includes(input.quoteType) || input.privacyConsent !== true) return null;
+  const required = ["forename", "surname", "telephone", "email"];
+  const sale = input.quoteType !== "Purchase";
+  const purchase = input.quoteType !== "Sale";
+  const keys = [...required];
+  const options = {};
+  if (sale) {
+    required.push("saleAmount", "saleTenure", "saleMortgage", "sellers", "saleAddress1", "salePostcode", "saleSharedOwnership", "helpToBuyMortgage");
+    keys.push(...required.slice(4), "saleAddress2", "saleAddress3", "saleAddress4");
+    Object.assign(options, { saleTenure: ["Freehold", "Leasehold"], saleMortgage: ["Yes", "No"], saleSharedOwnership: ["Yes", "No"], helpToBuyMortgage: ["Yes", "No"] });
+  }
+  if (purchase) {
+    const purchaseKeys = ["purchaseAmount", "purchaseTenure", "purchaseMortgage", "buyers", "purchaseAddress1", "purchasePostcode", "jurisdiction", "ukResident", "additionalProperty", "firstTimeBuyer", "purchaseSharedOwnership", "giftedDeposit", "newBuild", "helpToBuyIsa", "lifetimeIsa"];
+    required.push(...purchaseKeys);
+    keys.push(...purchaseKeys, "purchaseAddress2", "purchaseAddress3", "purchaseAddress4");
+    Object.assign(options, { purchaseTenure: ["Freehold", "Leasehold"], purchaseMortgage: ["Yes", "No"], jurisdiction: ["England", "Wales"] });
+    for (const key of ["ukResident", "additionalProperty", "firstTimeBuyer", "purchaseSharedOwnership", "giftedDeposit", "newBuild", "helpToBuyIsa", "lifetimeIsa"]) options[key] = ["Yes", "No"];
+    if (input.purchaseTenure === "Leasehold") { required.push("leaseholdType"); keys.push("leaseholdType"); options.leaseholdType = ["House", "Flat / Apartment"]; }
+    if (input.purchaseTenure === "Leasehold" && input.leaseholdType === "Flat / Apartment") { required.push("floors"); keys.push("floors"); }
+    if (input.additionalProperty === "Yes") { required.push("replacingResidence"); keys.push("replacingResidence"); options.replacingResidence = ["Yes", "No"]; }
+    if (input.firstTimeBuyer === "Yes") { required.push("mainResidence"); keys.push("mainResidence"); options.mainResidence = ["Yes", "No"]; }
+    if (input.helpToBuyIsa === "Yes") { required.push("helpToBuyIsaCount"); keys.push("helpToBuyIsaCount"); }
+    if (input.lifetimeIsa === "Yes") { required.push("lifetimeIsaCount"); keys.push("lifetimeIsaCount"); }
+  }
+  if (required.some((key) => !text(input[key], 200)) || !validEmail(text(input.email, 254))) return null;
+  if (Object.entries(options).some(([key, allowed]) => !allowed.includes(input[key]))) return null;
+  for (const key of ["saleAmount", "purchaseAmount", "sellers", "buyers", "floors", "helpToBuyIsaCount", "lifetimeIsaCount"]) {
+    if (keys.includes(key) && (!/^\d+$/.test(input[key]) || Number(input[key]) < 1 || Number(input[key]) > (key.endsWith("Amount") ? 9999999999 : 999))) return null;
+  }
+  const result = { formType: "Conveyancing quote request", submittedAt: new Date().toISOString(), quoteType: input.quoteType, privacyConsent: true };
+  for (const key of keys) result[key] = safeCell(input[key], key === "email" ? 254 : 200);
+  return result;
+}
+
 function normaliseCareerApplication(input) {
   if (!input || typeof input !== "object" || Array.isArray(input)) return null;
   const cv = input.cv && typeof input.cv === "object" && !Array.isArray(input.cv) ? input.cv : null;
@@ -84,7 +119,7 @@ export function createSubmissionHandler(formKind = "quote") {
   if (JSON.stringify(request.body || {}).length > bodyLimit) return response.status(413).json({ ok: false, error: "Submission is too large." });
   if (request.body?.website || !Number.isFinite(request.body?.formStartedAt) || Date.now() - request.body.formStartedAt < MIN_FORM_TIME_MS || Date.now() - request.body.formStartedAt > MAX_FORM_TIME_MS) return response.status(400).json({ ok: false, error: "Unable to accept this submission." });
 
-  const submission = formKind === "career" ? normaliseCareerApplication(request.body) : normaliseQuote(request.body);
+  const submission = formKind === "career" ? normaliseCareerApplication(request.body) : request.body?.formType === "Conveyancing quote request" ? normaliseConveyancingQuote(request.body) : normaliseQuote(request.body);
   if (!submission) return response.status(400).json({ ok: false, error: "Please check the required fields and consent." });
   const scriptUrl = process.env.APPS_SCRIPT_WEB_APP_URL;
   const secret = process.env.APPS_SCRIPT_WEBHOOK_SECRET;

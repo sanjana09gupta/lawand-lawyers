@@ -51,9 +51,9 @@ export default function ContactPage() {
                           {o.address}
                         </Typography>
                         {o.mapUrl && <Typography component="a" href={o.mapUrl} target="_blank" rel="noreferrer" sx={{ display: "inline-block", mt: 1, fontSize: 12, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "#2657a3", textDecoration: "none" }}>View on map ↗</Typography>}
-                        <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 1.5 }}>
+                        <Box component="a" href={`tel:${o.phone.replace(/[^\d+]/g, "")}`} aria-label={`Call ${o.name} on ${o.phone}`} sx={{ display: "inline-flex", alignItems: "center", gap: 1, minHeight: 44, mt: 0.5, color: "inherit", textUnderlineOffset: "3px" }}>
                           <Phone sx={{ fontSize: 14, color: "text.secondary" }} />
-                          <Typography sx={{ fontSize: 13.5 }}>{o.phone}</Typography>
+                          <Typography component="span" sx={{ fontSize: 13.5 }}>{o.phone}</Typography>
                         </Box>
                         <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 0.5 }}>
                           <Mail sx={{ fontSize: 14, color: "text.secondary" }} />

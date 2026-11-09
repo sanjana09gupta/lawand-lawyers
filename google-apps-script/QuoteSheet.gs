@@ -47,6 +47,19 @@ function valid_(quote) {
   return quote && quote.purchasePrice && quote.purchaseAddress && quote.propertyLocation && quote.tenure && quote.buyer1Name && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(quote.buyer1Email || "") && quote.buyer1Telephone && quote.currentAddress && quote.newBuild && quote.firstTimeBuyer && quote.giftedMoney && quote.newMortgage && quote.referralSource && quote.privacyConsent === true;
 }
 
+function validConveyancing_(quote) {
+  return quote && quote.formType === "Conveyancing quote request" && ["Sale", "Purchase", "Sale & Purchase"].indexOf(quote.quoteType) !== -1 && quote.forename && quote.surname && quote.telephone && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(quote.email || "") && quote.privacyConsent === true;
+}
+
+function appendConveyancing_(spreadsheet, quote) {
+  var sheet = spreadsheet.getSheetByName("Conveyancing Requests");
+  if (!sheet) sheet = spreadsheet.insertSheet("Conveyancing Requests");
+  if (sheet.getLastRow() === 0) sheet.appendRow(["Submitted at", "Quote type", "Name", "Email", "Telephone", "Request details"]);
+  var details = Object.keys(quote).filter(function(key) { return ["formType", "submittedAt", "quoteType", "privacyConsent"].indexOf(key) === -1; }).map(function(key) { return key.replace(/([A-Z])/g, " $1").replace(/^./, function(c) { return c.toUpperCase(); }) + ": " + quote[key]; }).join("\n");
+  sheet.appendRow([cell_(quote.submittedAt, 40), cell_(quote.quoteType, 40), cell_(quote.forename + " " + quote.surname, 400), cell_(quote.email, 254), cell_(quote.telephone, 200), cell_(details, 12000)]);
+  GmailApp.sendEmail("info@lawandlawyers.co.uk", "New conveyancing quote request: " + quote.quoteType, "A new conveyancing quote request has been submitted.\n\n" + details, { cc: "mohit@lawandlawyers.co.uk", replyTo: quote.email });
+}
+
 function validCareer_(application) {
   return application && application.fullName && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(application.email || "") && application.telephone && application.role && application.privacyConsent === true;
 }
@@ -163,11 +176,12 @@ function doPost(event) {
     var submission = JSON.parse(envelope.payload);
     var isChat = submission.formType === "Website assistant";
     var isCareerApplication = submission.formType === "Career application";
+    var isConveyancing = submission.formType === "Conveyancing quote request";
     if (isChat) {
       if (!validChat_(submission)) throw new Error("Invalid assistant request.");
       return output_({ ok: true, answer: chatAnswer_(properties, submission.message.trim()) });
     }
-    if (isCareerApplication ? (!validCareer_(submission) || !validCareerCv_(submission.cv)) : !valid_(submission)) throw new Error("Invalid submission data.");
+    if (isCareerApplication ? (!validCareer_(submission) || !validCareerCv_(submission.cv)) : isConveyancing ? !validConveyancing_(submission) : !valid_(submission)) throw new Error("Invalid submission data.");
 
     var sheetId = properties.getProperty("SHEET_ID");
     var sheetName = properties.getProperty("SHEET_NAME") || "Sheet1";
@@ -181,6 +195,8 @@ function doPost(event) {
         var cvUrl = uploadCareerCv_(properties, submission);
         appendCareer_(spreadsheet, submission, cvUrl);
         notifyHr_(submission);
+      } else if (isConveyancing) {
+        appendConveyancing_(spreadsheet, submission);
       } else {
         var sheet = spreadsheet.getSheetByName(sheetName);
         if (!sheet) throw new Error("Quote receiver is not configured.");

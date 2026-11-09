@@ -242,14 +242,16 @@ export default function ServiceDetail() {
                 ))}
               </List>
 
+              {/* Booking destination: to={service.slug === "residential-conveyancing" ? "/book-a-consultation" : "/contact"} */}
               <Button
                 component={Link}
-                to={service.slug === "residential-conveyancing" ? "/book-a-consultation" : "/contact"}
+                to="/contact"
                 variant="contained"
                 endIcon={<ArrowForward />}
                 sx={{ mt: 3, background: "linear-gradient(115deg,#1d3468,#22458a,#2f74bd,#4a97d6)" }}
               >
-                {service.slug === "residential-conveyancing" ? "Book a Consultation" : "Contact our team"}
+                {/* {service.slug === "residential-conveyancing" ? "Book a Consultation" : "Contact our team"} */}
+                Contact our team
               </Button>
               {service.slug === "wills-and-probate" && (
                 <Typography sx={{ mt: 2, color: "#4a5468", fontSize: 16, lineHeight: 1.6 }}>
@@ -267,7 +269,7 @@ export default function ServiceDetail() {
               {service.slug === "residential-conveyancing" && (
                 <>
                   <Button component={Link} to="/services/residential-conveyancing/new-purchase-quote" variant="text" sx={{ mt: 1.5, display: "block", px: 0 }}>
-                    New purchase quote form
+                    Conveyancing quote form
                   </Button>
                   <Button component={Link} to={conveyancingFeesUrl} variant="text" sx={{ mt: 0.5, display: "block", px: 0 }}>
                     Fees information

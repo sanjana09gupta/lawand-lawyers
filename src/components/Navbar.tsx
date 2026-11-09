@@ -51,7 +51,7 @@ export default function Navbar() {
             <Link to="/news" onClick={() => setCompanyOpen(false)}>News and Insights</Link>
             <Link to="/careers" onClick={() => setCompanyOpen(false)}>Careers</Link>
             <Link to="/corporate-social-responsibility" onClick={() => setCompanyOpen(false)}>Corporate Social Responsibility</Link>
-            <Link to="/book-a-consultation" onClick={() => setCompanyOpen(false)}>Book a Consultation</Link>
+            {/* <Link to="/book-a-consultation" onClick={() => setCompanyOpen(false)}>Book a Consultation</Link> */}
           </div>}
         </div>
         <Link className={location.pathname === "/services" || location.pathname.startsWith("/services/") ? "is-active" : undefined} to="/services">Services</Link><Link className={location.pathname === "/our-people" || location.pathname.startsWith("/team/") ? "is-active" : undefined} to="/our-people">Our people</Link><Link className={location.pathname.startsWith("/news") ? "is-active" : undefined} to="/news">Insights</Link><Link className={location.pathname === "/contact" ? "is-active" : undefined} to="/contact">Contact</Link>
