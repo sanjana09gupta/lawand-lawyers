@@ -11,9 +11,9 @@ const conveyancingLeads: Person[] = [
   { name: "Bhavini Bhudia", title: "Director", image: "/images/team/Bhavini.jpg" },
   { name: "Sarath Nair", title: "Director", image: "/images/team/Sarath.jpg" },
   { name: "Juneeta John", title: "Director", image: "/images/team/juneeta-enhanced.png" },
-  { name: "Shinto Poulose", title: "Solicitor" },
+  { name: "Shinto Poulose", title: "Solicitor", image: "/images/team/shinto-poulose.png" },
   { name: "Charles Vargehese", title: "Director", image: "/images/team/Charles Vargehese.png" },
-  { name: "Abhinav Kiran Sekhon", title: "Solicitor" },
+  { name: "Abhinav Kiran Sekhon", title: "Solicitor", image: "/images/team/abhinav-kiran-sekhon.jpeg" },
   { name: "Sujini Mundayam Kara", title: "Solicitor", image: "/images/team/Sujini Mundayam Kara.webp" },
 ];
 
@@ -29,7 +29,7 @@ const conveyancingTeams: ConveyancingTeam[] = [
   { label: "Conveyancing Team 7", phone: "020 3345 4949", members: [{ name: "Ramakrishnan Kandasamy", title: "Registered Foreign Lawyer", image: "/images/team/Ramakrishnan.jpg" }, { name: "Alan Joy", title: "Paralegal", image: "/images/team/Alan Joy.jpg" }] },
   { label: "Conveyancing Team 8", phone: "0208 088 4581", members: [{ name: "Alex Martin", title: "Paralegal", image: "/images/team/Alex.jpg" }, { name: "Aleena Jayan", title: "Paralegal", image: "/images/team/Aleena.jpg" }] },
   { label: "Conveyancing Team 9", phone: "020 3345 4950", members: [{ name: "Sanjana Koshy", title: "Registered Foreign Lawyer", image: "/images/team/Sanjana.jpg" }, { name: "Ramya Logeswaran", title: "Paralegal", image: "/images/team/Ramya.jpg" }] },
-  { label: "Leeds Branch Conveyancing Team", members: [{ name: "Shinto Poulose", title: "Solicitor" }, { name: "Sujini Mundayam Kara", title: "Solicitor", image: "/images/team/Sujini Mundayam Kara.webp" }, { name: "Kukku Joy", title: "Paralegal", image: "/images/team/Kukku Joy.webp" }, { name: "Agimol Sonya", title: "Paralegal", image: "/images/team/Agimol Sonya.webp" }] },
+  { label: "Leeds Branch Conveyancing Team", members: [{ name: "Shinto Poulose", title: "Solicitor", image: "/images/team/shinto-poulose.png" }, { name: "Sujini Mundayam Kara", title: "Solicitor", image: "/images/team/Sujini Mundayam Kara.webp" }, { name: "Kukku Joy", title: "Paralegal", image: "/images/team/Kukku Joy.webp" }, { name: "Agimol Sonya", title: "Paralegal", image: "/images/team/Agimol Sonya.webp" }] },
 ];
 
 const initials = (name: string) => name.split(" ").map((part) => part[0]).join("").slice(0, 2);
@@ -71,7 +71,7 @@ export default function OurPeople() {
       <Box component="section" className="department-panel immigration-panel" aria-labelledby="immigration-heading">
         <Box className="department-heading"><Box><Typography className="people-eyebrow">Specialist team</Typography><Typography component="h2" id="immigration-heading">Immigration</Typography></Box><Link to="/services/immigration" className="department-service-link" aria-label="Explore immigration services"><ArrowOutward /></Link></Box>
         <Box className="specialist-profiles">
-          {[{ name: "Majo Davis", title: "Director", image: "/images/team/Majo.jpg" }, { name: "SreeGovind", title: "Paralegal", image: "/images/team/Sree Govind.jpg" }].map((person) => <Box className="specialist-profile" key={person.name}><Box className="specialist-photo"><img {...portraitImage(person.image, "(max-width: 600px) 45vw, (max-width: 900px) 50vw, 30vw")} alt={person.name} loading="lazy" decoding="async" width="960" height="640" /></Box><Box className="specialist-caption"><Typography component="h3">{person.name}</Typography><Typography>{person.title}</Typography></Box></Box>)}
+          {[{ name: "Majo Davis", title: "Director", image: "/images/team/Majo.jpg" }, { name: "SreeGovind", title: "Paralegal", image: "/images/team/Sree Govind.jpg" }, { name: "Shiju Kariparamban", title: "Paralegal (Leeds Branch)", image: "/images/team/shiju-kariparamban.png" }].map((person) => <Box className="specialist-profile" key={person.name}><Box className="specialist-photo"><img {...portraitImage(person.image, "(max-width: 600px) 45vw, (max-width: 900px) 50vw, 30vw")} alt={person.name} loading="lazy" decoding="async" width="960" height="640" /></Box><Box className="specialist-caption"><Typography component="h3">{person.name}</Typography><Typography>{person.title}</Typography></Box></Box>)}
         </Box>
         <Box className="support-roster"><Typography component="h3" className="support-roster-label">Working alongside you</Typography><Box className="support-roster-grid"><Portrait person={{ name: "Chidiyaraj", title: "Paralegal", image: "/images/team/Chidiyaraj.jpg" }} compact /><Portrait person={{ name: "Kausicprabu S", title: "Paralegal", image: "/images/team/Kausicprabu S.jpg" }} compact /><Portrait person={{ name: "Andrews Renil", title: "Legal Assistant" }} compact /></Box></Box>
       </Box>
