@@ -361,26 +361,24 @@ export const offices = [
   {
     name: "Leeds",
     tag: "Leeds Office",
-    address: "First & Second Floor, 33 & 35 Austhorpe Road, Crossgates, Leeds LS15 8QR",
+    address: "First & Second Floor, 33 & 35 Austhorpe Road, Crossgates, Leeds LS15 8BA",
     phone: "0161 748 3335",
     email: "info@lawandlawyers.co.uk",
-    mapUrl: "https://www.google.com/maps/search/?api=1&query=First+%26+Second+Floor%2C+33+%26+35+Austhorpe+Road%2C+Crossgates%2C+Leeds+LS15+8QR",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=First+%26+Second+Floor%2C+33+%26+35+Austhorpe+Road%2C+Crossgates%2C+Leeds+LS15+8BA",
   },
 ];
 
-export const officeContacts: Array<{ name: string; label?: string; address?: string; phone: string; email: string }> = [
+export const officeContacts: Array<{ name: string; label?: string; address?: string; phone: string }> = [
   {
     name: "London - Worship Street",
     label: "Head Office",
     address: "Second Floor, 31-41 Worship Street, London EC2A 2DX",
     phone: "+44 (0) 208 586 5657",
-    email: "info@lawandlawyers.co.uk",
   },
   {
     name: "Leeds",
-    address: "First & Second Floor, 33 & 35 Austhorpe Road, Crossgates, Leeds LS15 8QR",
+    address: "First & Second Floor, 33 & 35 Austhorpe Road, Crossgates, Leeds LS15 8BA",
     phone: "0161 748 3335",
-    email: "info@lawandlawyers.co.uk",
   },
 ];
 

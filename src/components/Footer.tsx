@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import Phone from "@mui/icons-material/Phone";
-import StarRounded from "@mui/icons-material/StarRounded";
 import { LinkedInIcon, InstagramIcon, FacebookIcon, XIcon } from "./SocialIcons";
 import { individualServices, businessServices, officeContacts } from "../data/content";
 import { conveyancingFeesUrl } from "../data/links";
@@ -23,212 +23,86 @@ const company = [
 ];
 
 const directPhone = "+44 20 8586 5657";
-const reviewProfileUrl = "https://www.reviewsolicitors.co.uk/london/london/law-and-lawyers-ltd?rating=1&source=GOOGLE#section-reviews";
+const officeEmails = ["london@lawandlawyers.co.uk", "sales@lawandlawyers.co.uk"];
 const sraValidationUrl = "https://www.sra.org.uk/validation?083082065+069110103108105115104067111108111117114+068101102097117108116046112110103+104116116112115058047047119119119046108097119097110100108097119121101114115046099111046117107047&UGxEQk3X8u945Ku3FOxdkpABzFp%2bOxJehz%2bpocbyIaPGomfioh5oTg%3d%3d";
 
-function FooterAccordion({ title, children }: { title: string; children: React.ReactNode }) {
-  return <details className="group border-b border-white/10">
-    <summary className="flex min-h-13 cursor-pointer list-none items-center justify-between py-4 text-[12px] font-semibold uppercase tracking-wide text-white/70">
-      {title}<KeyboardArrowDown className="transition-transform duration-200 group-open:rotate-180" />
-    </summary>
-    <div className="pb-5 text-[14px]">{children}</div>
-  </details>;
+function ReviewBadge() {
+  useEffect(() => {
+    const script = document.querySelector<HTMLScriptElement>('script[src="https://www.reviewsolicitors.co.uk/widget/rs.js"]');
+    const load = () => {
+      const target = document.getElementById("rswidget_footer");
+      const rs = (window as Window & { rs?: { loadWidget: (id: string, type: string, firm: number, props: object) => void } }).rs;
+      if (target && !target.querySelector("iframe")) rs?.loadWidget("rswidget_footer", "dropdown", 10832, {});
+    };
+    load();
+    script?.addEventListener("load", load);
+    return () => script?.removeEventListener("load", load);
+  }, []);
+  return <div id="rswidget_footer" className="relative mt-5 w-full max-w-[400px] [&_.floatHolder]:hidden [&_.rsoverlay]:hidden" />;
 }
 
-function TrustBadges() {
-  return (
-    <div className="mt-5 flex flex-col items-start gap-3 sm:mt-6" aria-label="Professional accreditations">
-      <a
-        href={reviewProfileUrl}
-        target="_blank"
-        rel="noreferrer"
-        className="group flex h-[84px] w-[208px] shrink-0 basis-full flex-col justify-center rounded-xl bg-[#00a84f] px-4 text-white transition-transform duration-200 hover:-translate-y-0.5 hover:bg-[#008f43] focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-brand-300 sm:basis-auto"
-        aria-label="Read Law and Lawyers client reviews on ReviewSolicitors"
-      >
-        <span className="text-[17px] font-semibold leading-none tracking-[-0.05em]">reviewsolicitors</span>
-        <span className="mt-1.5 flex items-center gap-0.5" aria-hidden="true">
-          {[0, 1, 2, 3, 4].map((star) => <StarRounded key={star} sx={{ fontSize: 17 }} />)}
-        </span>
-        <span className="mt-1 text-[11px] font-medium text-white/90">Independent client reviews</span>
-      </a>
-      <div className="w-full sm:w-auto">
-        <div
-          aria-label="Authorised and regulated by the Solicitors Regulation Authority"
-          className="h-[163px] w-[275px] shrink-0 overflow-hidden bg-white"
-        >
-          <div className="relative aspect-[275/163] w-full">
-            <iframe
-              title="Solicitors Regulation Authority digital badge"
-              src="https://cdn.yoshki.com/iframe/55845r.html"
-              frameBorder="0"
-              scrolling="no"
-              loading="lazy"
-              className="absolute inset-0 h-full w-full border-0"
-            />
-          </div>
-        </div>
-      </div>
-      <div className="flex items-center justify-start gap-2 sm:gap-2.5">
-        <div className="flex h-[66px] w-[92px] items-center justify-center p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Lexcel accredited by the Law Society">
-          <img src="/images/lexcel-accreditation.png" alt="Lexcel accredited by the Law Society" className="max-h-full max-w-full object-contain" />
-        </div>
-        <div className="flex h-[66px] w-[92px] items-center justify-center p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Conveyancing Quality Scheme accredited by the Law Society">
-          <img src="/images/cqs-logo-2026.png" alt="Conveyancing Quality Scheme accredited by the Law Society" className="max-h-full max-w-full object-contain" />
-        </div>
-        <div className="flex h-[66px] w-[92px] items-center justify-center p-1.5 sm:h-[86px] sm:w-[118px] sm:p-2" aria-label="Cyber Essentials certified">
-          <img src="/images/recog3.png" alt="Cyber Essentials certified" className="max-h-full max-w-full object-contain" />
-        </div>
-      </div>
+function FooterLinks({ title, children }: { title: string; children: React.ReactNode }) {
+  return <>
+    <details className="group border-b border-white/20 md:hidden">
+      <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between text-[12px] font-semibold uppercase tracking-[0.12em] text-brand-300">{title}<KeyboardArrowDown className="transition-transform duration-200 group-open:rotate-180" /></summary>
+      <div className="pb-5 text-[14px]">{children}</div>
+    </details>
+    <div className="hidden md:block">
+      <h3 className="text-[12px] font-semibold uppercase tracking-[0.12em] text-brand-300">{title}</h3>
+      <div className="mt-4 text-[13px] leading-relaxed">{children}</div>
     </div>
-  );
+  </>;
 }
 
 export default function Footer() {
   return (
-    <footer className="bg-[linear-gradient(120deg,#0d1c42_0%,#17366f_52%,#4a97d6_100%)] border-t border-white/20 pt-10 pb-6 text-white/75 lg:pt-12">
+    <footer className="border-t border-white/20 bg-[#0d2248] py-8 text-white/75 sm:py-10">
       <div className="container-px">
-        <div className="mb-9 flex flex-col gap-4 rounded-xl bg-[#102e5e]/65 px-5 py-4 sm:px-6 sm:py-5 lg:flex-row lg:items-center lg:justify-between">
-          <div className="max-w-xl">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-300">Get in touch</p>
-            <h2 className="mt-1 font-serif text-xl text-white sm:text-2xl">Call us directly.</h2>
-            <p className="mt-1 text-[13px] leading-relaxed text-white/60">Speak to an adviser about your legal needs.</p>
+        <div className="flex flex-col gap-4 rounded-xl bg-[#153568] px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-7">
+          <div className="border-l-2 border-brand-300 pl-4 sm:flex sm:items-center sm:gap-6">
+            <h2 className="font-serif text-2xl text-white sm:text-3xl">Need legal advice?</h2>
+            <p className="mt-1 text-[13px] text-white/75 sm:mt-0">Speak to an adviser about your legal needs.</p>
           </div>
-          <div className="flex flex-col gap-2 sm:flex-row">
-            <a href="tel:+442085865657" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/25 px-4 text-[13px] font-semibold text-white transition-colors hover:border-brand-300 hover:text-brand-300" aria-label={`Call ${directPhone}`}>
-              <Phone fontSize="small" /> {directPhone}
-            </a>
-          </div>
-        </div>
-        <div className="lg:hidden">
-          <Link to="/" className="inline-flex rounded-md bg-white p-1.5">
-            <img src="/images/law-and-lawyers-logo.jpeg" alt="Law and Lawyers Solicitors" className="h-10 w-auto object-contain" />
-          </Link>
-          <p className="mt-4 max-w-xs text-[14px] leading-relaxed">
-            SRA-regulated solicitors managing your legal matters with care and efficiency across London and Leeds.
-          </p>
-          <div className="mt-5 flex gap-2">
-            {social.map((s) => <a key={s.label} href={s.href} aria-label={s.label} target={s.href.startsWith("http") ? "_blank" : undefined} rel={s.href.startsWith("http") ? "noreferrer" : undefined} className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/50 transition-colors hover:border-brand-300/40 hover:text-brand-300"><s.icon size={15} /></a>)}
-          </div>
-          <TrustBadges />
-          <div className="mt-7 border-t border-white/10">
-            <FooterAccordion title="Company"><ul className="space-y-3">{company.map((l) => <li key={l.label}><Link to={l.to} className="hover:text-brand-300">{l.label}</Link></li>)}<li><a href="https://lawandlawyers.perfectportal.co.uk/" target="_blank" rel="noreferrer" className="hover:text-brand-300">Client Login</a></li></ul></FooterAccordion>
-            <FooterAccordion title="For Individuals"><ul className="space-y-3">{individualServices.map((s) => <li key={s.slug}><Link to={`/services/${s.slug}`} className="hover:text-brand-300">{s.title}</Link></li>)}<li><Link to={conveyancingFeesUrl} className="font-semibold text-brand-300 hover:text-white">Fees information</Link></li></ul></FooterAccordion>
-            <FooterAccordion title="For Businesses"><ul className="space-y-3">{businessServices.map((s) => <li key={s.slug}><Link to={`/services/${s.slug}`} className="hover:text-brand-300">{s.title}</Link></li>)}</ul></FooterAccordion>
-            <FooterAccordion title="Our offices"><div className="space-y-5">{officeContacts.map((office) => <div key={office.name}><p className="text-[13px] font-semibold uppercase tracking-wide text-white/80">{office.name}{office.label && <span className="ml-2 text-[10px] text-brand-300">{office.label}</span>}</p>{office.address && <p className="mt-1 text-[12px] leading-relaxed text-white/55">{office.address}</p>}<a href={`tel:${office.phone.replace(/[^\d+]/g, "")}`} className="mt-1 block">{office.phone}</a><a href={`mailto:${office.email}`} className="footer-email block break-all">{office.email}</a></div>)}</div></FooterAccordion>
-          </div>
+          <a href="tel:+442085865657" className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-full bg-brand-300 px-6 text-[13px] font-bold text-brand-950 transition-colors hover:bg-white" aria-label={`Call ${directPhone}`}><Phone fontSize="small" /> {directPhone}</a>
         </div>
 
-        <div className="hidden gap-8 lg:grid lg:grid-cols-6">
-          <div className="lg:col-span-3">
-            <Link to="/" className="inline-flex rounded-md bg-white p-1.5">
-              <img src="/images/law-and-lawyers-logo.jpeg" alt="Law and Lawyers Solicitors" className="h-10 w-auto object-contain" />
-            </Link>
-            <p className="mt-3 max-w-xs text-[13px] leading-relaxed">
-              SRA-regulated solicitors managing your legal matters with care
-              and efficiency across London and Leeds.
-            </p>
-            <div className="mt-4 flex gap-2">
-              {social.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  aria-label={s.label}
-                  target={s.href.startsWith("http") ? "_blank" : undefined}
-                  rel={s.href.startsWith("http") ? "noreferrer" : undefined}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/50 transition-colors hover:border-brand-300/40 hover:text-brand-300"
-                >
-                  <s.icon size={15} />
-                </a>
-              ))}
-            </div>
-            <TrustBadges />
-          </div>
-
+        <div className="mt-8 grid gap-8 lg:mt-10 lg:grid-cols-[minmax(260px,1.35fr)_repeat(3,minmax(0,1fr))] lg:gap-10">
           <div>
-            <p className="text-[12px] font-semibold uppercase tracking-wide text-white/40">
-              Company
-            </p>
-            <ul className="mt-3 space-y-2 text-[13px]">
-              {company.map((l) => (
-                <li key={l.label}>
-                  <Link to={l.to} className="hover:text-brand-300">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <a
-                  href="https://lawandlawyers.perfectportal.co.uk/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-brand-300"
-                >
-                  Client Login
-                </a>
-              </li>
-            </ul>
+            <Link to="/" className="inline-flex rounded-md bg-white p-1.5"><img src="/images/law-and-lawyers-logo.jpeg" alt="Law and Lawyers Solicitors" className="h-10 w-auto object-contain" /></Link>
+            <p className="mt-4 max-w-sm text-[13px] leading-relaxed">SRA-regulated solicitors managing your legal matters with care and efficiency across London and Leeds.</p>
+            <div className="mt-4 flex gap-2">{social.map((s) => <a key={s.label} href={s.href} aria-label={s.label} target="_blank" rel="noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-white/75 transition-colors hover:border-brand-300 hover:text-brand-300"><s.icon size={15} /></a>)}</div>
+            <ReviewBadge />
           </div>
-
-          <div>
-            <p className="text-[12px] font-semibold uppercase tracking-wide text-white/40">
-              For Individuals
-            </p>
-            <ul className="mt-3 space-y-2 text-[13px]">
-              {individualServices.map((s) => (
-                <li key={s.slug}>
-                  <Link to={`/services/${s.slug}`} className="hover:text-brand-300">
-                    {s.title}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link to={conveyancingFeesUrl} className="font-semibold text-brand-300 hover:text-white">
-                  Fees information
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-[12px] font-semibold uppercase tracking-wide text-white/40">
-              For Businesses
-            </p>
-            <ul className="mt-3 space-y-2 text-[13px]">
-              {businessServices.map((s) => (
-                <li key={s.slug}>
-                  <Link to={`/services/${s.slug}`} className="hover:text-brand-300">
-                    {s.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <div className="border-t border-white/20 md:grid md:grid-cols-3 md:gap-7 md:pt-7 lg:col-span-3 lg:border-0 lg:pt-0">
+            <FooterLinks title="Company"><ul className="space-y-3">{company.map((l) => <li key={l.label}><Link to={l.to} className="hover:text-brand-300">{l.label}</Link></li>)}<li><a href="https://lawandlawyers.perfectportal.co.uk/" target="_blank" rel="noreferrer" className="hover:text-brand-300">Client Login</a></li></ul></FooterLinks>
+            <FooterLinks title="For Individuals"><ul className="space-y-3">{individualServices.map((s) => <li key={s.slug}><Link to={`/services/${s.slug}`} className="hover:text-brand-300">{s.title}</Link></li>)}<li><Link to={conveyancingFeesUrl} className="font-semibold text-brand-300 hover:text-white">Fees information</Link></li></ul></FooterLinks>
+            <FooterLinks title="For Businesses"><ul className="space-y-3">{businessServices.map((s) => <li key={s.slug}><Link to={`/services/${s.slug}`} className="hover:text-brand-300">{s.title}</Link></li>)}</ul></FooterLinks>
           </div>
         </div>
 
-        <div className="mt-8 hidden gap-6 border-t border-white/10 pt-5 sm:grid-cols-3 lg:grid">
-          {officeContacts.map((office) => (
-            <div key={office.name}>
-              <p className="text-[13px] font-semibold uppercase tracking-wide text-white/80">
-                {office.name}{office.label && <span className="ml-2 text-[10px] text-brand-300">{office.label}</span>}
-              </p>
-              {office.address && <p className="mt-1 text-[12px] leading-relaxed text-white/55">{office.address}</p>}
-              <a href={`tel:${office.phone.replace(/[^\d+]/g, "")}`} className="mt-1 block text-[13.5px] hover:text-brand-300">{office.phone}</a>
-              <a href={`mailto:${office.email}`} className="footer-email text-[13.5px]">{office.email}</a>
-            </div>
-          ))}
+        <div className="mt-8 grid gap-6 border-t border-white/20 pt-7 md:grid-cols-2 md:gap-10 lg:mt-10">
+          {officeContacts.map((office) => <div key={office.name}>
+            <h3 className="font-serif text-lg text-white">{office.name}{office.label && <span className="ml-2 font-sans text-[10px] font-semibold uppercase tracking-wide text-brand-300">{office.label}</span>}</h3>
+            {office.address && <p className="mt-2 text-[13px] leading-relaxed text-white/70">{office.address}</p>}
+            <a href={`tel:${office.phone.replace(/[^\d+]/g, "")}`} className="mt-2 block text-[13px] hover:text-brand-300">{office.phone}</a>
+            {officeEmails.map((email) => <a key={email} href={`mailto:${email}`} className="footer-email mt-1 block break-all text-[13px]">{email}</a>)}
+          </div>)}
         </div>
 
-        <div className="mt-6 flex flex-col gap-3 border-t border-white/10 pt-5 text-[12px] leading-relaxed sm:flex-row sm:items-center sm:justify-between">
-          <div className="max-w-3xl">
-            <p>Law and Lawyers Limited is authorised and regulated by the Solicitors Regulation Authority (SRA ID: 613159). <a href={sraValidationUrl} target="_blank" rel="noreferrer" className="font-semibold text-brand-300 underline underline-offset-2 hover:text-white">Validate our SRA details</a>.</p>
-            <p>
-              © {new Date().getFullYear()} Law and Lawyers Solicitors Ltd. All rights reserved. {" "}
-              <Link to="/privacy-policy" className="hover:text-brand-300">Privacy Policy</Link>{" | "}
-              <Link to="/cookie-policy" className="hover:text-brand-300">Cookie Policy</Link>{" | "}
-              <Link to="/complaints-procedure" className="hover:text-brand-300">Complaints</Link>{" | "}
-              <Link to="/fee-information" className="hover:text-brand-300">Fee Information</Link>
-            </p>
+        <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-white/20 py-7" aria-label="Professional accreditations">
+          <div aria-label="Authorised and regulated by the Solicitors Regulation Authority" className="h-[163px] w-[275px] shrink-0 overflow-hidden bg-white">
+            <iframe title="Solicitors Regulation Authority digital badge" src="https://cdn.yoshki.com/iframe/55845r.html" frameBorder="0" scrolling="no" loading="lazy" className="h-full w-full border-0" />
           </div>
+          <div className="flex flex-wrap items-center gap-4 sm:gap-8">
+            <img src="/images/lexcel-accreditation.png" alt="Lexcel accredited by the Law Society" className="h-16 w-20 object-contain sm:h-20 sm:w-24" />
+            <img src="/images/cqs-logo-2026.png" alt="Conveyancing Quality Scheme accredited by the Law Society" className="h-16 w-20 object-contain sm:h-20 sm:w-24" />
+            <img src="/images/recog3.png" alt="Cyber Essentials certified" className="h-16 w-20 object-contain sm:h-20 sm:w-24" />
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3 border-t border-white/20 pt-5 text-[12px] leading-relaxed text-white/70">
+          <p>Law and Lawyers Limited is authorised and regulated by the Solicitors Regulation Authority (SRA ID: 613159). <a href={sraValidationUrl} target="_blank" rel="noreferrer" className="font-semibold text-brand-300 underline underline-offset-2 hover:text-white">Validate our SRA details</a>.</p>
+          <div className="flex flex-wrap justify-between gap-x-6 gap-y-2"><p>© {new Date().getFullYear()} Law and Lawyers Solicitors Ltd. All rights reserved.</p><p><Link to="/privacy-policy" className="hover:text-brand-300">Privacy Policy</Link>{" | "}<Link to="/cookie-policy" className="hover:text-brand-300">Cookie Policy</Link>{" | "}<Link to="/complaints-procedure" className="hover:text-brand-300">Complaints</Link>{" | "}<Link to="/fee-information" className="hover:text-brand-300">Fee Information</Link></p></div>
         </div>
       </div>
     </footer>
