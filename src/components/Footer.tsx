@@ -22,7 +22,7 @@ const company = [
   // { label: "Book a Consultation", to: "/book-a-consultation" },
 ];
 
-const directPhone = "+44 7585 574358";
+const directPhone = "+44 20 8586 5657";
 const reviewProfileUrl = "https://www.reviewsolicitors.co.uk/london/london/law-and-lawyers-ltd?rating=1&source=GOOGLE#section-reviews";
 const sraValidationUrl = "https://www.sra.org.uk/validation?083082065+069110103108105115104067111108111117114+068101102097117108116046112110103+104116116112115058047047119119119046108097119097110100108097119121101114115046099111046117107047&UGxEQk3X8u945Ku3FOxdkpABzFp%2bOxJehz%2bpocbyIaPGomfioh5oTg%3d%3d";
 
@@ -94,7 +94,7 @@ export default function Footer() {
             <p className="mt-1 text-[13px] leading-relaxed text-white/60">Speak to an adviser about your legal needs.</p>
           </div>
           <div className="flex flex-col gap-2 sm:flex-row">
-            <a href="tel:+447585574358" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/25 px-4 text-[13px] font-semibold text-white transition-colors hover:border-brand-300 hover:text-brand-300" aria-label={`Call ${directPhone}`}>
+            <a href="tel:+442085865657" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/25 px-4 text-[13px] font-semibold text-white transition-colors hover:border-brand-300 hover:text-brand-300" aria-label={`Call ${directPhone}`}>
               <Phone fontSize="small" /> {directPhone}
             </a>
           </div>
