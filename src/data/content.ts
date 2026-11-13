@@ -355,7 +355,7 @@ export const offices = [
     tag: "Head Office",
     address: "Second Floor, 31-41 Worship Street, London EC2A 2DX",
     phone: "+44 20 8586 5657",
-    email: "info@lawandlawyers.co.uk",
+    emails: ["london@lawandlawyers.co.uk", "sales@lawandlawyers.co.uk"],
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Second+Floor%2C+31-41+Worship+Street%2C+London+EC2A+2DX",
   },
   {
@@ -363,7 +363,7 @@ export const offices = [
     tag: "Leeds Office",
     address: "First & Second Floor, 33 & 35 Austhorpe Road, Crossgates, Leeds LS15 8BA",
     phone: "0161 748 3335",
-    email: "info@lawandlawyers.co.uk",
+    emails: ["london@lawandlawyers.co.uk", "sales@lawandlawyers.co.uk"],
     mapUrl: "https://www.google.com/maps/search/?api=1&query=First+%26+Second+Floor%2C+33+%26+35+Austhorpe+Road%2C+Crossgates%2C+Leeds+LS15+8BA",
   },
 ];

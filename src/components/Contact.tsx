@@ -66,24 +66,19 @@ export default function Contact() {
                     >
                       <Phone size={13} /> {o.phone}
                     </a>
-                    <a
-                      href={`mailto:${o.email}`}
-                      className="mt-1 flex items-center gap-2 break-all text-[14px] text-white/80 hover:text-brand-200"
-                    >
-                      <Mail size={13} /> {o.email}
-                    </a>
+                    {o.emails.map((email) => (
+                      <a
+                        key={email}
+                        href={`mailto:${email}`}
+                        className="mt-1 flex items-center gap-2 break-all text-[14px] text-white/80 hover:text-brand-200"
+                      >
+                        <Mail size={13} /> {email}
+                      </a>
+                    ))}
                   </div>
                 </div>
               </motion.div>
             ))}
-
-            <div className="flex items-start gap-3 rounded-xl px-4 pb-1 pt-2">
-              <Mail className="mt-0.5 shrink-0 text-brand-300" size={18} />
-              <div className="min-w-0">
-                <p className="text-sm font-semibold text-white">Accounts / Payments</p>
-                <a href="mailto:accounts@lawandlawyers.co.uk" className="mt-1 block break-all text-[13px] text-white/80 underline underline-offset-4 hover:text-brand-200">accounts@lawandlawyers.co.uk</a>
-              </div>
-            </div>
 
             <motion.div
               initial={reduced ? false : { opacity: 0, y: 20 }}

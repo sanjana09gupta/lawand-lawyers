@@ -55,19 +55,17 @@ export default function ContactPage() {
                           <Phone sx={{ fontSize: 14, color: "text.secondary" }} />
                           <Typography component="span" sx={{ fontSize: 13.5 }}>{o.phone}</Typography>
                         </Box>
-                        <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 0.5 }}>
-                          <Mail sx={{ fontSize: 14, color: "text.secondary" }} />
-                          <Typography sx={{ fontSize: 13.5 }}>{o.email}</Typography>
-                        </Box>
+                        {o.emails.map((email) => (
+                          <Box key={email} component="a" href={`mailto:${email}`} sx={{ display: "flex", alignItems: "center", gap: 1, mt: 0.5, color: "inherit", overflowWrap: "anywhere" }}>
+                            <Mail sx={{ fontSize: 14, color: "text.secondary" }} />
+                            <Typography sx={{ fontSize: 13.5 }}>{email}</Typography>
+                          </Box>
+                        ))}
                       </Box>
                     </Box>
                   </Box>
                 ))}
                 <Box sx={{ p: 3, borderRadius: 3, border: "1px solid #8caed3", bgcolor: "#f3f8fb", display: "grid", gap: 3 }}>
-                  <Box>
-                    <Typography component="h2" sx={{ color: "#1d3468", fontSize: 13, fontWeight: 800, mb: 1 }}>Accounts / Payments</Typography>
-                    <Typography component="a" href="mailto:accounts@lawandlawyers.co.uk" sx={{ color: "#22458a", fontSize: 14, overflowWrap: "anywhere", textUnderlineOffset: "3px" }}>accounts@lawandlawyers.co.uk</Typography>
-                  </Box>
                   <Box>
                     <Typography component="h2" sx={{ color: "#1d3468", fontSize: 13, fontWeight: 800, mb: 1 }}>Opening hours</Typography>
                     <Typography sx={{ fontSize: 14 }}>Monday to Friday: 9:30 to 17:30</Typography>
