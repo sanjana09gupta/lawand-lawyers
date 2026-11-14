@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import Phone from "@mui/icons-material/Phone";
 import { LinkedInIcon, InstagramIcon, FacebookIcon, XIcon } from "./SocialIcons";
@@ -25,21 +24,6 @@ const company = [
 const directPhone = "+44 20 8586 5657";
 const officeEmails = ["london@lawandlawyers.co.uk", "sales@lawandlawyers.co.uk"];
 const sraValidationUrl = "https://www.sra.org.uk/validation?083082065+069110103108105115104067111108111117114+068101102097117108116046112110103+104116116112115058047047119119119046108097119097110100108097119121101114115046099111046117107047&UGxEQk3X8u945Ku3FOxdkpABzFp%2bOxJehz%2bpocbyIaPGomfioh5oTg%3d%3d";
-
-function ReviewBadge() {
-  useEffect(() => {
-    const script = document.querySelector<HTMLScriptElement>('script[src="https://www.reviewsolicitors.co.uk/widget/rs.js"]');
-    const load = () => {
-      const target = document.getElementById("rswidget_footer");
-      const rs = (window as Window & { rs?: { loadWidget: (id: string, type: string, firm: number, props: object) => void } }).rs;
-      if (target && !target.querySelector("iframe")) rs?.loadWidget("rswidget_footer", "dropdown", 10832, {});
-    };
-    load();
-    script?.addEventListener("load", load);
-    return () => script?.removeEventListener("load", load);
-  }, []);
-  return <div id="rswidget_footer" className="relative mt-5 w-full max-w-[400px] [&_.floatHolder]:hidden [&_.rsoverlay]:hidden" />;
-}
 
 function FooterLinks({ title, children }: { title: string; children: React.ReactNode }) {
   return <>
@@ -71,7 +55,6 @@ export default function Footer() {
             <Link to="/" className="inline-flex rounded-md bg-white p-1.5"><img src="/images/law-and-lawyers-logo.jpeg" alt="Law and Lawyers Solicitors" className="h-10 w-auto object-contain" /></Link>
             <p className="mt-4 max-w-sm text-[13px] leading-relaxed">SRA-regulated solicitors managing your legal matters with care and efficiency across London and Leeds.</p>
             <div className="mt-4 flex gap-2">{social.map((s) => <a key={s.label} href={s.href} aria-label={s.label} target="_blank" rel="noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-white/75 transition-colors hover:border-brand-300 hover:text-brand-300"><s.icon size={15} /></a>)}</div>
-            <ReviewBadge />
           </div>
           <div className="border-t border-white/20 md:grid md:grid-cols-3 md:gap-7 md:pt-7 lg:col-span-3 lg:border-0 lg:pt-0">
             <FooterLinks title="Company"><ul className="space-y-3">{company.map((l) => <li key={l.label}><Link to={l.to} className="hover:text-brand-300">{l.label}</Link></li>)}<li><a href="https://lawandlawyers.perfectportal.co.uk/" target="_blank" rel="noreferrer" className="hover:text-brand-300">Client Login</a></li></ul></FooterLinks>
